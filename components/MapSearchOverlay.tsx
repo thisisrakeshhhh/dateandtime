@@ -30,8 +30,40 @@ export default function MapSearchOverlay({
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState<Place[]>([]);
   const [highlightIndex, setHighlightIndex] = useState(0);
+  const [isPromptDismissed, setIsPromptDismissed] = useState<boolean>(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Check if location prompt was already dismissed once
+  useEffect(() => {
+    try {
+      const dismissed = localStorage.getItem("timebridge_location_prompt_dismissed");
+      if (!dismissed) {
+        setIsPromptDismissed(false);
+      }
+    } catch {
+      setIsPromptDismissed(false);
+    }
+  }, []);
+
+  function handleDismissPrompt() {
+    setIsPromptDismissed(true);
+    try {
+      localStorage.setItem("timebridge_location_prompt_dismissed", "true");
+    } catch {}
+  }
+
+  function handleDetectAndDismiss() {
+    handleDismissPrompt();
+    if (onRequestLocation) {
+      onRequestLocation();
+    }
+  }
+
+  function handleSetPlaceAndDismiss(place: Place) {
+    handleDismissPrompt();
+    onSelectPlace(place);
+  }
 
   useEffect(() => {
     if (query.trim().length > 0) {
@@ -232,13 +264,13 @@ export default function MapSearchOverlay({
       </div>
 
       {/* Starting Location Prompt (explains time difference & distance calculation) */}
-      {!placeA && !placeB && (
-        <div className="mt-3 p-3 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-200/80 dark:border-neutral-800 text-xs">
+      {!placeA && !placeB && !isPromptDismissed && (
+        <div className="mt-3 p-3 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-200/80 dark:border-neutral-800 text-xs relative animate-in fade-in duration-200">
           <div className="flex items-start gap-2.5">
             <div className="w-5 h-5 rounded-full bg-rose-500/10 text-[#E85D4E] flex items-center justify-center shrink-0 mt-0.5">
               <MapPin className="w-3 h-3" />
             </div>
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 pr-4">
               <div className="flex items-center justify-between gap-1">
                 <span className="font-semibold text-neutral-900 dark:text-white text-xs">
                   Your Current Location
@@ -256,9 +288,9 @@ export default function MapSearchOverlay({
                 {onRequestLocation && (
                   <button
                     type="button"
-                    onClick={onRequestLocation}
+                    onClick={handleDetectAndDismiss}
                     disabled={isLocating}
-                    className="px-2.5 py-1.5 rounded-lg bg-[#E85D4E] hover:bg-[#d94f40] text-white font-medium text-[11px] transition-colors flex items-center gap-1.5 shadow-xs disabled:opacity-60"
+                    className="px-2.5 py-1.5 rounded-lg bg-[#E85D4E] hover:bg-[#d94f40] text-white font-medium text-[11px] transition-colors flex items-center gap-1.5 shadow-xs disabled:opacity-60 cursor-pointer"
                   >
                     <Navigation className="w-3 h-3" />
                     <span>{isLocating ? "Detecting..." : "Detect My Location"}</span>
@@ -267,8 +299,8 @@ export default function MapSearchOverlay({
                 {userPlace && (
                   <button
                     type="button"
-                    onClick={() => onSelectPlace(userPlace)}
-                    className="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200 font-medium text-[11px] transition-colors"
+                    onClick={() => handleSetPlaceAndDismiss(userPlace)}
+                    className="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200 font-medium text-[11px] transition-colors cursor-pointer"
                   >
                     Set as {userPlace.name}
                   </button>
@@ -276,6 +308,14 @@ export default function MapSearchOverlay({
               </div>
             </div>
           </div>
+          <button
+            type="button"
+            onClick={handleDismissPrompt}
+            aria-label="Dismiss location prompt"
+            className="absolute top-2.5 right-2.5 p-1 rounded-md text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors cursor-pointer"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
         </div>
       )}
     </div>

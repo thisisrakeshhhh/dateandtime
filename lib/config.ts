@@ -44,8 +44,8 @@ export const siteConfig: SiteConfig = {
   domain: "timebridge.app",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://timebridge.app",
   contactEmail: "support@timebridge.app",
-  defaultFromSlug: "india",
-  defaultToSlug: "united-kingdom",
+  defaultFromSlug: "new-york",
+  defaultToSlug: "london",
   workHours: {
     start: 9, // 9:00 AM
     end: 21,  // 9:00 PM (21:00)

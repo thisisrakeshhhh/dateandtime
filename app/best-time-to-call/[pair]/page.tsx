@@ -119,7 +119,7 @@ export default async function BestTimeToCallPage({ params }: PageProps) {
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
-    { name: "Best Time to Call", url: "/best-time-to-call/united-kingdom-from-india" },
+    { name: "Best Time to Call", url: "/" },
     { name: `${placeTo.name} from ${placeFrom.name}`, url: `/best-time-to-call/${placeTo.slug}-from-${placeFrom.slug}` },
   ];
   const breadcrumbJsonLd = generateBreadcrumbSchema(breadcrumbItems);

@@ -74,13 +74,13 @@ export default function RootLayout({
             {/* 3 Links + Light/Dark indicator */}
             <nav className="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm font-medium text-[#6B6B6B] dark:text-[#A0A0A0]">
               <Link
-                href="/time-difference/india-to-united-kingdom"
+                href="/time-difference/new-york-to-london"
                 className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
                 Time difference
               </Link>
               <Link
-                href="/best-time-to-call/united-kingdom-from-india"
+                href="/best-time-to-call/london-from-new-york"
                 className="hidden sm:inline-block px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
                 Best time to call
@@ -120,13 +120,13 @@ export default function RootLayout({
                 </p>
                 <ul className="space-y-1 text-[11px]">
                   <li>
-                    <Link href="/time-difference/india-to-united-kingdom" className="hover:text-[#222] dark:hover:text-white hover:underline">
-                      India to UK time
+                    <Link href="/time-difference/new-york-to-london" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      New York to London time
                     </Link>
                   </li>
                   <li>
-                    <Link href="/time-difference/india-to-united-states" className="hover:text-[#222] dark:hover:text-white hover:underline">
-                      India to USA time
+                    <Link href="/time-difference/london-to-tokyo" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      London to Tokyo time
                     </Link>
                   </li>
                   <li>
@@ -135,8 +135,8 @@ export default function RootLayout({
                     </Link>
                   </li>
                   <li>
-                    <Link href="/time-difference/australia-to-india" className="hover:text-[#222] dark:hover:text-white hover:underline">
-                      Australia to India time
+                    <Link href="/time-difference/sydney-to-los-angeles" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Sydney to Los Angeles time
                     </Link>
                   </li>
                 </ul>

@@ -34,10 +34,6 @@ export default function HomeClient({
         const matched = getPlaceByTimezone(detected);
         if (matched) {
           setUserPlace(matched);
-          // If no initial places were provided via URL, set user's place as placeA
-          if (!initialPlaceA && !initialPlaceB) {
-            setPlaceA(matched);
-          }
         }
       }
     } catch {

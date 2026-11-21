@@ -128,7 +128,7 @@ export default async function TimeDifferencePage({ params }: PageProps) {
   // Breadcrumbs
   const breadcrumbItems = [
     { name: "Home", url: "/" },
-    { name: "Time Difference", url: "/time-difference/india-to-united-kingdom" },
+    { name: "Time Difference", url: "/" },
     { name: `${placeA.name} to ${placeB.name}`, url: `/time-difference/${placeA.slug}-to-${placeB.slug}` },
   ];
   const breadcrumbJsonLd = generateBreadcrumbSchema(breadcrumbItems);

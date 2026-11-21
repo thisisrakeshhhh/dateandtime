@@ -43,7 +43,7 @@ export const siteConfig: SiteConfig = {
     "Accurate time difference calculator, live solar terminator world map, daylight saving tracker, distance measurement, and optimal call window finder across world cities and countries.",
   domain: "timebridge.app",
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://timebridge.app",
-  contactEmail: "support@timebridge.app",
+  contactEmail: "mickeygorveth@gmail.com",
   defaultFromSlug: "new-york",
   defaultToSlug: "london",
   workHours: {

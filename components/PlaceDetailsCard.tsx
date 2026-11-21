@@ -8,6 +8,7 @@ import {
 } from "@/lib/places";
 import { getSolarTimes, getDstInfo } from "@/lib/astronomy";
 import { formatTimeDifference } from "@/lib/time";
+import { calculateDistance } from "@/lib/distance";
 import FlagIcon from "@/components/FlagIcon";
 import WeatherIcon from "@/components/WeatherIcon";
 import {
@@ -145,6 +146,12 @@ export default function PlaceDetailsCard({
   const latDir = place.lat >= 0 ? "N" : "S";
   const lngDir = place.lng >= 0 ? "E" : "W";
   const formattedCoords = `${Math.abs(place.lat).toFixed(2)}° ${latDir}, ${Math.abs(place.lng).toFixed(2)}° ${lngDir}`;
+
+  // Distance from user for countries
+  const countryDistFromUser =
+    userPlace && userPlace.slug !== place.slug
+      ? calculateDistance(userPlace.lat, userPlace.lng, place.lat, place.lng)
+      : null;
 
   return (
     <aside
@@ -334,6 +341,20 @@ export default function PlaceDetailsCard({
             )}
           </div>
 
+          {countryDistFromUser && (
+            <div className="flex items-start gap-2.5 pt-2 border-t border-neutral-200/50 dark:border-neutral-800">
+              <div className="w-5 h-5 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                <MapPin className="w-3 h-3" />
+              </div>
+              <div>
+                <div className="text-[10px] text-neutral-400 font-medium">Distance from You</div>
+                <div className="font-medium text-neutral-800 dark:text-neutral-200">
+                  {countryDistFromUser.formattedKm} ({countryDistFromUser.formattedMiles}) from your location
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className="flex items-center gap-2 pt-2 border-t border-neutral-200/50 dark:border-neutral-800">
             <div className="w-5 h-5 rounded-full bg-neutral-500/10 text-neutral-500 flex items-center justify-center shrink-0">
               <Compass className="w-3 h-3" />
@@ -441,6 +462,17 @@ export default function PlaceDetailsCard({
         <span>Compare with another place</span>
         <ArrowRight className="w-4 h-4" />
       </button>
+
+      {/* Suggest a city / feedback */}
+      <div className="text-center text-[11px] text-neutral-400 dark:text-neutral-500 pt-0.5">
+        Feedback or add a missing city?{" "}
+        <a
+          href="mailto:mickeygorveth@gmail.com?subject=TimeBridge%20Suggestion"
+          className="text-[#E85D4E] hover:underline font-medium"
+        >
+          mickeygorveth@gmail.com
+        </a>
+      </div>
     </aside>
   );
 }

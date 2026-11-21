@@ -173,6 +173,15 @@ export default function RootLayout({
 
             <div className="pt-4 border-t border-[#E5E5E5] dark:border-[#262626] flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px]">
               <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+              <p>
+                Suggest a missing city or feedback:{" "}
+                <a
+                  href="mailto:mickeygorveth@gmail.com?subject=Add%20City%20Suggestion%20or%20Feedback"
+                  className="text-[#E85D4E] hover:underline font-semibold"
+                >
+                  mickeygorveth@gmail.com
+                </a>
+              </p>
               <p>Data: IANA · Open-Meteo · Nager.Date · OpenStreetMap</p>
             </div>
           </div>

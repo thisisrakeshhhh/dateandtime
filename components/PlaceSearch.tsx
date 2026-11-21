@@ -176,6 +176,15 @@ export default function PlaceSearch({
               </button>
             );
           })}
+          <div className="px-3.5 py-2 bg-neutral-50 dark:bg-neutral-900/90 text-[11px] text-neutral-500 dark:text-neutral-400 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
+            <span>Missing a city or town?</span>
+            <a
+              href="mailto:mickeygorveth@gmail.com?subject=Add%20City%20Suggestion"
+              className="text-[#E85D4E] hover:underline font-medium"
+            >
+              mickeygorveth@gmail.com
+            </a>
+          </div>
         </div>
       )}
     </div>

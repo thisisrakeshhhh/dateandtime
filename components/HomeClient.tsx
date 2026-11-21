@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Place, getPlaceByTimezone, getPopularPairs } from "@/lib/places";
+import {
+  Place,
+  getPlaceByTimezone,
+  getPopularPairs,
+  getAllPlaces,
+} from "@/lib/places";
+import { calculateDistance } from "@/lib/distance";
 import WorldMapContainer from "@/components/Map";
 import MapSearchOverlay from "@/components/MapSearchOverlay";
 import PlaceDetailsCard from "@/components/PlaceDetailsCard";
@@ -24,6 +30,39 @@ export default function HomeClient({
   const [userTimezone, setUserTimezone] = useState<string>("UTC");
   const [isComparing, setIsComparing] = useState<boolean>(!!(initialPlaceA && initialPlaceB));
   const [showSidePanel, setShowSidePanel] = useState<boolean>(true);
+  const [isLocating, setIsLocating] = useState<boolean>(false);
+
+  function handleRequestGeolocation() {
+    if (typeof navigator !== "undefined" && navigator.geolocation) {
+      setIsLocating(true);
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          const all = getAllPlaces();
+          let closest: Place | null = null;
+          let minKm = Infinity;
+
+          for (const p of all) {
+            const d = calculateDistance(latitude, longitude, p.lat, p.lng);
+            if (d.km < minKm) {
+              minKm = d.km;
+              closest = p;
+            }
+          }
+
+          if (closest) {
+            setUserPlace(closest);
+            setUserTimezone(closest.timezone);
+          }
+          setIsLocating(false);
+        },
+        () => {
+          setIsLocating(false);
+        },
+        { timeout: 8000 }
+      );
+    }
+  }
 
   // Auto-detect user's timezone on mount
   useEffect(() => {
@@ -122,6 +161,8 @@ export default function HomeClient({
             userPlace={userPlace}
             onSelectPlace={handleSelectPlace}
             onClear={handleClear}
+            onRequestLocation={handleRequestGeolocation}
+            isLocating={isLocating}
             isCompareMode={isComparing && !placeB}
           />
         </div>

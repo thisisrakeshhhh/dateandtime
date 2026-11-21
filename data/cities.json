@@ -324,6 +324,30 @@
     "areaKm2": 219
   },
   {
+    "name": "Asheville",
+    "slug": "asheville",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 35.5951,
+    "lng": -82.5515,
+    "timezone": "America/New_York",
+    "population": 94589,
+    "areaKm2": 117
+  },
+  {
+    "name": "Aspen",
+    "slug": "aspen",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 39.1911,
+    "lng": -106.8175,
+    "timezone": "America/Denver",
+    "population": 7004,
+    "areaKm2": 10
+  },
+  {
     "name": "Athens",
     "slug": "athens",
     "country": "Greece",
@@ -420,6 +444,18 @@
     "areaKm2": 224
   },
   {
+    "name": "Bali",
+    "slug": "bali-denpasar",
+    "country": "Indonesia",
+    "countrySlug": "indonesia",
+    "countryIso": "ID",
+    "lat": -8.6705,
+    "lng": 115.2126,
+    "timezone": "Asia/Makassar",
+    "population": 897300,
+    "areaKm2": 124
+  },
+  {
     "name": "Ballarat",
     "slug": "ballarat",
     "country": "Australia",
@@ -454,6 +490,30 @@
     "timezone": "Asia/Jakarta",
     "population": 2444160,
     "areaKm2": 1358
+  },
+  {
+    "name": "Banff",
+    "slug": "banff",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 51.1784,
+    "lng": -115.5708,
+    "timezone": "America/Edmonton",
+    "population": 7851,
+    "areaKm2": 5
+  },
+  {
+    "name": "Bangalore",
+    "slug": "bangalore",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "timezone": "Asia/Kolkata",
+    "population": 12327000,
+    "areaKm2": 741
   },
   {
     "name": "Bangkok",
@@ -586,6 +646,18 @@
     "timezone": "America/Los_Angeles",
     "population": 151854,
     "areaKm2": 95
+  },
+  {
+    "name": "Bend",
+    "slug": "bend",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 44.0582,
+    "lng": -121.3153,
+    "timezone": "America/Los_Angeles",
+    "population": 99178,
+    "areaKm2": 86
   },
   {
     "name": "Bendigo",
@@ -828,6 +900,30 @@
     "areaKm2": 102
   },
   {
+    "name": "Bozeman",
+    "slug": "bozeman",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 45.677,
+    "lng": -111.0429,
+    "timezone": "America/Denver",
+    "population": 53293,
+    "areaKm2": 50
+  },
+  {
+    "name": "Brampton",
+    "slug": "brampton",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 43.7315,
+    "lng": -79.7624,
+    "timezone": "America/Toronto",
+    "population": 656480,
+    "areaKm2": 266
+  },
+  {
     "name": "Brasilia",
     "slug": "brasilia",
     "country": "Brazil",
@@ -996,6 +1092,30 @@
     "areaKm2": 41
   },
   {
+    "name": "Burlington",
+    "slug": "burlington",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 44.4759,
+    "lng": -73.2121,
+    "timezone": "America/New_York",
+    "population": 44743,
+    "areaKm2": 40
+  },
+  {
+    "name": "Burnaby",
+    "slug": "burnaby",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 49.2488,
+    "lng": -122.9805,
+    "timezone": "America/Vancouver",
+    "population": 249197,
+    "areaKm2": 98
+  },
+  {
     "name": "Busan",
     "slug": "busan",
     "country": "South Korea",
@@ -1056,6 +1176,30 @@
     "areaKm2": 69
   },
   {
+    "name": "Cambridge",
+    "slug": "cambridge-us",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 42.3736,
+    "lng": -71.1097,
+    "timezone": "America/New_York",
+    "population": 118403,
+    "areaKm2": 18
+  },
+  {
+    "name": "Cambridge",
+    "slug": "cambridge-uk",
+    "country": "United Kingdom",
+    "countrySlug": "united-kingdom",
+    "countryIso": "GB",
+    "lat": 52.2053,
+    "lng": 0.1218,
+    "timezone": "Europe/London",
+    "population": 145700,
+    "areaKm2": 41
+  },
+  {
     "name": "Canberra",
     "slug": "canberra",
     "country": "Australia",
@@ -1078,6 +1222,30 @@
     "timezone": "America/Cancun",
     "population": 888797,
     "areaKm2": 494
+  },
+  {
+    "name": "Cannes",
+    "slug": "cannes",
+    "country": "France",
+    "countrySlug": "france",
+    "countryIso": "FR",
+    "lat": 43.5528,
+    "lng": 7.0174,
+    "timezone": "Europe/Paris",
+    "population": 74152,
+    "areaKm2": 20
+  },
+  {
+    "name": "Canterbury",
+    "slug": "canterbury",
+    "country": "United Kingdom",
+    "countrySlug": "united-kingdom",
+    "countryIso": "GB",
+    "lat": 51.2802,
+    "lng": 1.0789,
+    "timezone": "Europe/London",
+    "population": 55240,
+    "areaKm2": 23
   },
   {
     "name": "Cape Coral",
@@ -1380,6 +1548,18 @@
     "areaKm2": 68
   },
   {
+    "name": "Colmar",
+    "slug": "colmar",
+    "country": "France",
+    "countrySlug": "france",
+    "countryIso": "FR",
+    "lat": 48.0794,
+    "lng": 7.3585,
+    "timezone": "Europe/Paris",
+    "population": 68670,
+    "areaKm2": 66
+  },
+  {
     "name": "Cologne",
     "slug": "cologne",
     "country": "Germany",
@@ -1488,6 +1668,30 @@
     "areaKm2": 177
   },
   {
+    "name": "Cupertino",
+    "slug": "cupertino",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.323,
+    "lng": -122.0322,
+    "timezone": "America/Los_Angeles",
+    "population": 60381,
+    "areaKm2": 30
+  },
+  {
+    "name": "Cusco",
+    "slug": "cusco",
+    "country": "Peru",
+    "countrySlug": "peru",
+    "countryIso": "PE",
+    "lat": -13.5319,
+    "lng": -71.9675,
+    "timezone": "America/Lima",
+    "population": 428450,
+    "areaKm2": 142
+  },
+  {
     "name": "Cuttack",
     "slug": "cuttack",
     "country": "India",
@@ -1498,6 +1702,18 @@
     "timezone": "Asia/Kolkata",
     "population": 610189,
     "areaKm2": 339
+  },
+  {
+    "name": "Da Nang",
+    "slug": "da-nang",
+    "country": "Vietnam",
+    "countrySlug": "vietnam",
+    "countryIso": "VN",
+    "lat": 16.0544,
+    "lng": 108.2022,
+    "timezone": "Asia/Ho_Chi_Minh",
+    "population": 1134310,
+    "areaKm2": 1285
   },
   {
     "name": "Dallas",
@@ -1656,6 +1872,18 @@
     "areaKm2": 646
   },
   {
+    "name": "Dharamshala",
+    "slug": "dharamshala",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 32.219,
+    "lng": 76.3234,
+    "timezone": "Asia/Kolkata",
+    "population": 53543,
+    "areaKm2": 29
+  },
+  {
     "name": "Doha",
     "slug": "doha",
     "country": "Qatar",
@@ -1714,6 +1942,30 @@
     "timezone": "Europe/Dublin",
     "population": 1173179,
     "areaKm2": 652
+  },
+  {
+    "name": "Dubrovnik",
+    "slug": "dubrovnik",
+    "country": "Croatia",
+    "countrySlug": "croatia",
+    "countryIso": "HR",
+    "lat": 42.6507,
+    "lng": 18.0944,
+    "timezone": "Europe/Zagreb",
+    "population": 42611,
+    "areaKm2": 143
+  },
+  {
+    "name": "Duluth",
+    "slug": "duluth",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 46.7867,
+    "lng": -92.1005,
+    "timezone": "America/Chicago",
+    "population": 86697,
+    "areaKm2": 226
   },
   {
     "name": "Dundee",
@@ -1884,6 +2136,18 @@
     "areaKm2": 786
   },
   {
+    "name": "Faro",
+    "slug": "faro",
+    "country": "Portugal",
+    "countrySlug": "portugal",
+    "countryIso": "PT",
+    "lat": 37.0194,
+    "lng": -7.9304,
+    "timezone": "Europe/Lisbon",
+    "population": 67566,
+    "areaKm2": 202
+  },
+  {
     "name": "Fayetteville",
     "slug": "fayetteville",
     "country": "United States",
@@ -1896,6 +2160,18 @@
     "areaKm2": 52
   },
   {
+    "name": "Flagstaff",
+    "slug": "flagstaff",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 35.1983,
+    "lng": -111.6513,
+    "timezone": "America/Phoenix",
+    "population": 76831,
+    "areaKm2": 166
+  },
+  {
     "name": "Florence",
     "slug": "florence",
     "country": "Italy",
@@ -1906,6 +2182,18 @@
     "timezone": "Europe/Rome",
     "population": 382258,
     "areaKm2": 102
+  },
+  {
+    "name": "Fort Lauderdale",
+    "slug": "fort-lauderdale",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 26.1224,
+    "lng": -80.1373,
+    "timezone": "America/New_York",
+    "population": 182760,
+    "areaKm2": 95
   },
   {
     "name": "Fort Wayne",
@@ -1956,6 +2244,18 @@
     "areaKm2": 35
   },
   {
+    "name": "Freiburg",
+    "slug": "freiburg",
+    "country": "Germany",
+    "countrySlug": "germany",
+    "countryIso": "DE",
+    "lat": 47.999,
+    "lng": 7.8421,
+    "timezone": "Europe/Berlin",
+    "population": 230940,
+    "areaKm2": 153
+  },
+  {
     "name": "Fresno",
     "slug": "fresno",
     "country": "United States",
@@ -1990,6 +2290,30 @@
     "timezone": "Atlantic/Madeira",
     "population": 105782,
     "areaKm2": 59
+  },
+  {
+    "name": "Galway",
+    "slug": "galway",
+    "country": "Ireland",
+    "countrySlug": "ireland",
+    "countryIso": "IE",
+    "lat": 53.2707,
+    "lng": -9.0568,
+    "timezone": "Europe/Dublin",
+    "population": 83456,
+    "areaKm2": 54
+  },
+  {
+    "name": "Gangtok",
+    "slug": "gangtok",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 27.3389,
+    "lng": 88.6065,
+    "timezone": "Asia/Kolkata",
+    "population": 100286,
+    "areaKm2": 19
   },
   {
     "name": "Gdansk",
@@ -2100,6 +2424,18 @@
     "areaKm2": 72
   },
   {
+    "name": "Goa (Panaji)",
+    "slug": "goa-panaji",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 15.4909,
+    "lng": 73.8278,
+    "timezone": "Asia/Kolkata",
+    "population": 114405,
+    "areaKm2": 36
+  },
+  {
     "name": "Gold Coast",
     "slug": "gold-coast",
     "country": "Australia",
@@ -2122,6 +2458,18 @@
     "timezone": "Europe/Stockholm",
     "population": 579281,
     "areaKm2": 322
+  },
+  {
+    "name": "Granada",
+    "slug": "granada",
+    "country": "Spain",
+    "countrySlug": "spain",
+    "countryIso": "ES",
+    "lat": 37.1773,
+    "lng": -3.5986,
+    "timezone": "Europe/Madrid",
+    "population": 232208,
+    "areaKm2": 88
   },
   {
     "name": "Grand Rapids",
@@ -2328,6 +2676,18 @@
     "areaKm2": 4474
   },
   {
+    "name": "Haridwar",
+    "slug": "haridwar",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 29.9457,
+    "lng": 78.1642,
+    "timezone": "Asia/Kolkata",
+    "population": 228832,
+    "areaKm2": 63
+  },
+  {
     "name": "Hartford",
     "slug": "hartford",
     "country": "United States",
@@ -2338,6 +2698,18 @@
     "timezone": "America/New_York",
     "population": 121054,
     "areaKm2": 67
+  },
+  {
+    "name": "Heidelberg",
+    "slug": "heidelberg",
+    "country": "Germany",
+    "countrySlug": "germany",
+    "countryIso": "DE",
+    "lat": 49.3988,
+    "lng": 8.6724,
+    "timezone": "Europe/Berlin",
+    "population": 159245,
+    "areaKm2": 109
   },
   {
     "name": "Helsinki",
@@ -2376,6 +2748,18 @@
     "areaKm2": 78
   },
   {
+    "name": "Hiroshima",
+    "slug": "hiroshima",
+    "country": "Japan",
+    "countrySlug": "japan",
+    "countryIso": "JP",
+    "lat": 34.3853,
+    "lng": 132.4553,
+    "timezone": "Asia/Tokyo",
+    "population": 1199391,
+    "areaKm2": 906
+  },
+  {
     "name": "Ho Chi Minh City",
     "slug": "ho-chi-minh-city",
     "country": "Vietnam",
@@ -2398,6 +2782,18 @@
     "timezone": "Australia/Hobart",
     "population": 236200,
     "areaKm2": 1695
+  },
+  {
+    "name": "Hoi An",
+    "slug": "hoi-an",
+    "country": "Vietnam",
+    "countrySlug": "vietnam",
+    "countryIso": "VN",
+    "lat": 15.8801,
+    "lng": 108.338,
+    "timezone": "Asia/Ho_Chi_Minh",
+    "population": 121716,
+    "areaKm2": 60
   },
   {
     "name": "Hong Kong City",
@@ -2446,6 +2842,18 @@
     "timezone": "Asia/Kolkata",
     "population": 943788,
     "areaKm2": 524
+  },
+  {
+    "name": "Hubli",
+    "slug": "hubli",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 15.3647,
+    "lng": 75.124,
+    "timezone": "Asia/Kolkata",
+    "population": 943788,
+    "areaKm2": 213
   },
   {
     "name": "Huddersfield",
@@ -2520,6 +2928,18 @@
     "areaKm2": 105
   },
   {
+    "name": "Interlaken",
+    "slug": "interlaken",
+    "country": "Switzerland",
+    "countrySlug": "switzerland",
+    "countryIso": "CH",
+    "lat": 46.6863,
+    "lng": 7.8632,
+    "timezone": "Europe/Zurich",
+    "population": 5719,
+    "areaKm2": 4
+  },
+  {
     "name": "Inverness",
     "slug": "inverness",
     "country": "United Kingdom",
@@ -2592,6 +3012,18 @@
     "areaKm2": 586
   },
   {
+    "name": "Jackson",
+    "slug": "jackson",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 43.4799,
+    "lng": -110.7624,
+    "timezone": "America/Denver",
+    "population": 10760,
+    "areaKm2": 8
+  },
+  {
     "name": "Jacksonville",
     "slug": "jacksonville",
     "country": "United States",
@@ -2640,6 +3072,18 @@
     "areaKm2": 479
   },
   {
+    "name": "Jammu",
+    "slug": "jammu",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 32.7266,
+    "lng": 74.857,
+    "timezone": "Asia/Kolkata",
+    "population": 502197,
+    "areaKm2": 112
+  },
+  {
     "name": "Jamnagar",
     "slug": "jamnagar",
     "country": "India",
@@ -2662,6 +3106,18 @@
     "timezone": "Asia/Kolkata",
     "population": 629337,
     "areaKm2": 350
+  },
+  {
+    "name": "Jasper",
+    "slug": "jasper",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 52.8737,
+    "lng": -118.0814,
+    "timezone": "America/Edmonton",
+    "population": 4590,
+    "areaKm2": 924
   },
   {
     "name": "Jeddah",
@@ -2722,6 +3178,18 @@
     "timezone": "Africa/Johannesburg",
     "population": 4434827,
     "areaKm2": 2464
+  },
+  {
+    "name": "Johor Bahru",
+    "slug": "johor-bahru",
+    "country": "Malaysia",
+    "countrySlug": "malaysia",
+    "countryIso": "MY",
+    "lat": 1.4927,
+    "lng": 103.7414,
+    "timezone": "Asia/Kuala_Lumpur",
+    "population": 497067,
+    "areaKm2": 220
   },
   {
     "name": "Kamloops",
@@ -2818,6 +3286,18 @@
     "timezone": "America/Vancouver",
     "population": 144576,
     "areaKm2": 80
+  },
+  {
+    "name": "Key West",
+    "slug": "key-west",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 24.5551,
+    "lng": -81.78,
+    "timezone": "America/New_York",
+    "population": 26444,
+    "areaKm2": 19
   },
   {
     "name": "Kingston ON",
@@ -3084,6 +3564,18 @@
     "areaKm2": 551
   },
   {
+    "name": "Leh",
+    "slug": "leh",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 34.1526,
+    "lng": 77.5771,
+    "timezone": "Asia/Kolkata",
+    "population": 30870,
+    "areaKm2": 45
+  },
+  {
     "name": "Leicester",
     "slug": "leicester",
     "country": "United Kingdom",
@@ -3154,6 +3646,18 @@
     "timezone": "America/Lima",
     "population": 9674755,
     "areaKm2": 5375
+  },
+  {
+    "name": "Limerick",
+    "slug": "limerick",
+    "country": "Ireland",
+    "countrySlug": "ireland",
+    "countryIso": "IE",
+    "lat": 52.6638,
+    "lng": -8.6267,
+    "timezone": "Europe/Dublin",
+    "population": 94192,
+    "areaKm2": 59
   },
   {
     "name": "Lincoln",
@@ -3288,6 +3792,18 @@
     "areaKm2": 143
   },
   {
+    "name": "Lucerne",
+    "slug": "lucerne",
+    "country": "Switzerland",
+    "countrySlug": "switzerland",
+    "countryIso": "CH",
+    "lat": 47.0502,
+    "lng": 8.3093,
+    "timezone": "Europe/Zurich",
+    "population": 82257,
+    "areaKm2": 29
+  },
+  {
     "name": "Lucknow",
     "slug": "lucknow",
     "country": "India",
@@ -3322,6 +3838,18 @@
     "timezone": "Europe/London",
     "population": 213528,
     "areaKm2": 119
+  },
+  {
+    "name": "Luxor",
+    "slug": "luxor",
+    "country": "Egypt",
+    "countrySlug": "egypt",
+    "countryIso": "EG",
+    "lat": 25.6872,
+    "lng": 32.6396,
+    "timezone": "Africa/Cairo",
+    "population": 506588,
+    "areaKm2": 416
   },
   {
     "name": "Lyon",
@@ -3432,6 +3960,18 @@
     "areaKm2": 115
   },
   {
+    "name": "Mangalore",
+    "slug": "mangalore",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 12.9141,
+    "lng": 74.856,
+    "timezone": "Asia/Kolkata",
+    "population": 499487,
+    "areaKm2": 132
+  },
+  {
     "name": "Mangaluru",
     "slug": "mangaluru",
     "country": "India",
@@ -3454,6 +3994,18 @@
     "timezone": "Asia/Manila",
     "population": 1846513,
     "areaKm2": 1026
+  },
+  {
+    "name": "Marrakech",
+    "slug": "marrakech",
+    "country": "Morocco",
+    "countrySlug": "morocco",
+    "countryIso": "MA",
+    "lat": 31.6295,
+    "lng": -7.9811,
+    "timezone": "Africa/Casablanca",
+    "population": 928850,
+    "areaKm2": 230
   },
   {
     "name": "Marseille",
@@ -3624,6 +4176,18 @@
     "areaKm2": 150
   },
   {
+    "name": "Mississauga",
+    "slug": "mississauga",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 43.589,
+    "lng": -79.6441,
+    "timezone": "America/Toronto",
+    "population": 717961,
+    "areaKm2": 292
+  },
+  {
     "name": "Mobile",
     "slug": "mobile",
     "country": "United States",
@@ -3744,6 +4308,18 @@
     "areaKm2": 7031
   },
   {
+    "name": "Mountain View",
+    "slug": "mountain-view",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.3861,
+    "lng": -122.0839,
+    "timezone": "America/Los_Angeles",
+    "population": 82376,
+    "areaKm2": 32
+  },
+  {
     "name": "Mumbai",
     "slug": "mumbai",
     "country": "India",
@@ -3778,6 +4354,30 @@
     "timezone": "Asia/Muscat",
     "population": 1421409,
     "areaKm2": 3500
+  },
+  {
+    "name": "Mykonos",
+    "slug": "mykonos",
+    "country": "Greece",
+    "countrySlug": "greece",
+    "countryIso": "GR",
+    "lat": 37.4467,
+    "lng": 25.3289,
+    "timezone": "Europe/Athens",
+    "population": 10134,
+    "areaKm2": 86
+  },
+  {
+    "name": "Mysore",
+    "slug": "mysore",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 12.2958,
+    "lng": 76.6394,
+    "timezone": "Asia/Kolkata",
+    "population": 920550,
+    "areaKm2": 128
   },
   {
     "name": "Mysuru",
@@ -3874,6 +4474,18 @@
     "timezone": "Europe/Rome",
     "population": 967068,
     "areaKm2": 537
+  },
+  {
+    "name": "Nara",
+    "slug": "nara",
+    "country": "Japan",
+    "countrySlug": "japan",
+    "countryIso": "JP",
+    "lat": 34.6851,
+    "lng": 135.8048,
+    "timezone": "Asia/Tokyo",
+    "population": 354630,
+    "areaKm2": 276
   },
   {
     "name": "Nashik",
@@ -3996,6 +4608,18 @@
     "areaKm2": 167
   },
   {
+    "name": "Newcastle",
+    "slug": "newcastle-au",
+    "country": "Australia",
+    "countrySlug": "australia",
+    "countryIso": "AU",
+    "lat": -32.9283,
+    "lng": 151.7817,
+    "timezone": "Australia/Sydney",
+    "population": 322278,
+    "areaKm2": 187
+  },
+  {
     "name": "Newcastle Australia",
     "slug": "newcastle-australia",
     "country": "Australia",
@@ -4006,6 +4630,30 @@
     "timezone": "Australia/Sydney",
     "population": 322278,
     "areaKm2": 179
+  },
+  {
+    "name": "Newport",
+    "slug": "newport",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 41.4901,
+    "lng": -71.3128,
+    "timezone": "America/New_York",
+    "population": 25163,
+    "areaKm2": 29
+  },
+  {
+    "name": "Niagara Falls",
+    "slug": "niagara-falls",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 43.0896,
+    "lng": -79.0849,
+    "timezone": "America/Toronto",
+    "population": 88071,
+    "areaKm2": 210
   },
   {
     "name": "Nice",
@@ -4126,6 +4774,18 @@
     "timezone": "America/Chicago",
     "population": 681054,
     "areaKm2": 378
+  },
+  {
+    "name": "Olympia",
+    "slug": "olympia",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 47.0379,
+    "lng": -122.9007,
+    "timezone": "America/Los_Angeles",
+    "population": 55605,
+    "areaKm2": 52
   },
   {
     "name": "Omaha",
@@ -4260,6 +4920,18 @@
     "areaKm2": 49
   },
   {
+    "name": "Palo Alto",
+    "slug": "palo-alto",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.4419,
+    "lng": -122.143,
+    "timezone": "America/Los_Angeles",
+    "population": 68572,
+    "areaKm2": 67
+  },
+  {
     "name": "Panama City",
     "slug": "panama-city",
     "country": "Panama",
@@ -4308,6 +4980,18 @@
     "areaKm2": 936
   },
   {
+    "name": "Penang",
+    "slug": "penang",
+    "country": "Malaysia",
+    "countrySlug": "malaysia",
+    "countryIso": "MY",
+    "lat": 5.4164,
+    "lng": 100.3327,
+    "timezone": "Asia/Kuala_Lumpur",
+    "population": 794313,
+    "areaKm2": 293
+  },
+  {
     "name": "Perth",
     "slug": "perth",
     "country": "Australia",
@@ -4354,6 +5038,30 @@
     "timezone": "America/Phoenix",
     "population": 1680992,
     "areaKm2": 934
+  },
+  {
+    "name": "Phuket",
+    "slug": "phuket",
+    "country": "Thailand",
+    "countrySlug": "thailand",
+    "countryIso": "TH",
+    "lat": 7.8804,
+    "lng": 98.3923,
+    "timezone": "Asia/Bangkok",
+    "population": 416582,
+    "areaKm2": 576
+  },
+  {
+    "name": "Pisa",
+    "slug": "pisa",
+    "country": "Italy",
+    "countrySlug": "italy",
+    "countryIso": "IT",
+    "lat": 43.7228,
+    "lng": 10.4017,
+    "timezone": "Europe/Rome",
+    "population": 90488,
+    "areaKm2": 185
   },
   {
     "name": "Pittsburgh",
@@ -4620,6 +5328,18 @@
     "areaKm2": 56
   },
   {
+    "name": "Redmond",
+    "slug": "redmond",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 47.674,
+    "lng": -122.1215,
+    "timezone": "America/Los_Angeles",
+    "population": 73256,
+    "areaKm2": 44
+  },
+  {
     "name": "Regina",
     "slug": "regina",
     "country": "Canada",
@@ -4680,6 +5400,18 @@
     "areaKm2": 128
   },
   {
+    "name": "Richmond",
+    "slug": "richmond-bc",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 49.1666,
+    "lng": -123.1336,
+    "timezone": "America/Vancouver",
+    "population": 209937,
+    "areaKm2": 129
+  },
+  {
     "name": "Rio de Janeiro",
     "slug": "rio-de-janeiro",
     "country": "Brazil",
@@ -4690,6 +5422,18 @@
     "timezone": "America/Sao_Paulo",
     "population": 6747815,
     "areaKm2": 3749
+  },
+  {
+    "name": "Rishikesh",
+    "slug": "rishikesh",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 30.0869,
+    "lng": 78.2676,
+    "timezone": "Asia/Kolkata",
+    "population": 102138,
+    "areaKm2": 41
   },
   {
     "name": "Riverside",
@@ -4920,6 +5664,42 @@
     "areaKm2": 190
   },
   {
+    "name": "San Sebastian",
+    "slug": "san-sebastian",
+    "country": "Spain",
+    "countrySlug": "spain",
+    "countryIso": "ES",
+    "lat": 43.3183,
+    "lng": -1.9812,
+    "timezone": "Europe/Madrid",
+    "population": 188240,
+    "areaKm2": 60
+  },
+  {
+    "name": "Santa Barbara",
+    "slug": "santa-barbara",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 34.4208,
+    "lng": -119.6982,
+    "timezone": "America/Los_Angeles",
+    "population": 88665,
+    "areaKm2": 108
+  },
+  {
+    "name": "Santa Cruz",
+    "slug": "santa-cruz",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 36.9741,
+    "lng": -122.0308,
+    "timezone": "America/Los_Angeles",
+    "population": 62956,
+    "areaKm2": 41
+  },
+  {
     "name": "Santiago",
     "slug": "santiago",
     "country": "Chile",
@@ -4930,6 +5710,18 @@
     "timezone": "America/Santiago",
     "population": 5614000,
     "areaKm2": 3119
+  },
+  {
+    "name": "Santorini",
+    "slug": "santorini",
+    "country": "Greece",
+    "countrySlug": "greece",
+    "countryIso": "GR",
+    "lat": 36.3932,
+    "lng": 25.4615,
+    "timezone": "Europe/Athens",
+    "population": 15550,
+    "areaKm2": 76
   },
   {
     "name": "Sao Paulo",
@@ -5004,6 +5796,18 @@
     "areaKm2": 217
   },
   {
+    "name": "Sedona",
+    "slug": "sedona",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 34.8697,
+    "lng": -111.761,
+    "timezone": "America/Phoenix",
+    "population": 9684,
+    "areaKm2": 49
+  },
+  {
     "name": "Seoul",
     "slug": "seoul",
     "country": "South Korea",
@@ -5038,6 +5842,18 @@
     "timezone": "Asia/Shanghai",
     "population": 24870000,
     "areaKm2": 13817
+  },
+  {
+    "name": "Sharjah",
+    "slug": "sharjah",
+    "country": "United Arab Emirates",
+    "countrySlug": "united-arab-emirates",
+    "countryIso": "AE",
+    "lat": 25.3463,
+    "lng": 55.4209,
+    "timezone": "Asia/Dubai",
+    "population": 1405000,
+    "areaKm2": 235
   },
   {
     "name": "Sheffield",
@@ -5076,6 +5892,30 @@
     "areaKm2": 90
   },
   {
+    "name": "Shillong",
+    "slug": "shillong",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 25.5788,
+    "lng": 91.8933,
+    "timezone": "Asia/Kolkata",
+    "population": 143229,
+    "areaKm2": 64
+  },
+  {
+    "name": "Shimla",
+    "slug": "shimla",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 31.1048,
+    "lng": 77.1734,
+    "timezone": "Asia/Kolkata",
+    "population": 169578,
+    "areaKm2": 35
+  },
+  {
     "name": "Shreveport",
     "slug": "shreveport",
     "country": "United States",
@@ -5086,6 +5926,18 @@
     "timezone": "America/Chicago",
     "population": 187593,
     "areaKm2": 104
+  },
+  {
+    "name": "Siem Reap",
+    "slug": "siem-reap",
+    "country": "Cambodia",
+    "countrySlug": "cambodia",
+    "countryIso": "KH",
+    "lat": 13.3671,
+    "lng": 103.8448,
+    "timezone": "Asia/Phnom_Penh",
+    "population": 139458,
+    "areaKm2": 472
   },
   {
     "name": "Singapore",
@@ -5136,6 +5988,18 @@
     "areaKm2": 141
   },
   {
+    "name": "Split",
+    "slug": "split",
+    "country": "Croatia",
+    "countrySlug": "croatia",
+    "countryIso": "HR",
+    "lat": 43.5081,
+    "lng": 16.4402,
+    "timezone": "Europe/Zagreb",
+    "population": 161312,
+    "areaKm2": 79
+  },
+  {
     "name": "Spokane",
     "slug": "spokane",
     "country": "United States",
@@ -5158,6 +6022,18 @@
     "timezone": "Asia/Kolkata",
     "population": 1180570,
     "areaKm2": 656
+  },
+  {
+    "name": "St Andrews",
+    "slug": "st-andrews",
+    "country": "United Kingdom",
+    "countrySlug": "united-kingdom",
+    "countryIso": "GB",
+    "lat": 56.3398,
+    "lng": -2.7967,
+    "timezone": "Europe/London",
+    "population": 16800,
+    "areaKm2": 9
   },
   {
     "name": "St Johns",
@@ -5280,6 +6156,18 @@
     "areaKm2": 97
   },
   {
+    "name": "Sunnyvale",
+    "slug": "sunnyvale",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.3688,
+    "lng": -122.0363,
+    "timezone": "America/Los_Angeles",
+    "population": 155805,
+    "areaKm2": 59
+  },
+  {
     "name": "Sunshine Coast",
     "slug": "sunshine-coast",
     "country": "Australia",
@@ -5326,6 +6214,18 @@
     "timezone": "Asia/Kolkata",
     "population": 200000,
     "areaKm2": 111
+  },
+  {
+    "name": "Surrey",
+    "slug": "surrey",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 49.1913,
+    "lng": -122.849,
+    "timezone": "America/Vancouver",
+    "population": 568322,
+    "areaKm2": 316
   },
   {
     "name": "Suva",
@@ -5700,6 +6600,18 @@
     "areaKm2": 107
   },
   {
+    "name": "Ubud",
+    "slug": "ubud",
+    "country": "Indonesia",
+    "countrySlug": "indonesia",
+    "countryIso": "ID",
+    "lat": -8.5069,
+    "lng": 115.2625,
+    "timezone": "Asia/Makassar",
+    "population": 74800,
+    "areaKm2": 42
+  },
+  {
     "name": "Udaipur",
     "slug": "udaipur",
     "country": "India",
@@ -5818,6 +6730,30 @@
     "timezone": "Europe/Rome",
     "population": 259608,
     "areaKm2": 144
+  },
+  {
+    "name": "Victoria",
+    "slug": "victoria-bc",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 48.4284,
+    "lng": -123.3656,
+    "timezone": "America/Vancouver",
+    "population": 91861,
+    "areaKm2": 19
+  },
+  {
+    "name": "Victoria",
+    "slug": "victoria",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 48.4284,
+    "lng": -123.3656,
+    "timezone": "America/Vancouver",
+    "population": 91861,
+    "areaKm2": 19
   },
   {
     "name": "Victoria Canada",
@@ -5950,6 +6886,18 @@
     "timezone": "Pacific/Auckland",
     "population": 54300,
     "areaKm2": 35
+  },
+  {
+    "name": "Whistler",
+    "slug": "whistler",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 50.1163,
+    "lng": -122.9574,
+    "timezone": "America/Vancouver",
+    "population": 13982,
+    "areaKm2": 240
   },
   {
     "name": "Whitehorse",
@@ -6108,6 +7056,18 @@
     "areaKm2": 117
   },
   {
+    "name": "Zanzibar",
+    "slug": "zanzibar",
+    "country": "Tanzania",
+    "countrySlug": "tanzania",
+    "countryIso": "TZ",
+    "lat": -6.1659,
+    "lng": 39.2026,
+    "timezone": "Africa/Dar_es_Salaam",
+    "population": 223033,
+    "areaKm2": 16
+  },
+  {
     "name": "Zaragoza",
     "slug": "zaragoza",
     "country": "Spain",
@@ -6120,6 +7080,18 @@
     "areaKm2": 370
   },
   {
+    "name": "Zermatt",
+    "slug": "zermatt",
+    "country": "Switzerland",
+    "countrySlug": "switzerland",
+    "countryIso": "CH",
+    "lat": 45.9763,
+    "lng": 7.7491,
+    "timezone": "Europe/Zurich",
+    "population": 5746,
+    "areaKm2": 242
+  },
+  {
     "name": "Zurich",
     "slug": "zurich",
     "country": "Switzerland",
@@ -6130,365 +7102,5 @@
     "timezone": "Europe/Zurich",
     "population": 421878,
     "areaKm2": 88
-  },
-  {
-    "name": "Victoria",
-    "slug": "victoria-bc",
-    "country": "Canada",
-    "countrySlug": "canada",
-    "countryIso": "CA",
-    "lat": 48.4284,
-    "lng": -123.3656,
-    "timezone": "America/Vancouver",
-    "population": 91861,
-    "areaKm2": 19
-  },
-  {
-    "name": "Bangalore",
-    "slug": "bangalore",
-    "country": "India",
-    "countrySlug": "india",
-    "countryIso": "IN",
-    "lat": 12.9716,
-    "lng": 77.5946,
-    "timezone": "Asia/Kolkata",
-    "population": 12327000,
-    "areaKm2": 741
-  },
-  {
-    "name": "Palo Alto",
-    "slug": "palo-alto",
-    "country": "United States",
-    "countrySlug": "united-states",
-    "countryIso": "US",
-    "lat": 37.4419,
-    "lng": -122.143,
-    "timezone": "America/Los_Angeles",
-    "population": 68572,
-    "areaKm2": 67
-  },
-  {
-    "name": "Mountain View",
-    "slug": "mountain-view",
-    "country": "United States",
-    "countrySlug": "united-states",
-    "countryIso": "US",
-    "lat": 37.3861,
-    "lng": -122.0839,
-    "timezone": "America/Los_Angeles",
-    "population": 82376,
-    "areaKm2": 32
-  },
-  {
-    "name": "Cupertino",
-    "slug": "cupertino",
-    "country": "United States",
-    "countrySlug": "united-states",
-    "countryIso": "US",
-    "lat": 37.323,
-    "lng": -122.0322,
-    "timezone": "America/Los_Angeles",
-    "population": 60381,
-    "areaKm2": 30
-  },
-  {
-    "name": "Sunnyvale",
-    "slug": "sunnyvale",
-    "country": "United States",
-    "countrySlug": "united-states",
-    "countryIso": "US",
-    "lat": 37.3688,
-    "lng": -122.0363,
-    "timezone": "America/Los_Angeles",
-    "population": 155805,
-    "areaKm2": 59
-  },
-  {
-    "name": "Redmond",
-    "slug": "redmond",
-    "country": "United States",
-    "countrySlug": "united-states",
-    "countryIso": "US",
-    "lat": 47.674,
-    "lng": -122.1215,
-    "timezone": "America/Los_Angeles",
-    "population": 73256,
-    "areaKm2": 44
-  },
-  {
-    "name": "Cambridge",
-    "slug": "cambridge-us",
-    "country": "United States",
-    "countrySlug": "united-states",
-    "countryIso": "US",
-    "lat": 42.3736,
-    "lng": -71.1097,
-    "timezone": "America/New_York",
-    "population": 118403,
-    "areaKm2": 18
-  },
-  {
-    "name": "Fort Lauderdale",
-    "slug": "fort-lauderdale",
-    "country": "United States",
-    "countrySlug": "united-states",
-    "countryIso": "US",
-    "lat": 26.1224,
-    "lng": -80.1373,
-    "timezone": "America/New_York",
-    "population": 182760,
-    "areaKm2": 95
-  },
-  {
-    "name": "Mississauga",
-    "slug": "mississauga",
-    "country": "Canada",
-    "countrySlug": "canada",
-    "countryIso": "CA",
-    "lat": 43.589,
-    "lng": -79.6441,
-    "timezone": "America/Toronto",
-    "population": 717961,
-    "areaKm2": 292
-  },
-  {
-    "name": "Brampton",
-    "slug": "brampton",
-    "country": "Canada",
-    "countrySlug": "canada",
-    "countryIso": "CA",
-    "lat": 43.7315,
-    "lng": -79.7624,
-    "timezone": "America/Toronto",
-    "population": 656480,
-    "areaKm2": 266
-  },
-  {
-    "name": "Surrey",
-    "slug": "surrey",
-    "country": "Canada",
-    "countrySlug": "canada",
-    "countryIso": "CA",
-    "lat": 49.1913,
-    "lng": -122.849,
-    "timezone": "America/Vancouver",
-    "population": 568322,
-    "areaKm2": 316
-  },
-  {
-    "name": "Burnaby",
-    "slug": "burnaby",
-    "country": "Canada",
-    "countrySlug": "canada",
-    "countryIso": "CA",
-    "lat": 49.2488,
-    "lng": -122.9805,
-    "timezone": "America/Vancouver",
-    "population": 249197,
-    "areaKm2": 98
-  },
-  {
-    "name": "Richmond",
-    "slug": "richmond-bc",
-    "country": "Canada",
-    "countrySlug": "canada",
-    "countryIso": "CA",
-    "lat": 49.1666,
-    "lng": -123.1336,
-    "timezone": "America/Vancouver",
-    "population": 209937,
-    "areaKm2": 129
-  },
-  {
-    "name": "Cambridge",
-    "slug": "cambridge-uk",
-    "country": "United Kingdom",
-    "countrySlug": "united-kingdom",
-    "countryIso": "GB",
-    "lat": 52.2053,
-    "lng": 0.1218,
-    "timezone": "Europe/London",
-    "population": 145700,
-    "areaKm2": 41
-  },
-  {
-    "name": "Galway",
-    "slug": "galway",
-    "country": "Ireland",
-    "countrySlug": "ireland",
-    "countryIso": "IE",
-    "lat": 53.2707,
-    "lng": -9.0568,
-    "timezone": "Europe/Dublin",
-    "population": 83456,
-    "areaKm2": 54
-  },
-  {
-    "name": "Limerick",
-    "slug": "limerick",
-    "country": "Ireland",
-    "countrySlug": "ireland",
-    "countryIso": "IE",
-    "lat": 52.6638,
-    "lng": -8.6267,
-    "timezone": "Europe/Dublin",
-    "population": 94192,
-    "areaKm2": 59
-  },
-  {
-    "name": "Newcastle",
-    "slug": "newcastle-au",
-    "country": "Australia",
-    "countrySlug": "australia",
-    "countryIso": "AU",
-    "lat": -32.9283,
-    "lng": 151.7817,
-    "timezone": "Australia/Sydney",
-    "population": 322278,
-    "areaKm2": 187
-  },
-  {
-    "name": "Dubrovnik",
-    "slug": "dubrovnik",
-    "country": "Croatia",
-    "countrySlug": "croatia",
-    "countryIso": "HR",
-    "lat": 42.6507,
-    "lng": 18.0944,
-    "timezone": "Europe/Zagreb",
-    "population": 42611,
-    "areaKm2": 143
-  },
-  {
-    "name": "Split",
-    "slug": "split",
-    "country": "Croatia",
-    "countrySlug": "croatia",
-    "countryIso": "HR",
-    "lat": 43.5081,
-    "lng": 16.4402,
-    "timezone": "Europe/Zagreb",
-    "population": 161312,
-    "areaKm2": 79
-  },
-  {
-    "name": "Santorini",
-    "slug": "santorini",
-    "country": "Greece",
-    "countrySlug": "greece",
-    "countryIso": "GR",
-    "lat": 36.3932,
-    "lng": 25.4615,
-    "timezone": "Europe/Athens",
-    "population": 15550,
-    "areaKm2": 76
-  },
-  {
-    "name": "Mykonos",
-    "slug": "mykonos",
-    "country": "Greece",
-    "countrySlug": "greece",
-    "countryIso": "GR",
-    "lat": 37.4467,
-    "lng": 25.3289,
-    "timezone": "Europe/Athens",
-    "population": 10134,
-    "areaKm2": 86
-  },
-  {
-    "name": "Bali",
-    "slug": "bali-denpasar",
-    "country": "Indonesia",
-    "countrySlug": "indonesia",
-    "countryIso": "ID",
-    "lat": -8.6705,
-    "lng": 115.2126,
-    "timezone": "Asia/Makassar",
-    "population": 897300,
-    "areaKm2": 124
-  },
-  {
-    "name": "Phuket",
-    "slug": "phuket",
-    "country": "Thailand",
-    "countrySlug": "thailand",
-    "countryIso": "TH",
-    "lat": 7.8804,
-    "lng": 98.3923,
-    "timezone": "Asia/Bangkok",
-    "population": 416582,
-    "areaKm2": 576
-  },
-  {
-    "name": "Penang",
-    "slug": "penang",
-    "country": "Malaysia",
-    "countrySlug": "malaysia",
-    "countryIso": "MY",
-    "lat": 5.4164,
-    "lng": 100.3327,
-    "timezone": "Asia/Kuala_Lumpur",
-    "population": 794313,
-    "areaKm2": 293
-  },
-  {
-    "name": "Johor Bahru",
-    "slug": "johor-bahru",
-    "country": "Malaysia",
-    "countrySlug": "malaysia",
-    "countryIso": "MY",
-    "lat": 1.4927,
-    "lng": 103.7414,
-    "timezone": "Asia/Kuala_Lumpur",
-    "population": 497067,
-    "areaKm2": 220
-  },
-  {
-    "name": "Siem Reap",
-    "slug": "siem-reap",
-    "country": "Cambodia",
-    "countrySlug": "cambodia",
-    "countryIso": "KH",
-    "lat": 13.3671,
-    "lng": 103.8448,
-    "timezone": "Asia/Phnom_Penh",
-    "population": 139458,
-    "areaKm2": 472
-  },
-  {
-    "name": "Da Nang",
-    "slug": "da-nang",
-    "country": "Vietnam",
-    "countrySlug": "vietnam",
-    "countryIso": "VN",
-    "lat": 16.0544,
-    "lng": 108.2022,
-    "timezone": "Asia/Ho_Chi_Minh",
-    "population": 1134310,
-    "areaKm2": 1285
-  },
-  {
-    "name": "Goa (Panaji)",
-    "slug": "goa-panaji",
-    "country": "India",
-    "countrySlug": "india",
-    "countryIso": "IN",
-    "lat": 15.4909,
-    "lng": 73.8278,
-    "timezone": "Asia/Kolkata",
-    "population": 114405,
-    "areaKm2": 36
-  },
-  {
-    "name": "Sharjah",
-    "slug": "sharjah",
-    "country": "United Arab Emirates",
-    "countrySlug": "united-arab-emirates",
-    "countryIso": "AE",
-    "lat": 25.3463,
-    "lng": 55.4209,
-    "timezone": "Asia/Dubai",
-    "population": 1405000,
-    "areaKm2": 235
   }
 ]

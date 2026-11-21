@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Place, searchPlaces, formatPlaceDisplayName } from "@/lib/places";
 import FlagIcon from "@/components/FlagIcon";
-import { Search, X, MapPin } from "lucide-react";
+import { Search, X, MapPin, Navigation } from "lucide-react";
 
 interface MapSearchOverlayProps {
   placeA: Place | null;
@@ -11,6 +11,8 @@ interface MapSearchOverlayProps {
   userPlace: Place | null;
   onSelectPlace: (place: Place) => void;
   onClear: () => void;
+  onRequestLocation?: () => void;
+  isLocating?: boolean;
   isCompareMode: boolean;
 }
 
@@ -20,6 +22,8 @@ export default function MapSearchOverlay({
   userPlace,
   onSelectPlace,
   onClear,
+  onRequestLocation,
+  isLocating = false,
   isCompareMode,
 }: MapSearchOverlayProps) {
   const [query, setQuery] = useState("");
@@ -156,62 +160,122 @@ export default function MapSearchOverlay({
         {/* Autocomplete Dropdown */}
         {isOpen && results.length > 0 && (
           <div className="absolute top-full left-0 right-0 mt-1.5 bg-white dark:bg-[#1f1f1f] border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-xl overflow-hidden z-50 divide-y divide-neutral-100 dark:divide-neutral-800">
-            {results.map((place, index) => {
-              const isHighlight = index === highlightIndex;
-              return (
-                <button
-                  key={place.id}
-                  onClick={() => handleSelect(place)}
-                  onMouseEnter={() => setHighlightIndex(index)}
-                  className={`w-full px-3.5 py-2.5 text-left flex items-center justify-between text-xs transition-colors ${
-                    isHighlight
-                      ? "bg-neutral-100 dark:bg-neutral-800"
-                      : "hover:bg-neutral-50 dark:hover:bg-neutral-800/50"
-                  }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <FlagIcon countryCode={place.countryIso} size="sm" />
-                    <div>
-                      <div className="font-medium text-neutral-900 dark:text-white">
-                        {formatPlaceDisplayName(place)}
-                      </div>
-                      <div className="text-[10px] text-neutral-400">
-                        {place.timezone}
-                      </div>
-                    </div>
-                  </div>
-                  <span
-                    className={`text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full ${
-                      place.type === "country"
-                        ? "bg-rose-500/10 text-[#E85D4E] dark:bg-rose-500/20"
-                        : "bg-blue-500/10 text-blue-600 dark:text-blue-400 dark:bg-blue-500/20"
+            <div className="max-h-72 overflow-y-auto divide-y divide-neutral-100 dark:divide-neutral-800">
+              {results.map((place, index) => {
+                const isHighlight = index === highlightIndex;
+                return (
+                  <button
+                    key={place.id}
+                    onClick={() => handleSelect(place)}
+                    onMouseEnter={() => setHighlightIndex(index)}
+                    className={`w-full px-3.5 py-2.5 text-left flex items-center justify-between text-xs transition-colors ${
+                      isHighlight
+                        ? "bg-neutral-100 dark:bg-neutral-800"
+                        : "hover:bg-neutral-50 dark:hover:bg-neutral-800/50"
                     }`}
                   >
-                    {place.type}
-                  </span>
-                </button>
-              );
-            })}
+                    <div className="flex items-center gap-2.5">
+                      <FlagIcon countryCode={place.countryIso} size="sm" />
+                      <div>
+                        <div className="font-medium text-neutral-900 dark:text-white">
+                          {formatPlaceDisplayName(place)}
+                        </div>
+                        <div className="text-[10px] text-neutral-400">
+                          {place.timezone}
+                        </div>
+                      </div>
+                    </div>
+                    <span
+                      className={`text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full ${
+                        place.type === "country"
+                          ? "bg-rose-500/10 text-[#E85D4E] dark:bg-rose-500/20"
+                          : "bg-blue-500/10 text-blue-600 dark:text-blue-400 dark:bg-blue-500/20"
+                      }`}
+                    >
+                      {place.type}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Email suggestion footer in dropdown */}
+            <div className="px-3.5 py-2 bg-neutral-50/90 dark:bg-[#1a1a1a] text-[11px] text-neutral-500 dark:text-neutral-400 flex items-center justify-between">
+              <span>Missing a town or city?</span>
+              <a
+                href="mailto:mickeygorveth@gmail.com?subject=Add%20City%20Suggestion"
+                className="text-[#E85D4E] hover:underline font-medium"
+              >
+                mickeygorveth@gmail.com
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* Empty state when searching and no match found */}
+        {isOpen && query.trim().length > 0 && results.length === 0 && (
+          <div className="absolute top-full left-0 right-0 mt-1.5 bg-white dark:bg-[#1f1f1f] border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-xl overflow-hidden z-50 p-3.5 text-xs text-neutral-600 dark:text-neutral-300">
+            <p className="font-semibold text-neutral-900 dark:text-white">
+              No matching city or country found
+            </p>
+            <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed">
+              Want us to add this town or city? Send a quick request to{" "}
+              <a
+                href="mailto:mickeygorveth@gmail.com?subject=Add%20City%20Request"
+                className="text-[#E85D4E] font-medium hover:underline"
+              >
+                mickeygorveth@gmail.com
+              </a>
+            </p>
           </div>
         )}
       </div>
 
-      {/* User Default Location Tag */}
-      {userPlace && !placeA && !placeB && (
-        <div className="mt-2.5 flex items-center justify-between text-[11px] text-neutral-400">
-          <div className="flex items-center gap-1.5 truncate">
-            <MapPin className="w-3 h-3 text-[#E85D4E]" />
-            <span>Your location: </span>
-            <span className="font-medium text-neutral-700 dark:text-neutral-300">
-              {formatPlaceDisplayName(userPlace)}
-            </span>
+      {/* Starting Location Prompt (explains time difference & distance calculation) */}
+      {!placeA && !placeB && (
+        <div className="mt-3 p-3 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-200/80 dark:border-neutral-800 text-xs">
+          <div className="flex items-start gap-2.5">
+            <div className="w-5 h-5 rounded-full bg-rose-500/10 text-[#E85D4E] flex items-center justify-center shrink-0 mt-0.5">
+              <MapPin className="w-3 h-3" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-1">
+                <span className="font-semibold text-neutral-900 dark:text-white text-xs">
+                  Your Current Location
+                </span>
+                {userPlace && (
+                  <span className="text-[11px] text-neutral-500 dark:text-neutral-400 font-medium truncate">
+                    {formatPlaceDisplayName(userPlace)}
+                  </span>
+                )}
+              </div>
+              <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed">
+                We use your location to calculate real-time time differences and exact distances to any country or city you compare.
+              </p>
+              <div className="mt-2.5 flex items-center gap-2">
+                {onRequestLocation && (
+                  <button
+                    type="button"
+                    onClick={onRequestLocation}
+                    disabled={isLocating}
+                    className="px-2.5 py-1.5 rounded-lg bg-[#E85D4E] hover:bg-[#d94f40] text-white font-medium text-[11px] transition-colors flex items-center gap-1.5 shadow-xs disabled:opacity-60"
+                  >
+                    <Navigation className="w-3 h-3" />
+                    <span>{isLocating ? "Detecting..." : "Detect My Location"}</span>
+                  </button>
+                )}
+                {userPlace && (
+                  <button
+                    type="button"
+                    onClick={() => onSelectPlace(userPlace)}
+                    className="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200 font-medium text-[11px] transition-colors"
+                  >
+                    Set as {userPlace.name}
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
-          <button
-            onClick={() => onSelectPlace(userPlace)}
-            className="text-[#E85D4E] hover:underline font-medium text-[11px] shrink-0 ml-2"
-          >
-            Select
-          </button>
         </div>
       )}
     </div>

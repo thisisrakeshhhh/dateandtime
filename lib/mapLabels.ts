@@ -20,6 +20,45 @@ export function formatOffsetDiff(diffMinutes: number): string {
   return `${sign}${h}h ${m}m`;
 }
 
+// Priority anchor countries across continents to evaluate first for clean global distribution
+const priorityCountrySlugs = [
+  "united-states",
+  "india",
+  "united-kingdom",
+  "japan",
+  "brazil",
+  "australia",
+  "germany",
+  "china",
+  "south-africa",
+  "egypt",
+  "canada",
+  "united-arab-emirates",
+  "indonesia",
+  "mexico",
+  "france",
+  "argentina",
+  "singapore",
+  "nigeria",
+  "italy",
+  "spain",
+  "saudi-arabia",
+  "south-korea",
+  "new-zealand",
+  "turkey",
+  "sweden",
+  "kenya",
+  "switzerland",
+  "colombia",
+  "thailand",
+  "vietnam",
+  "chile",
+  "peru",
+  "poland",
+  "netherlands",
+  "norway",
+];
+
 /**
  * Filter places based on map zoom and bounding box for high-performance collision-free map labels.
  * Map displays ONLY countries to keep the view clean, uncluttered, and readable.
@@ -36,15 +75,16 @@ export function getVisibleMapPlaces(
 
   // Show ONLY country names on the map
   const allCountries = getCountries();
-  let candidates: Place[] = [];
+  let candidates: Place[] = [...allCountries];
 
-  if (zoom <= 3) {
-    // Zoom 2-3: Major countries spaced globally
-    candidates = allCountries.slice(0, 50);
-  } else {
-    // Zoom 4+: All countries
-    candidates = allCountries;
-  }
+  // Sort candidates by priority anchor order
+  candidates.sort((a, b) => {
+    const idxA = priorityCountrySlugs.indexOf(a.slug);
+    const idxB = priorityCountrySlugs.indexOf(b.slug);
+    const scoreA = idxA !== -1 ? idxA : 999;
+    const scoreB = idxB !== -1 ? idxB : 999;
+    return scoreA - scoreB;
+  });
 
   // Filter by bounding box if provided
   if (bounds) {
@@ -61,20 +101,10 @@ export function getVisibleMapPlaces(
     });
   }
 
-  // Map to label item data with collision prevention
+  // Map to label item data
   const results: MapLabelItem[] = [];
-  const seenZonesAndCoords = new Set<string>();
 
   for (const place of candidates) {
-    // Grid-based deduplication for label collision prevention
-    const gridDivLat = zoom <= 3 ? 8 : 4;
-    const gridDivLng = zoom <= 3 ? 12 : 6;
-    const gridKey = `${Math.round(place.lat / gridDivLat)}_${Math.round(place.lng / gridDivLng)}`;
-    if (seenZonesAndCoords.has(gridKey)) {
-      continue;
-    }
-    seenZonesAndCoords.add(gridKey);
-
     const placeNow = now.setZone(place.timezone);
     if (!placeNow.isValid) continue;
 
@@ -94,8 +124,6 @@ export function getVisibleMapPlaces(
       dayStr,
       isNight,
     });
-
-    if (results.length >= 60) break;
   }
 
   return results;

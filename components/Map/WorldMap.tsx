@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useMemo, useCallback } from "react";
+import React, { useEffect, useRef, useMemo, useCallback, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Place } from "@/lib/places";
@@ -72,6 +72,7 @@ export default function WorldMap({
 }: WorldMapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
+  const [mapReady, setMapReady] = useState<L.Map | null>(null);
 
   // Layer groups
   const terminatorLayerRef = useRef<L.Polygon | null>(null);
@@ -87,7 +88,7 @@ export default function WorldMap({
       .slice(0, 160);
   }, []);
 
-  // Update visible label pills
+  // Update visible label pills with Screen-Space Bounding Box Collision Prevention
   const updateLabels = useCallback(() => {
     const map = mapInstanceRef.current;
     const group = labelsGroupRef.current;
@@ -106,14 +107,96 @@ export default function WorldMap({
 
     const labelItems: MapLabelItem[] = getVisibleMapPlaces(zoom, userTimezone || "UTC", b);
 
-    labelItems.forEach((item) => {
+    // Screen-space bounding boxes to prevent ANY label overlap
+    const occupiedBoxes: Array<{
+      minX: number;
+      maxX: number;
+      minY: number;
+      maxY: number;
+    }> = [];
+
+    const mapSize = map.getSize();
+
+    // Check if placeA or placeB are on screen and reserve their bounding boxes
+    if (placeA) {
+      const ptA = map.latLngToContainerPoint([placeA.lat, placeA.lng]);
+      occupiedBoxes.push({
+        minX: ptA.x - 80,
+        maxX: ptA.x + 80,
+        minY: ptA.y - 25,
+        maxY: ptA.y + 25,
+      });
+    }
+
+    if (placeB) {
+      const ptB = map.latLngToContainerPoint([placeB.lat, placeB.lng]);
+      occupiedBoxes.push({
+        minX: ptB.x - 80,
+        maxX: ptB.x + 80,
+        minY: ptB.y - 25,
+        maxY: ptB.y + 25,
+      });
+    }
+
+    // Top-left floating search card zone (keep clear on desktop)
+    const searchCardBox = {
+      minX: 0,
+      maxX: 410,
+      minY: 0,
+      maxY: 220,
+    };
+
+    for (const item of labelItems) {
       // Don't show generic label if place is already selected as A or B
       const isSelected =
         (placeA && placeA.slug === item.place.slug) ||
         (placeB && placeB.slug === item.place.slug);
 
+      if (isSelected) continue;
+
+      // Project geo coordinates to screen container pixels
+      const pt = map.latLngToContainerPoint([item.place.lat, item.place.lng]);
+
+      // Filter out points outside visible viewport bounds with safe padding
+      if (pt.x < 40 || pt.x > mapSize.x - 40 || pt.y < 35 || pt.y > mapSize.y - 35) {
+        continue;
+      }
+
+      // Avoid rendering labels behind the top-left search overlay
+      if (pt.x < searchCardBox.maxX && pt.y < searchCardBox.maxY) {
+        continue;
+      }
+
+      // Calculate label box dimensions with generous calm spacing
+      const pillHalfWidth = Math.max(50, item.place.name.length * 4.2 + 35);
+      const pillHalfHeight = 16;
+      const marginX = zoom <= 3 ? 24 : 14; // Greater breathing room at world scale
+      const marginY = zoom <= 3 ? 18 : 10;
+
+      const box = {
+        minX: pt.x - pillHalfWidth - marginX,
+        maxX: pt.x + pillHalfWidth + marginX,
+        minY: pt.y - pillHalfHeight - marginY,
+        maxY: pt.y + pillHalfHeight + marginY,
+      };
+
+      // Check collision against all placed bounding boxes
+      const collides = occupiedBoxes.some(
+        (b) =>
+          box.minX < b.maxX &&
+          box.maxX > b.minX &&
+          box.minY < b.maxY &&
+          box.maxY > b.minY
+      );
+
+      if (collides) {
+        continue; // Collision detected -> skip cleanly
+      }
+
+      occupiedBoxes.push(box);
+
       const pillHtml = `
-        <div class="map-label-pill ${isSelected ? "is-selected" : ""}">
+        <div class="map-label-pill">
           <span>${item.place.name}</span>
           <span class="pill-time">${item.timeStr}</span>
           <span class="pill-diff">${item.diffStr}</span>
@@ -130,7 +213,7 @@ export default function WorldMap({
 
       const marker = L.marker([item.place.lat, item.place.lng], {
         icon: labelIcon,
-        zIndexOffset: isSelected ? 800 : 100,
+        zIndexOffset: 100,
       });
 
       marker.on("click", (e) => {
@@ -141,7 +224,7 @@ export default function WorldMap({
       });
 
       group.addLayer(marker);
-    });
+    }
   }, [userTimezone, placeA, placeB, onSelectPlace]);
 
   // 1. Initialize Leaflet Map
@@ -193,7 +276,10 @@ export default function WorldMap({
     // Initial label load
     updateLabels();
 
+    setMapReady(map);
+
     return () => {
+      setMapReady(null);
       map.remove();
       mapInstanceRef.current = null;
     };
@@ -201,7 +287,7 @@ export default function WorldMap({
 
   // 2. Terminator & Night Lights updates every minute
   useEffect(() => {
-    const map = mapInstanceRef.current;
+    const map = mapReady;
     if (!map) return;
 
     function updateDayNight() {
@@ -212,12 +298,12 @@ export default function WorldMap({
         terminatorLayerRef.current.setLatLngs(termData.nightPolygonLatLngs);
       } else {
         const nightPolygon = L.polygon(termData.nightPolygonLatLngs, {
-          color: "#0f172a",
-          fillColor: "#020617",
-          fillOpacity: 0.48,
-          weight: 1,
-          stroke: true,
-          dashArray: "3, 5",
+          fill: true,
+          fillColor: "#0f172a",
+          fillOpacity: 0.38,
+          stroke: false,
+          weight: 0,
+          interactive: false,
           className: "leaflet-terminator-shadow pointer-events-none",
         }).addTo(map);
         terminatorLayerRef.current = nightPolygon;
@@ -272,13 +358,13 @@ export default function WorldMap({
     }, 60000);
 
     return () => clearInterval(interval);
-  }, [prominentCities, onSelectPlace, updateLabels]);
+  }, [mapReady, prominentCities, onSelectPlace, updateLabels]);
 
   // 3. Render Markers for Place A & Place B, curved Great-Circle line, and fly-to
   useEffect(() => {
-    const map = mapInstanceRef.current;
+    const map = mapReady;
+    if (!map || !markersGroupRef.current) return;
     const markersGroup = markersGroupRef.current;
-    if (!map || !markersGroup) return;
 
     markersGroup.clearLayers();
 

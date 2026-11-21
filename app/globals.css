@@ -69,6 +69,22 @@ body {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25) !important;
 }
 
+/* Custom divIcon wrapper and centering */
+.custom-label-icon {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.custom-label-icon .map-label-pill {
+  transform: translate(-50%, -50%);
+}
+
+.custom-label-icon .map-label-pill:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
 /* Live Map Label Pill (Airbnb Calm & Premium Style) */
 .map-label-pill {
   display: inline-flex;
@@ -91,7 +107,6 @@ body {
 }
 
 .map-label-pill:hover {
-  transform: scale(1.08);
   background-color: #ffffff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
   z-index: 1000 !important;

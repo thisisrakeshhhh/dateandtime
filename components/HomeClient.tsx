@@ -139,6 +139,7 @@ export default function HomeClient({
             ) : placeA ? (
               <PlaceDetailsCard
                 place={placeA}
+                userPlace={userPlace}
                 userTimezone={userTimezone}
                 onCompareWith={handleCompareWith}
                 onClose={() => setShowSidePanel(false)}

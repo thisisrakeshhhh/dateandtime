@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { Place, getCountries, getCities } from "@/lib/places";
+import { Place, getCountries } from "@/lib/places";
 
 export interface MapLabelItem {
   place: Place;
@@ -22,6 +22,7 @@ export function formatOffsetDiff(diffMinutes: number): string {
 
 /**
  * Filter places based on map zoom and bounding box for high-performance collision-free map labels.
+ * Map displays ONLY countries to keep the view clean, uncluttered, and readable.
  */
 export function getVisibleMapPlaces(
   zoom: number,
@@ -33,23 +34,16 @@ export function getVisibleMapPlaces(
   const userOffset = userNow.offset;
   const userDateStr = userNow.toFormat("yyyy-MM-dd");
 
+  // Show ONLY country names on the map
+  const allCountries = getCountries();
   let candidates: Place[] = [];
 
   if (zoom <= 3) {
-    // Zoom 2-3: Major countries and top global cities
-    const countries = getCountries().slice(0, 40);
-    const megacities = getCities()
-      .filter((c) => (c.population ?? 0) > 6000000)
-      .slice(0, 25);
-    candidates = [...countries, ...megacities];
-  } else if (zoom <= 5) {
-    // Zoom 4-5: Prominent cities
-    candidates = getCities()
-      .filter((c) => (c.population ?? 0) > 1500000)
-      .slice(0, 90);
+    // Zoom 2-3: Major countries spaced globally
+    candidates = allCountries.slice(0, 50);
   } else {
-    // Zoom 6+: Regional cities
-    candidates = getCities().slice(0, 250);
+    // Zoom 4+: All countries
+    candidates = allCountries;
   }
 
   // Filter by bounding box if provided
@@ -67,14 +61,16 @@ export function getVisibleMapPlaces(
     });
   }
 
-  // Map to label item data
+  // Map to label item data with collision prevention
   const results: MapLabelItem[] = [];
   const seenZonesAndCoords = new Set<string>();
 
   for (const place of candidates) {
-    // Basic deduplication for close places in same zoom
-    const gridKey = `${Math.round(place.lat / 4)}_${Math.round(place.lng / 6)}`;
-    if (zoom <= 3 && seenZonesAndCoords.has(gridKey)) {
+    // Grid-based deduplication for label collision prevention
+    const gridDivLat = zoom <= 3 ? 8 : 4;
+    const gridDivLng = zoom <= 3 ? 12 : 6;
+    const gridKey = `${Math.round(place.lat / gridDivLat)}_${Math.round(place.lng / gridDivLng)}`;
+    if (seenZonesAndCoords.has(gridKey)) {
       continue;
     }
     seenZonesAndCoords.add(gridKey);

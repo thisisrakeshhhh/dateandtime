@@ -31,7 +31,7 @@ export default function MapSearchOverlay({
 
   useEffect(() => {
     if (query.trim().length > 0) {
-      const matches = searchPlaces(query, 7);
+      const matches = searchPlaces(query, 10);
       setResults(matches);
       setHighlightIndex(0);
       setIsOpen(true);
@@ -180,7 +180,13 @@ export default function MapSearchOverlay({
                       </div>
                     </div>
                   </div>
-                  <span className="text-[10px] uppercase font-semibold text-neutral-400">
+                  <span
+                    className={`text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full ${
+                      place.type === "country"
+                        ? "bg-rose-500/10 text-[#E85D4E] dark:bg-rose-500/20"
+                        : "bg-blue-500/10 text-blue-600 dark:text-blue-400 dark:bg-blue-500/20"
+                    }`}
+                  >
                     {place.type}
                   </span>
                 </button>

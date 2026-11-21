@@ -1,7 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Place, formatPlaceDisplayName } from "@/lib/places";
+import {
+  Place,
+  formatPlaceDisplayName,
+  getCityGoogleMapsInfo,
+} from "@/lib/places";
 import { getSolarTimes, getDstInfo } from "@/lib/astronomy";
 import { formatTimeDifference } from "@/lib/time";
 import FlagIcon from "@/components/FlagIcon";
@@ -14,6 +18,13 @@ import {
   Calendar,
   Clock,
   Sparkles,
+  MapPin,
+  Navigation,
+  Landmark,
+  Maximize2,
+  Users,
+  Compass,
+  Globe2,
 } from "lucide-react";
 import { DateTime } from "luxon";
 
@@ -44,6 +55,7 @@ interface HolidayData {
 
 interface PlaceDetailsCardProps {
   place: Place;
+  userPlace?: Place | null;
   userTimezone: string;
   onCompareWith: (place: Place) => void;
   onClose: () => void;
@@ -51,6 +63,7 @@ interface PlaceDetailsCardProps {
 
 export default function PlaceDetailsCard({
   place,
+  userPlace,
   userTimezone,
   onCompareWith,
   onClose,
@@ -122,6 +135,17 @@ export default function PlaceDetailsCard({
   // Difference from user
   const diffFromUser = formatTimeDifference(userTimezone, place.timezone);
 
+  // Google Maps info when city is selected
+  const cityInfo =
+    place.type === "city"
+      ? getCityGoogleMapsInfo(place, userPlace, userTimezone)
+      : null;
+
+  // Country coordinates formatting
+  const latDir = place.lat >= 0 ? "N" : "S";
+  const lngDir = place.lng >= 0 ? "E" : "W";
+  const formattedCoords = `${Math.abs(place.lat).toFixed(2)}° ${latDir}, ${Math.abs(place.lng).toFixed(2)}° ${lngDir}`;
+
   return (
     <aside
       aria-label="Location details"
@@ -182,6 +206,144 @@ export default function PlaceDetailsCard({
           )}
         </div>
       </div>
+
+      {/* Google Maps City Information (shown when a city is selected) */}
+      {cityInfo && (
+        <div className="p-4 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800 text-xs flex flex-col gap-2.5">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center justify-between">
+            <span>City Profile</span>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-neutral-200/70 dark:bg-neutral-700/60 font-semibold text-neutral-700 dark:text-neutral-300">
+              Maps Info
+            </span>
+          </div>
+
+          {/* Within Country / Distance to Capital */}
+          <div className="flex items-start gap-2.5">
+            <div className="w-5 h-5 rounded-full bg-rose-500/10 text-[#E85D4E] flex items-center justify-center shrink-0 mt-0.5">
+              {cityInfo.isCapital ? (
+                <Landmark className="w-3 h-3" />
+              ) : (
+                <Navigation className="w-3 h-3" />
+              )}
+            </div>
+            <div>
+              <div className="text-[10px] text-neutral-400 font-medium">
+                {cityInfo.isCapital ? "National Status" : "Within Country"}
+              </div>
+              <div className="font-medium text-neutral-800 dark:text-neutral-200">
+                {cityInfo.formattedDistanceToCapital}
+              </div>
+            </div>
+          </div>
+
+          {/* Distance from User Location */}
+          {cityInfo.formattedDistanceFromUser && (
+            <div className="flex items-start gap-2.5 pt-2 border-t border-neutral-200/50 dark:border-neutral-800">
+              <div className="w-5 h-5 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                <MapPin className="w-3 h-3" />
+              </div>
+              <div>
+                <div className="text-[10px] text-neutral-400 font-medium">
+                  Distance from You
+                </div>
+                <div className="font-medium text-neutral-800 dark:text-neutral-200">
+                  {cityInfo.formattedDistanceFromUser}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Area & Population in grid */}
+          <div className="grid grid-cols-2 gap-2 pt-2 border-t border-neutral-200/50 dark:border-neutral-800">
+            <div className="flex items-start gap-2">
+              <div className="w-5 h-5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <Maximize2 className="w-3 h-3" />
+              </div>
+              <div>
+                <div className="text-[10px] text-neutral-400 font-medium">City Area</div>
+                <div className="font-medium text-neutral-800 dark:text-neutral-200">
+                  {cityInfo.formattedArea}
+                </div>
+              </div>
+            </div>
+
+            {cityInfo.formattedPopulation && (
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
+                  <Users className="w-3 h-3" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-neutral-400 font-medium">Population</div>
+                  <div className="font-medium text-neutral-800 dark:text-neutral-200">
+                    {cityInfo.formattedPopulation}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Exact Coordinates */}
+          <div className="flex items-center gap-2 pt-2 border-t border-neutral-200/50 dark:border-neutral-800">
+            <div className="w-5 h-5 rounded-full bg-neutral-500/10 text-neutral-500 flex items-center justify-center shrink-0">
+              <Compass className="w-3 h-3" />
+            </div>
+            <div className="text-[11px] text-neutral-500 dark:text-neutral-400">
+              Coordinates: <span className="font-medium text-neutral-800 dark:text-neutral-200">{cityInfo.coordinatesFormatted}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Country Overview (when country is selected) */}
+      {!cityInfo && (
+        <div className="p-4 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800 text-xs flex flex-col gap-2.5">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 flex items-center justify-between">
+            <span>Country Geography</span>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-neutral-200/70 dark:bg-neutral-700/60 font-semibold text-neutral-700 dark:text-neutral-300">
+              Country Info
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            {place.capital && (
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 rounded-full bg-rose-500/10 text-[#E85D4E] flex items-center justify-center shrink-0 mt-0.5">
+                  <Landmark className="w-3 h-3" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-neutral-400 font-medium">Capital</div>
+                  <div className="font-medium text-neutral-800 dark:text-neutral-200">
+                    {place.capital}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {place.continent && (
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0 mt-0.5">
+                  <Globe2 className="w-3 h-3" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-neutral-400 font-medium">Continent</div>
+                  <div className="font-medium text-neutral-800 dark:text-neutral-200">
+                    {place.continent}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center gap-2 pt-2 border-t border-neutral-200/50 dark:border-neutral-800">
+            <div className="w-5 h-5 rounded-full bg-neutral-500/10 text-neutral-500 flex items-center justify-center shrink-0">
+              <Compass className="w-3 h-3" />
+            </div>
+            <div className="text-[11px] text-neutral-500 dark:text-neutral-400">
+              Coordinates: <span className="font-medium text-neutral-800 dark:text-neutral-200">{formattedCoords}</span>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Sun Times & DST */}
       <div className="grid grid-cols-2 gap-2 text-xs">

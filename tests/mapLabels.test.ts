@@ -9,10 +9,11 @@ describe("mapLabels utils", () => {
     expect(formatOffsetDiff(-210)).toBe("-3h 30m");
   });
 
-  it("returns visible places for zoom 2 with user timezone", () => {
+  it("returns visible places for zoom 2 with user timezone, containing only countries", () => {
     const places = getVisibleMapPlaces(2, "UTC");
     expect(places.length).toBeGreaterThan(10);
     expect(places[0]).toHaveProperty("timeStr");
     expect(places[0]).toHaveProperty("diffStr");
+    expect(places.every((p) => p.place.type === "country")).toBe(true);
   });
 });

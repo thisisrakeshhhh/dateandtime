@@ -8,7 +8,8 @@
     "lat": 56.1629,
     "lng": 10.2039,
     "timezone": "Europe/Copenhagen",
-    "population": 280534
+    "population": 280534,
+    "areaKm2": 156
   },
   {
     "name": "Aberdeen",
@@ -19,7 +20,8 @@
     "lat": 57.1497,
     "lng": -2.0943,
     "timezone": "Europe/London",
-    "population": 228990
+    "population": 228990,
+    "areaKm2": 127
   },
   {
     "name": "Abu Dhabi",
@@ -30,7 +32,8 @@
     "lat": 24.4539,
     "lng": 54.3773,
     "timezone": "Asia/Dubai",
-    "population": 1450000
+    "population": 1450000,
+    "areaKm2": 806
   },
   {
     "name": "Abuja",
@@ -41,7 +44,8 @@
     "lat": 9.0765,
     "lng": 7.3986,
     "timezone": "Africa/Lagos",
-    "population": 3277740
+    "population": 3277740,
+    "areaKm2": 1821
   },
   {
     "name": "Accra",
@@ -52,7 +56,8 @@
     "lat": 5.6037,
     "lng": -0.187,
     "timezone": "Africa/Accra",
-    "population": 2291352
+    "population": 2291352,
+    "areaKm2": 1273
   },
   {
     "name": "Addis Ababa",
@@ -63,7 +68,8 @@
     "lat": 9.03,
     "lng": 38.74,
     "timezone": "Africa/Addis_Ababa",
-    "population": 3384569
+    "population": 3384569,
+    "areaKm2": 1880
   },
   {
     "name": "Adelaide",
@@ -74,7 +80,8 @@
     "lat": -34.9285,
     "lng": 138.6007,
     "timezone": "Australia/Adelaide",
-    "population": 1359760
+    "population": 1359760,
+    "areaKm2": 3259
   },
   {
     "name": "Agra",
@@ -85,7 +92,8 @@
     "lat": 27.1767,
     "lng": 78.0081,
     "timezone": "Asia/Kolkata",
-    "population": 1585704
+    "population": 1585704,
+    "areaKm2": 881
   },
   {
     "name": "Ahmedabad",
@@ -96,7 +104,8 @@
     "lat": 23.0225,
     "lng": 72.5714,
     "timezone": "Asia/Kolkata",
-    "population": 5577940
+    "population": 5577940,
+    "areaKm2": 464
   },
   {
     "name": "Akron",
@@ -107,7 +116,8 @@
     "lat": 41.0814,
     "lng": -81.519,
     "timezone": "America/New_York",
-    "population": 190469
+    "population": 190469,
+    "areaKm2": 106
   },
   {
     "name": "Albany",
@@ -118,7 +128,8 @@
     "lat": 42.6526,
     "lng": -73.7562,
     "timezone": "America/New_York",
-    "population": 99224
+    "population": 99224,
+    "areaKm2": 55
   },
   {
     "name": "Albuquerque",
@@ -129,7 +140,8 @@
     "lat": 35.0844,
     "lng": -106.6504,
     "timezone": "America/Denver",
-    "population": 564559
+    "population": 564559,
+    "areaKm2": 314
   },
   {
     "name": "Albury",
@@ -140,7 +152,8 @@
     "lat": -36.0737,
     "lng": 146.9135,
     "timezone": "Australia/Sydney",
-    "population": 53677
+    "population": 53677,
+    "areaKm2": 35
   },
   {
     "name": "Alexandria",
@@ -151,7 +164,8 @@
     "lat": 31.2001,
     "lng": 29.9187,
     "timezone": "Africa/Cairo",
-    "population": 5200000
+    "population": 5200000,
+    "areaKm2": 2889
   },
   {
     "name": "Alice Springs",
@@ -162,7 +176,8 @@
     "lat": -23.698,
     "lng": 133.8807,
     "timezone": "Australia/Darwin",
-    "population": 25186
+    "population": 25186,
+    "areaKm2": 35
   },
   {
     "name": "Aligarh",
@@ -173,7 +188,8 @@
     "lat": 27.8974,
     "lng": 78.088,
     "timezone": "Asia/Kolkata",
-    "population": 874408
+    "population": 874408,
+    "areaKm2": 486
   },
   {
     "name": "Allahabad",
@@ -184,7 +200,8 @@
     "lat": 25.4358,
     "lng": 81.8463,
     "timezone": "Asia/Kolkata",
-    "population": 1117094
+    "population": 1117094,
+    "areaKm2": 621
   },
   {
     "name": "Allentown",
@@ -195,7 +212,8 @@
     "lat": 40.6084,
     "lng": -75.4902,
     "timezone": "America/New_York",
-    "population": 125845
+    "population": 125845,
+    "areaKm2": 70
   },
   {
     "name": "Amarillo",
@@ -206,7 +224,8 @@
     "lat": 35.222,
     "lng": -101.8313,
     "timezone": "America/Chicago",
-    "population": 200393
+    "population": 200393,
+    "areaKm2": 111
   },
   {
     "name": "Amritsar",
@@ -217,7 +236,8 @@
     "lat": 31.634,
     "lng": 74.8723,
     "timezone": "Asia/Kolkata",
-    "population": 1132383
+    "population": 1132383,
+    "areaKm2": 629
   },
   {
     "name": "Amsterdam",
@@ -228,7 +248,8 @@
     "lat": 52.3676,
     "lng": 4.9041,
     "timezone": "Europe/Amsterdam",
-    "population": 872680
+    "population": 872680,
+    "areaKm2": 219
   },
   {
     "name": "Anaheim",
@@ -239,7 +260,8 @@
     "lat": 33.8366,
     "lng": -117.9143,
     "timezone": "America/Los_Angeles",
-    "population": 346824
+    "population": 346824,
+    "areaKm2": 193
   },
   {
     "name": "Anchorage",
@@ -250,7 +272,8 @@
     "lat": 61.2181,
     "lng": -149.9003,
     "timezone": "America/Anchorage",
-    "population": 291247
+    "population": 291247,
+    "areaKm2": 5035
   },
   {
     "name": "Ankara",
@@ -261,7 +284,8 @@
     "lat": 39.9334,
     "lng": 32.8597,
     "timezone": "Europe/Istanbul",
-    "population": 5663000
+    "population": 5663000,
+    "areaKm2": 3146
   },
   {
     "name": "Ann Arbor",
@@ -272,7 +296,8 @@
     "lat": 42.2808,
     "lng": -83.743,
     "timezone": "America/Detroit",
-    "population": 123851
+    "population": 123851,
+    "areaKm2": 69
   },
   {
     "name": "Antwerp",
@@ -283,7 +308,8 @@
     "lat": 51.2194,
     "lng": 4.4025,
     "timezone": "Europe/Brussels",
-    "population": 529247
+    "population": 529247,
+    "areaKm2": 204
   },
   {
     "name": "Arlington",
@@ -294,7 +320,8 @@
     "lat": 32.7357,
     "lng": -97.1081,
     "timezone": "America/Chicago",
-    "population": 394266
+    "population": 394266,
+    "areaKm2": 219
   },
   {
     "name": "Athens",
@@ -305,7 +332,8 @@
     "lat": 37.9838,
     "lng": 23.7275,
     "timezone": "Europe/Athens",
-    "population": 664046
+    "population": 664046,
+    "areaKm2": 369
   },
   {
     "name": "Atlanta",
@@ -316,7 +344,8 @@
     "lat": 33.749,
     "lng": -84.388,
     "timezone": "America/New_York",
-    "population": 498715
+    "population": 498715,
+    "areaKm2": 277
   },
   {
     "name": "Auckland",
@@ -327,7 +356,8 @@
     "lat": -36.8485,
     "lng": 174.7633,
     "timezone": "Pacific/Auckland",
-    "population": 1657000
+    "population": 1657000,
+    "areaKm2": 921
   },
   {
     "name": "Augusta",
@@ -338,7 +368,8 @@
     "lat": 33.4735,
     "lng": -82.0105,
     "timezone": "America/New_York",
-    "population": 202081
+    "population": 202081,
+    "areaKm2": 112
   },
   {
     "name": "Aurangabad",
@@ -349,7 +380,8 @@
     "lat": 19.8762,
     "lng": 75.3433,
     "timezone": "Asia/Kolkata",
-    "population": 1175116
+    "population": 1175116,
+    "areaKm2": 653
   },
   {
     "name": "Aurora",
@@ -360,7 +392,8 @@
     "lat": 39.7294,
     "lng": -104.8319,
     "timezone": "America/Denver",
-    "population": 386261
+    "population": 386261,
+    "areaKm2": 215
   },
   {
     "name": "Austin",
@@ -371,7 +404,8 @@
     "lat": 30.2672,
     "lng": -97.7431,
     "timezone": "America/Chicago",
-    "population": 978908
+    "population": 978908,
+    "areaKm2": 828
   },
   {
     "name": "Bakersfield",
@@ -382,7 +416,8 @@
     "lat": 35.3733,
     "lng": -119.0187,
     "timezone": "America/Los_Angeles",
-    "population": 403455
+    "population": 403455,
+    "areaKm2": 224
   },
   {
     "name": "Ballarat",
@@ -393,7 +428,8 @@
     "lat": -37.5622,
     "lng": 143.8503,
     "timezone": "Australia/Melbourne",
-    "population": 105471
+    "population": 105471,
+    "areaKm2": 59
   },
   {
     "name": "Baltimore",
@@ -404,7 +440,8 @@
     "lat": 39.2904,
     "lng": -76.6122,
     "timezone": "America/New_York",
-    "population": 585708
+    "population": 585708,
+    "areaKm2": 325
   },
   {
     "name": "Bandung",
@@ -415,7 +452,8 @@
     "lat": -6.9175,
     "lng": 107.6191,
     "timezone": "Asia/Jakarta",
-    "population": 2444160
+    "population": 2444160,
+    "areaKm2": 1358
   },
   {
     "name": "Bangkok",
@@ -426,7 +464,8 @@
     "lat": 13.7563,
     "lng": 100.5018,
     "timezone": "Asia/Bangkok",
-    "population": 10539000
+    "population": 10539000,
+    "areaKm2": 5855
   },
   {
     "name": "Barcelona",
@@ -437,7 +476,8 @@
     "lat": 41.3879,
     "lng": 2.1699,
     "timezone": "Europe/Madrid",
-    "population": 1620000
+    "population": 1620000,
+    "areaKm2": 101
   },
   {
     "name": "Bareilly",
@@ -448,7 +488,8 @@
     "lat": 28.367,
     "lng": 79.4304,
     "timezone": "Asia/Kolkata",
-    "population": 903668
+    "population": 903668,
+    "areaKm2": 502
   },
   {
     "name": "Barrie",
@@ -459,7 +500,8 @@
     "lat": 44.3894,
     "lng": -79.6903,
     "timezone": "America/Toronto",
-    "population": 147829
+    "population": 147829,
+    "areaKm2": 82
   },
   {
     "name": "Basel",
@@ -470,7 +512,8 @@
     "lat": 47.5596,
     "lng": 7.5886,
     "timezone": "Europe/Zurich",
-    "population": 177595
+    "population": 177595,
+    "areaKm2": 24
   },
   {
     "name": "Bath",
@@ -481,7 +524,8 @@
     "lat": 51.3811,
     "lng": -2.359,
     "timezone": "Europe/London",
-    "population": 88859
+    "population": 88859,
+    "areaKm2": 49
   },
   {
     "name": "Baton Rouge",
@@ -492,7 +536,8 @@
     "lat": 30.4515,
     "lng": -91.1871,
     "timezone": "America/Chicago",
-    "population": 227470
+    "population": 227470,
+    "areaKm2": 126
   },
   {
     "name": "Beijing",
@@ -503,7 +548,8 @@
     "lat": 39.9042,
     "lng": 116.4074,
     "timezone": "Asia/Shanghai",
-    "population": 21890000
+    "population": 21890000,
+    "areaKm2": 12161
   },
   {
     "name": "Belagavi",
@@ -514,7 +560,8 @@
     "lat": 15.8497,
     "lng": 74.4977,
     "timezone": "Asia/Kolkata",
-    "population": 488157
+    "population": 488157,
+    "areaKm2": 271
   },
   {
     "name": "Belfast",
@@ -525,7 +572,8 @@
     "lat": 54.5973,
     "lng": -5.9301,
     "timezone": "Europe/London",
-    "population": 341877
+    "population": 341877,
+    "areaKm2": 115
   },
   {
     "name": "Bellevue",
@@ -536,7 +584,8 @@
     "lat": 47.6101,
     "lng": -122.2015,
     "timezone": "America/Los_Angeles",
-    "population": 151854
+    "population": 151854,
+    "areaKm2": 95
   },
   {
     "name": "Bendigo",
@@ -547,7 +596,8 @@
     "lat": -36.757,
     "lng": 144.2787,
     "timezone": "Australia/Melbourne",
-    "population": 110931
+    "population": 110931,
+    "areaKm2": 62
   },
   {
     "name": "Bengaluru",
@@ -558,7 +608,8 @@
     "lat": 12.9716,
     "lng": 77.5946,
     "timezone": "Asia/Kolkata",
-    "population": 8443675
+    "population": 8443675,
+    "areaKm2": 4691
   },
   {
     "name": "Bergen",
@@ -569,7 +620,8 @@
     "lat": 60.3913,
     "lng": 5.3221,
     "timezone": "Europe/Oslo",
-    "population": 285900
+    "population": 285900,
+    "areaKm2": 159
   },
   {
     "name": "Berkeley",
@@ -580,7 +632,8 @@
     "lat": 37.8715,
     "lng": -122.273,
     "timezone": "America/Los_Angeles",
-    "population": 124321
+    "population": 124321,
+    "areaKm2": 46
   },
   {
     "name": "Berlin",
@@ -591,7 +644,8 @@
     "lat": 52.52,
     "lng": 13.405,
     "timezone": "Europe/Berlin",
-    "population": 3645000
+    "population": 3645000,
+    "areaKm2": 2025
   },
   {
     "name": "Bern",
@@ -602,7 +656,8 @@
     "lat": 46.948,
     "lng": 7.4474,
     "timezone": "Europe/Zurich",
-    "population": 133883
+    "population": 133883,
+    "areaKm2": 52
   },
   {
     "name": "Bhopal",
@@ -613,7 +668,8 @@
     "lat": 23.2599,
     "lng": 77.4126,
     "timezone": "Asia/Kolkata",
-    "population": 1798218
+    "population": 1798218,
+    "areaKm2": 999
   },
   {
     "name": "Bhubaneswar",
@@ -624,7 +680,8 @@
     "lat": 20.2961,
     "lng": 85.8245,
     "timezone": "Asia/Kolkata",
-    "population": 837737
+    "population": 837737,
+    "areaKm2": 465
   },
   {
     "name": "Bilbao",
@@ -635,7 +692,8 @@
     "lat": 43.263,
     "lng": -2.935,
     "timezone": "Europe/Madrid",
-    "population": 345821
+    "population": 345821,
+    "areaKm2": 192
   },
   {
     "name": "Billings",
@@ -646,7 +704,8 @@
     "lat": 45.7833,
     "lng": -108.5007,
     "timezone": "America/Denver",
-    "population": 117116
+    "population": 117116,
+    "areaKm2": 65
   },
   {
     "name": "Birmingham",
@@ -657,7 +716,8 @@
     "lat": 52.4862,
     "lng": -1.8904,
     "timezone": "Europe/London",
-    "population": 1149000
+    "population": 1149000,
+    "areaKm2": 267
   },
   {
     "name": "Birmingham AL",
@@ -668,7 +728,8 @@
     "lat": 33.5186,
     "lng": -86.8104,
     "timezone": "America/Chicago",
-    "population": 200733
+    "population": 200733,
+    "areaKm2": 112
   },
   {
     "name": "Bogota",
@@ -679,7 +740,8 @@
     "lat": 4.711,
     "lng": -74.0721,
     "timezone": "America/Bogota",
-    "population": 7743955
+    "population": 7743955,
+    "areaKm2": 4302
   },
   {
     "name": "Boise",
@@ -690,7 +752,8 @@
     "lat": 43.615,
     "lng": -116.2023,
     "timezone": "America/Boise",
-    "population": 235684
+    "population": 235684,
+    "areaKm2": 131
   },
   {
     "name": "Bologna",
@@ -701,7 +764,8 @@
     "lat": 44.4949,
     "lng": 11.3426,
     "timezone": "Europe/Rome",
-    "population": 390636
+    "population": 390636,
+    "areaKm2": 217
   },
   {
     "name": "Bonn",
@@ -712,7 +776,8 @@
     "lat": 50.7374,
     "lng": 7.0982,
     "timezone": "Europe/Berlin",
-    "population": 327258
+    "population": 327258,
+    "areaKm2": 182
   },
   {
     "name": "Bordeaux",
@@ -723,7 +788,8 @@
     "lat": 44.8378,
     "lng": -0.5792,
     "timezone": "Europe/Paris",
-    "population": 257068
+    "population": 257068,
+    "areaKm2": 143
   },
   {
     "name": "Boston",
@@ -734,7 +800,8 @@
     "lat": 42.3601,
     "lng": -71.0589,
     "timezone": "America/New_York",
-    "population": 692600
+    "population": 692600,
+    "areaKm2": 385
   },
   {
     "name": "Boulder",
@@ -745,7 +812,8 @@
     "lat": 40.015,
     "lng": -105.2705,
     "timezone": "America/Denver",
-    "population": 108250
+    "population": 108250,
+    "areaKm2": 60
   },
   {
     "name": "Bournemouth",
@@ -756,7 +824,8 @@
     "lat": 50.7192,
     "lng": -1.8808,
     "timezone": "Europe/London",
-    "population": 183491
+    "population": 183491,
+    "areaKm2": 102
   },
   {
     "name": "Brasilia",
@@ -767,7 +836,8 @@
     "lat": -15.8267,
     "lng": -47.9218,
     "timezone": "America/Sao_Paulo",
-    "population": 3015268
+    "population": 3015268,
+    "areaKm2": 1675
   },
   {
     "name": "Bremen",
@@ -778,7 +848,8 @@
     "lat": 53.0793,
     "lng": 8.8017,
     "timezone": "Europe/Berlin",
-    "population": 569352
+    "population": 569352,
+    "areaKm2": 316
   },
   {
     "name": "Bridgeport",
@@ -789,7 +860,8 @@
     "lat": 41.1792,
     "lng": -73.1894,
     "timezone": "America/New_York",
-    "population": 148654
+    "population": 148654,
+    "areaKm2": 83
   },
   {
     "name": "Brighton",
@@ -800,7 +872,8 @@
     "lat": 50.8225,
     "lng": -0.1372,
     "timezone": "Europe/London",
-    "population": 290885
+    "population": 290885,
+    "areaKm2": 83
   },
   {
     "name": "Brisbane",
@@ -811,7 +884,8 @@
     "lat": -27.4698,
     "lng": 153.0251,
     "timezone": "Australia/Brisbane",
-    "population": 2514184
+    "population": 2514184,
+    "areaKm2": 15842
   },
   {
     "name": "Bristol",
@@ -822,7 +896,8 @@
     "lat": 51.4545,
     "lng": -2.5879,
     "timezone": "Europe/London",
-    "population": 467099
+    "population": 467099,
+    "areaKm2": 110
   },
   {
     "name": "Brno",
@@ -833,7 +908,8 @@
     "lat": 49.1951,
     "lng": 16.6068,
     "timezone": "Europe/Prague",
-    "population": 380681
+    "population": 380681,
+    "areaKm2": 211
   },
   {
     "name": "Bruges",
@@ -844,7 +920,8 @@
     "lat": 51.2093,
     "lng": 3.2247,
     "timezone": "Europe/Brussels",
-    "population": 118284
+    "population": 118284,
+    "areaKm2": 66
   },
   {
     "name": "Brussels",
@@ -855,7 +932,8 @@
     "lat": 50.8503,
     "lng": 4.3517,
     "timezone": "Europe/Brussels",
-    "population": 1209000
+    "population": 1209000,
+    "areaKm2": 161
   },
   {
     "name": "Bucharest",
@@ -866,7 +944,8 @@
     "lat": 44.4268,
     "lng": 26.1025,
     "timezone": "Europe/Bucharest",
-    "population": 1883400
+    "population": 1883400,
+    "areaKm2": 1046
   },
   {
     "name": "Budapest",
@@ -877,7 +956,8 @@
     "lat": 47.4979,
     "lng": 19.0402,
     "timezone": "Europe/Budapest",
-    "population": 1752286
+    "population": 1752286,
+    "areaKm2": 973
   },
   {
     "name": "Buenos Aires",
@@ -888,7 +968,8 @@
     "lat": -34.6037,
     "lng": -58.3816,
     "timezone": "America/Argentina/Buenos_Aires",
-    "population": 3075646
+    "population": 3075646,
+    "areaKm2": 1709
   },
   {
     "name": "Buffalo",
@@ -899,7 +980,8 @@
     "lat": 42.8864,
     "lng": -78.8784,
     "timezone": "America/New_York",
-    "population": 278349
+    "population": 278349,
+    "areaKm2": 155
   },
   {
     "name": "Bunbury",
@@ -910,7 +992,8 @@
     "lat": -33.3256,
     "lng": 115.6396,
     "timezone": "Australia/Perth",
-    "population": 74363
+    "population": 74363,
+    "areaKm2": 41
   },
   {
     "name": "Busan",
@@ -921,7 +1004,8 @@
     "lat": 35.1796,
     "lng": 129.0756,
     "timezone": "Asia/Seoul",
-    "population": 3413841
+    "population": 3413841,
+    "areaKm2": 1897
   },
   {
     "name": "Cairns",
@@ -932,7 +1016,8 @@
     "lat": -16.9186,
     "lng": 145.7781,
     "timezone": "Australia/Brisbane",
-    "population": 153163
+    "population": 153163,
+    "areaKm2": 254
   },
   {
     "name": "Cairo",
@@ -943,7 +1028,8 @@
     "lat": 30.0444,
     "lng": 31.2357,
     "timezone": "Africa/Cairo",
-    "population": 9539674
+    "population": 9539674,
+    "areaKm2": 5300
   },
   {
     "name": "Calgary",
@@ -954,7 +1040,8 @@
     "lat": 51.0447,
     "lng": -114.0719,
     "timezone": "America/Edmonton",
-    "population": 1306784
+    "population": 1306784,
+    "areaKm2": 825
   },
   {
     "name": "Cambridge",
@@ -965,7 +1052,8 @@
     "lat": 52.2053,
     "lng": 0.1218,
     "timezone": "Europe/London",
-    "population": 124798
+    "population": 124798,
+    "areaKm2": 69
   },
   {
     "name": "Canberra",
@@ -976,7 +1064,8 @@
     "lat": -35.2809,
     "lng": 149.13,
     "timezone": "Australia/Sydney",
-    "population": 456652
+    "population": 456652,
+    "areaKm2": 814
   },
   {
     "name": "Cancun",
@@ -987,7 +1076,8 @@
     "lat": 21.1619,
     "lng": -86.8515,
     "timezone": "America/Cancun",
-    "population": 888797
+    "population": 888797,
+    "areaKm2": 494
   },
   {
     "name": "Cape Coral",
@@ -998,7 +1088,8 @@
     "lat": 26.5629,
     "lng": -81.9495,
     "timezone": "America/New_York",
-    "population": 194016
+    "population": 194016,
+    "areaKm2": 108
   },
   {
     "name": "Cape Town",
@@ -1009,7 +1100,8 @@
     "lat": -33.9249,
     "lng": 18.4241,
     "timezone": "Africa/Johannesburg",
-    "population": 433688
+    "population": 433688,
+    "areaKm2": 241
   },
   {
     "name": "Cardiff",
@@ -1020,7 +1112,8 @@
     "lat": 51.4816,
     "lng": -3.1791,
     "timezone": "Europe/London",
-    "population": 362756
+    "population": 362756,
+    "areaKm2": 140
   },
   {
     "name": "Casablanca",
@@ -1031,7 +1124,8 @@
     "lat": 33.5731,
     "lng": -7.5898,
     "timezone": "Africa/Casablanca",
-    "population": 3359818
+    "population": 3359818,
+    "areaKm2": 1867
   },
   {
     "name": "Cebu City",
@@ -1042,7 +1136,8 @@
     "lat": 10.3157,
     "lng": 123.8854,
     "timezone": "Asia/Manila",
-    "population": 964169
+    "population": 964169,
+    "areaKm2": 315
   },
   {
     "name": "Cedar Rapids",
@@ -1053,7 +1148,8 @@
     "lat": 41.9779,
     "lng": -91.6656,
     "timezone": "America/Chicago",
-    "population": 137710
+    "population": 137710,
+    "areaKm2": 77
   },
   {
     "name": "Chandigarh",
@@ -1064,7 +1160,8 @@
     "lat": 30.7333,
     "lng": 76.7794,
     "timezone": "Asia/Kolkata",
-    "population": 1055450
+    "population": 1055450,
+    "areaKm2": 114
   },
   {
     "name": "Chandler",
@@ -1075,7 +1172,8 @@
     "lat": 33.3062,
     "lng": -111.8413,
     "timezone": "America/Phoenix",
-    "population": 275987
+    "population": 275987,
+    "areaKm2": 153
   },
   {
     "name": "Charleston",
@@ -1086,7 +1184,8 @@
     "lat": 32.7765,
     "lng": -79.9311,
     "timezone": "America/New_York",
-    "population": 150227
+    "population": 150227,
+    "areaKm2": 83
   },
   {
     "name": "Charlotte",
@@ -1097,7 +1196,8 @@
     "lat": 35.2271,
     "lng": -80.8431,
     "timezone": "America/New_York",
-    "population": 874579
+    "population": 874579,
+    "areaKm2": 808
   },
   {
     "name": "Chattanooga",
@@ -1108,7 +1208,8 @@
     "lat": 35.0456,
     "lng": -85.3097,
     "timezone": "America/New_York",
-    "population": 181099
+    "population": 181099,
+    "areaKm2": 101
   },
   {
     "name": "Cheltenham",
@@ -1119,7 +1220,8 @@
     "lat": 51.9,
     "lng": -2.0833,
     "timezone": "Europe/London",
-    "population": 116306
+    "population": 116306,
+    "areaKm2": 65
   },
   {
     "name": "Chengdu",
@@ -1130,7 +1232,8 @@
     "lat": 30.5728,
     "lng": 104.0668,
     "timezone": "Asia/Shanghai",
-    "population": 16580000
+    "population": 16580000,
+    "areaKm2": 9211
   },
   {
     "name": "Chennai",
@@ -1141,7 +1244,8 @@
     "lat": 13.0827,
     "lng": 80.2707,
     "timezone": "Asia/Kolkata",
-    "population": 4646732
+    "population": 4646732,
+    "areaKm2": 426
   },
   {
     "name": "Chesapeake",
@@ -1152,7 +1256,8 @@
     "lat": 36.7682,
     "lng": -76.2875,
     "timezone": "America/New_York",
-    "population": 249422
+    "population": 249422,
+    "areaKm2": 139
   },
   {
     "name": "Chiang Mai",
@@ -1163,7 +1268,8 @@
     "lat": 18.7883,
     "lng": 98.9853,
     "timezone": "Asia/Bangkok",
-    "population": 131000
+    "population": 131000,
+    "areaKm2": 40
   },
   {
     "name": "Chicago",
@@ -1174,7 +1280,8 @@
     "lat": 41.8781,
     "lng": -87.6298,
     "timezone": "America/Chicago",
-    "population": 2693976
+    "population": 2693976,
+    "areaKm2": 1497
   },
   {
     "name": "Chittagong",
@@ -1185,7 +1292,8 @@
     "lat": 22.3569,
     "lng": 91.7832,
     "timezone": "Asia/Dhaka",
-    "population": 2582401
+    "population": 2582401,
+    "areaKm2": 1435
   },
   {
     "name": "Chongqing",
@@ -1196,7 +1304,8 @@
     "lat": 29.4316,
     "lng": 106.9123,
     "timezone": "Asia/Shanghai",
-    "population": 32050000
+    "population": 32050000,
+    "areaKm2": 17806
   },
   {
     "name": "Christchurch",
@@ -1207,7 +1316,8 @@
     "lat": -43.5321,
     "lng": 172.6362,
     "timezone": "Pacific/Auckland",
-    "population": 383300
+    "population": 383300,
+    "areaKm2": 1426
   },
   {
     "name": "Cincinnati",
@@ -1218,7 +1328,8 @@
     "lat": 39.1031,
     "lng": -84.512,
     "timezone": "America/New_York",
-    "population": 309317
+    "population": 309317,
+    "areaKm2": 172
   },
   {
     "name": "Cleveland",
@@ -1229,7 +1340,8 @@
     "lat": 41.4993,
     "lng": -81.6944,
     "timezone": "America/New_York",
-    "population": 372624
+    "population": 372624,
+    "areaKm2": 207
   },
   {
     "name": "Coimbatore",
@@ -1240,7 +1352,8 @@
     "lat": 11.0168,
     "lng": 76.9558,
     "timezone": "Asia/Kolkata",
-    "population": 1050721
+    "population": 1050721,
+    "areaKm2": 584
   },
   {
     "name": "Coimbra",
@@ -1251,7 +1364,8 @@
     "lat": 40.2033,
     "lng": -8.4103,
     "timezone": "Europe/Lisbon",
-    "population": 143396
+    "population": 143396,
+    "areaKm2": 80
   },
   {
     "name": "Colchester",
@@ -1262,7 +1376,8 @@
     "lat": 51.8959,
     "lng": 0.8919,
     "timezone": "Europe/London",
-    "population": 121859
+    "population": 121859,
+    "areaKm2": 68
   },
   {
     "name": "Cologne",
@@ -1273,7 +1388,8 @@
     "lat": 50.9375,
     "lng": 6.9603,
     "timezone": "Europe/Berlin",
-    "population": 1086000
+    "population": 1086000,
+    "areaKm2": 405
   },
   {
     "name": "Colombo",
@@ -1284,7 +1400,8 @@
     "lat": 6.9271,
     "lng": 79.8612,
     "timezone": "Asia/Colombo",
-    "population": 752993
+    "population": 752993,
+    "areaKm2": 418
   },
   {
     "name": "Colorado Springs",
@@ -1295,7 +1412,8 @@
     "lat": 38.8339,
     "lng": -104.8214,
     "timezone": "America/Denver",
-    "population": 478961
+    "population": 478961,
+    "areaKm2": 266
   },
   {
     "name": "Columbia",
@@ -1306,7 +1424,8 @@
     "lat": 34.0007,
     "lng": -81.0348,
     "timezone": "America/New_York",
-    "population": 136632
+    "population": 136632,
+    "areaKm2": 76
   },
   {
     "name": "Columbus",
@@ -1317,7 +1436,8 @@
     "lat": 39.9612,
     "lng": -82.9988,
     "timezone": "America/New_York",
-    "population": 898553
+    "population": 898553,
+    "areaKm2": 499
   },
   {
     "name": "Copenhagen",
@@ -1328,7 +1448,8 @@
     "lat": 55.6761,
     "lng": 12.5683,
     "timezone": "Europe/Copenhagen",
-    "population": 799033
+    "population": 799033,
+    "areaKm2": 444
   },
   {
     "name": "Cordoba",
@@ -1339,7 +1460,8 @@
     "lat": -31.4201,
     "lng": -64.1888,
     "timezone": "America/Argentina/Cordoba",
-    "population": 1329604
+    "population": 1329604,
+    "areaKm2": 739
   },
   {
     "name": "Cork",
@@ -1350,7 +1472,8 @@
     "lat": 51.8985,
     "lng": -8.4756,
     "timezone": "Europe/Dublin",
-    "population": 210000
+    "population": 210000,
+    "areaKm2": 187
   },
   {
     "name": "Corpus Christi",
@@ -1361,7 +1484,8 @@
     "lat": 27.8006,
     "lng": -97.3964,
     "timezone": "America/Chicago",
-    "population": 317863
+    "population": 317863,
+    "areaKm2": 177
   },
   {
     "name": "Cuttack",
@@ -1372,7 +1496,8 @@
     "lat": 20.4625,
     "lng": 85.8828,
     "timezone": "Asia/Kolkata",
-    "population": 610189
+    "population": 610189,
+    "areaKm2": 339
   },
   {
     "name": "Dallas",
@@ -1383,7 +1508,8 @@
     "lat": 32.7767,
     "lng": -96.797,
     "timezone": "America/Chicago",
-    "population": 1343573
+    "population": 1343573,
+    "areaKm2": 746
   },
   {
     "name": "Darwin",
@@ -1394,7 +1520,8 @@
     "lat": -12.4634,
     "lng": 130.8456,
     "timezone": "Australia/Darwin",
-    "population": 147255
+    "population": 147255,
+    "areaKm2": 112
   },
   {
     "name": "Dayton",
@@ -1405,7 +1532,8 @@
     "lat": 39.7589,
     "lng": -84.1916,
     "timezone": "America/New_York",
-    "population": 137644
+    "population": 137644,
+    "areaKm2": 76
   },
   {
     "name": "Dehradun",
@@ -1416,7 +1544,8 @@
     "lat": 30.3165,
     "lng": 78.0322,
     "timezone": "Asia/Kolkata",
-    "population": 574840
+    "population": 574840,
+    "areaKm2": 319
   },
   {
     "name": "Delhi",
@@ -1427,7 +1556,8 @@
     "lat": 28.7041,
     "lng": 77.1025,
     "timezone": "Asia/Kolkata",
-    "population": 11034555
+    "population": 11034555,
+    "areaKm2": 6130
   },
   {
     "name": "Denpasar Bali",
@@ -1438,7 +1568,8 @@
     "lat": -8.6705,
     "lng": 115.2126,
     "timezone": "Asia/Makassar",
-    "population": 962900
+    "population": 962900,
+    "areaKm2": 535
   },
   {
     "name": "Denton",
@@ -1449,7 +1580,8 @@
     "lat": 33.2148,
     "lng": -97.1331,
     "timezone": "America/Chicago",
-    "population": 139869
+    "population": 139869,
+    "areaKm2": 78
   },
   {
     "name": "Denver",
@@ -1460,7 +1592,8 @@
     "lat": 39.7392,
     "lng": -104.9903,
     "timezone": "America/Denver",
-    "population": 727211
+    "population": 727211,
+    "areaKm2": 401
   },
   {
     "name": "Derby",
@@ -1471,7 +1604,8 @@
     "lat": 52.9225,
     "lng": -1.4746,
     "timezone": "Europe/London",
-    "population": 261400
+    "population": 261400,
+    "areaKm2": 145
   },
   {
     "name": "Des Moines",
@@ -1482,7 +1616,8 @@
     "lat": 41.5868,
     "lng": -93.625,
     "timezone": "America/Chicago",
-    "population": 214133
+    "population": 214133,
+    "areaKm2": 119
   },
   {
     "name": "Detroit",
@@ -1493,7 +1628,8 @@
     "lat": 42.3314,
     "lng": -83.0458,
     "timezone": "America/Detroit",
-    "population": 670031
+    "population": 670031,
+    "areaKm2": 372
   },
   {
     "name": "Dhaka",
@@ -1504,7 +1640,8 @@
     "lat": 23.8103,
     "lng": 90.4125,
     "timezone": "Asia/Dhaka",
-    "population": 8906039
+    "population": 8906039,
+    "areaKm2": 4948
   },
   {
     "name": "Dhanbad",
@@ -1515,7 +1652,8 @@
     "lat": 23.7957,
     "lng": 86.4304,
     "timezone": "Asia/Kolkata",
-    "population": 1162472
+    "population": 1162472,
+    "areaKm2": 646
   },
   {
     "name": "Doha",
@@ -1526,7 +1664,8 @@
     "lat": 25.2854,
     "lng": 51.531,
     "timezone": "Asia/Qatar",
-    "population": 2382000
+    "population": 2382000,
+    "areaKm2": 132
   },
   {
     "name": "Dortmund",
@@ -1537,7 +1676,8 @@
     "lat": 51.5136,
     "lng": 7.4653,
     "timezone": "Europe/Berlin",
-    "population": 587010
+    "population": 587010,
+    "areaKm2": 326
   },
   {
     "name": "Dresden",
@@ -1548,7 +1688,8 @@
     "lat": 51.0504,
     "lng": 13.7373,
     "timezone": "Europe/Berlin",
-    "population": 556227
+    "population": 556227,
+    "areaKm2": 309
   },
   {
     "name": "Dubai",
@@ -1559,7 +1700,8 @@
     "lat": 25.2048,
     "lng": 55.2708,
     "timezone": "Asia/Dubai",
-    "population": 3331420
+    "population": 3331420,
+    "areaKm2": 4114
   },
   {
     "name": "Dublin",
@@ -1570,7 +1712,8 @@
     "lat": 53.3498,
     "lng": -6.2603,
     "timezone": "Europe/Dublin",
-    "population": 1173179
+    "population": 1173179,
+    "areaKm2": 652
   },
   {
     "name": "Dundee",
@@ -1581,7 +1724,8 @@
     "lat": 56.462,
     "lng": -2.9707,
     "timezone": "Europe/London",
-    "population": 148280
+    "population": 148280,
+    "areaKm2": 82
   },
   {
     "name": "Dunedin",
@@ -1592,7 +1736,8 @@
     "lat": -45.8788,
     "lng": 170.5028,
     "timezone": "Pacific/Auckland",
-    "population": 130700
+    "population": 130700,
+    "areaKm2": 3314
   },
   {
     "name": "Durban",
@@ -1603,7 +1748,8 @@
     "lat": -29.8587,
     "lng": 31.0218,
     "timezone": "Africa/Johannesburg",
-    "population": 595061
+    "population": 595061,
+    "areaKm2": 331
   },
   {
     "name": "Durham",
@@ -1614,7 +1760,8 @@
     "lat": 35.994,
     "lng": -78.8986,
     "timezone": "America/New_York",
-    "population": 283506
+    "population": 283506,
+    "areaKm2": 158
   },
   {
     "name": "Dusseldorf",
@@ -1625,7 +1772,8 @@
     "lat": 51.2277,
     "lng": 6.7735,
     "timezone": "Europe/Berlin",
-    "population": 619294
+    "population": 619294,
+    "areaKm2": 344
   },
   {
     "name": "Edinburgh",
@@ -1636,7 +1784,8 @@
     "lat": 55.9533,
     "lng": -3.1883,
     "timezone": "Europe/London",
-    "population": 524930
+    "population": 524930,
+    "areaKm2": 264
   },
   {
     "name": "Edmonton",
@@ -1647,7 +1796,8 @@
     "lat": 53.5461,
     "lng": -113.4938,
     "timezone": "America/Edmonton",
-    "population": 1010899
+    "population": 1010899,
+    "areaKm2": 765
   },
   {
     "name": "Eindhoven",
@@ -1658,7 +1808,8 @@
     "lat": 51.4416,
     "lng": 5.4697,
     "timezone": "Europe/Amsterdam",
-    "population": 231642
+    "population": 231642,
+    "areaKm2": 89
   },
   {
     "name": "El Paso",
@@ -1669,7 +1820,8 @@
     "lat": 31.7619,
     "lng": -106.485,
     "timezone": "America/Denver",
-    "population": 678815
+    "population": 678815,
+    "areaKm2": 377
   },
   {
     "name": "Essen",
@@ -1680,7 +1832,8 @@
     "lat": 51.4556,
     "lng": 7.0116,
     "timezone": "Europe/Berlin",
-    "population": 583109
+    "population": 583109,
+    "areaKm2": 324
   },
   {
     "name": "Eugene",
@@ -1691,7 +1844,8 @@
     "lat": 44.0521,
     "lng": -123.0868,
     "timezone": "America/Los_Angeles",
-    "population": 176654
+    "population": 176654,
+    "areaKm2": 98
   },
   {
     "name": "Exeter",
@@ -1702,7 +1856,8 @@
     "lat": 50.7184,
     "lng": -3.5339,
     "timezone": "Europe/London",
-    "population": 131105
+    "population": 131105,
+    "areaKm2": 73
   },
   {
     "name": "Fargo",
@@ -1713,7 +1868,8 @@
     "lat": 46.8772,
     "lng": -96.7898,
     "timezone": "America/Chicago",
-    "population": 125990
+    "population": 125990,
+    "areaKm2": 70
   },
   {
     "name": "Faridabad",
@@ -1724,7 +1880,8 @@
     "lat": 28.4089,
     "lng": 77.3178,
     "timezone": "Asia/Kolkata",
-    "population": 1414050
+    "population": 1414050,
+    "areaKm2": 786
   },
   {
     "name": "Fayetteville",
@@ -1735,7 +1892,8 @@
     "lat": 36.0822,
     "lng": -94.1719,
     "timezone": "America/Chicago",
-    "population": 93949
+    "population": 93949,
+    "areaKm2": 52
   },
   {
     "name": "Florence",
@@ -1746,7 +1904,8 @@
     "lat": 43.7696,
     "lng": 11.2558,
     "timezone": "Europe/Rome",
-    "population": 382258
+    "population": 382258,
+    "areaKm2": 102
   },
   {
     "name": "Fort Wayne",
@@ -1757,7 +1916,8 @@
     "lat": 41.0793,
     "lng": -85.1394,
     "timezone": "America/Indiana/Indianapolis",
-    "population": 263886
+    "population": 263886,
+    "areaKm2": 147
   },
   {
     "name": "Fort Worth",
@@ -1768,7 +1928,8 @@
     "lat": 32.7555,
     "lng": -97.3308,
     "timezone": "America/Chicago",
-    "population": 918915
+    "population": 918915,
+    "areaKm2": 511
   },
   {
     "name": "Frankfurt",
@@ -1779,7 +1940,8 @@
     "lat": 50.1109,
     "lng": 8.6821,
     "timezone": "Europe/Berlin",
-    "population": 753056
+    "population": 753056,
+    "areaKm2": 248
   },
   {
     "name": "Fredericton",
@@ -1790,7 +1952,8 @@
     "lat": 45.9636,
     "lng": -66.6431,
     "timezone": "America/Halifax",
-    "population": 58220
+    "population": 58220,
+    "areaKm2": 35
   },
   {
     "name": "Fresno",
@@ -1801,7 +1964,8 @@
     "lat": 36.7468,
     "lng": -119.7726,
     "timezone": "America/Los_Angeles",
-    "population": 531576
+    "population": 531576,
+    "areaKm2": 295
   },
   {
     "name": "Fukuoka",
@@ -1812,7 +1976,8 @@
     "lat": 33.5904,
     "lng": 130.4017,
     "timezone": "Asia/Tokyo",
-    "population": 1538000
+    "population": 1538000,
+    "areaKm2": 854
   },
   {
     "name": "Funchal",
@@ -1823,7 +1988,8 @@
     "lat": 32.6669,
     "lng": -16.9241,
     "timezone": "Atlantic/Madeira",
-    "population": 105782
+    "population": 105782,
+    "areaKm2": 59
   },
   {
     "name": "Gdansk",
@@ -1834,7 +2000,8 @@
     "lat": 54.352,
     "lng": 18.6466,
     "timezone": "Europe/Warsaw",
-    "population": 470907
+    "population": 470907,
+    "areaKm2": 262
   },
   {
     "name": "Geelong",
@@ -1845,7 +2012,8 @@
     "lat": -38.1499,
     "lng": 144.3617,
     "timezone": "Australia/Melbourne",
-    "population": 268277
+    "population": 268277,
+    "areaKm2": 1247
   },
   {
     "name": "Geneva",
@@ -1856,7 +2024,8 @@
     "lat": 46.2044,
     "lng": 6.1432,
     "timezone": "Europe/Zurich",
-    "population": 201818
+    "population": 201818,
+    "areaKm2": 16
   },
   {
     "name": "Genoa",
@@ -1867,7 +2036,8 @@
     "lat": 44.4056,
     "lng": 8.9463,
     "timezone": "Europe/Rome",
-    "population": 580097
+    "population": 580097,
+    "areaKm2": 322
   },
   {
     "name": "George Town",
@@ -1878,7 +2048,8 @@
     "lat": 5.4141,
     "lng": 100.3288,
     "timezone": "Asia/Kuala_Lumpur",
-    "population": 708127
+    "population": 708127,
+    "areaKm2": 393
   },
   {
     "name": "Ghaziabad",
@@ -1889,7 +2060,8 @@
     "lat": 28.6692,
     "lng": 77.4538,
     "timezone": "Asia/Kolkata",
-    "population": 1648643
+    "population": 1648643,
+    "areaKm2": 916
   },
   {
     "name": "Ghent",
@@ -1900,7 +2072,8 @@
     "lat": 51.0543,
     "lng": 3.7174,
     "timezone": "Europe/Brussels",
-    "population": 260341
+    "population": 260341,
+    "areaKm2": 156
   },
   {
     "name": "Glasgow",
@@ -1911,7 +2084,8 @@
     "lat": 55.8642,
     "lng": -4.2518,
     "timezone": "Europe/London",
-    "population": 635640
+    "population": 635640,
+    "areaKm2": 175
   },
   {
     "name": "Gloucester",
@@ -1922,7 +2096,8 @@
     "lat": 51.8642,
     "lng": -2.238,
     "timezone": "Europe/London",
-    "population": 129128
+    "population": 129128,
+    "areaKm2": 72
   },
   {
     "name": "Gold Coast",
@@ -1933,7 +2108,8 @@
     "lat": -28.0167,
     "lng": 153.4,
     "timezone": "Australia/Brisbane",
-    "population": 679127
+    "population": 679127,
+    "areaKm2": 414
   },
   {
     "name": "Gothenburg",
@@ -1944,7 +2120,8 @@
     "lat": 57.7089,
     "lng": 11.9746,
     "timezone": "Europe/Stockholm",
-    "population": 579281
+    "population": 579281,
+    "areaKm2": 322
   },
   {
     "name": "Grand Rapids",
@@ -1955,7 +2132,8 @@
     "lat": 42.9634,
     "lng": -85.6681,
     "timezone": "America/Detroit",
-    "population": 198917
+    "population": 198917,
+    "areaKm2": 111
   },
   {
     "name": "Graz",
@@ -1966,7 +2144,8 @@
     "lat": 47.0707,
     "lng": 15.4395,
     "timezone": "Europe/Vienna",
-    "population": 291072
+    "population": 291072,
+    "areaKm2": 162
   },
   {
     "name": "Greensboro",
@@ -1977,7 +2156,8 @@
     "lat": 36.0726,
     "lng": -79.792,
     "timezone": "America/New_York",
-    "population": 299035
+    "population": 299035,
+    "areaKm2": 166
   },
   {
     "name": "Groningen",
@@ -1988,7 +2168,8 @@
     "lat": 53.2194,
     "lng": 6.5665,
     "timezone": "Europe/Amsterdam",
-    "population": 231299
+    "population": 231299,
+    "areaKm2": 128
   },
   {
     "name": "Guadalajara",
@@ -1999,7 +2180,8 @@
     "lat": 20.6597,
     "lng": -103.3496,
     "timezone": "America/Mexico_City",
-    "population": 1495189
+    "population": 1495189,
+    "areaKm2": 831
   },
   {
     "name": "Guangzhou",
@@ -2010,7 +2192,8 @@
     "lat": 23.1291,
     "lng": 113.2644,
     "timezone": "Asia/Shanghai",
-    "population": 18670000
+    "population": 18670000,
+    "areaKm2": 10372
   },
   {
     "name": "Guelph",
@@ -2021,7 +2204,8 @@
     "lat": 43.5448,
     "lng": -80.2482,
     "timezone": "America/Toronto",
-    "population": 131794
+    "population": 131794,
+    "areaKm2": 73
   },
   {
     "name": "Gurgaon",
@@ -2032,7 +2216,8 @@
     "lat": 28.4595,
     "lng": 77.0266,
     "timezone": "Asia/Kolkata",
-    "population": 876824
+    "population": 876824,
+    "areaKm2": 487
   },
   {
     "name": "Guwahati",
@@ -2043,7 +2228,8 @@
     "lat": 26.1445,
     "lng": 91.7362,
     "timezone": "Asia/Kolkata",
-    "population": 962334
+    "population": 962334,
+    "areaKm2": 535
   },
   {
     "name": "Gwalior",
@@ -2054,7 +2240,8 @@
     "lat": 26.2183,
     "lng": 78.1828,
     "timezone": "Asia/Kolkata",
-    "population": 1069276
+    "population": 1069276,
+    "areaKm2": 594
   },
   {
     "name": "Halifax",
@@ -2065,7 +2252,8 @@
     "lat": 44.6488,
     "lng": -63.5752,
     "timezone": "America/Halifax",
-    "population": 439819
+    "population": 439819,
+    "areaKm2": 5490
   },
   {
     "name": "Hamburg",
@@ -2076,7 +2264,8 @@
     "lat": 53.5511,
     "lng": 9.9937,
     "timezone": "Europe/Berlin",
-    "population": 1841000
+    "population": 1841000,
+    "areaKm2": 755
   },
   {
     "name": "Hamilton NZ",
@@ -2087,7 +2276,8 @@
     "lat": -37.787,
     "lng": 175.2793,
     "timezone": "Pacific/Auckland",
-    "population": 176500
+    "population": 176500,
+    "areaKm2": 110
   },
   {
     "name": "Hamilton ON",
@@ -2098,7 +2288,8 @@
     "lat": 43.2557,
     "lng": -79.8711,
     "timezone": "America/Toronto",
-    "population": 569353
+    "population": 569353,
+    "areaKm2": 316
   },
   {
     "name": "Hangzhou",
@@ -2109,7 +2300,8 @@
     "lat": 30.2741,
     "lng": 120.1551,
     "timezone": "Asia/Shanghai",
-    "population": 10360000
+    "population": 10360000,
+    "areaKm2": 5756
   },
   {
     "name": "Hannover",
@@ -2120,7 +2312,8 @@
     "lat": 52.3759,
     "lng": 9.732,
     "timezone": "Europe/Berlin",
-    "population": 536925
+    "population": 536925,
+    "areaKm2": 298
   },
   {
     "name": "Hanoi",
@@ -2131,7 +2324,8 @@
     "lat": 21.0285,
     "lng": 105.8542,
     "timezone": "Asia/Ho_Chi_Minh",
-    "population": 8053663
+    "population": 8053663,
+    "areaKm2": 4474
   },
   {
     "name": "Hartford",
@@ -2142,7 +2336,8 @@
     "lat": 41.7658,
     "lng": -72.6734,
     "timezone": "America/New_York",
-    "population": 121054
+    "population": 121054,
+    "areaKm2": 67
   },
   {
     "name": "Helsinki",
@@ -2153,7 +2348,8 @@
     "lat": 60.1699,
     "lng": 24.9384,
     "timezone": "Europe/Helsinki",
-    "population": 656920
+    "population": 656920,
+    "areaKm2": 365
   },
   {
     "name": "Henderson",
@@ -2164,7 +2360,8 @@
     "lat": 36.0395,
     "lng": -114.9817,
     "timezone": "America/Los_Angeles",
-    "population": 317610
+    "population": 317610,
+    "areaKm2": 176
   },
   {
     "name": "Heraklion",
@@ -2175,7 +2372,8 @@
     "lat": 35.3387,
     "lng": 25.1442,
     "timezone": "Europe/Athens",
-    "population": 140730
+    "population": 140730,
+    "areaKm2": 78
   },
   {
     "name": "Ho Chi Minh City",
@@ -2186,7 +2384,8 @@
     "lat": 10.8231,
     "lng": 106.6297,
     "timezone": "Asia/Ho_Chi_Minh",
-    "population": 8993000
+    "population": 8993000,
+    "areaKm2": 4996
   },
   {
     "name": "Hobart",
@@ -2197,7 +2396,8 @@
     "lat": -42.8821,
     "lng": 147.3272,
     "timezone": "Australia/Hobart",
-    "population": 236200
+    "population": 236200,
+    "areaKm2": 1695
   },
   {
     "name": "Hong Kong City",
@@ -2208,7 +2408,8 @@
     "lat": 22.3193,
     "lng": 114.1694,
     "timezone": "Asia/Hong_Kong",
-    "population": 7482000
+    "population": 7482000,
+    "areaKm2": 4157
   },
   {
     "name": "Honolulu",
@@ -2219,7 +2420,8 @@
     "lat": 21.3069,
     "lng": -157.8583,
     "timezone": "Pacific/Honolulu",
-    "population": 350964
+    "population": 350964,
+    "areaKm2": 177
   },
   {
     "name": "Houston",
@@ -2230,7 +2432,8 @@
     "lat": 29.7604,
     "lng": -95.3698,
     "timezone": "America/Chicago",
-    "population": 2320268
+    "population": 2320268,
+    "areaKm2": 1289
   },
   {
     "name": "Hubballi",
@@ -2241,7 +2444,8 @@
     "lat": 15.3647,
     "lng": 75.124,
     "timezone": "Asia/Kolkata",
-    "population": 943788
+    "population": 943788,
+    "areaKm2": 524
   },
   {
     "name": "Huddersfield",
@@ -2252,7 +2456,8 @@
     "lat": 53.6458,
     "lng": -1.785,
     "timezone": "Europe/London",
-    "population": 162949
+    "population": 162949,
+    "areaKm2": 91
   },
   {
     "name": "Huntsville",
@@ -2263,7 +2468,8 @@
     "lat": 34.7304,
     "lng": -86.5861,
     "timezone": "America/Chicago",
-    "population": 215006
+    "population": 215006,
+    "areaKm2": 119
   },
   {
     "name": "Hyderabad",
@@ -2274,7 +2480,8 @@
     "lat": 17.385,
     "lng": 78.4867,
     "timezone": "Asia/Kolkata",
-    "population": 6993262
+    "population": 6993262,
+    "areaKm2": 650
   },
   {
     "name": "Indianapolis",
@@ -2285,7 +2492,8 @@
     "lat": 39.7684,
     "lng": -86.1581,
     "timezone": "America/Indiana/Indianapolis",
-    "population": 867125
+    "population": 867125,
+    "areaKm2": 482
   },
   {
     "name": "Indore",
@@ -2296,7 +2504,8 @@
     "lat": 22.7196,
     "lng": 75.8577,
     "timezone": "Asia/Kolkata",
-    "population": 1964086
+    "population": 1964086,
+    "areaKm2": 530
   },
   {
     "name": "Innsbruck",
@@ -2307,7 +2516,8 @@
     "lat": 47.2692,
     "lng": 11.4041,
     "timezone": "Europe/Vienna",
-    "population": 132493
+    "population": 132493,
+    "areaKm2": 105
   },
   {
     "name": "Inverness",
@@ -2318,7 +2528,8 @@
     "lat": 57.4778,
     "lng": -4.2247,
     "timezone": "Europe/London",
-    "population": 63730
+    "population": 63730,
+    "areaKm2": 35
   },
   {
     "name": "Ipswich",
@@ -2329,7 +2540,8 @@
     "lat": 52.0567,
     "lng": 1.1482,
     "timezone": "Europe/London",
-    "population": 133384
+    "population": 133384,
+    "areaKm2": 74
   },
   {
     "name": "Irvine",
@@ -2340,7 +2552,8 @@
     "lat": 33.6846,
     "lng": -117.8265,
     "timezone": "America/Los_Angeles",
-    "population": 307670
+    "population": 307670,
+    "areaKm2": 171
   },
   {
     "name": "Islamabad",
@@ -2351,7 +2564,8 @@
     "lat": 33.6844,
     "lng": 73.0479,
     "timezone": "Asia/Karachi",
-    "population": 1014825
+    "population": 1014825,
+    "areaKm2": 564
   },
   {
     "name": "Istanbul",
@@ -2362,7 +2576,8 @@
     "lat": 41.0082,
     "lng": 28.9784,
     "timezone": "Europe/Istanbul",
-    "population": 15460000
+    "population": 15460000,
+    "areaKm2": 8589
   },
   {
     "name": "Jabalpur",
@@ -2373,7 +2588,8 @@
     "lat": 23.1815,
     "lng": 79.9864,
     "timezone": "Asia/Kolkata",
-    "population": 1055525
+    "population": 1055525,
+    "areaKm2": 586
   },
   {
     "name": "Jacksonville",
@@ -2384,7 +2600,8 @@
     "lat": 30.3322,
     "lng": -81.6557,
     "timezone": "America/New_York",
-    "population": 949611
+    "population": 949611,
+    "areaKm2": 528
   },
   {
     "name": "Jaipur",
@@ -2395,7 +2612,8 @@
     "lat": 26.9124,
     "lng": 75.7873,
     "timezone": "Asia/Kolkata",
-    "population": 3046163
+    "population": 3046163,
+    "areaKm2": 467
   },
   {
     "name": "Jakarta",
@@ -2406,7 +2624,8 @@
     "lat": -6.2088,
     "lng": 106.8456,
     "timezone": "Asia/Jakarta",
-    "population": 10562088
+    "population": 10562088,
+    "areaKm2": 5868
   },
   {
     "name": "Jalandhar",
@@ -2417,7 +2636,8 @@
     "lat": 31.326,
     "lng": 75.5762,
     "timezone": "Asia/Kolkata",
-    "population": 862886
+    "population": 862886,
+    "areaKm2": 479
   },
   {
     "name": "Jamnagar",
@@ -2428,7 +2648,8 @@
     "lat": 22.4707,
     "lng": 70.0577,
     "timezone": "Asia/Kolkata",
-    "population": 479920
+    "population": 479920,
+    "areaKm2": 267
   },
   {
     "name": "Jamshedpur",
@@ -2439,7 +2660,8 @@
     "lat": 22.8046,
     "lng": 86.2029,
     "timezone": "Asia/Kolkata",
-    "population": 629337
+    "population": 629337,
+    "areaKm2": 350
   },
   {
     "name": "Jeddah",
@@ -2450,7 +2672,8 @@
     "lat": 21.4858,
     "lng": 39.1925,
     "timezone": "Asia/Riyadh",
-    "population": 4697000
+    "population": 4697000,
+    "areaKm2": 1600
   },
   {
     "name": "Jersey City",
@@ -2461,7 +2684,8 @@
     "lat": 40.7178,
     "lng": -74.0431,
     "timezone": "America/New_York",
-    "population": 292449
+    "population": 292449,
+    "areaKm2": 54
   },
   {
     "name": "Jerusalem",
@@ -2472,7 +2696,8 @@
     "lat": 31.7683,
     "lng": 35.2137,
     "timezone": "Asia/Jerusalem",
-    "population": 936425
+    "population": 936425,
+    "areaKm2": 520
   },
   {
     "name": "Jodhpur",
@@ -2483,7 +2708,8 @@
     "lat": 26.2389,
     "lng": 73.0243,
     "timezone": "Asia/Kolkata",
-    "population": 1033918
+    "population": 1033918,
+    "areaKm2": 574
   },
   {
     "name": "Johannesburg",
@@ -2494,7 +2720,8 @@
     "lat": -26.2041,
     "lng": 28.0473,
     "timezone": "Africa/Johannesburg",
-    "population": 4434827
+    "population": 4434827,
+    "areaKm2": 2464
   },
   {
     "name": "Kamloops",
@@ -2505,7 +2732,8 @@
     "lat": 50.6745,
     "lng": -120.3273,
     "timezone": "America/Vancouver",
-    "population": 90280
+    "population": 90280,
+    "areaKm2": 50
   },
   {
     "name": "Kannur",
@@ -2516,7 +2744,8 @@
     "lat": 11.8745,
     "lng": 75.3704,
     "timezone": "Asia/Kolkata",
-    "population": 232486
+    "population": 232486,
+    "areaKm2": 129
   },
   {
     "name": "Kanpur",
@@ -2527,7 +2756,8 @@
     "lat": 26.4499,
     "lng": 80.3319,
     "timezone": "Asia/Kolkata",
-    "population": 2767031
+    "population": 2767031,
+    "areaKm2": 1537
   },
   {
     "name": "Kansas City",
@@ -2538,7 +2768,8 @@
     "lat": 39.0997,
     "lng": -94.5786,
     "timezone": "America/Chicago",
-    "population": 495327
+    "population": 495327,
+    "areaKm2": 826
   },
   {
     "name": "Kaohsiung",
@@ -2549,7 +2780,8 @@
     "lat": 22.6273,
     "lng": 120.3014,
     "timezone": "Asia/Taipei",
-    "population": 2774000
+    "population": 2774000,
+    "areaKm2": 1541
   },
   {
     "name": "Karachi",
@@ -2560,7 +2792,8 @@
     "lat": 24.8607,
     "lng": 67.0011,
     "timezone": "Asia/Karachi",
-    "population": 14910352
+    "population": 14910352,
+    "areaKm2": 8284
   },
   {
     "name": "Kathmandu",
@@ -2571,7 +2804,8 @@
     "lat": 27.7172,
     "lng": 85.324,
     "timezone": "Asia/Kathmandu",
-    "population": 1442271
+    "population": 1442271,
+    "areaKm2": 801
   },
   {
     "name": "Kelowna",
@@ -2582,7 +2816,8 @@
     "lat": 49.888,
     "lng": -119.496,
     "timezone": "America/Vancouver",
-    "population": 144576
+    "population": 144576,
+    "areaKm2": 80
   },
   {
     "name": "Kingston ON",
@@ -2593,7 +2828,8 @@
     "lat": 44.2312,
     "lng": -76.486,
     "timezone": "America/Toronto",
-    "population": 123798
+    "population": 123798,
+    "areaKm2": 69
   },
   {
     "name": "Kitchener",
@@ -2604,7 +2840,8 @@
     "lat": 43.4516,
     "lng": -80.4925,
     "timezone": "America/Toronto",
-    "population": 256885
+    "population": 256885,
+    "areaKm2": 143
   },
   {
     "name": "Knoxville",
@@ -2615,7 +2852,8 @@
     "lat": 35.9606,
     "lng": -83.9207,
     "timezone": "America/New_York",
-    "population": 190740
+    "population": 190740,
+    "areaKm2": 106
   },
   {
     "name": "Kochi",
@@ -2626,7 +2864,8 @@
     "lat": 9.9312,
     "lng": 76.2673,
     "timezone": "Asia/Kolkata",
-    "population": 677381
+    "population": 677381,
+    "areaKm2": 95
   },
   {
     "name": "Kolkata",
@@ -2637,7 +2876,8 @@
     "lat": 22.5726,
     "lng": 88.3639,
     "timezone": "Asia/Kolkata",
-    "population": 4496694
+    "population": 4496694,
+    "areaKm2": 2498
   },
   {
     "name": "Kollam",
@@ -2648,7 +2888,8 @@
     "lat": 8.8932,
     "lng": 76.6141,
     "timezone": "Asia/Kolkata",
-    "population": 397419
+    "population": 397419,
+    "areaKm2": 221
   },
   {
     "name": "Kota",
@@ -2659,7 +2900,8 @@
     "lat": 25.2138,
     "lng": 75.8648,
     "timezone": "Asia/Kolkata",
-    "population": 1001694
+    "population": 1001694,
+    "areaKm2": 556
   },
   {
     "name": "Kozhikode",
@@ -2670,7 +2912,8 @@
     "lat": 11.2588,
     "lng": 75.7804,
     "timezone": "Asia/Kolkata",
-    "population": 431560
+    "population": 431560,
+    "areaKm2": 240
   },
   {
     "name": "Krakow",
@@ -2681,7 +2924,8 @@
     "lat": 50.0647,
     "lng": 19.945,
     "timezone": "Europe/Warsaw",
-    "population": 779115
+    "population": 779115,
+    "areaKm2": 433
   },
   {
     "name": "Kuala Lumpur",
@@ -2692,7 +2936,8 @@
     "lat": 3.139,
     "lng": 101.6869,
     "timezone": "Asia/Kuala_Lumpur",
-    "population": 1808000
+    "population": 1808000,
+    "areaKm2": 1004
   },
   {
     "name": "Kuwait City",
@@ -2703,7 +2948,8 @@
     "lat": 29.3759,
     "lng": 47.9774,
     "timezone": "Asia/Kuwait",
-    "population": 3000000
+    "population": 3000000,
+    "areaKm2": 200
   },
   {
     "name": "Kyiv",
@@ -2714,7 +2960,8 @@
     "lat": 50.4501,
     "lng": 30.5234,
     "timezone": "Europe/Kyiv",
-    "population": 2962180
+    "population": 2962180,
+    "areaKm2": 1646
   },
   {
     "name": "Kyoto",
@@ -2725,7 +2972,8 @@
     "lat": 35.0116,
     "lng": 135.7681,
     "timezone": "Asia/Tokyo",
-    "population": 1475000
+    "population": 1475000,
+    "areaKm2": 828
   },
   {
     "name": "Lagos",
@@ -2736,7 +2984,8 @@
     "lat": 6.5244,
     "lng": 3.3792,
     "timezone": "Africa/Lagos",
-    "population": 14862000
+    "population": 14862000,
+    "areaKm2": 8257
   },
   {
     "name": "Lahore",
@@ -2747,7 +2996,8 @@
     "lat": 31.5204,
     "lng": 74.3587,
     "timezone": "Asia/Karachi",
-    "population": 11126285
+    "population": 11126285,
+    "areaKm2": 6181
   },
   {
     "name": "Lansing",
@@ -2758,7 +3008,8 @@
     "lat": 42.7325,
     "lng": -84.5555,
     "timezone": "America/Detroit",
-    "population": 112644
+    "population": 112644,
+    "areaKm2": 63
   },
   {
     "name": "Laredo",
@@ -2769,7 +3020,8 @@
     "lat": 27.5036,
     "lng": -99.5076,
     "timezone": "America/Chicago",
-    "population": 255205
+    "population": 255205,
+    "areaKm2": 142
   },
   {
     "name": "Las Palmas",
@@ -2780,7 +3032,8 @@
     "lat": 28.1235,
     "lng": -15.4363,
     "timezone": "Atlantic/Canary",
-    "population": 381223
+    "population": 381223,
+    "areaKm2": 212
   },
   {
     "name": "Las Vegas",
@@ -2791,7 +3044,8 @@
     "lat": 36.1699,
     "lng": -115.1398,
     "timezone": "America/Los_Angeles",
-    "population": 641903
+    "population": 641903,
+    "areaKm2": 367
   },
   {
     "name": "Launceston",
@@ -2802,7 +3056,8 @@
     "lat": -41.4332,
     "lng": 147.1441,
     "timezone": "Australia/Hobart",
-    "population": 87345
+    "population": 87345,
+    "areaKm2": 49
   },
   {
     "name": "Lausanne",
@@ -2813,7 +3068,8 @@
     "lat": 46.5197,
     "lng": 6.6323,
     "timezone": "Europe/Zurich",
-    "population": 139111
+    "population": 139111,
+    "areaKm2": 41
   },
   {
     "name": "Leeds",
@@ -2824,7 +3080,8 @@
     "lat": 53.8008,
     "lng": -1.5491,
     "timezone": "Europe/London",
-    "population": 789194
+    "population": 789194,
+    "areaKm2": 551
   },
   {
     "name": "Leicester",
@@ -2835,7 +3092,8 @@
     "lat": 52.6369,
     "lng": -1.1398,
     "timezone": "Europe/London",
-    "population": 368600
+    "population": 368600,
+    "areaKm2": 205
   },
   {
     "name": "Leipzig",
@@ -2846,7 +3104,8 @@
     "lat": 51.3397,
     "lng": 12.3731,
     "timezone": "Europe/Berlin",
-    "population": 587857
+    "population": 587857,
+    "areaKm2": 327
   },
   {
     "name": "Lethbridge",
@@ -2857,7 +3116,8 @@
     "lat": 49.6956,
     "lng": -112.8451,
     "timezone": "America/Edmonton",
-    "population": 98406
+    "population": 98406,
+    "areaKm2": 55
   },
   {
     "name": "Liege",
@@ -2868,7 +3128,8 @@
     "lat": 50.6326,
     "lng": 5.5797,
     "timezone": "Europe/Brussels",
-    "population": 197217
+    "population": 197217,
+    "areaKm2": 110
   },
   {
     "name": "Lille",
@@ -2879,7 +3140,8 @@
     "lat": 50.6292,
     "lng": 3.0573,
     "timezone": "Europe/Paris",
-    "population": 233098
+    "population": 233098,
+    "areaKm2": 129
   },
   {
     "name": "Lima",
@@ -2890,7 +3152,8 @@
     "lat": -12.0464,
     "lng": -77.0428,
     "timezone": "America/Lima",
-    "population": 9674755
+    "population": 9674755,
+    "areaKm2": 5375
   },
   {
     "name": "Lincoln",
@@ -2901,7 +3164,8 @@
     "lat": 40.8136,
     "lng": -96.7026,
     "timezone": "America/Chicago",
-    "population": 291082
+    "population": 291082,
+    "areaKm2": 162
   },
   {
     "name": "Linz",
@@ -2912,7 +3176,8 @@
     "lat": 48.3069,
     "lng": 14.2858,
     "timezone": "Europe/Vienna",
-    "population": 206595
+    "population": 206595,
+    "areaKm2": 115
   },
   {
     "name": "Lisbon",
@@ -2923,7 +3188,8 @@
     "lat": 38.7223,
     "lng": -9.1393,
     "timezone": "Europe/Lisbon",
-    "population": 504718
+    "population": 504718,
+    "areaKm2": 280
   },
   {
     "name": "Little Rock",
@@ -2934,7 +3200,8 @@
     "lat": 34.7465,
     "lng": -92.2896,
     "timezone": "America/Chicago",
-    "population": 202591
+    "population": 202591,
+    "areaKm2": 113
   },
   {
     "name": "Liverpool",
@@ -2945,7 +3212,8 @@
     "lat": 53.4084,
     "lng": -2.9916,
     "timezone": "Europe/London",
-    "population": 498042
+    "population": 498042,
+    "areaKm2": 111
   },
   {
     "name": "London",
@@ -2956,7 +3224,8 @@
     "lat": 51.5074,
     "lng": -0.1278,
     "timezone": "Europe/London",
-    "population": 8982000
+    "population": 8982000,
+    "areaKm2": 4990
   },
   {
     "name": "London ON",
@@ -2967,7 +3236,8 @@
     "lat": 42.9849,
     "lng": -81.2453,
     "timezone": "America/Toronto",
-    "population": 422324
+    "population": 422324,
+    "areaKm2": 235
   },
   {
     "name": "Long Beach",
@@ -2978,7 +3248,8 @@
     "lat": 33.7701,
     "lng": -118.1937,
     "timezone": "America/Los_Angeles",
-    "population": 466742
+    "population": 466742,
+    "areaKm2": 259
   },
   {
     "name": "Los Angeles",
@@ -2989,7 +3260,8 @@
     "lat": 34.0522,
     "lng": -118.2437,
     "timezone": "America/Los_Angeles",
-    "population": 3979576
+    "population": 3979576,
+    "areaKm2": 2211
   },
   {
     "name": "Louisville",
@@ -3000,7 +3272,8 @@
     "lat": 38.2527,
     "lng": -85.7585,
     "timezone": "America/Kentucky/Louisville",
-    "population": 617638
+    "population": 617638,
+    "areaKm2": 343
   },
   {
     "name": "Lubbock",
@@ -3011,7 +3284,8 @@
     "lat": 33.5779,
     "lng": -101.8552,
     "timezone": "America/Chicago",
-    "population": 257141
+    "population": 257141,
+    "areaKm2": 143
   },
   {
     "name": "Lucknow",
@@ -3022,7 +3296,8 @@
     "lat": 26.8467,
     "lng": 80.9462,
     "timezone": "Asia/Kolkata",
-    "population": 2817105
+    "population": 2817105,
+    "areaKm2": 631
   },
   {
     "name": "Ludhiana",
@@ -3033,7 +3308,8 @@
     "lat": 30.901,
     "lng": 75.8573,
     "timezone": "Asia/Kolkata",
-    "population": 1618879
+    "population": 1618879,
+    "areaKm2": 899
   },
   {
     "name": "Luton",
@@ -3044,7 +3320,8 @@
     "lat": 51.8787,
     "lng": -0.42,
     "timezone": "Europe/London",
-    "population": 213528
+    "population": 213528,
+    "areaKm2": 119
   },
   {
     "name": "Lyon",
@@ -3055,7 +3332,8 @@
     "lat": 45.764,
     "lng": 4.8357,
     "timezone": "Europe/Paris",
-    "population": 513275
+    "population": 513275,
+    "areaKm2": 48
   },
   {
     "name": "Mackay",
@@ -3066,7 +3344,8 @@
     "lat": -21.1411,
     "lng": 149.1861,
     "timezone": "Australia/Brisbane",
-    "population": 80148
+    "population": 80148,
+    "areaKm2": 45
   },
   {
     "name": "Madison",
@@ -3077,7 +3356,8 @@
     "lat": 43.0731,
     "lng": -89.4012,
     "timezone": "America/Chicago",
-    "population": 269840
+    "population": 269840,
+    "areaKm2": 150
   },
   {
     "name": "Madrid",
@@ -3088,7 +3368,8 @@
     "lat": 40.4168,
     "lng": -3.7038,
     "timezone": "Europe/Madrid",
-    "population": 3223000
+    "population": 3223000,
+    "areaKm2": 1791
   },
   {
     "name": "Madurai",
@@ -3099,7 +3380,8 @@
     "lat": 9.9252,
     "lng": 78.1198,
     "timezone": "Asia/Kolkata",
-    "population": 1017865
+    "population": 1017865,
+    "areaKm2": 565
   },
   {
     "name": "Malaga",
@@ -3110,7 +3392,8 @@
     "lat": 36.7213,
     "lng": -4.4214,
     "timezone": "Europe/Madrid",
-    "population": 574654
+    "population": 574654,
+    "areaKm2": 319
   },
   {
     "name": "Malmo",
@@ -3121,7 +3404,8 @@
     "lat": 55.605,
     "lng": 13.0038,
     "timezone": "Europe/Stockholm",
-    "population": 316588
+    "population": 316588,
+    "areaKm2": 176
   },
   {
     "name": "Manama",
@@ -3132,7 +3416,8 @@
     "lat": 26.2285,
     "lng": 50.586,
     "timezone": "Asia/Bahrain",
-    "population": 157474
+    "population": 157474,
+    "areaKm2": 30
   },
   {
     "name": "Manchester",
@@ -3143,7 +3428,8 @@
     "lat": 53.4808,
     "lng": -2.2426,
     "timezone": "Europe/London",
-    "population": 547627
+    "population": 547627,
+    "areaKm2": 115
   },
   {
     "name": "Mangaluru",
@@ -3154,7 +3440,8 @@
     "lat": 12.9141,
     "lng": 74.856,
     "timezone": "Asia/Kolkata",
-    "population": 499487
+    "population": 499487,
+    "areaKm2": 277
   },
   {
     "name": "Manila",
@@ -3165,7 +3452,8 @@
     "lat": 14.5995,
     "lng": 120.9842,
     "timezone": "Asia/Manila",
-    "population": 1846513
+    "population": 1846513,
+    "areaKm2": 1026
   },
   {
     "name": "Marseille",
@@ -3176,7 +3464,8 @@
     "lat": 43.2965,
     "lng": 5.3698,
     "timezone": "Europe/Paris",
-    "population": 861635
+    "population": 861635,
+    "areaKm2": 240
   },
   {
     "name": "Mecca",
@@ -3187,7 +3476,8 @@
     "lat": 21.3891,
     "lng": 39.8579,
     "timezone": "Asia/Riyadh",
-    "population": 1578722
+    "population": 1578722,
+    "areaKm2": 877
   },
   {
     "name": "Medellin",
@@ -3198,7 +3488,8 @@
     "lat": 6.2442,
     "lng": -75.5812,
     "timezone": "America/Bogota",
-    "population": 2569007
+    "population": 2569007,
+    "areaKm2": 1427
   },
   {
     "name": "Meerut",
@@ -3209,7 +3500,8 @@
     "lat": 28.9845,
     "lng": 77.7064,
     "timezone": "Asia/Kolkata",
-    "population": 1305429
+    "population": 1305429,
+    "areaKm2": 725
   },
   {
     "name": "Melbourne",
@@ -3220,7 +3512,8 @@
     "lat": -37.8136,
     "lng": 144.9631,
     "timezone": "Australia/Melbourne",
-    "population": 5078193
+    "population": 5078193,
+    "areaKm2": 2821
   },
   {
     "name": "Memphis",
@@ -3231,7 +3524,8 @@
     "lat": 35.1495,
     "lng": -90.049,
     "timezone": "America/Chicago",
-    "population": 633104
+    "population": 633104,
+    "areaKm2": 352
   },
   {
     "name": "Mesa",
@@ -3242,7 +3536,8 @@
     "lat": 33.4152,
     "lng": -111.8315,
     "timezone": "America/Phoenix",
-    "population": 504258
+    "population": 504258,
+    "areaKm2": 280
   },
   {
     "name": "Mexico City",
@@ -3253,7 +3548,8 @@
     "lat": 19.4326,
     "lng": -99.1332,
     "timezone": "America/Mexico_City",
-    "population": 9209944
+    "population": 9209944,
+    "areaKm2": 5117
   },
   {
     "name": "Miami",
@@ -3264,7 +3560,8 @@
     "lat": 25.7617,
     "lng": -80.1918,
     "timezone": "America/New_York",
-    "population": 442241
+    "population": 442241,
+    "areaKm2": 246
   },
   {
     "name": "Middlesbrough",
@@ -3275,7 +3572,8 @@
     "lat": 54.5742,
     "lng": -1.235,
     "timezone": "Europe/London",
-    "population": 140980
+    "population": 140980,
+    "areaKm2": 78
   },
   {
     "name": "Milan",
@@ -3286,7 +3584,8 @@
     "lat": 45.4642,
     "lng": 9.19,
     "timezone": "Europe/Rome",
-    "population": 1352000
+    "population": 1352000,
+    "areaKm2": 182
   },
   {
     "name": "Milton Keynes",
@@ -3297,7 +3596,8 @@
     "lat": 52.0406,
     "lng": -0.7594,
     "timezone": "Europe/London",
-    "population": 229941
+    "population": 229941,
+    "areaKm2": 128
   },
   {
     "name": "Milwaukee",
@@ -3308,7 +3608,8 @@
     "lat": 43.0389,
     "lng": -87.9065,
     "timezone": "America/Chicago",
-    "population": 577222
+    "population": 577222,
+    "areaKm2": 321
   },
   {
     "name": "Minneapolis",
@@ -3319,7 +3620,8 @@
     "lat": 44.9778,
     "lng": -93.265,
     "timezone": "America/Chicago",
-    "population": 429954
+    "population": 429954,
+    "areaKm2": 150
   },
   {
     "name": "Mobile",
@@ -3330,7 +3632,8 @@
     "lat": 30.6954,
     "lng": -88.0399,
     "timezone": "America/Chicago",
-    "population": 187041
+    "population": 187041,
+    "areaKm2": 104
   },
   {
     "name": "Modesto",
@@ -3341,7 +3644,8 @@
     "lat": 37.6391,
     "lng": -120.9969,
     "timezone": "America/Los_Angeles",
-    "population": 218464
+    "population": 218464,
+    "areaKm2": 121
   },
   {
     "name": "Mombasa",
@@ -3352,7 +3656,8 @@
     "lat": -4.0435,
     "lng": 39.6682,
     "timezone": "Africa/Nairobi",
-    "population": 1208333
+    "population": 1208333,
+    "areaKm2": 671
   },
   {
     "name": "Moncton",
@@ -3363,7 +3668,8 @@
     "lat": 46.0878,
     "lng": -64.7782,
     "timezone": "America/Halifax",
-    "population": 71889
+    "population": 71889,
+    "areaKm2": 40
   },
   {
     "name": "Monterrey",
@@ -3374,7 +3680,8 @@
     "lat": 25.6866,
     "lng": -100.3161,
     "timezone": "America/Monterrey",
-    "population": 1142994
+    "population": 1142994,
+    "areaKm2": 635
   },
   {
     "name": "Montgomery",
@@ -3385,7 +3692,8 @@
     "lat": 32.3792,
     "lng": -86.3077,
     "timezone": "America/Chicago",
-    "population": 200603
+    "population": 200603,
+    "areaKm2": 111
   },
   {
     "name": "Montpellier",
@@ -3396,7 +3704,8 @@
     "lat": 43.6108,
     "lng": 3.8767,
     "timezone": "Europe/Paris",
-    "population": 285121
+    "population": 285121,
+    "areaKm2": 158
   },
   {
     "name": "Montreal",
@@ -3407,7 +3716,8 @@
     "lat": 45.5017,
     "lng": -73.5673,
     "timezone": "America/Toronto",
-    "population": 1762949
+    "population": 1762949,
+    "areaKm2": 979
   },
   {
     "name": "Moradabad",
@@ -3418,7 +3728,8 @@
     "lat": 28.8351,
     "lng": 78.7747,
     "timezone": "Asia/Kolkata",
-    "population": 887871
+    "population": 887871,
+    "areaKm2": 493
   },
   {
     "name": "Moscow",
@@ -3429,7 +3740,8 @@
     "lat": 55.7558,
     "lng": 37.6173,
     "timezone": "Europe/Moscow",
-    "population": 12655050
+    "population": 12655050,
+    "areaKm2": 7031
   },
   {
     "name": "Mumbai",
@@ -3440,7 +3752,8 @@
     "lat": 19.076,
     "lng": 72.8777,
     "timezone": "Asia/Kolkata",
-    "population": 12442373
+    "population": 12442373,
+    "areaKm2": 6912
   },
   {
     "name": "Munich",
@@ -3451,7 +3764,8 @@
     "lat": 48.1351,
     "lng": 11.582,
     "timezone": "Europe/Berlin",
-    "population": 1472000
+    "population": 1472000,
+    "areaKm2": 310
   },
   {
     "name": "Muscat",
@@ -3462,7 +3776,8 @@
     "lat": 23.588,
     "lng": 58.3829,
     "timezone": "Asia/Muscat",
-    "population": 1421409
+    "population": 1421409,
+    "areaKm2": 3500
   },
   {
     "name": "Mysuru",
@@ -3473,7 +3788,8 @@
     "lat": 12.2958,
     "lng": 76.6394,
     "timezone": "Asia/Kolkata",
-    "population": 920550
+    "population": 920550,
+    "areaKm2": 511
   },
   {
     "name": "Nagoya",
@@ -3484,7 +3800,8 @@
     "lat": 35.1815,
     "lng": 136.9066,
     "timezone": "Asia/Tokyo",
-    "population": 2296000
+    "population": 2296000,
+    "areaKm2": 1276
   },
   {
     "name": "Nagpur",
@@ -3495,7 +3812,8 @@
     "lat": 21.1458,
     "lng": 79.0882,
     "timezone": "Asia/Kolkata",
-    "population": 2405665
+    "population": 2405665,
+    "areaKm2": 1336
   },
   {
     "name": "Nairobi",
@@ -3506,7 +3824,8 @@
     "lat": -1.2921,
     "lng": 36.8219,
     "timezone": "Africa/Nairobi",
-    "population": 4397073
+    "population": 4397073,
+    "areaKm2": 2443
   },
   {
     "name": "Nanaimo",
@@ -3517,7 +3836,8 @@
     "lat": 49.1659,
     "lng": -123.9401,
     "timezone": "America/Vancouver",
-    "population": 90504
+    "population": 90504,
+    "areaKm2": 50
   },
   {
     "name": "Nantes",
@@ -3528,7 +3848,8 @@
     "lat": 47.2184,
     "lng": -1.5536,
     "timezone": "Europe/Paris",
-    "population": 309346
+    "population": 309346,
+    "areaKm2": 172
   },
   {
     "name": "Napier",
@@ -3539,7 +3860,8 @@
     "lat": -39.4928,
     "lng": 176.912,
     "timezone": "Pacific/Auckland",
-    "population": 66800
+    "population": 66800,
+    "areaKm2": 37
   },
   {
     "name": "Naples",
@@ -3550,7 +3872,8 @@
     "lat": 40.8518,
     "lng": 14.2681,
     "timezone": "Europe/Rome",
-    "population": 967068
+    "population": 967068,
+    "areaKm2": 537
   },
   {
     "name": "Nashik",
@@ -3561,7 +3884,8 @@
     "lat": 19.9975,
     "lng": 73.7898,
     "timezone": "Asia/Kolkata",
-    "population": 1486053
+    "population": 1486053,
+    "areaKm2": 826
   },
   {
     "name": "Nashville",
@@ -3572,7 +3896,8 @@
     "lat": 36.1627,
     "lng": -86.7816,
     "timezone": "America/Chicago",
-    "population": 670820
+    "population": 670820,
+    "areaKm2": 1362
   },
   {
     "name": "Navi Mumbai",
@@ -3583,7 +3908,8 @@
     "lat": 19.033,
     "lng": 73.0297,
     "timezone": "Asia/Kolkata",
-    "population": 1120547
+    "population": 1120547,
+    "areaKm2": 623
   },
   {
     "name": "Nellore",
@@ -3594,7 +3920,8 @@
     "lat": 14.4426,
     "lng": 79.9865,
     "timezone": "Asia/Kolkata",
-    "population": 499575
+    "population": 499575,
+    "areaKm2": 278
   },
   {
     "name": "Nelson",
@@ -3605,7 +3932,8 @@
     "lat": -41.2706,
     "lng": 173.284,
     "timezone": "Pacific/Auckland",
-    "population": 54500
+    "population": 54500,
+    "areaKm2": 35
   },
   {
     "name": "New Haven",
@@ -3616,7 +3944,8 @@
     "lat": 41.3083,
     "lng": -72.9279,
     "timezone": "America/New_York",
-    "population": 134023
+    "population": 134023,
+    "areaKm2": 74
   },
   {
     "name": "New Orleans",
@@ -3627,7 +3956,8 @@
     "lat": 29.9511,
     "lng": -90.0715,
     "timezone": "America/Chicago",
-    "population": 383997
+    "population": 383997,
+    "areaKm2": 213
   },
   {
     "name": "New York",
@@ -3638,7 +3968,8 @@
     "lat": 40.7128,
     "lng": -74.006,
     "timezone": "America/New_York",
-    "population": 8336817
+    "population": 8336817,
+    "areaKm2": 4632
   },
   {
     "name": "Newark",
@@ -3649,7 +3980,8 @@
     "lat": 40.7357,
     "lng": -74.1724,
     "timezone": "America/New_York",
-    "population": 311549
+    "population": 311549,
+    "areaKm2": 173
   },
   {
     "name": "Newcastle",
@@ -3660,7 +3992,8 @@
     "lat": 54.9783,
     "lng": -1.6178,
     "timezone": "Europe/London",
-    "population": 300196
+    "population": 300196,
+    "areaKm2": 167
   },
   {
     "name": "Newcastle Australia",
@@ -3671,7 +4004,8 @@
     "lat": -32.9283,
     "lng": 151.7817,
     "timezone": "Australia/Sydney",
-    "population": 322278
+    "population": 322278,
+    "areaKm2": 179
   },
   {
     "name": "Nice",
@@ -3682,7 +4016,8 @@
     "lat": 43.7102,
     "lng": 7.262,
     "timezone": "Europe/Paris",
-    "population": 340017
+    "population": 340017,
+    "areaKm2": 72
   },
   {
     "name": "Noida",
@@ -3693,7 +4028,8 @@
     "lat": 28.5355,
     "lng": 77.391,
     "timezone": "Asia/Kolkata",
-    "population": 637272
+    "population": 637272,
+    "areaKm2": 354
   },
   {
     "name": "Norfolk",
@@ -3704,7 +4040,8 @@
     "lat": 36.8508,
     "lng": -76.2859,
     "timezone": "America/New_York",
-    "population": 238005
+    "population": 238005,
+    "areaKm2": 132
   },
   {
     "name": "Northampton",
@@ -3715,7 +4052,8 @@
     "lat": 52.2405,
     "lng": -0.9027,
     "timezone": "Europe/London",
-    "population": 215171
+    "population": 215171,
+    "areaKm2": 120
   },
   {
     "name": "Norwich",
@@ -3726,7 +4064,8 @@
     "lat": 52.6309,
     "lng": 1.2974,
     "timezone": "Europe/London",
-    "population": 143135
+    "population": 143135,
+    "areaKm2": 80
   },
   {
     "name": "Nottingham",
@@ -3737,7 +4076,8 @@
     "lat": 52.9548,
     "lng": -1.1581,
     "timezone": "Europe/London",
-    "population": 321500
+    "population": 321500,
+    "areaKm2": 179
   },
   {
     "name": "Nuremberg",
@@ -3748,7 +4088,8 @@
     "lat": 49.4521,
     "lng": 11.0767,
     "timezone": "Europe/Berlin",
-    "population": 518370
+    "population": 518370,
+    "areaKm2": 288
   },
   {
     "name": "Oakland",
@@ -3759,7 +4100,8 @@
     "lat": 37.8044,
     "lng": -122.2712,
     "timezone": "America/Los_Angeles",
-    "population": 440646
+    "population": 440646,
+    "areaKm2": 202
   },
   {
     "name": "Odense",
@@ -3770,7 +4112,8 @@
     "lat": 55.4038,
     "lng": 10.4024,
     "timezone": "Europe/Copenhagen",
-    "population": 180302
+    "population": 180302,
+    "areaKm2": 100
   },
   {
     "name": "Oklahoma City",
@@ -3781,7 +4124,8 @@
     "lat": 35.4676,
     "lng": -97.5164,
     "timezone": "America/Chicago",
-    "population": 681054
+    "population": 681054,
+    "areaKm2": 378
   },
   {
     "name": "Omaha",
@@ -3792,7 +4136,8 @@
     "lat": 41.2565,
     "lng": -95.9345,
     "timezone": "America/Chicago",
-    "population": 486051
+    "population": 486051,
+    "areaKm2": 270
   },
   {
     "name": "Orlando",
@@ -3803,7 +4148,8 @@
     "lat": 28.5383,
     "lng": -81.3792,
     "timezone": "America/New_York",
-    "population": 287442
+    "population": 287442,
+    "areaKm2": 308
   },
   {
     "name": "Osaka",
@@ -3814,7 +4160,8 @@
     "lat": 34.6937,
     "lng": 135.5023,
     "timezone": "Asia/Tokyo",
-    "population": 2691000
+    "population": 2691000,
+    "areaKm2": 225
   },
   {
     "name": "Oshawa",
@@ -3825,7 +4172,8 @@
     "lat": 43.8971,
     "lng": -78.8658,
     "timezone": "America/Toronto",
-    "population": 166000
+    "population": 166000,
+    "areaKm2": 92
   },
   {
     "name": "Oslo",
@@ -3836,7 +4184,8 @@
     "lat": 59.9139,
     "lng": 10.7522,
     "timezone": "Europe/Oslo",
-    "population": 693494
+    "population": 693494,
+    "areaKm2": 385
   },
   {
     "name": "Ottawa",
@@ -3847,7 +4196,8 @@
     "lat": 45.4215,
     "lng": -75.6972,
     "timezone": "America/Toronto",
-    "population": 1017449
+    "population": 1017449,
+    "areaKm2": 2790
   },
   {
     "name": "Oxford",
@@ -3858,7 +4208,8 @@
     "lat": 51.752,
     "lng": -1.2577,
     "timezone": "Europe/London",
-    "population": 152450
+    "population": 152450,
+    "areaKm2": 46
   },
   {
     "name": "Oxnard",
@@ -3869,7 +4220,8 @@
     "lat": 34.1975,
     "lng": -119.1771,
     "timezone": "America/Los_Angeles",
-    "population": 202063
+    "population": 202063,
+    "areaKm2": 112
   },
   {
     "name": "Palermo",
@@ -3880,7 +4232,8 @@
     "lat": 38.1157,
     "lng": 13.3615,
     "timezone": "Europe/Rome",
-    "population": 676118
+    "population": 676118,
+    "areaKm2": 376
   },
   {
     "name": "Palma de Mallorca",
@@ -3891,7 +4244,8 @@
     "lat": 39.5696,
     "lng": 2.6502,
     "timezone": "Europe/Madrid",
-    "population": 416065
+    "population": 416065,
+    "areaKm2": 231
   },
   {
     "name": "Palmerston North",
@@ -3902,7 +4256,8 @@
     "lat": -40.3523,
     "lng": 175.6082,
     "timezone": "Pacific/Auckland",
-    "population": 88700
+    "population": 88700,
+    "areaKm2": 49
   },
   {
     "name": "Panama City",
@@ -3913,7 +4268,8 @@
     "lat": 8.9824,
     "lng": -79.5199,
     "timezone": "America/Panama",
-    "population": 880691
+    "population": 880691,
+    "areaKm2": 489
   },
   {
     "name": "Paris",
@@ -3924,7 +4280,8 @@
     "lat": 48.8566,
     "lng": 2.3522,
     "timezone": "Europe/Paris",
-    "population": 2161000
+    "population": 2161000,
+    "areaKm2": 1201
   },
   {
     "name": "Pasadena",
@@ -3935,7 +4292,8 @@
     "lat": 34.1478,
     "lng": -118.1445,
     "timezone": "America/Los_Angeles",
-    "population": 138699
+    "population": 138699,
+    "areaKm2": 77
   },
   {
     "name": "Patna",
@@ -3946,7 +4304,8 @@
     "lat": 25.5941,
     "lng": 85.1376,
     "timezone": "Asia/Kolkata",
-    "population": 1684222
+    "population": 1684222,
+    "areaKm2": 936
   },
   {
     "name": "Perth",
@@ -3957,7 +4316,8 @@
     "lat": -31.9505,
     "lng": 115.8605,
     "timezone": "Australia/Perth",
-    "population": 2059484
+    "population": 2059484,
+    "areaKm2": 6418
   },
   {
     "name": "Peterborough",
@@ -3968,7 +4328,8 @@
     "lat": 52.5695,
     "lng": -0.2405,
     "timezone": "Europe/London",
-    "population": 202110
+    "population": 202110,
+    "areaKm2": 112
   },
   {
     "name": "Philadelphia",
@@ -3979,7 +4340,8 @@
     "lat": 39.9526,
     "lng": -75.1652,
     "timezone": "America/New_York",
-    "population": 1584064
+    "population": 1584064,
+    "areaKm2": 880
   },
   {
     "name": "Phoenix",
@@ -3990,7 +4352,8 @@
     "lat": 33.4484,
     "lng": -112.074,
     "timezone": "America/Phoenix",
-    "population": 1680992
+    "population": 1680992,
+    "areaKm2": 934
   },
   {
     "name": "Pittsburgh",
@@ -4001,7 +4364,8 @@
     "lat": 40.4406,
     "lng": -79.9959,
     "timezone": "America/New_York",
-    "population": 302971
+    "population": 302971,
+    "areaKm2": 151
   },
   {
     "name": "Plano",
@@ -4012,7 +4376,8 @@
     "lat": 33.0198,
     "lng": -96.6989,
     "timezone": "America/Chicago",
-    "population": 285494
+    "population": 285494,
+    "areaKm2": 159
   },
   {
     "name": "Plymouth",
@@ -4023,7 +4388,8 @@
     "lat": 50.3755,
     "lng": -4.1427,
     "timezone": "Europe/London",
-    "population": 262100
+    "population": 262100,
+    "areaKm2": 146
   },
   {
     "name": "Pokhara",
@@ -4034,7 +4400,8 @@
     "lat": 28.2096,
     "lng": 83.9856,
     "timezone": "Asia/Kathmandu",
-    "population": 422000
+    "population": 422000,
+    "areaKm2": 234
   },
   {
     "name": "Ponta Delgada",
@@ -4045,7 +4412,8 @@
     "lat": 37.7412,
     "lng": -25.6756,
     "timezone": "Atlantic/Azores",
-    "population": 68809
+    "population": 68809,
+    "areaKm2": 38
   },
   {
     "name": "Portland",
@@ -4056,7 +4424,8 @@
     "lat": 45.5152,
     "lng": -122.6784,
     "timezone": "America/Los_Angeles",
-    "population": 652503
+    "population": 652503,
+    "areaKm2": 376
   },
   {
     "name": "Porto",
@@ -4067,7 +4436,8 @@
     "lat": 41.1579,
     "lng": -8.6291,
     "timezone": "Europe/Lisbon",
-    "population": 214349
+    "population": 214349,
+    "areaKm2": 119
   },
   {
     "name": "Portsmouth",
@@ -4078,7 +4448,8 @@
     "lat": 50.8198,
     "lng": -1.088,
     "timezone": "Europe/London",
-    "population": 238137
+    "population": 238137,
+    "areaKm2": 132
   },
   {
     "name": "Poznan",
@@ -4089,7 +4460,8 @@
     "lat": 52.4064,
     "lng": 16.9252,
     "timezone": "Europe/Warsaw",
-    "population": 534813
+    "population": 534813,
+    "areaKm2": 297
   },
   {
     "name": "Prague",
@@ -4100,7 +4472,8 @@
     "lat": 50.0755,
     "lng": 14.4378,
     "timezone": "Europe/Prague",
-    "population": 1309000
+    "population": 1309000,
+    "areaKm2": 727
   },
   {
     "name": "Preston",
@@ -4111,7 +4484,8 @@
     "lat": 53.7632,
     "lng": -2.7031,
     "timezone": "Europe/London",
-    "population": 141801
+    "population": 141801,
+    "areaKm2": 79
   },
   {
     "name": "Providence",
@@ -4122,7 +4496,8 @@
     "lat": 41.824,
     "lng": -71.4128,
     "timezone": "America/New_York",
-    "population": 190934
+    "population": 190934,
+    "areaKm2": 106
   },
   {
     "name": "Pune",
@@ -4133,7 +4508,8 @@
     "lat": 18.5204,
     "lng": 73.8567,
     "timezone": "Asia/Kolkata",
-    "population": 3124458
+    "population": 3124458,
+    "areaKm2": 331
   },
   {
     "name": "Quebec City",
@@ -4144,7 +4520,8 @@
     "lat": 46.8139,
     "lng": -71.2082,
     "timezone": "America/Toronto",
-    "population": 549459
+    "population": 549459,
+    "areaKm2": 454
   },
   {
     "name": "Queenstown",
@@ -4155,7 +4532,8 @@
     "lat": -45.0312,
     "lng": 168.6626,
     "timezone": "Pacific/Auckland",
-    "population": 16600
+    "population": 16600,
+    "areaKm2": 25
   },
   {
     "name": "Quezon City",
@@ -4166,7 +4544,8 @@
     "lat": 14.676,
     "lng": 121.0437,
     "timezone": "Asia/Manila",
-    "population": 2960048
+    "population": 2960048,
+    "areaKm2": 1644
   },
   {
     "name": "Raipur",
@@ -4177,7 +4556,8 @@
     "lat": 21.2514,
     "lng": 81.6296,
     "timezone": "Asia/Kolkata",
-    "population": 1010433
+    "population": 1010433,
+    "areaKm2": 561
   },
   {
     "name": "Rajkot",
@@ -4188,7 +4568,8 @@
     "lat": 22.3039,
     "lng": 70.8022,
     "timezone": "Asia/Kolkata",
-    "population": 1286678
+    "population": 1286678,
+    "areaKm2": 715
   },
   {
     "name": "Raleigh",
@@ -4199,7 +4580,8 @@
     "lat": 35.7796,
     "lng": -78.6382,
     "timezone": "America/New_York",
-    "population": 467665
+    "population": 467665,
+    "areaKm2": 260
   },
   {
     "name": "Ranchi",
@@ -4210,7 +4592,8 @@
     "lat": 23.3441,
     "lng": 85.3096,
     "timezone": "Asia/Kolkata",
-    "population": 1073427
+    "population": 1073427,
+    "areaKm2": 596
   },
   {
     "name": "Reading",
@@ -4221,7 +4604,8 @@
     "lat": 51.4543,
     "lng": -0.9781,
     "timezone": "Europe/London",
-    "population": 174224
+    "population": 174224,
+    "areaKm2": 97
   },
   {
     "name": "Red Deer",
@@ -4232,7 +4616,8 @@
     "lat": 52.269,
     "lng": -113.8116,
     "timezone": "America/Edmonton",
-    "population": 100418
+    "population": 100418,
+    "areaKm2": 56
   },
   {
     "name": "Regina",
@@ -4243,7 +4628,8 @@
     "lat": 50.4547,
     "lng": -104.6067,
     "timezone": "America/Regina",
-    "population": 226404
+    "population": 226404,
+    "areaKm2": 126
   },
   {
     "name": "Rennes",
@@ -4254,7 +4640,8 @@
     "lat": 48.1173,
     "lng": -1.6778,
     "timezone": "Europe/Paris",
-    "population": 216815
+    "population": 216815,
+    "areaKm2": 120
   },
   {
     "name": "Reno",
@@ -4265,7 +4652,8 @@
     "lat": 39.5296,
     "lng": -119.8138,
     "timezone": "America/Los_Angeles",
-    "population": 264165
+    "population": 264165,
+    "areaKm2": 147
   },
   {
     "name": "Reykjavik",
@@ -4276,7 +4664,8 @@
     "lat": 64.1466,
     "lng": -21.9426,
     "timezone": "Atlantic/Reykjavik",
-    "population": 131136
+    "population": 131136,
+    "areaKm2": 273
   },
   {
     "name": "Richmond",
@@ -4287,7 +4676,8 @@
     "lat": 37.5407,
     "lng": -77.436,
     "timezone": "America/New_York",
-    "population": 230436
+    "population": 230436,
+    "areaKm2": 128
   },
   {
     "name": "Rio de Janeiro",
@@ -4298,7 +4688,8 @@
     "lat": -22.9068,
     "lng": -43.1729,
     "timezone": "America/Sao_Paulo",
-    "population": 6747815
+    "population": 6747815,
+    "areaKm2": 3749
   },
   {
     "name": "Riverside",
@@ -4309,7 +4700,8 @@
     "lat": 33.9806,
     "lng": -117.3755,
     "timezone": "America/Los_Angeles",
-    "population": 314998
+    "population": 314998,
+    "areaKm2": 175
   },
   {
     "name": "Riyadh",
@@ -4320,7 +4712,8 @@
     "lat": 24.7136,
     "lng": 46.6753,
     "timezone": "Asia/Riyadh",
-    "population": 7676654
+    "population": 7676654,
+    "areaKm2": 1973
   },
   {
     "name": "Rochester",
@@ -4331,7 +4724,8 @@
     "lat": 43.1566,
     "lng": -77.6088,
     "timezone": "America/New_York",
-    "population": 211328
+    "population": 211328,
+    "areaKm2": 117
   },
   {
     "name": "Rockhampton",
@@ -4342,7 +4736,8 @@
     "lat": -23.3791,
     "lng": 150.51,
     "timezone": "Australia/Brisbane",
-    "population": 78592
+    "population": 78592,
+    "areaKm2": 44
   },
   {
     "name": "Rome",
@@ -4353,7 +4748,8 @@
     "lat": 41.9028,
     "lng": 12.4964,
     "timezone": "Europe/Rome",
-    "population": 2873000
+    "population": 2873000,
+    "areaKm2": 1596
   },
   {
     "name": "Rotorua",
@@ -4364,7 +4760,8 @@
     "lat": -38.1368,
     "lng": 176.2497,
     "timezone": "Pacific/Auckland",
-    "population": 58900
+    "population": 58900,
+    "areaKm2": 35
   },
   {
     "name": "Rotterdam",
@@ -4375,7 +4772,8 @@
     "lat": 51.9244,
     "lng": 4.4777,
     "timezone": "Europe/Amsterdam",
-    "population": 651631
+    "population": 651631,
+    "areaKm2": 324
   },
   {
     "name": "Sacramento",
@@ -4386,7 +4784,8 @@
     "lat": 38.5816,
     "lng": -121.4944,
     "timezone": "America/Los_Angeles",
-    "population": 513624
+    "population": 513624,
+    "areaKm2": 285
   },
   {
     "name": "Saint John",
@@ -4397,7 +4796,8 @@
     "lat": 45.2733,
     "lng": -66.0633,
     "timezone": "America/Halifax",
-    "population": 69885
+    "population": 69885,
+    "areaKm2": 39
   },
   {
     "name": "Saint Petersburg",
@@ -4408,7 +4808,8 @@
     "lat": 59.9311,
     "lng": 30.3609,
     "timezone": "Europe/Moscow",
-    "population": 5384342
+    "population": 5384342,
+    "areaKm2": 2991
   },
   {
     "name": "Salem",
@@ -4419,7 +4820,8 @@
     "lat": 44.9429,
     "lng": -123.0351,
     "timezone": "America/Los_Angeles",
-    "population": 175535
+    "population": 175535,
+    "areaKm2": 98
   },
   {
     "name": "Salem India",
@@ -4430,7 +4832,8 @@
     "lat": 11.6643,
     "lng": 78.146,
     "timezone": "Asia/Kolkata",
-    "population": 829267
+    "population": 829267,
+    "areaKm2": 461
   },
   {
     "name": "Salt Lake City",
@@ -4441,7 +4844,8 @@
     "lat": 40.7608,
     "lng": -111.891,
     "timezone": "America/Denver",
-    "population": 200564
+    "population": 200564,
+    "areaKm2": 286
   },
   {
     "name": "Salzburg",
@@ -4452,7 +4856,8 @@
     "lat": 47.8095,
     "lng": 13.055,
     "timezone": "Europe/Vienna",
-    "population": 155021
+    "population": 155021,
+    "areaKm2": 66
   },
   {
     "name": "San Antonio",
@@ -4463,7 +4868,8 @@
     "lat": 29.4241,
     "lng": -98.4936,
     "timezone": "America/Chicago",
-    "population": 1547253
+    "population": 1547253,
+    "areaKm2": 860
   },
   {
     "name": "San Diego",
@@ -4474,7 +4880,8 @@
     "lat": 32.7157,
     "lng": -117.1611,
     "timezone": "America/Los_Angeles",
-    "population": 1423851
+    "population": 1423851,
+    "areaKm2": 964
   },
   {
     "name": "San Francisco",
@@ -4485,7 +4892,8 @@
     "lat": 37.7749,
     "lng": -122.4194,
     "timezone": "America/Los_Angeles",
-    "population": 873965
+    "population": 873965,
+    "areaKm2": 486
   },
   {
     "name": "San Jose",
@@ -4496,7 +4904,8 @@
     "lat": 37.3382,
     "lng": -121.8863,
     "timezone": "America/Los_Angeles",
-    "population": 1021795
+    "population": 1021795,
+    "areaKm2": 466
   },
   {
     "name": "San Jose CR",
@@ -4507,7 +4916,8 @@
     "lat": 9.9281,
     "lng": -84.0907,
     "timezone": "America/Costa_Rica",
-    "population": 342188
+    "population": 342188,
+    "areaKm2": 190
   },
   {
     "name": "Santiago",
@@ -4518,7 +4928,8 @@
     "lat": -33.4489,
     "lng": -70.6693,
     "timezone": "America/Santiago",
-    "population": 5614000
+    "population": 5614000,
+    "areaKm2": 3119
   },
   {
     "name": "Sao Paulo",
@@ -4529,7 +4940,8 @@
     "lat": -23.5505,
     "lng": -46.6333,
     "timezone": "America/Sao_Paulo",
-    "population": 12325232
+    "population": 12325232,
+    "areaKm2": 6847
   },
   {
     "name": "Sapporo",
@@ -4540,7 +4952,8 @@
     "lat": 43.0618,
     "lng": 141.3545,
     "timezone": "Asia/Tokyo",
-    "population": 1952000
+    "population": 1952000,
+    "areaKm2": 1121
   },
   {
     "name": "Saskatoon",
@@ -4551,7 +4964,8 @@
     "lat": 52.1332,
     "lng": -106.67,
     "timezone": "America/Regina",
-    "population": 266141
+    "population": 266141,
+    "areaKm2": 148
   },
   {
     "name": "Savannah",
@@ -4562,7 +4976,8 @@
     "lat": 32.0809,
     "lng": -81.0912,
     "timezone": "America/New_York",
-    "population": 147780
+    "population": 147780,
+    "areaKm2": 82
   },
   {
     "name": "Scottsdale",
@@ -4573,7 +4988,8 @@
     "lat": 33.4942,
     "lng": -111.9261,
     "timezone": "America/Phoenix",
-    "population": 241361
+    "population": 241361,
+    "areaKm2": 477
   },
   {
     "name": "Seattle",
@@ -4584,7 +5000,8 @@
     "lat": 47.6062,
     "lng": -122.3321,
     "timezone": "America/Los_Angeles",
-    "population": 749256
+    "population": 749256,
+    "areaKm2": 217
   },
   {
     "name": "Seoul",
@@ -4595,7 +5012,8 @@
     "lat": 37.5665,
     "lng": 126.978,
     "timezone": "Asia/Seoul",
-    "population": 9741381
+    "population": 9741381,
+    "areaKm2": 5412
   },
   {
     "name": "Seville",
@@ -4606,7 +5024,8 @@
     "lat": 37.3891,
     "lng": -5.9845,
     "timezone": "Europe/Madrid",
-    "population": 688711
+    "population": 688711,
+    "areaKm2": 141
   },
   {
     "name": "Shanghai",
@@ -4617,7 +5036,8 @@
     "lat": 31.2304,
     "lng": 121.4737,
     "timezone": "Asia/Shanghai",
-    "population": 24870000
+    "population": 24870000,
+    "areaKm2": 13817
   },
   {
     "name": "Sheffield",
@@ -4628,7 +5048,8 @@
     "lat": 53.3811,
     "lng": -1.4701,
     "timezone": "Europe/London",
-    "population": 584853
+    "population": 584853,
+    "areaKm2": 325
   },
   {
     "name": "Shenzhen",
@@ -4639,7 +5060,8 @@
     "lat": 22.5431,
     "lng": 114.0579,
     "timezone": "Asia/Shanghai",
-    "population": 17490000
+    "population": 17490000,
+    "areaKm2": 9717
   },
   {
     "name": "Sherbrooke",
@@ -4650,7 +5072,8 @@
     "lat": 45.4042,
     "lng": -71.8929,
     "timezone": "America/Toronto",
-    "population": 161323
+    "population": 161323,
+    "areaKm2": 90
   },
   {
     "name": "Shreveport",
@@ -4661,7 +5084,8 @@
     "lat": 32.5252,
     "lng": -93.7502,
     "timezone": "America/Chicago",
-    "population": 187593
+    "population": 187593,
+    "areaKm2": 104
   },
   {
     "name": "Singapore",
@@ -4672,7 +5096,8 @@
     "lat": 1.3521,
     "lng": 103.8198,
     "timezone": "Asia/Singapore",
-    "population": 5686000
+    "population": 5686000,
+    "areaKm2": 3159
   },
   {
     "name": "Sioux Falls",
@@ -4683,7 +5108,8 @@
     "lat": 43.546,
     "lng": -96.7313,
     "timezone": "America/Chicago",
-    "population": 192517
+    "population": 192517,
+    "areaKm2": 107
   },
   {
     "name": "Solapur",
@@ -4694,7 +5120,8 @@
     "lat": 17.6599,
     "lng": 75.9064,
     "timezone": "Asia/Kolkata",
-    "population": 951558
+    "population": 951558,
+    "areaKm2": 529
   },
   {
     "name": "Southampton",
@@ -4705,7 +5132,8 @@
     "lat": 50.9097,
     "lng": -1.4044,
     "timezone": "Europe/London",
-    "population": 253651
+    "population": 253651,
+    "areaKm2": 141
   },
   {
     "name": "Spokane",
@@ -4716,7 +5144,8 @@
     "lat": 47.6588,
     "lng": -117.426,
     "timezone": "America/Los_Angeles",
-    "population": 228989
+    "population": 228989,
+    "areaKm2": 127
   },
   {
     "name": "Srinagar",
@@ -4727,7 +5156,8 @@
     "lat": 34.0837,
     "lng": 74.7973,
     "timezone": "Asia/Kolkata",
-    "population": 1180570
+    "population": 1180570,
+    "areaKm2": 656
   },
   {
     "name": "St Johns",
@@ -4738,7 +5168,8 @@
     "lat": 47.5615,
     "lng": -52.7126,
     "timezone": "America/St_Johns",
-    "population": 110525
+    "population": 110525,
+    "areaKm2": 61
   },
   {
     "name": "St Louis",
@@ -4749,7 +5180,8 @@
     "lat": 38.627,
     "lng": -90.1994,
     "timezone": "America/Chicago",
-    "population": 301578
+    "population": 301578,
+    "areaKm2": 168
   },
   {
     "name": "St Paul",
@@ -4760,7 +5192,8 @@
     "lat": 44.9537,
     "lng": -93.09,
     "timezone": "America/Chicago",
-    "population": 311527
+    "population": 311527,
+    "areaKm2": 173
   },
   {
     "name": "St Petersburg US",
@@ -4771,7 +5204,8 @@
     "lat": 27.7676,
     "lng": -82.6403,
     "timezone": "America/New_York",
-    "population": 258308
+    "population": 258308,
+    "areaKm2": 144
   },
   {
     "name": "Stavanger",
@@ -4782,7 +5216,8 @@
     "lat": 58.97,
     "lng": 5.7331,
     "timezone": "Europe/Oslo",
-    "population": 133870
+    "population": 133870,
+    "areaKm2": 74
   },
   {
     "name": "Stockholm",
@@ -4793,7 +5228,8 @@
     "lat": 59.3293,
     "lng": 18.0686,
     "timezone": "Europe/Stockholm",
-    "population": 975551
+    "population": 975551,
+    "areaKm2": 542
   },
   {
     "name": "Stoke-on-Trent",
@@ -4804,7 +5240,8 @@
     "lat": 53.0027,
     "lng": -2.1794,
     "timezone": "Europe/London",
-    "population": 256375
+    "population": 256375,
+    "areaKm2": 142
   },
   {
     "name": "Strasbourg",
@@ -4815,7 +5252,8 @@
     "lat": 48.5734,
     "lng": 7.7521,
     "timezone": "Europe/Paris",
-    "population": 280966
+    "population": 280966,
+    "areaKm2": 156
   },
   {
     "name": "Stuttgart",
@@ -4826,7 +5264,8 @@
     "lat": 48.7758,
     "lng": 9.1829,
     "timezone": "Europe/Berlin",
-    "population": 634830
+    "population": 634830,
+    "areaKm2": 353
   },
   {
     "name": "Sunderland",
@@ -4837,7 +5276,8 @@
     "lat": 54.9069,
     "lng": -1.3838,
     "timezone": "Europe/London",
-    "population": 175105
+    "population": 175105,
+    "areaKm2": 97
   },
   {
     "name": "Sunshine Coast",
@@ -4848,7 +5288,8 @@
     "lat": -26.65,
     "lng": 153.0667,
     "timezone": "Australia/Brisbane",
-    "population": 346522
+    "population": 346522,
+    "areaKm2": 193
   },
   {
     "name": "Surabaya",
@@ -4859,7 +5300,8 @@
     "lat": -7.2575,
     "lng": 112.7521,
     "timezone": "Asia/Jakarta",
-    "population": 2874314
+    "population": 2874314,
+    "areaKm2": 1597
   },
   {
     "name": "Surat",
@@ -4870,7 +5312,8 @@
     "lat": 21.1702,
     "lng": 72.8311,
     "timezone": "Asia/Kolkata",
-    "population": 4467797
+    "population": 4467797,
+    "areaKm2": 2482
   },
   {
     "name": "Suratgarh",
@@ -4881,7 +5324,8 @@
     "lat": 29.32,
     "lng": 73.9,
     "timezone": "Asia/Kolkata",
-    "population": 200000
+    "population": 200000,
+    "areaKm2": 111
   },
   {
     "name": "Suva",
@@ -4892,7 +5336,8 @@
     "lat": -18.1416,
     "lng": 178.4419,
     "timezone": "Pacific/Fiji",
-    "population": 93970
+    "population": 93970,
+    "areaKm2": 52
   },
   {
     "name": "Swansea",
@@ -4903,7 +5348,8 @@
     "lat": 51.6214,
     "lng": -3.9436,
     "timezone": "Europe/London",
-    "population": 247000
+    "population": 247000,
+    "areaKm2": 137
   },
   {
     "name": "Swindon",
@@ -4914,7 +5360,8 @@
     "lat": 51.5558,
     "lng": -1.7797,
     "timezone": "Europe/London",
-    "population": 185613
+    "population": 185613,
+    "areaKm2": 103
   },
   {
     "name": "Sydney",
@@ -4925,7 +5372,8 @@
     "lat": -33.8688,
     "lng": 151.2093,
     "timezone": "Australia/Sydney",
-    "population": 5312163
+    "population": 5312163,
+    "areaKm2": 2951
   },
   {
     "name": "Syracuse",
@@ -4936,7 +5384,8 @@
     "lat": 43.0481,
     "lng": -76.1474,
     "timezone": "America/New_York",
-    "population": 148620
+    "population": 148620,
+    "areaKm2": 83
   },
   {
     "name": "Tacoma",
@@ -4947,7 +5396,8 @@
     "lat": 47.2529,
     "lng": -122.4443,
     "timezone": "America/Los_Angeles",
-    "population": 219346
+    "population": 219346,
+    "areaKm2": 122
   },
   {
     "name": "Taipei",
@@ -4958,7 +5408,8 @@
     "lat": 25.033,
     "lng": 121.5654,
     "timezone": "Asia/Taipei",
-    "population": 2603000
+    "population": 2603000,
+    "areaKm2": 1446
   },
   {
     "name": "Tallahassee",
@@ -4969,7 +5420,8 @@
     "lat": 30.4383,
     "lng": -84.2807,
     "timezone": "America/New_York",
-    "population": 196169
+    "population": 196169,
+    "areaKm2": 109
   },
   {
     "name": "Tampa",
@@ -4980,7 +5432,8 @@
     "lat": 27.9506,
     "lng": -82.4572,
     "timezone": "America/New_York",
-    "population": 399700
+    "population": 399700,
+    "areaKm2": 453
   },
   {
     "name": "Tampere",
@@ -4991,7 +5444,8 @@
     "lat": 61.4978,
     "lng": 23.761,
     "timezone": "Europe/Helsinki",
-    "population": 238140
+    "population": 238140,
+    "areaKm2": 132
   },
   {
     "name": "Tauranga",
@@ -5002,7 +5456,8 @@
     "lat": -37.6878,
     "lng": 176.1651,
     "timezone": "Pacific/Auckland",
-    "population": 151500
+    "population": 151500,
+    "areaKm2": 141
   },
   {
     "name": "Tel Aviv",
@@ -5013,7 +5468,8 @@
     "lat": 32.0853,
     "lng": 34.7818,
     "timezone": "Asia/Jerusalem",
-    "population": 460619
+    "population": 460619,
+    "areaKm2": 256
   },
   {
     "name": "Thane",
@@ -5024,7 +5480,8 @@
     "lat": 19.2183,
     "lng": 72.9781,
     "timezone": "Asia/Kolkata",
-    "population": 1841488
+    "population": 1841488,
+    "areaKm2": 1023
   },
   {
     "name": "The Hague",
@@ -5035,7 +5492,8 @@
     "lat": 52.0705,
     "lng": 4.3007,
     "timezone": "Europe/Amsterdam",
-    "population": 548320
+    "population": 548320,
+    "areaKm2": 98
   },
   {
     "name": "Thessaloniki",
@@ -5046,7 +5504,8 @@
     "lat": 40.6401,
     "lng": 22.9444,
     "timezone": "Europe/Athens",
-    "population": 315157
+    "population": 315157,
+    "areaKm2": 175
   },
   {
     "name": "Thiruvananthapuram",
@@ -5057,7 +5516,8 @@
     "lat": 8.5241,
     "lng": 76.9366,
     "timezone": "Asia/Kolkata",
-    "population": 752490
+    "population": 752490,
+    "areaKm2": 418
   },
   {
     "name": "Thrissur",
@@ -5068,7 +5528,8 @@
     "lat": 10.5276,
     "lng": 76.2144,
     "timezone": "Asia/Kolkata",
-    "population": 315596
+    "population": 315596,
+    "areaKm2": 175
   },
   {
     "name": "Tiruchirappalli",
@@ -5079,7 +5540,8 @@
     "lat": 10.7905,
     "lng": 78.7047,
     "timezone": "Asia/Kolkata",
-    "population": 847387
+    "population": 847387,
+    "areaKm2": 471
   },
   {
     "name": "Tiruppur",
@@ -5090,7 +5552,8 @@
     "lat": 11.1085,
     "lng": 77.3411,
     "timezone": "Asia/Kolkata",
-    "population": 877778
+    "population": 877778,
+    "areaKm2": 488
   },
   {
     "name": "Tokyo",
@@ -5101,7 +5564,8 @@
     "lat": 35.6762,
     "lng": 139.6503,
     "timezone": "Asia/Tokyo",
-    "population": 13960000
+    "population": 13960000,
+    "areaKm2": 7756
   },
   {
     "name": "Toledo",
@@ -5112,7 +5576,8 @@
     "lat": 41.6528,
     "lng": -83.5379,
     "timezone": "America/New_York",
-    "population": 270871
+    "population": 270871,
+    "areaKm2": 150
   },
   {
     "name": "Toowoomba",
@@ -5123,7 +5588,8 @@
     "lat": -27.5598,
     "lng": 151.9507,
     "timezone": "Australia/Brisbane",
-    "population": 135631
+    "population": 135631,
+    "areaKm2": 75
   },
   {
     "name": "Toronto",
@@ -5134,7 +5600,8 @@
     "lat": 43.6532,
     "lng": -79.3832,
     "timezone": "America/Toronto",
-    "population": 2794356
+    "population": 2794356,
+    "areaKm2": 1552
   },
   {
     "name": "Toulouse",
@@ -5145,7 +5612,8 @@
     "lat": 43.6047,
     "lng": 1.4442,
     "timezone": "Europe/Paris",
-    "population": 479553
+    "population": 479553,
+    "areaKm2": 266
   },
   {
     "name": "Townsville",
@@ -5156,7 +5624,8 @@
     "lat": -19.259,
     "lng": 146.8169,
     "timezone": "Australia/Brisbane",
-    "population": 180820
+    "population": 180820,
+    "areaKm2": 100
   },
   {
     "name": "Trois-Rivieres",
@@ -5167,7 +5636,8 @@
     "lat": 46.3432,
     "lng": -72.5434,
     "timezone": "America/Toronto",
-    "population": 134413
+    "population": 134413,
+    "areaKm2": 75
   },
   {
     "name": "Trondheim",
@@ -5178,7 +5648,8 @@
     "lat": 63.4305,
     "lng": 10.3951,
     "timezone": "Europe/Oslo",
-    "population": 198219
+    "population": 198219,
+    "areaKm2": 110
   },
   {
     "name": "Tucson",
@@ -5189,7 +5660,8 @@
     "lat": 32.2226,
     "lng": -110.9747,
     "timezone": "America/Phoenix",
-    "population": 542629
+    "population": 542629,
+    "areaKm2": 301
   },
   {
     "name": "Tulsa",
@@ -5200,7 +5672,8 @@
     "lat": 36.154,
     "lng": -95.9928,
     "timezone": "America/Chicago",
-    "population": 413066
+    "population": 413066,
+    "areaKm2": 229
   },
   {
     "name": "Turin",
@@ -5211,7 +5684,8 @@
     "lat": 45.0703,
     "lng": 7.6869,
     "timezone": "Europe/Rome",
-    "population": 870952
+    "population": 870952,
+    "areaKm2": 484
   },
   {
     "name": "Turku",
@@ -5222,7 +5696,8 @@
     "lat": 60.4518,
     "lng": 22.2666,
     "timezone": "Europe/Helsinki",
-    "population": 192962
+    "population": 192962,
+    "areaKm2": 107
   },
   {
     "name": "Udaipur",
@@ -5233,7 +5708,8 @@
     "lat": 24.5854,
     "lng": 73.7125,
     "timezone": "Asia/Kolkata",
-    "population": 451100
+    "population": 451100,
+    "areaKm2": 251
   },
   {
     "name": "Ujjain",
@@ -5244,7 +5720,8 @@
     "lat": 23.1765,
     "lng": 75.7885,
     "timezone": "Asia/Kolkata",
-    "population": 515215
+    "population": 515215,
+    "areaKm2": 286
   },
   {
     "name": "Uppsala",
@@ -5255,7 +5732,8 @@
     "lat": 59.8586,
     "lng": 17.6389,
     "timezone": "Europe/Stockholm",
-    "population": 177074
+    "population": 177074,
+    "areaKm2": 98
   },
   {
     "name": "Utrecht",
@@ -5266,7 +5744,8 @@
     "lat": 52.0907,
     "lng": 5.1214,
     "timezone": "Europe/Amsterdam",
-    "population": 357179
+    "population": 357179,
+    "areaKm2": 99
   },
   {
     "name": "Vadodara",
@@ -5277,7 +5756,8 @@
     "lat": 22.3072,
     "lng": 73.1812,
     "timezone": "Asia/Kolkata",
-    "population": 1670806
+    "population": 1670806,
+    "areaKm2": 928
   },
   {
     "name": "Valencia",
@@ -5288,7 +5768,8 @@
     "lat": 39.4699,
     "lng": -0.3763,
     "timezone": "Europe/Madrid",
-    "population": 791413
+    "population": 791413,
+    "areaKm2": 135
   },
   {
     "name": "Vancouver",
@@ -5299,7 +5780,8 @@
     "lat": 49.2827,
     "lng": -123.1207,
     "timezone": "America/Vancouver",
-    "population": 662248
+    "population": 662248,
+    "areaKm2": 368
   },
   {
     "name": "Varanasi",
@@ -5310,7 +5792,8 @@
     "lat": 25.3176,
     "lng": 82.9739,
     "timezone": "Asia/Kolkata",
-    "population": 1201815
+    "population": 1201815,
+    "areaKm2": 668
   },
   {
     "name": "Venice",
@@ -5321,7 +5804,8 @@
     "lat": 45.4408,
     "lng": 12.3155,
     "timezone": "Europe/Rome",
-    "population": 261905
+    "population": 261905,
+    "areaKm2": 414
   },
   {
     "name": "Verona",
@@ -5332,7 +5816,8 @@
     "lat": 45.4384,
     "lng": 10.9916,
     "timezone": "Europe/Rome",
-    "population": 259608
+    "population": 259608,
+    "areaKm2": 144
   },
   {
     "name": "Victoria Canada",
@@ -5343,7 +5828,8 @@
     "lat": 48.4284,
     "lng": -123.3656,
     "timezone": "America/Vancouver",
-    "population": 397237
+    "population": 397237,
+    "areaKm2": 221
   },
   {
     "name": "Vienna",
@@ -5354,7 +5840,8 @@
     "lat": 48.2082,
     "lng": 16.3738,
     "timezone": "Europe/Vienna",
-    "population": 1911000
+    "population": 1911000,
+    "areaKm2": 415
   },
   {
     "name": "Vijayawada",
@@ -5365,7 +5852,8 @@
     "lat": 16.5062,
     "lng": 80.648,
     "timezone": "Asia/Kolkata",
-    "population": 1048240
+    "population": 1048240,
+    "areaKm2": 582
   },
   {
     "name": "Virginia Beach",
@@ -5376,7 +5864,8 @@
     "lat": 36.8529,
     "lng": -75.978,
     "timezone": "America/New_York",
-    "population": 459470
+    "population": 459470,
+    "areaKm2": 255
   },
   {
     "name": "Visakhapatnam",
@@ -5387,7 +5876,8 @@
     "lat": 17.6868,
     "lng": 83.2185,
     "timezone": "Asia/Kolkata",
-    "population": 1728128
+    "population": 1728128,
+    "areaKm2": 960
   },
   {
     "name": "Wagga Wagga",
@@ -5398,7 +5888,8 @@
     "lat": -35.1082,
     "lng": 147.3598,
     "timezone": "Australia/Sydney",
-    "population": 56442
+    "population": 56442,
+    "areaKm2": 35
   },
   {
     "name": "Warangal",
@@ -5409,7 +5900,8 @@
     "lat": 17.9689,
     "lng": 79.5941,
     "timezone": "Asia/Kolkata",
-    "population": 819406
+    "population": 819406,
+    "areaKm2": 455
   },
   {
     "name": "Warsaw",
@@ -5420,7 +5912,8 @@
     "lat": 52.2297,
     "lng": 21.0122,
     "timezone": "Europe/Warsaw",
-    "population": 1790658
+    "population": 1790658,
+    "areaKm2": 995
   },
   {
     "name": "Washington",
@@ -5431,7 +5924,8 @@
     "lat": 38.9072,
     "lng": -77.0369,
     "timezone": "America/New_York",
-    "population": 705749
+    "population": 705749,
+    "areaKm2": 392
   },
   {
     "name": "Wellington",
@@ -5442,7 +5936,8 @@
     "lat": -41.2865,
     "lng": 174.7762,
     "timezone": "Pacific/Auckland",
-    "population": 434900
+    "population": 434900,
+    "areaKm2": 442
   },
   {
     "name": "Whangarei",
@@ -5453,7 +5948,8 @@
     "lat": -35.7317,
     "lng": 174.3247,
     "timezone": "Pacific/Auckland",
-    "population": 54300
+    "population": 54300,
+    "areaKm2": 35
   },
   {
     "name": "Whitehorse",
@@ -5464,7 +5960,8 @@
     "lat": 60.7212,
     "lng": -135.0568,
     "timezone": "America/Whitehorse",
-    "population": 25085
+    "population": 25085,
+    "areaKm2": 35
   },
   {
     "name": "Wichita",
@@ -5475,7 +5972,8 @@
     "lat": 37.6872,
     "lng": -97.3301,
     "timezone": "America/Chicago",
-    "population": 397532
+    "population": 397532,
+    "areaKm2": 221
   },
   {
     "name": "Windsor",
@@ -5486,7 +5984,8 @@
     "lat": 42.3149,
     "lng": -83.0364,
     "timezone": "America/Toronto",
-    "population": 229660
+    "population": 229660,
+    "areaKm2": 128
   },
   {
     "name": "Winnipeg",
@@ -5497,7 +5996,8 @@
     "lat": 49.8951,
     "lng": -97.1384,
     "timezone": "America/Winnipeg",
-    "population": 749607
+    "population": 749607,
+    "areaKm2": 464
   },
   {
     "name": "Winston-Salem",
@@ -5508,7 +6008,8 @@
     "lat": 36.0999,
     "lng": -80.2442,
     "timezone": "America/New_York",
-    "population": 249545
+    "population": 249545,
+    "areaKm2": 139
   },
   {
     "name": "Wollongong",
@@ -5519,7 +6020,8 @@
     "lat": -34.4278,
     "lng": 150.8931,
     "timezone": "Australia/Sydney",
-    "population": 302739
+    "population": 302739,
+    "areaKm2": 572
   },
   {
     "name": "Wolverhampton",
@@ -5530,7 +6032,8 @@
     "lat": 52.587,
     "lng": -2.1288,
     "timezone": "Europe/London",
-    "population": 254406
+    "population": 254406,
+    "areaKm2": 141
   },
   {
     "name": "Worcester",
@@ -5541,7 +6044,8 @@
     "lat": 42.2626,
     "lng": -71.8023,
     "timezone": "America/New_York",
-    "population": 206518
+    "population": 206518,
+    "areaKm2": 115
   },
   {
     "name": "Wroclaw",
@@ -5552,7 +6056,8 @@
     "lat": 51.1079,
     "lng": 17.0385,
     "timezone": "Europe/Warsaw",
-    "population": 641607
+    "population": 641607,
+    "areaKm2": 356
   },
   {
     "name": "Wuhan",
@@ -5563,7 +6068,8 @@
     "lat": 30.5928,
     "lng": 114.3055,
     "timezone": "Asia/Shanghai",
-    "population": 11210000
+    "population": 11210000,
+    "areaKm2": 6228
   },
   {
     "name": "Yellowknife",
@@ -5574,7 +6080,8 @@
     "lat": 62.454,
     "lng": -114.3718,
     "timezone": "America/Yellowknife",
-    "population": 19569
+    "population": 19569,
+    "areaKm2": 35
   },
   {
     "name": "Yokohama",
@@ -5585,7 +6092,8 @@
     "lat": 35.4437,
     "lng": 139.638,
     "timezone": "Asia/Tokyo",
-    "population": 3740000
+    "population": 3740000,
+    "areaKm2": 437
   },
   {
     "name": "York",
@@ -5596,7 +6104,8 @@
     "lat": 53.959,
     "lng": -1.0815,
     "timezone": "Europe/London",
-    "population": 211000
+    "population": 211000,
+    "areaKm2": 117
   },
   {
     "name": "Zaragoza",
@@ -5607,7 +6116,8 @@
     "lat": 41.6488,
     "lng": -0.8891,
     "timezone": "Europe/Madrid",
-    "population": 666880
+    "population": 666880,
+    "areaKm2": 370
   },
   {
     "name": "Zurich",
@@ -5618,6 +6128,367 @@
     "lat": 47.3769,
     "lng": 8.5417,
     "timezone": "Europe/Zurich",
-    "population": 421878
+    "population": 421878,
+    "areaKm2": 88
+  },
+  {
+    "name": "Victoria",
+    "slug": "victoria-bc",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 48.4284,
+    "lng": -123.3656,
+    "timezone": "America/Vancouver",
+    "population": 91861,
+    "areaKm2": 19
+  },
+  {
+    "name": "Bangalore",
+    "slug": "bangalore",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 12.9716,
+    "lng": 77.5946,
+    "timezone": "Asia/Kolkata",
+    "population": 12327000,
+    "areaKm2": 741
+  },
+  {
+    "name": "Palo Alto",
+    "slug": "palo-alto",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.4419,
+    "lng": -122.143,
+    "timezone": "America/Los_Angeles",
+    "population": 68572,
+    "areaKm2": 67
+  },
+  {
+    "name": "Mountain View",
+    "slug": "mountain-view",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.3861,
+    "lng": -122.0839,
+    "timezone": "America/Los_Angeles",
+    "population": 82376,
+    "areaKm2": 32
+  },
+  {
+    "name": "Cupertino",
+    "slug": "cupertino",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.323,
+    "lng": -122.0322,
+    "timezone": "America/Los_Angeles",
+    "population": 60381,
+    "areaKm2": 30
+  },
+  {
+    "name": "Sunnyvale",
+    "slug": "sunnyvale",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 37.3688,
+    "lng": -122.0363,
+    "timezone": "America/Los_Angeles",
+    "population": 155805,
+    "areaKm2": 59
+  },
+  {
+    "name": "Redmond",
+    "slug": "redmond",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 47.674,
+    "lng": -122.1215,
+    "timezone": "America/Los_Angeles",
+    "population": 73256,
+    "areaKm2": 44
+  },
+  {
+    "name": "Cambridge",
+    "slug": "cambridge-us",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 42.3736,
+    "lng": -71.1097,
+    "timezone": "America/New_York",
+    "population": 118403,
+    "areaKm2": 18
+  },
+  {
+    "name": "Fort Lauderdale",
+    "slug": "fort-lauderdale",
+    "country": "United States",
+    "countrySlug": "united-states",
+    "countryIso": "US",
+    "lat": 26.1224,
+    "lng": -80.1373,
+    "timezone": "America/New_York",
+    "population": 182760,
+    "areaKm2": 95
+  },
+  {
+    "name": "Mississauga",
+    "slug": "mississauga",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 43.589,
+    "lng": -79.6441,
+    "timezone": "America/Toronto",
+    "population": 717961,
+    "areaKm2": 292
+  },
+  {
+    "name": "Brampton",
+    "slug": "brampton",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 43.7315,
+    "lng": -79.7624,
+    "timezone": "America/Toronto",
+    "population": 656480,
+    "areaKm2": 266
+  },
+  {
+    "name": "Surrey",
+    "slug": "surrey",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 49.1913,
+    "lng": -122.849,
+    "timezone": "America/Vancouver",
+    "population": 568322,
+    "areaKm2": 316
+  },
+  {
+    "name": "Burnaby",
+    "slug": "burnaby",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 49.2488,
+    "lng": -122.9805,
+    "timezone": "America/Vancouver",
+    "population": 249197,
+    "areaKm2": 98
+  },
+  {
+    "name": "Richmond",
+    "slug": "richmond-bc",
+    "country": "Canada",
+    "countrySlug": "canada",
+    "countryIso": "CA",
+    "lat": 49.1666,
+    "lng": -123.1336,
+    "timezone": "America/Vancouver",
+    "population": 209937,
+    "areaKm2": 129
+  },
+  {
+    "name": "Cambridge",
+    "slug": "cambridge-uk",
+    "country": "United Kingdom",
+    "countrySlug": "united-kingdom",
+    "countryIso": "GB",
+    "lat": 52.2053,
+    "lng": 0.1218,
+    "timezone": "Europe/London",
+    "population": 145700,
+    "areaKm2": 41
+  },
+  {
+    "name": "Galway",
+    "slug": "galway",
+    "country": "Ireland",
+    "countrySlug": "ireland",
+    "countryIso": "IE",
+    "lat": 53.2707,
+    "lng": -9.0568,
+    "timezone": "Europe/Dublin",
+    "population": 83456,
+    "areaKm2": 54
+  },
+  {
+    "name": "Limerick",
+    "slug": "limerick",
+    "country": "Ireland",
+    "countrySlug": "ireland",
+    "countryIso": "IE",
+    "lat": 52.6638,
+    "lng": -8.6267,
+    "timezone": "Europe/Dublin",
+    "population": 94192,
+    "areaKm2": 59
+  },
+  {
+    "name": "Newcastle",
+    "slug": "newcastle-au",
+    "country": "Australia",
+    "countrySlug": "australia",
+    "countryIso": "AU",
+    "lat": -32.9283,
+    "lng": 151.7817,
+    "timezone": "Australia/Sydney",
+    "population": 322278,
+    "areaKm2": 187
+  },
+  {
+    "name": "Dubrovnik",
+    "slug": "dubrovnik",
+    "country": "Croatia",
+    "countrySlug": "croatia",
+    "countryIso": "HR",
+    "lat": 42.6507,
+    "lng": 18.0944,
+    "timezone": "Europe/Zagreb",
+    "population": 42611,
+    "areaKm2": 143
+  },
+  {
+    "name": "Split",
+    "slug": "split",
+    "country": "Croatia",
+    "countrySlug": "croatia",
+    "countryIso": "HR",
+    "lat": 43.5081,
+    "lng": 16.4402,
+    "timezone": "Europe/Zagreb",
+    "population": 161312,
+    "areaKm2": 79
+  },
+  {
+    "name": "Santorini",
+    "slug": "santorini",
+    "country": "Greece",
+    "countrySlug": "greece",
+    "countryIso": "GR",
+    "lat": 36.3932,
+    "lng": 25.4615,
+    "timezone": "Europe/Athens",
+    "population": 15550,
+    "areaKm2": 76
+  },
+  {
+    "name": "Mykonos",
+    "slug": "mykonos",
+    "country": "Greece",
+    "countrySlug": "greece",
+    "countryIso": "GR",
+    "lat": 37.4467,
+    "lng": 25.3289,
+    "timezone": "Europe/Athens",
+    "population": 10134,
+    "areaKm2": 86
+  },
+  {
+    "name": "Bali",
+    "slug": "bali-denpasar",
+    "country": "Indonesia",
+    "countrySlug": "indonesia",
+    "countryIso": "ID",
+    "lat": -8.6705,
+    "lng": 115.2126,
+    "timezone": "Asia/Makassar",
+    "population": 897300,
+    "areaKm2": 124
+  },
+  {
+    "name": "Phuket",
+    "slug": "phuket",
+    "country": "Thailand",
+    "countrySlug": "thailand",
+    "countryIso": "TH",
+    "lat": 7.8804,
+    "lng": 98.3923,
+    "timezone": "Asia/Bangkok",
+    "population": 416582,
+    "areaKm2": 576
+  },
+  {
+    "name": "Penang",
+    "slug": "penang",
+    "country": "Malaysia",
+    "countrySlug": "malaysia",
+    "countryIso": "MY",
+    "lat": 5.4164,
+    "lng": 100.3327,
+    "timezone": "Asia/Kuala_Lumpur",
+    "population": 794313,
+    "areaKm2": 293
+  },
+  {
+    "name": "Johor Bahru",
+    "slug": "johor-bahru",
+    "country": "Malaysia",
+    "countrySlug": "malaysia",
+    "countryIso": "MY",
+    "lat": 1.4927,
+    "lng": 103.7414,
+    "timezone": "Asia/Kuala_Lumpur",
+    "population": 497067,
+    "areaKm2": 220
+  },
+  {
+    "name": "Siem Reap",
+    "slug": "siem-reap",
+    "country": "Cambodia",
+    "countrySlug": "cambodia",
+    "countryIso": "KH",
+    "lat": 13.3671,
+    "lng": 103.8448,
+    "timezone": "Asia/Phnom_Penh",
+    "population": 139458,
+    "areaKm2": 472
+  },
+  {
+    "name": "Da Nang",
+    "slug": "da-nang",
+    "country": "Vietnam",
+    "countrySlug": "vietnam",
+    "countryIso": "VN",
+    "lat": 16.0544,
+    "lng": 108.2022,
+    "timezone": "Asia/Ho_Chi_Minh",
+    "population": 1134310,
+    "areaKm2": 1285
+  },
+  {
+    "name": "Goa (Panaji)",
+    "slug": "goa-panaji",
+    "country": "India",
+    "countrySlug": "india",
+    "countryIso": "IN",
+    "lat": 15.4909,
+    "lng": 73.8278,
+    "timezone": "Asia/Kolkata",
+    "population": 114405,
+    "areaKm2": 36
+  },
+  {
+    "name": "Sharjah",
+    "slug": "sharjah",
+    "country": "United Arab Emirates",
+    "countrySlug": "united-arab-emirates",
+    "countryIso": "AE",
+    "lat": 25.3463,
+    "lng": 55.4209,
+    "timezone": "Asia/Dubai",
+    "population": 1405000,
+    "areaKm2": 235
   }
 ]

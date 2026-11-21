@@ -6,6 +6,7 @@ import {
   getAllPlaces,
   getPopularPairs,
   getRelatedPairs,
+  getCityGoogleMapsInfo,
 } from "../lib/places";
 
 describe("Places Dataset & Lookup Utilities", () => {
@@ -75,5 +76,32 @@ describe("Places Dataset & Lookup Utilities", () => {
       expect(r.to).toBeDefined();
       expect(r.url).toContain("/time-difference/");
     }
+  });
+
+  describe("Google Maps city info helper", () => {
+    it("detects capital city and formats info correctly", () => {
+      const london = getCityBySlug("london")!;
+      expect(london).toBeDefined();
+      const info = getCityGoogleMapsInfo(london);
+      expect(info.isCapital).toBe(true);
+      expect(info.formattedDistanceToCapital).toContain("Capital city of United Kingdom");
+      expect(info.areaKm2).toBeGreaterThan(0);
+      expect(info.formattedArea).toContain("km²");
+      expect(info.formattedArea).toContain("sq mi");
+      expect(info.coordinatesFormatted).toBeDefined();
+    });
+
+    it("calculates distance to capital and user location for non-capital city", () => {
+      const losAngeles = getCityBySlug("los-angeles")!;
+      expect(losAngeles).toBeDefined();
+      const ny = getCityBySlug("new-york")!;
+      const info = getCityGoogleMapsInfo(losAngeles, ny);
+      expect(info.isCapital).toBe(false);
+      expect(info.formattedDistanceToCapital).toBeDefined();
+      expect(info.distanceToCapitalKm).toBeGreaterThan(0);
+      expect(info.distanceFromUserKm).toBeGreaterThan(0);
+      expect(info.formattedDistanceFromUser).toContain("from your location");
+      expect(info.formattedPopulation).toBeDefined();
+    });
   });
 });

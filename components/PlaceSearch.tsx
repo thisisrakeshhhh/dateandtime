@@ -28,7 +28,7 @@ export default function PlaceSearch({
 
   useEffect(() => {
     if (query.trim().length > 0) {
-      const matches = searchPlaces(query, 8);
+      const matches = searchPlaces(query, 10);
       setResults(matches);
       setHighlightIndex(0);
       setIsOpen(true);

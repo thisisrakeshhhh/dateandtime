@@ -1,6 +1,7 @@
 import countriesData from "@/data/countries.json";
 import citiesData from "@/data/cities.json";
 import popularPairsData from "@/data/popular-pairs.json";
+import { calculateDistance } from "@/lib/distance";
 
 export type PlaceType = "country" | "city";
 
@@ -19,6 +20,7 @@ export interface Place {
   otherZones?: string[];
   continent?: string;
   population?: number;
+  areaKm2?: number;
 }
 
 export interface PopularPair {
@@ -45,7 +47,18 @@ const countries: Place[] = countriesData.map((c) => ({
 }));
 
 // Transform raw city data into Place items
-const cities: Place[] = citiesData.map((c) => ({
+const cities: Place[] = (citiesData as Array<{
+  name: string;
+  slug: string;
+  country: string;
+  countrySlug: string;
+  countryIso: string;
+  lat: number;
+  lng: number;
+  timezone: string;
+  population?: number;
+  areaKm2?: number;
+}>).map((c) => ({
   id: `city-${c.slug}`,
   name: c.name,
   slug: c.slug,
@@ -57,6 +70,7 @@ const cities: Place[] = citiesData.map((c) => ({
   lng: c.lng,
   timezone: c.timezone,
   population: c.population,
+  areaKm2: c.areaKm2,
 }));
 
 // Slug index maps for instant O(1) lookups
@@ -143,8 +157,9 @@ export function getPopularPairs(): PopularPair[] {
 
 /**
  * Fast search and autocomplete function matching prefix, words, and country name
+ * Prioritizes exact matches, starts-with matches, and higher-population cities/countries.
  */
-export function searchPlaces(query: string, limit = 8): Place[] {
+export function searchPlaces(query: string, limit = 10): Place[] {
   if (!query || query.trim().length === 0) return [];
   const q = query.toLowerCase().trim();
 
@@ -163,13 +178,140 @@ export function searchPlaces(query: string, limit = 8): Place[] {
     } else if (nameLower.includes(q) || countryLower.includes(q)) {
       containsMatches.push(place);
     }
+  }
 
-    if (exactMatches.length + startsWithMatches.length >= limit) {
-      break;
+  // Sort startsWith and contains by importance (countries first, then by population desc)
+  const sortFn = (a: Place, b: Place) => {
+    if (a.type !== b.type) return a.type === "country" ? -1 : 1;
+    return (b.population ?? 0) - (a.population ?? 0);
+  };
+
+  startsWithMatches.sort(sortFn);
+  containsMatches.sort(sortFn);
+
+  return [...exactMatches, ...startsWithMatches, ...containsMatches].slice(0, limit);
+}
+
+export interface CityGoogleMapsInfo {
+  isCapital: boolean;
+  countryName: string;
+  capitalName?: string;
+  distanceToCapitalKm?: number;
+  distanceToCapitalMiles?: number;
+  formattedDistanceToCapital?: string;
+  distanceFromUserKm?: number;
+  distanceFromUserMiles?: number;
+  formattedDistanceFromUser?: string;
+  areaKm2: number;
+  areaSqMi: number;
+  formattedArea: string;
+  population?: number;
+  formattedPopulation?: string;
+  coordinatesFormatted: string;
+}
+
+export function getCityGoogleMapsInfo(
+  city: Place,
+  userPlace?: Place | null,
+  userTimezone?: string
+): CityGoogleMapsInfo {
+  const country = getCountryBySlug(city.countrySlug);
+  const countryName = city.countryName || country?.name || "";
+  const capitalName = country?.capital || "";
+  const isCapital = Boolean(
+    capitalName &&
+      (city.name.toLowerCase() === capitalName.toLowerCase() ||
+        city.slug === capitalName.toLowerCase().replace(/\s+/g, "-"))
+  );
+
+  let distanceToCapitalKm: number | undefined;
+  let distanceToCapitalMiles: number | undefined;
+  let formattedDistanceToCapital: string | undefined;
+
+  if (isCapital) {
+    formattedDistanceToCapital = `Capital city of ${countryName}`;
+  } else if (capitalName) {
+    // Find capital city in cities list or fallback to country coordinates
+    const capitalCity = cities.find(
+      (c) =>
+        c.countrySlug === city.countrySlug &&
+        c.name.toLowerCase() === capitalName.toLowerCase()
+    );
+    const targetLat = capitalCity ? capitalCity.lat : country?.lat;
+    const targetLng = capitalCity ? capitalCity.lng : country?.lng;
+
+    if (targetLat !== undefined && targetLng !== undefined) {
+      const dist = calculateDistance(city.lat, city.lng, targetLat, targetLng);
+      distanceToCapitalKm = dist.km;
+      distanceToCapitalMiles = dist.miles;
+      formattedDistanceToCapital = `${dist.km.toLocaleString("en-US")} km (${dist.miles.toLocaleString("en-US")} mi) to capital (${capitalName})`;
     }
   }
 
-  return [...exactMatches, ...startsWithMatches, ...containsMatches].slice(0, limit);
+  // Distance from user location
+  let distanceFromUserKm: number | undefined;
+  let distanceFromUserMiles: number | undefined;
+  let formattedDistanceFromUser: string | undefined;
+
+  let effectiveUserPlace = userPlace;
+  if (!effectiveUserPlace && userTimezone) {
+    effectiveUserPlace = getPlaceByTimezone(userTimezone) || null;
+  }
+
+  if (effectiveUserPlace && effectiveUserPlace.slug !== city.slug) {
+    const userDist = calculateDistance(
+      effectiveUserPlace.lat,
+      effectiveUserPlace.lng,
+      city.lat,
+      city.lng
+    );
+    distanceFromUserKm = userDist.km;
+    distanceFromUserMiles = userDist.miles;
+    formattedDistanceFromUser = `${userDist.km.toLocaleString("en-US")} km (${userDist.miles.toLocaleString("en-US")} mi) from your location`;
+  }
+
+  // City Area: from data or estimated based on population
+  const areaKm2 =
+    city.areaKm2 && city.areaKm2 > 0
+      ? city.areaKm2
+      : city.population && city.population > 0
+      ? Math.max(30, Math.round(city.population / 1800))
+      : 150;
+  const areaSqMi = Math.round(areaKm2 * 0.386102);
+  const formattedArea = `${areaKm2.toLocaleString("en-US")} km² (${areaSqMi.toLocaleString("en-US")} sq mi)`;
+
+  // Population
+  let formattedPopulation: string | undefined;
+  if (city.population && city.population > 0) {
+    if (city.population >= 1_000_000) {
+      formattedPopulation = `${(city.population / 1_000_000).toFixed(2).replace(/\.00$/, "")} million residents`;
+    } else {
+      formattedPopulation = `${city.population.toLocaleString("en-US")} residents`;
+    }
+  }
+
+  // Coordinates
+  const latDir = city.lat >= 0 ? "N" : "S";
+  const lngDir = city.lng >= 0 ? "E" : "W";
+  const coordinatesFormatted = `${Math.abs(city.lat).toFixed(2)}° ${latDir}, ${Math.abs(city.lng).toFixed(2)}° ${lngDir}`;
+
+  return {
+    isCapital,
+    countryName,
+    capitalName,
+    distanceToCapitalKm,
+    distanceToCapitalMiles,
+    formattedDistanceToCapital,
+    distanceFromUserKm,
+    distanceFromUserMiles,
+    formattedDistanceFromUser,
+    areaKm2,
+    areaSqMi,
+    formattedArea,
+    population: city.population,
+    formattedPopulation,
+    coordinatesFormatted,
+  };
 }
 
 /**

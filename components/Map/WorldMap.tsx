@@ -445,16 +445,36 @@ export default function WorldMap({
 
       flightPathLayerRef.current = path;
 
-      map.fitBounds(L.latLngBounds(boundsLatLngs), {
-        padding: [60, 60],
-        maxZoom: 6,
-        animate: true,
-      });
+      try {
+        map.fitBounds(L.latLngBounds(boundsLatLngs), {
+          padding: [60, 60],
+          maxZoom: 6,
+          animate: true,
+        });
+      } catch {
+        try {
+          map.setView([placeA.lat, placeA.lng], 4);
+        } catch {
+          // Ignore if map pane position not ready
+        }
+      }
     } else if (placeA && !placeB) {
-      // Single place: fly to it smoothly
-      map.flyTo([placeA.lat, placeA.lng], 4, { duration: 1.2 });
+      // Single place: fly to it smoothly with safety check
+      try {
+        if (typeof map.flyTo === "function") {
+          map.flyTo([placeA.lat, placeA.lng], 4, { animate: true, duration: 1.2 });
+        } else {
+          map.setView([placeA.lat, placeA.lng], 4);
+        }
+      } catch {
+        try {
+          map.setView([placeA.lat, placeA.lng], 4);
+        } catch {
+          // Ignore if map pane position not ready
+        }
+      }
     }
-  }, [placeA, placeB, updateLabels]);
+  }, [mapReady, placeA, placeB, updateLabels]);
 
   return (
     <div className={`relative overflow-hidden ${className}`}>

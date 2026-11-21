@@ -1,0 +1,1442 @@
+[
+  {
+    "from": "india",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "canada",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "new-zealand",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "germany",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "singapore",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "united-arab-emirates",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "ireland",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "france",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "netherlands",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "philippines",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "qatar",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "saudi-arabia",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "malaysia",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "nepal",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "south-africa",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "switzerland",
+    "category": "Country"
+  },
+  {
+    "from": "india",
+    "to": "china",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "india",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "canada",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "germany",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "france",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "philippines",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "new-zealand",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "singapore",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "mexico",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "brazil",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "ireland",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "italy",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "spain",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "china",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "south-korea",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "united-arab-emirates",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "israel",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "netherlands",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "india",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "canada",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "new-zealand",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "united-arab-emirates",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "germany",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "spain",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "france",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "singapore",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "south-africa",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "ireland",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "italy",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "hong-kong",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "pakistan",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "nigeria",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "philippines",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "netherlands",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "switzerland",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "india",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "new-zealand",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "canada",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "singapore",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "philippines",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "germany",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "united-arab-emirates",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "china",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "south-africa",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "fiji",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "thailand",
+    "category": "Country"
+  },
+  {
+    "from": "australia",
+    "to": "indonesia",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "india",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "philippines",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "france",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "germany",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "mexico",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "china",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "united-arab-emirates",
+    "category": "Country"
+  },
+  {
+    "from": "canada",
+    "to": "new-zealand",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "india",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "canada",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "fiji",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "singapore",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "philippines",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "south-africa",
+    "category": "Country"
+  },
+  {
+    "from": "new-zealand",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "new-york",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "los-angeles",
+    "category": "City"
+  },
+  {
+    "from": "los-angeles",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "delhi",
+    "category": "City"
+  },
+  {
+    "from": "delhi",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "mumbai",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "mumbai",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "sydney",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "dubai",
+    "category": "City"
+  },
+  {
+    "from": "dubai",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "singapore",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "tokyo",
+    "category": "City"
+  },
+  {
+    "from": "tokyo",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "paris",
+    "category": "City"
+  },
+  {
+    "from": "paris",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "berlin",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "toronto",
+    "category": "City"
+  },
+  {
+    "from": "toronto",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "london",
+    "to": "dublin",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "paris",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "tokyo",
+    "category": "City"
+  },
+  {
+    "from": "tokyo",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "sydney",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "dubai",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "toronto",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "san-francisco",
+    "category": "City"
+  },
+  {
+    "from": "new-york",
+    "to": "chicago",
+    "category": "City"
+  },
+  {
+    "from": "chicago",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "los-angeles",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "los-angeles",
+    "to": "tokyo",
+    "category": "City"
+  },
+  {
+    "from": "los-angeles",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "san-francisco",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "san-francisco",
+    "to": "delhi",
+    "category": "City"
+  },
+  {
+    "from": "bengaluru",
+    "to": "san-francisco",
+    "category": "City"
+  },
+  {
+    "from": "san-francisco",
+    "to": "bengaluru",
+    "category": "City"
+  },
+  {
+    "from": "bengaluru",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "bengaluru",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "delhi",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "delhi",
+    "to": "dubai",
+    "category": "City"
+  },
+  {
+    "from": "mumbai",
+    "to": "dubai",
+    "category": "City"
+  },
+  {
+    "from": "mumbai",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "mumbai",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "delhi",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "delhi",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "sydney",
+    "to": "delhi",
+    "category": "City"
+  },
+  {
+    "from": "mumbai",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "sydney",
+    "to": "mumbai",
+    "category": "City"
+  },
+  {
+    "from": "sydney",
+    "to": "melbourne",
+    "category": "City"
+  },
+  {
+    "from": "sydney",
+    "to": "auckland",
+    "category": "City"
+  },
+  {
+    "from": "auckland",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "melbourne",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "melbourne",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "melbourne",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "perth",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "perth",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "brisbane",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "auckland",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "auckland",
+    "to": "los-angeles",
+    "category": "City"
+  },
+  {
+    "from": "wellington",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "toronto",
+    "to": "vancouver",
+    "category": "City"
+  },
+  {
+    "from": "vancouver",
+    "to": "toronto",
+    "category": "City"
+  },
+  {
+    "from": "toronto",
+    "to": "delhi",
+    "category": "City"
+  },
+  {
+    "from": "vancouver",
+    "to": "delhi",
+    "category": "City"
+  },
+  {
+    "from": "vancouver",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "toronto",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "montreal",
+    "to": "paris",
+    "category": "City"
+  },
+  {
+    "from": "dubai",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "singapore",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "singapore",
+    "to": "tokyo",
+    "category": "City"
+  },
+  {
+    "from": "hong-kong",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "hong-kong",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "tokyo",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "seoul",
+    "to": "los-angeles",
+    "category": "City"
+  },
+  {
+    "from": "seoul",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "paris",
+    "to": "berlin",
+    "category": "City"
+  },
+  {
+    "from": "berlin",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "amsterdam",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "amsterdam",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "frankfurt",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "zurich",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "zurich",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "manila",
+    "to": "los-angeles",
+    "category": "City"
+  },
+  {
+    "from": "manila",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "manila",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "johannesburg",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "johannesburg",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "cairo",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "cairo",
+    "to": "dubai",
+    "category": "City"
+  },
+  {
+    "from": "sao-paulo",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "mexico-city",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "mexico-city",
+    "to": "madrid",
+    "category": "City"
+  },
+  {
+    "from": "buenos-aires",
+    "to": "madrid",
+    "category": "City"
+  },
+  {
+    "from": "buenos-aires",
+    "to": "miami",
+    "category": "City"
+  },
+  {
+    "from": "miami",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "seattle",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "boston",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "hyderabad",
+    "to": "san-francisco",
+    "category": "City"
+  },
+  {
+    "from": "chennai",
+    "to": "chicago",
+    "category": "City"
+  },
+  {
+    "from": "pune",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "dallas",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "houston",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "atlanta",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "kathmandu",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "kathmandu",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "lahore",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "karachi",
+    "to": "dubai",
+    "category": "City"
+  },
+  {
+    "from": "dhaka",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "colombo",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "bangkok",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "bangkok",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "kuala-lumpur",
+    "to": "melbourne",
+    "category": "City"
+  },
+  {
+    "from": "kuala-lumpur",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "doha",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "riyadh",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "dublin",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "dublin",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "edinburgh",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "manchester",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "birmingham",
+    "to": "delhi",
+    "category": "City"
+  },
+  {
+    "from": "auckland",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "calgary",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "adelaide",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "brisbane",
+    "to": "auckland",
+    "category": "City"
+  },
+  {
+    "from": "perth",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "hobart",
+    "to": "melbourne",
+    "category": "City"
+  },
+  {
+    "from": "darwin",
+    "to": "singapore",
+    "category": "City"
+  },
+  {
+    "from": "christchurch",
+    "to": "melbourne",
+    "category": "City"
+  },
+  {
+    "from": "glasgow",
+    "to": "toronto",
+    "category": "City"
+  },
+  {
+    "from": "belfast",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "madrid",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "barcelona",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "rome",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "milan",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "vienna",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "stockholm",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "oslo",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "copenhagen",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "helsinki",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "warsaw",
+    "to": "chicago",
+    "category": "City"
+  },
+  {
+    "from": "prague",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "athens",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "istanbul",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "istanbul",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "shanghai",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "beijing",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "taipei",
+    "to": "los-angeles",
+    "category": "City"
+  },
+  {
+    "from": "denver",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "phoenix",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "las-vegas",
+    "to": "new-york",
+    "category": "City"
+  },
+  {
+    "from": "orlando",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "honolulu",
+    "to": "los-angeles",
+    "category": "City"
+  },
+  {
+    "from": "honolulu",
+    "to": "tokyo",
+    "category": "City"
+  },
+  {
+    "from": "anchorage",
+    "to": "seattle",
+    "category": "City"
+  },
+  {
+    "from": "gold-coast",
+    "to": "sydney",
+    "category": "City"
+  },
+  {
+    "from": "ottawa",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "edmonton",
+    "to": "toronto",
+    "category": "City"
+  },
+  {
+    "from": "halifax",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "st-johns",
+    "to": "london",
+    "category": "City"
+  },
+  {
+    "from": "fiji",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "singapore",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "united-arab-emirates",
+    "to": "india",
+    "category": "Country"
+  },
+  {
+    "from": "philippines",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "philippines",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "philippines",
+    "to": "canada",
+    "category": "Country"
+  },
+  {
+    "from": "ireland",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "ireland",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "south-africa",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "south-africa",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "germany",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "france",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "japan",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "mexico",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "nepal",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "nepal",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "bangladesh",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "pakistan",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "pakistan",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "malaysia",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "thailand",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "vietnam",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "vietnam",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "indonesia",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "brazil",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "argentina",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "chile",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "colombia",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "peru",
+    "to": "united-states",
+    "category": "Country"
+  }
+]

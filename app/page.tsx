@@ -1,103 +1,78 @@
-import Image from "next/image";
+import React from "react";
+import { siteConfig } from "@/lib/config";
+import { getPlaceBySlug } from "@/lib/places";
+import HomeClient from "@/components/HomeClient";
+import { Sun, Globe, Clock, Compass } from "lucide-react";
 
-export default function Home() {
+export default function HomePage() {
+  const defaultPlaceA = getPlaceBySlug(siteConfig.defaultFromSlug) || null;
+  const defaultPlaceB = getPlaceBySlug(siteConfig.defaultToSlug) || null;
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="space-y-10">
+      {/* Hero Intro */}
+      <section className="text-center max-w-3xl mx-auto pt-2 pb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-4">
+          <Globe className="w-3.5 h-3.5" />
+          <span>Real-Time World Time & Solar Day/Night Tracker</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-tight">
+          Connect Time Across The Globe
+        </h1>
+
+        <p className="mt-3 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          Select any two countries or cities to compare live local times, daylight and
+          night status, great-circle flight distance, and the optimal awake calling window.
+        </p>
+      </section>
+
+      {/* Main Interactive Tool & Map */}
+      <HomeClient initialPlaceA={defaultPlaceA} initialPlaceB={defaultPlaceB} />
+
+      {/* Value Proposition & Feature Highlights */}
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 pb-8 border-t border-neutral-200/80 dark:border-neutral-800">
+        <div className="p-6 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800">
+          <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4">
+            <Sun className="w-5 h-5" />
+          </div>
+          <h2 className="text-base font-bold text-neutral-900 dark:text-white mb-2">
+            Live Solar Day & Night Terminator
+          </h2>
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Visualizes Earth&apos;s live solar terminator shadow updating every minute.
+            Observe the night curve and glowing city lights across North America, Europe, Asia,
+            and Australasia in real time.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800">
+          <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4">
+            <Clock className="w-5 h-5" />
+          </div>
+          <h2 className="text-base font-bold text-neutral-900 dark:text-white mb-2">
+            Automated Daylight Saving Accuracy
+          </h2>
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Never second-guess time shifts. Powered by the authoritative IANA database,
+            handling fractional offsets (India +5:30, Nepal +5:45, Adelaide +9:30) and
+            DST transitions automatically.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl bg-white dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4">
+            <Compass className="w-5 h-5" />
+          </div>
+          <h2 className="text-base font-bold text-neutral-900 dark:text-white mb-2">
+            Best Time to Call Overlap
+          </h2>
+          <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            Computes the exact overlapping awake hours (9:00 AM to 9:00 PM) and office
+            hours (9:00 AM to 5:00 PM) for frictionless international calls and remote team syncs.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

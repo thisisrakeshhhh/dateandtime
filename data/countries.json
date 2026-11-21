@@ -1,0 +1,781 @@
+[
+  {
+    "name": "United States",
+    "iso": "US",
+    "capital": "Washington, D.C.",
+    "lat": 38.9072,
+    "lng": -77.0369,
+    "mainZone": "America/New_York",
+    "otherZones": [
+      "America/Chicago",
+      "America/Denver",
+      "America/Los_Angeles",
+      "America/Anchorage",
+      "Pacific/Honolulu",
+      "America/Phoenix"
+    ],
+    "continent": "North America",
+    "slug": "united-states"
+  },
+  {
+    "name": "United Kingdom",
+    "iso": "GB",
+    "capital": "London",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "mainZone": "Europe/London",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "united-kingdom"
+  },
+  {
+    "name": "India",
+    "iso": "IN",
+    "capital": "New Delhi",
+    "lat": 28.6139,
+    "lng": 77.209,
+    "mainZone": "Asia/Kolkata",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "india"
+  },
+  {
+    "name": "Australia",
+    "iso": "AU",
+    "capital": "Canberra",
+    "lat": -35.2809,
+    "lng": 149.13,
+    "mainZone": "Australia/Sydney",
+    "otherZones": [
+      "Australia/Melbourne",
+      "Australia/Brisbane",
+      "Australia/Adelaide",
+      "Australia/Perth",
+      "Australia/Darwin",
+      "Australia/Hobart"
+    ],
+    "continent": "Oceania",
+    "slug": "australia"
+  },
+  {
+    "name": "Canada",
+    "iso": "CA",
+    "capital": "Ottawa",
+    "lat": 45.4215,
+    "lng": -75.6972,
+    "mainZone": "America/Toronto",
+    "otherZones": [
+      "America/Vancouver",
+      "America/Edmonton",
+      "America/Winnipeg",
+      "America/Halifax",
+      "America/St_Johns"
+    ],
+    "continent": "North America",
+    "slug": "canada"
+  },
+  {
+    "name": "New Zealand",
+    "iso": "NZ",
+    "capital": "Wellington",
+    "lat": -41.2865,
+    "lng": 174.7762,
+    "mainZone": "Pacific/Auckland",
+    "otherZones": [
+      "Pacific/Chatham"
+    ],
+    "continent": "Oceania",
+    "slug": "new-zealand"
+  },
+  {
+    "name": "Germany",
+    "iso": "DE",
+    "capital": "Berlin",
+    "lat": 52.52,
+    "lng": 13.405,
+    "mainZone": "Europe/Berlin",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "germany"
+  },
+  {
+    "name": "France",
+    "iso": "FR",
+    "capital": "Paris",
+    "lat": 48.8566,
+    "lng": 2.3522,
+    "mainZone": "Europe/Paris",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "france"
+  },
+  {
+    "name": "Japan",
+    "iso": "JP",
+    "capital": "Tokyo",
+    "lat": 35.6762,
+    "lng": 139.6503,
+    "mainZone": "Asia/Tokyo",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "japan"
+  },
+  {
+    "name": "China",
+    "iso": "CN",
+    "capital": "Beijing",
+    "lat": 39.9042,
+    "lng": 116.4074,
+    "mainZone": "Asia/Shanghai",
+    "otherZones": [
+      "Asia/Urumqi"
+    ],
+    "continent": "Asia",
+    "slug": "china"
+  },
+  {
+    "name": "Singapore",
+    "iso": "SG",
+    "capital": "Singapore",
+    "lat": 1.3521,
+    "lng": 103.8198,
+    "mainZone": "Asia/Singapore",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "singapore"
+  },
+  {
+    "name": "United Arab Emirates",
+    "iso": "AE",
+    "capital": "Abu Dhabi",
+    "lat": 24.4539,
+    "lng": 54.3773,
+    "mainZone": "Asia/Dubai",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "united-arab-emirates"
+  },
+  {
+    "name": "Ireland",
+    "iso": "IE",
+    "capital": "Dublin",
+    "lat": 53.3498,
+    "lng": -6.2603,
+    "mainZone": "Europe/Dublin",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "ireland"
+  },
+  {
+    "name": "Switzerland",
+    "iso": "CH",
+    "capital": "Bern",
+    "lat": 46.948,
+    "lng": 7.4474,
+    "mainZone": "Europe/Zurich",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "switzerland"
+  },
+  {
+    "name": "Netherlands",
+    "iso": "NL",
+    "capital": "Amsterdam",
+    "lat": 52.3676,
+    "lng": 4.9041,
+    "mainZone": "Europe/Amsterdam",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "netherlands"
+  },
+  {
+    "name": "Spain",
+    "iso": "ES",
+    "capital": "Madrid",
+    "lat": 40.4168,
+    "lng": -3.7038,
+    "mainZone": "Europe/Madrid",
+    "otherZones": [
+      "Atlantic/Canary"
+    ],
+    "continent": "Europe",
+    "slug": "spain"
+  },
+  {
+    "name": "Italy",
+    "iso": "IT",
+    "capital": "Rome",
+    "lat": 41.9028,
+    "lng": 12.4964,
+    "mainZone": "Europe/Rome",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "italy"
+  },
+  {
+    "name": "Brazil",
+    "iso": "BR",
+    "capital": "Brasilia",
+    "lat": -15.8267,
+    "lng": -47.9218,
+    "mainZone": "America/Sao_Paulo",
+    "otherZones": [
+      "America/Manaus",
+      "America/Fortaleza"
+    ],
+    "continent": "South America",
+    "slug": "brazil"
+  },
+  {
+    "name": "Mexico",
+    "iso": "MX",
+    "capital": "Mexico City",
+    "lat": 19.4326,
+    "lng": -99.1332,
+    "mainZone": "America/Mexico_City",
+    "otherZones": [
+      "America/Cancun",
+      "America/Tijuana"
+    ],
+    "continent": "North America",
+    "slug": "mexico"
+  },
+  {
+    "name": "South Africa",
+    "iso": "ZA",
+    "capital": "Pretoria",
+    "lat": -25.7479,
+    "lng": 28.2293,
+    "mainZone": "Africa/Johannesburg",
+    "otherZones": [],
+    "continent": "Africa",
+    "slug": "south-africa"
+  },
+  {
+    "name": "South Korea",
+    "iso": "KR",
+    "capital": "Seoul",
+    "lat": 37.5665,
+    "lng": 126.978,
+    "mainZone": "Asia/Seoul",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "south-korea"
+  },
+  {
+    "name": "Saudi Arabia",
+    "iso": "SA",
+    "capital": "Riyadh",
+    "lat": 24.7136,
+    "lng": 46.6753,
+    "mainZone": "Asia/Riyadh",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "saudi-arabia"
+  },
+  {
+    "name": "Pakistan",
+    "iso": "PK",
+    "capital": "Islamabad",
+    "lat": 33.6844,
+    "lng": 73.0479,
+    "mainZone": "Asia/Karachi",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "pakistan"
+  },
+  {
+    "name": "Bangladesh",
+    "iso": "BD",
+    "capital": "Dhaka",
+    "lat": 23.8103,
+    "lng": 90.4125,
+    "mainZone": "Asia/Dhaka",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "bangladesh"
+  },
+  {
+    "name": "Philippines",
+    "iso": "PH",
+    "capital": "Manila",
+    "lat": 14.5995,
+    "lng": 120.9842,
+    "mainZone": "Asia/Manila",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "philippines"
+  },
+  {
+    "name": "Indonesia",
+    "iso": "ID",
+    "capital": "Jakarta",
+    "lat": -6.2088,
+    "lng": 106.8456,
+    "mainZone": "Asia/Jakarta",
+    "otherZones": [
+      "Asia/Makassar",
+      "Asia/Jayapura"
+    ],
+    "continent": "Asia",
+    "slug": "indonesia"
+  },
+  {
+    "name": "Malaysia",
+    "iso": "MY",
+    "capital": "Kuala Lumpur",
+    "lat": 3.139,
+    "lng": 101.6869,
+    "mainZone": "Asia/Kuala_Lumpur",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "malaysia"
+  },
+  {
+    "name": "Thailand",
+    "iso": "TH",
+    "capital": "Bangkok",
+    "lat": 13.7563,
+    "lng": 100.5018,
+    "mainZone": "Asia/Bangkok",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "thailand"
+  },
+  {
+    "name": "Vietnam",
+    "iso": "VN",
+    "capital": "Hanoi",
+    "lat": 21.0285,
+    "lng": 105.8542,
+    "mainZone": "Asia/Ho_Chi_Minh",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "vietnam"
+  },
+  {
+    "name": "Hong Kong",
+    "iso": "HK",
+    "capital": "Hong Kong",
+    "lat": 22.3193,
+    "lng": 114.1694,
+    "mainZone": "Asia/Hong_Kong",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "hong-kong"
+  },
+  {
+    "name": "Taiwan",
+    "iso": "TW",
+    "capital": "Taipei",
+    "lat": 25.033,
+    "lng": 121.5654,
+    "mainZone": "Asia/Taipei",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "taiwan"
+  },
+  {
+    "name": "Qatar",
+    "iso": "QA",
+    "capital": "Doha",
+    "lat": 25.2854,
+    "lng": 51.531,
+    "mainZone": "Asia/Qatar",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "qatar"
+  },
+  {
+    "name": "Kuwait",
+    "iso": "KW",
+    "capital": "Kuwait City",
+    "lat": 29.3759,
+    "lng": 47.9774,
+    "mainZone": "Asia/Kuwait",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "kuwait"
+  },
+  {
+    "name": "Egypt",
+    "iso": "EG",
+    "capital": "Cairo",
+    "lat": 30.0444,
+    "lng": 31.2357,
+    "mainZone": "Africa/Cairo",
+    "otherZones": [],
+    "continent": "Africa",
+    "slug": "egypt"
+  },
+  {
+    "name": "Nigeria",
+    "iso": "NG",
+    "capital": "Abuja",
+    "lat": 9.0765,
+    "lng": 7.3986,
+    "mainZone": "Africa/Lagos",
+    "otherZones": [],
+    "continent": "Africa",
+    "slug": "nigeria"
+  },
+  {
+    "name": "Kenya",
+    "iso": "KE",
+    "capital": "Nairobi",
+    "lat": -1.2921,
+    "lng": 36.8219,
+    "mainZone": "Africa/Nairobi",
+    "otherZones": [],
+    "continent": "Africa",
+    "slug": "kenya"
+  },
+  {
+    "name": "Turkey",
+    "iso": "TR",
+    "capital": "Ankara",
+    "lat": 39.9334,
+    "lng": 32.8597,
+    "mainZone": "Europe/Istanbul",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "turkey"
+  },
+  {
+    "name": "Israel",
+    "iso": "IL",
+    "capital": "Jerusalem",
+    "lat": 31.7683,
+    "lng": 35.2137,
+    "mainZone": "Asia/Jerusalem",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "israel"
+  },
+  {
+    "name": "Sweden",
+    "iso": "SE",
+    "capital": "Stockholm",
+    "lat": 59.3293,
+    "lng": 18.0686,
+    "mainZone": "Europe/Stockholm",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "sweden"
+  },
+  {
+    "name": "Norway",
+    "iso": "NO",
+    "capital": "Oslo",
+    "lat": 59.9139,
+    "lng": 10.7522,
+    "mainZone": "Europe/Oslo",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "norway"
+  },
+  {
+    "name": "Denmark",
+    "iso": "DK",
+    "capital": "Copenhagen",
+    "lat": 55.6761,
+    "lng": 12.5683,
+    "mainZone": "Europe/Copenhagen",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "denmark"
+  },
+  {
+    "name": "Finland",
+    "iso": "FI",
+    "capital": "Helsinki",
+    "lat": 60.1699,
+    "lng": 24.9384,
+    "mainZone": "Europe/Helsinki",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "finland"
+  },
+  {
+    "name": "Poland",
+    "iso": "PL",
+    "capital": "Warsaw",
+    "lat": 52.2297,
+    "lng": 21.0122,
+    "mainZone": "Europe/Warsaw",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "poland"
+  },
+  {
+    "name": "Belgium",
+    "iso": "BE",
+    "capital": "Brussels",
+    "lat": 50.8503,
+    "lng": 4.3517,
+    "mainZone": "Europe/Brussels",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "belgium"
+  },
+  {
+    "name": "Austria",
+    "iso": "AT",
+    "capital": "Vienna",
+    "lat": 48.2082,
+    "lng": 16.3738,
+    "mainZone": "Europe/Vienna",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "austria"
+  },
+  {
+    "name": "Portugal",
+    "iso": "PT",
+    "capital": "Lisbon",
+    "lat": 38.7223,
+    "lng": -9.1393,
+    "mainZone": "Europe/Lisbon",
+    "otherZones": [
+      "Atlantic/Azores",
+      "Atlantic/Madeira"
+    ],
+    "continent": "Europe",
+    "slug": "portugal"
+  },
+  {
+    "name": "Greece",
+    "iso": "GR",
+    "capital": "Athens",
+    "lat": 37.9838,
+    "lng": 23.7275,
+    "mainZone": "Europe/Athens",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "greece"
+  },
+  {
+    "name": "Czech Republic",
+    "iso": "CZ",
+    "capital": "Prague",
+    "lat": 50.0755,
+    "lng": 14.4378,
+    "mainZone": "Europe/Prague",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "czech-republic"
+  },
+  {
+    "name": "Hungary",
+    "iso": "HU",
+    "capital": "Budapest",
+    "lat": 47.4979,
+    "lng": 19.0402,
+    "mainZone": "Europe/Budapest",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "hungary"
+  },
+  {
+    "name": "Romania",
+    "iso": "RO",
+    "capital": "Bucharest",
+    "lat": 44.4268,
+    "lng": 26.1025,
+    "mainZone": "Europe/Bucharest",
+    "otherZones": [],
+    "continent": "Europe",
+    "slug": "romania"
+  },
+  {
+    "name": "Nepal",
+    "iso": "NP",
+    "capital": "Kathmandu",
+    "lat": 27.7172,
+    "lng": 85.324,
+    "mainZone": "Asia/Kathmandu",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "nepal"
+  },
+  {
+    "name": "Sri Lanka",
+    "iso": "LK",
+    "capital": "Colombo",
+    "lat": 6.9271,
+    "lng": 79.8612,
+    "mainZone": "Asia/Colombo",
+    "otherZones": [],
+    "continent": "Asia",
+    "slug": "sri-lanka"
+  },
+  {
+    "name": "Argentina",
+    "iso": "AR",
+    "capital": "Buenos Aires",
+    "lat": -34.6037,
+    "lng": -58.3816,
+    "mainZone": "America/Argentina/Buenos_Aires",
+    "otherZones": [],
+    "continent": "South America",
+    "slug": "argentina"
+  },
+  {
+    "name": "Chile",
+    "iso": "CL",
+    "capital": "Santiago",
+    "lat": -33.4489,
+    "lng": -70.6693,
+    "mainZone": "America/Santiago",
+    "otherZones": [],
+    "continent": "South America",
+    "slug": "chile"
+  },
+  {
+    "name": "Colombia",
+    "iso": "CO",
+    "capital": "Bogota",
+    "lat": 4.711,
+    "lng": -74.0721,
+    "mainZone": "America/Bogota",
+    "otherZones": [],
+    "continent": "South America",
+    "slug": "colombia"
+  },
+  {
+    "name": "Peru",
+    "iso": "PE",
+    "capital": "Lima",
+    "lat": -12.0464,
+    "lng": -77.0428,
+    "mainZone": "America/Lima",
+    "continent": "South America",
+    "slug": "peru",
+    "otherZones": []
+  },
+  {
+    "name": "Russia",
+    "iso": "RU",
+    "capital": "Moscow",
+    "lat": 55.7558,
+    "lng": 37.6173,
+    "mainZone": "Europe/Moscow",
+    "otherZones": [
+      "Asia/Yekaterinburg",
+      "Asia/Novosibirsk",
+      "Asia/Vladivostok"
+    ],
+    "continent": "Europe",
+    "slug": "russia"
+  },
+  {
+    "name": "Ukraine",
+    "iso": "UA",
+    "capital": "Kyiv",
+    "lat": 50.4501,
+    "lng": 30.5234,
+    "mainZone": "Europe/Kyiv",
+    "continent": "Europe",
+    "slug": "ukraine",
+    "otherZones": []
+  },
+  {
+    "name": "Fiji",
+    "iso": "FJ",
+    "capital": "Suva",
+    "lat": -18.1416,
+    "lng": 178.4419,
+    "mainZone": "Pacific/Fiji",
+    "continent": "Oceania",
+    "slug": "fiji",
+    "otherZones": []
+  },
+  {
+    "name": "Morocco",
+    "iso": "MA",
+    "capital": "Rabat",
+    "lat": 34.0209,
+    "lng": -6.8416,
+    "mainZone": "Africa/Casablanca",
+    "continent": "Africa",
+    "slug": "morocco",
+    "otherZones": []
+  },
+  {
+    "name": "Iceland",
+    "iso": "IS",
+    "capital": "Reykjavik",
+    "lat": 64.1466,
+    "lng": -21.9426,
+    "mainZone": "Atlantic/Reykjavik",
+    "continent": "Europe",
+    "slug": "iceland",
+    "otherZones": []
+  },
+  {
+    "name": "Oman",
+    "iso": "OM",
+    "capital": "Muscat",
+    "lat": 23.588,
+    "lng": 58.3829,
+    "mainZone": "Asia/Muscat",
+    "continent": "Asia",
+    "slug": "oman",
+    "otherZones": []
+  },
+  {
+    "name": "Bahrain",
+    "iso": "BH",
+    "capital": "Manama",
+    "lat": 26.2285,
+    "lng": 50.586,
+    "mainZone": "Asia/Bahrain",
+    "continent": "Asia",
+    "slug": "bahrain",
+    "otherZones": []
+  },
+  {
+    "name": "Costa Rica",
+    "iso": "CR",
+    "capital": "San Jose",
+    "lat": 9.9281,
+    "lng": -84.0907,
+    "mainZone": "America/Costa_Rica",
+    "continent": "North America",
+    "slug": "costa-rica",
+    "otherZones": []
+  },
+  {
+    "name": "Panama",
+    "iso": "PA",
+    "capital": "Panama City",
+    "lat": 8.9824,
+    "lng": -79.5199,
+    "mainZone": "America/Panama",
+    "continent": "North America",
+    "slug": "panama",
+    "otherZones": []
+  },
+  {
+    "name": "Ghana",
+    "iso": "GH",
+    "capital": "Accra",
+    "lat": 5.6037,
+    "lng": -0.187,
+    "mainZone": "Africa/Accra",
+    "continent": "Africa",
+    "slug": "ghana",
+    "otherZones": []
+  },
+  {
+    "name": "Ethiopia",
+    "iso": "ET",
+    "capital": "Addis Ababa",
+    "lat": 9.03,
+    "lng": 38.74,
+    "mainZone": "Africa/Addis_Ababa",
+    "continent": "Africa",
+    "slug": "ethiopia",
+    "otherZones": []
+  }
+]

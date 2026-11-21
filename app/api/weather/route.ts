@@ -58,7 +58,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ success: false, error: `Upstream error ${res.status}` }, { status: 502 });
     }
 
-    const data = await res.json();
+    const text = await res.text();
+    if (!text || text.trim().length === 0) {
+      return NextResponse.json({ success: false, error: "Empty weather response" });
+    }
+    const data = JSON.parse(text);
     const current = data.current;
     const daily: DailyData = data.daily;
 

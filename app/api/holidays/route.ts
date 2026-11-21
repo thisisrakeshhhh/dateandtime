@@ -42,7 +42,16 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    const holidays: NagerHoliday[] = await res.json();
+    const text = await res.text();
+    if (!text || text.trim().length === 0) {
+      return NextResponse.json({
+        success: true,
+        isHoliday: false,
+        holidayName: null,
+      });
+    }
+
+    const holidays: NagerHoliday[] = JSON.parse(text);
     const todayHoliday = holidays.find((h) => h.date === todayStr);
 
     return NextResponse.json(

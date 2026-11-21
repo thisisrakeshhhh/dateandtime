@@ -70,9 +70,9 @@ export default function CompareCard({
     let active = true;
 
     fetch(`/api/weather?lat=${placeA.lat}&lng=${placeA.lng}`)
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json().catch(() => null) : null))
       .then((d) => {
-        if (active && d.success && d.current) {
+        if (active && d && d.success && d.current) {
           setWeatherA({
             temp: d.current.temperature,
             condition: d.current.condition,
@@ -84,9 +84,9 @@ export default function CompareCard({
       .catch(() => {});
 
     fetch(`/api/weather?lat=${placeB.lat}&lng=${placeB.lng}`)
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json().catch(() => null) : null))
       .then((d) => {
-        if (active && d.success && d.current) {
+        if (active && d && d.success && d.current) {
           setWeatherB({
             temp: d.current.temperature,
             condition: d.current.condition,

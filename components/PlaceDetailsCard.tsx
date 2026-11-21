@@ -83,9 +83,9 @@ export default function PlaceDetailsCard({
 
     // Weather fetch
     fetch(`/api/weather?lat=${place.lat}&lng=${place.lng}`)
-      .then((res) => res.json())
-      .then((data: WeatherData) => {
-        if (active) {
+      .then((res) => (res.ok ? res.json().catch(() => null) : null))
+      .then((data: WeatherData | null) => {
+        if (active && data) {
           setWeather(data);
           setLoadingWeather(false);
         }
@@ -98,9 +98,9 @@ export default function PlaceDetailsCard({
     if (place.countryIso) {
       const today = DateTime.now().setZone(place.timezone).toFormat("yyyy-MM-dd");
       fetch(`/api/holidays?countryCode=${place.countryIso}&date=${today}`)
-        .then((res) => res.json())
+        .then((res) => (res.ok ? res.json().catch(() => null) : null))
         .then((data) => {
-          if (active && data.success) {
+          if (active && data && data.success) {
             setHoliday({
               isHoliday: data.isHoliday,
               holidayName: data.holidayName,

@@ -51,16 +51,202 @@ export interface OverlapHour {
   isOverlapBothOffice: boolean; // Both between 9 AM and 5 PM
 }
 
+export interface OverlapWindow {
+  overlapMinutes: number;
+  overlapHoursFloat: number;
+  formattedDuration: string; // "6.5 hours" or "6h 30m"
+  fromStartFormatted: string; // "2:30 PM"
+  fromEndFormatted: string;   // "9:00 PM"
+  toStartFormatted: string;   // "9:00 AM"
+  toEndFormatted: string;     // "3:30 PM"
+  fromStartMinute: number;
+  fromEndMinute: number;
+  toStartMinute: number;
+  toEndMinute: number;
+}
+
 export interface BestTimeToCallResult {
   hasOverlap: boolean;
-  overlapHoursCount: number;
-  recommendedWindowFrom: string;
-  recommendedWindowTo: string;
+  overlapMinutes: number;
+  overlapHoursCount: number; // For backward compatibility / display
+  overlapHoursFloat: number; // 6.5
+  formattedDuration: string; // "6.5 hours"
+  recommendedWindowFrom: string; // "2:30 PM – 9:00 PM"
+  recommendedWindowTo: string;   // "9:00 AM – 3:30 PM"
   description: string;
+  officeOverlapMinutes: number;
+  officeOverlapHoursFloat: number;
   officeOverlapCount: number;
   officeWindowFrom?: string;
   officeWindowTo?: string;
+  fromStartMinute?: number;
+  fromEndMinute?: number;
+  toStartMinute?: number;
+  toEndMinute?: number;
   slots: OverlapHour[];
+}
+
+/**
+ * Computes exact minute-level overlap between two time windows.
+ * Correctly accounts for half-hour and 45-minute offsets (e.g. India, Nepal, Adelaide).
+ */
+export function calculateIntervalOverlap(
+  fromZone: string,
+  toZone: string,
+  windowAStartHour: number,
+  windowAEndHour: number,
+  windowBStartHour: number,
+  windowBEndHour: number,
+  referenceDate: DateTime = DateTime.now()
+): OverlapWindow | null {
+  const baseDate = referenceDate.setZone(fromZone).startOf("day");
+
+  // Window for Place A
+  const aStart = baseDate.set({ hour: windowAStartHour, minute: 0, second: 0, millisecond: 0 });
+  const aEnd = aStart.plus({ hours: windowAEndHour - windowAStartHour });
+
+  let bestOverlap: OverlapWindow | null = null;
+  let maxMinutes = 0;
+
+  // Check Place B windows across day offsets [-1, 0, 1] to catch international date lines
+  for (const dayOffset of [-1, 0, 1]) {
+    const bBase = referenceDate.setZone(toZone).plus({ days: dayOffset }).startOf("day");
+    const bStart = bBase.set({ hour: windowBStartHour, minute: 0, second: 0, millisecond: 0 });
+    const bEnd = bStart.plus({ hours: windowBEndHour - windowBStartHour });
+
+    const overlapStartMillis = Math.max(aStart.toMillis(), bStart.toMillis());
+    const overlapEndMillis = Math.min(aEnd.toMillis(), bEnd.toMillis());
+
+    if (overlapEndMillis > overlapStartMillis) {
+      const minutes = Math.round((overlapEndMillis - overlapStartMillis) / 60000);
+      if (minutes > maxMinutes) {
+        maxMinutes = minutes;
+        const hoursFloat = Number((minutes / 60).toFixed(1));
+
+        const fromStartDt = DateTime.fromMillis(overlapStartMillis).setZone(fromZone);
+        const fromEndDt = DateTime.fromMillis(overlapEndMillis).setZone(fromZone);
+        const toStartDt = DateTime.fromMillis(overlapStartMillis).setZone(toZone);
+        const toEndDt = DateTime.fromMillis(overlapEndMillis).setZone(toZone);
+
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        let formattedDuration = `${hoursFloat} hours`;
+        if (mins === 30) {
+          formattedDuration = `${hoursFloat} hours`;
+        } else if (mins > 0) {
+          formattedDuration = `${hours}h ${mins}m`;
+        } else {
+          formattedDuration = `${hours} hour${hours > 1 ? "s" : ""}`;
+        }
+
+        bestOverlap = {
+          overlapMinutes: minutes,
+          overlapHoursFloat: hoursFloat,
+          formattedDuration,
+          fromStartFormatted: fromStartDt.toFormat("h:mm a"),
+          fromEndFormatted: fromEndDt.toFormat("h:mm a"),
+          toStartFormatted: toStartDt.toFormat("h:mm a"),
+          toEndFormatted: toEndDt.toFormat("h:mm a"),
+          fromStartMinute: fromStartDt.hour * 60 + fromStartDt.minute,
+          fromEndMinute: fromEndDt.hour * 60 + fromEndDt.minute,
+          toStartMinute: toStartDt.hour * 60 + toStartDt.minute,
+          toEndMinute: toEndDt.hour * 60 + toEndDt.minute,
+        };
+      }
+    }
+  }
+
+  return bestOverlap;
+}
+
+/**
+ * Computes the optimal "Best Time to Call" window based on 9 AM to 9 PM in both places.
+ * Uses exact minute arithmetic to correctly handle 30m and 45m time zones.
+ */
+export function calculateBestTimeToCall(
+  fromZone: string,
+  toZone: string,
+  fromName: string = "Place A",
+  toName: string = "Place B",
+  fromLat?: number,
+  fromLng?: number,
+  toLat?: number,
+  toLng?: number,
+  referenceDate: DateTime = DateTime.now()
+): BestTimeToCallResult {
+  const slots = generate24HourTable(fromZone, toZone, fromLat, fromLng, toLat, toLng, 0);
+
+  // Exact minute overlap for Awake hours (9 AM to 9 PM = 9:00 to 21:00)
+  const awakeOverlap = calculateIntervalOverlap(
+    fromZone,
+    toZone,
+    siteConfig.workHours.start,
+    siteConfig.workHours.end,
+    siteConfig.workHours.start,
+    siteConfig.workHours.end,
+    referenceDate
+  );
+
+  // Exact minute overlap for Business Office hours (9 AM to 5 PM = 9:00 to 17:00)
+  const officeOverlap = calculateIntervalOverlap(
+    fromZone,
+    toZone,
+    siteConfig.officeHours.start,
+    siteConfig.officeHours.end,
+    siteConfig.officeHours.start,
+    siteConfig.officeHours.end,
+    referenceDate
+  );
+
+  const hasOverlap = awakeOverlap !== null && awakeOverlap.overlapMinutes > 0;
+  const overlapMinutes = awakeOverlap ? awakeOverlap.overlapMinutes : 0;
+  const overlapHoursFloat = awakeOverlap ? awakeOverlap.overlapHoursFloat : 0;
+  const overlapHoursCount = Math.round(overlapHoursFloat);
+  const formattedDuration = awakeOverlap ? awakeOverlap.formattedDuration : "0 hours";
+
+  let recommendedWindowFrom = "No direct 9 AM – 9 PM overlap";
+  let recommendedWindowTo = "Schedule outside standard hours";
+  let description = "";
+
+  if (hasOverlap && awakeOverlap) {
+    recommendedWindowFrom = `${awakeOverlap.fromStartFormatted} to ${awakeOverlap.fromEndFormatted}`;
+    recommendedWindowTo = `${awakeOverlap.toStartFormatted} to ${awakeOverlap.toEndFormatted}`;
+    description = `Best window: ${recommendedWindowFrom} ${fromName} time (${recommendedWindowTo} in ${toName}) · ${formattedDuration} overlap. Both parties will be awake between 9:00 AM and 9:00 PM.`;
+  } else {
+    description = `No direct 9:00 AM to 9:00 PM overlap. A good compromise is early morning around 8:00 AM or late evening around 9:00 PM in ${fromName}.`;
+  }
+
+  let officeWindowFrom: string | undefined;
+  let officeWindowTo: string | undefined;
+  const officeOverlapMinutes = officeOverlap ? officeOverlap.overlapMinutes : 0;
+  const officeOverlapHoursFloat = officeOverlap ? officeOverlap.overlapHoursFloat : 0;
+  const officeOverlapCount = Math.round(officeOverlapHoursFloat);
+
+  if (officeOverlap && officeOverlap.overlapMinutes > 0) {
+    officeWindowFrom = `${officeOverlap.fromStartFormatted} to ${officeOverlap.fromEndFormatted}`;
+    officeWindowTo = `${officeOverlap.toStartFormatted} to ${officeOverlap.toEndFormatted}`;
+  }
+
+  return {
+    hasOverlap,
+    overlapMinutes,
+    overlapHoursCount,
+    overlapHoursFloat,
+    formattedDuration,
+    recommendedWindowFrom,
+    recommendedWindowTo,
+    description,
+    officeOverlapMinutes,
+    officeOverlapHoursFloat,
+    officeOverlapCount,
+    officeWindowFrom,
+    officeWindowTo,
+    fromStartMinute: awakeOverlap ? awakeOverlap.fromStartMinute : undefined,
+    fromEndMinute: awakeOverlap ? awakeOverlap.fromEndMinute : undefined,
+    toStartMinute: awakeOverlap ? awakeOverlap.toStartMinute : undefined,
+    toEndMinute: awakeOverlap ? awakeOverlap.toEndMinute : undefined,
+    slots,
+  };
 }
 
 /**
@@ -167,6 +353,18 @@ export function getPlaceTimeInfo(
 /**
  * Calculates exact time difference between two places with varying daylight saving status and fractional offsets.
  */
+export function formatTimeDifference(fromZone: string, toZone: string) {
+  const diff = calculateTimeDifference(fromZone, toZone);
+  return {
+    isSameTime: diff.isSameTime,
+    isAhead: diff.isToAhead,
+    hoursPart: diff.hoursPart,
+    minutesPart: diff.minutesPart,
+    aheadOrBehindText: diff.relationTextShort,
+    verbalSummary: diff.verbalSummary,
+  };
+}
+
 export function calculateTimeDifference(
   fromZone: string,
   toZone: string,
@@ -310,65 +508,4 @@ export function generate24HourTable(
   }
 
   return result;
-}
-
-/**
- * Computes the optimal "Best Time to Call" window based on 9 AM to 9 PM in both places.
- */
-export function calculateBestTimeToCall(
-  fromZone: string,
-  toZone: string,
-  fromName: string,
-  toName: string,
-  fromLat?: number,
-  fromLng?: number,
-  toLat?: number,
-  toLng?: number
-): BestTimeToCallResult {
-  const slots = generate24HourTable(fromZone, toZone, fromLat, fromLng, toLat, toLng, 0);
-
-  const callingOverlapSlots = slots.filter((s) => s.isOverlapBothCalling);
-  const officeOverlapSlots = slots.filter((s) => s.isOverlapBothOffice);
-
-  const hasOverlap = callingOverlapSlots.length > 0;
-  const overlapHoursCount = callingOverlapSlots.length;
-
-  let recommendedWindowFrom = "No direct 9 AM - 9 PM overlap";
-  let recommendedWindowTo = "Schedule outside standard hours";
-  let description = "";
-
-  if (hasOverlap) {
-    const firstSlot = callingOverlapSlots[0];
-    const lastSlot = callingOverlapSlots[callingOverlapSlots.length - 1];
-
-    recommendedWindowFrom = `${firstSlot.timeAFormatted} – ${lastSlot.hourA + 1 <= 12 ? `${lastSlot.hourA + 1}:00 AM` : `${lastSlot.hourA + 1 - 12}:00 PM`}`;
-    recommendedWindowTo = `${firstSlot.timeBFormatted} – ${lastSlot.timeBFormatted}`;
-
-    description = `The best time to call between ${fromName} and ${toName} is from ${recommendedWindowFrom} in ${fromName} (which corresponds to ${recommendedWindowTo} in ${toName}). Both parties will be within the convenient 9:00 AM to 9:00 PM awake window.`;
-  } else {
-    // If no direct 9 AM - 9 PM overlap, find the closest compromise
-    description = `Due to the large time difference, there is no direct overlap between 9:00 AM and 9:00 PM. A convenient compromise is early morning in ${fromName} (around 8:00 AM) or late evening in ${fromName} (around 9:00 PM) to catch regular awake hours in ${toName}.`;
-  }
-
-  let officeWindowFrom: string | undefined;
-  let officeWindowTo: string | undefined;
-
-  if (officeOverlapSlots.length > 0) {
-    const firstOffice = officeOverlapSlots[0];
-    const lastOffice = officeOverlapSlots[officeOverlapSlots.length - 1];
-    officeWindowFrom = `${firstOffice.timeAFormatted} – ${lastOffice.hourA + 1 <= 12 ? `${lastOffice.hourA + 1}:00 AM` : `${lastOffice.hourA + 1 - 12}:00 PM`}`;
-    officeWindowTo = `${firstOffice.timeBFormatted} – ${lastOffice.timeBFormatted}`;
-  }
-
-  return {
-    hasOverlap,
-    overlapHoursCount,
-    recommendedWindowFrom,
-    recommendedWindowTo,
-    description,
-    officeOverlapCount: officeOverlapSlots.length,
-    officeWindowFrom,
-    officeWindowTo,
-    slots,
-  };
 }

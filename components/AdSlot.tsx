@@ -6,7 +6,9 @@ import { siteConfig } from "@/lib/config";
 export type AdSlotType = "top-banner" | "in-content" | "sidebar" | "footer-banner";
 
 interface AdSlotProps {
-  type: AdSlotType;
+  type?: AdSlotType;
+  slotId?: string;
+  format?: string;
   className?: string;
 }
 
@@ -29,11 +31,10 @@ const slotDimensions: Record<AdSlotType, { height: string; label: string }> = {
   },
 };
 
-export default function AdSlot({ type, className = "" }: AdSlotProps) {
-  const { height, label } = slotDimensions[type];
+export default function AdSlot({ type = "in-content", className = "" }: AdSlotProps) {
+  const dim = slotDimensions[type] || slotDimensions["in-content"];
+  const { height, label } = dim;
 
-  // If ads are disabled via env variable NEXT_PUBLIC_ENABLE_ADS,
-  // we do not render any ad network scripts, keeping it completely clean and AdSense-safe.
   if (!siteConfig.ads.enabled) {
     return null;
   }
@@ -46,12 +47,11 @@ export default function AdSlot({ type, className = "" }: AdSlotProps) {
       <span className="text-[10px] uppercase font-mono tracking-wider text-neutral-400 mb-1">
         {label}
       </span>
-      {/* Real Google AdSense Tag when enabled */}
       <ins
         className="adsbygoogle"
-        style={{ display: "block", textAlign: "center" }}
+        style={{ display: "block" }}
         data-ad-client={siteConfig.ads.client}
-        data-ad-slot={siteConfig.ads.slots[type === "top-banner" ? "headerBanner" : type === "in-content" ? "inContent" : "sidebar"] || ""}
+        data-ad-slot={siteConfig.ads.slots.inContent || "0000000000"}
         data-ad-format="auto"
         data-full-width-responsive="true"
       />

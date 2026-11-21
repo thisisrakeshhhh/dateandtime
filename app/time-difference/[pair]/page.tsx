@@ -15,20 +15,11 @@ import {
   generateBreadcrumbSchema,
 } from "@/lib/seo";
 import { siteConfig } from "@/lib/config";
-import ResultCard from "@/components/ResultCard";
-import BestTimeToCallBox from "@/components/BestTimeToCallBox";
-import MeetingTable from "@/components/MeetingTable";
+import PairClientView from "@/components/PairClientView";
 import FaqBlock from "@/components/FaqBlock";
-import WorldMapContainer from "@/components/Map";
 import AdSlot from "@/components/AdSlot";
-import {
-  ArrowLeftRight,
-  PhoneCall,
-  Globe,
-  Clock,
-  Compass,
-  ArrowRight,
-} from "lucide-react";
+import FlagIcon from "@/components/FlagIcon";
+import { ArrowRight } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ pair: string }>;
@@ -143,185 +134,94 @@ export default async function TimeDifferencePage({ params }: PageProps) {
   const breadcrumbJsonLd = generateBreadcrumbSchema(breadcrumbItems);
 
   return (
-    <div className="space-y-8">
-      {/* Breadcrumb JSON-LD & Breadcrumbs UI */}
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8">
+      {/* Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-neutral-500">
-        <Link href="/" className="hover:text-emerald-600 transition-colors">
+      {/* Slim Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#6B6B6B] dark:text-[#A0A0A0]">
+        <Link href="/" className="hover:text-[#222222] dark:hover:text-white transition-colors">
           Home
         </Link>
         <span>/</span>
-        <span className="text-neutral-400">Time Difference</span>
+        <span className="text-neutral-400">Time difference</span>
         <span>/</span>
-        <span className="text-neutral-900 dark:text-neutral-100 font-medium">
+        <span className="text-[#222222] dark:text-white font-medium">
           {placeA.name} to {placeB.name}
         </span>
       </nav>
 
-      {/* Header H1 and Subtitle */}
+      {/* Title & Human Summary */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-3">
-          <Clock className="w-3.5 h-3.5" />
-          <span>Live Daylight Saving & Time Offset Calculation</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-neutral-950 dark:text-white tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#222222] dark:text-white">
           {article.h1}
         </h1>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-3xl leading-relaxed">
-          {diff.verbalSummary} Compare live local clocks, observe current day and night
-          regions on the world map, check distance, and plan the ideal overlap window.
+        <p className="text-sm text-[#6B6B6B] dark:text-[#A0A0A0] mt-1.5 leading-relaxed">
+          {diff.verbalSummary}
         </p>
       </div>
 
-      {/* Fast Action Quick Links */}
-      <div className="flex flex-wrap items-center gap-2.5">
-        <Link
-          href={`/time-difference/${placeB.slug}-to-${placeA.slug}`}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition-colors shadow-xs"
-        >
-          <ArrowLeftRight className="w-3.5 h-3.5 text-emerald-500" />
-          <span>Reverse: {placeB.name} to {placeA.name}</span>
-        </Link>
-        <Link
-          href={`/best-time-to-call/${placeB.slug}-from-${placeA.slug}`}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition-colors shadow-xs"
-        >
-          <PhoneCall className="w-3.5 h-3.5 text-indigo-500" />
-          <span>Best Time to Call Guide</span>
-        </Link>
-        {placeA.countrySlug && (
-          <Link
-            href={`/country/${placeA.countrySlug}`}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition-colors shadow-xs"
-          >
-            <Globe className="w-3.5 h-3.5 text-neutral-500" />
-            <span>{placeA.countryName} Time & Zones</span>
-          </Link>
-        )}
-        {placeB.countrySlug && placeB.countrySlug !== placeA.countrySlug && (
-          <Link
-            href={`/country/${placeB.countrySlug}`}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition-colors shadow-xs"
-          >
-            <Globe className="w-3.5 h-3.5 text-neutral-500" />
-            <span>{placeB.countryName} Time & Zones</span>
-          </Link>
-        )}
+      {/* 1. Tool First: Interactive Map & Compare Card */}
+      <PairClientView placeA={placeA} placeB={placeB} />
+
+      {/* AdSlot */}
+      <div className="my-6">
+        <AdSlot slotId="pair-mid" format="horizontal" />
       </div>
 
-      {/* Main Result Card */}
-      <ResultCard placeA={placeA} placeB={placeB} />
+      {/* 2. Short "Good to know" section (2 or 3 short paragraphs) */}
+      <section className="bg-white dark:bg-[#181818] rounded-2xl border border-neutral-200/80 dark:border-neutral-800 p-6 sm:p-7 shadow-sm space-y-4">
+        <h2 className="text-lg font-semibold text-[#222222] dark:text-white">
+          Good to know
+        </h2>
+        {article.paragraphs.slice(0, 3).map((para, i) => (
+          <p key={i} className="text-xs sm:text-sm text-[#6B6B6B] dark:text-[#A0A0A0] leading-relaxed">
+            {para}
+          </p>
+        ))}
+      </section>
 
-      {/* Interactive World Map showing live terminator & geodesic path */}
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 flex items-center gap-1.5">
-            <Compass className="w-4 h-4 text-emerald-500" />
-            Day / Night World Map & Flight Path
+      {/* 3. FAQ as a clean list with a small down arrow */}
+      <FaqBlock faqs={faqs} />
+
+      {/* 4. Related routes */}
+      {relatedPairs.length > 0 && (
+        <section className="pt-2">
+          <h2 className="text-base font-semibold text-[#222222] dark:text-white mb-3">
+            Related comparisons
           </h2>
-          <span className="text-xs text-neutral-400">
-            {dist.formattedKm} apart
-          </span>
-        </div>
-        <WorldMapContainer
-          placeA={placeA}
-          placeB={placeB}
-          className="h-[460px] w-full"
-        />
-      </div>
-
-      {/* Optional AdSlot (In-Content) */}
-      <AdSlot type="in-content" />
-
-      {/* Best Time to Call Box */}
-      <BestTimeToCallBox fromPlace={placeA} toPlace={placeB} />
-
-      {/* 24-Hour Comparison Table */}
-      <MeetingTable placeA={placeA} placeB={placeB} />
-
-      {/* Editorial Content Section (250-400 words written from real data) */}
-      <section className="bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200/90 dark:border-neutral-800 p-6 sm:p-8 shadow-sm space-y-6">
-        <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-neutral-950 dark:text-white tracking-tight mb-3">
-            Understanding the Time Difference: {placeA.name} to {placeB.name}
-          </h2>
-          <div className="prose prose-neutral dark:prose-invert max-w-none text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed space-y-4">
-            {article.paragraphs.map((p, idx) => (
-              <p key={idx}>{p}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {relatedPairs.map((rel, idx) => (
+              <Link
+                key={idx}
+                href={rel.url}
+                className="p-3.5 rounded-xl bg-white dark:bg-[#181818] border border-neutral-200/80 dark:border-neutral-800 hover:border-[#E85D4E]/60 hover:shadow-sm transition-all group flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2 truncate text-xs font-medium text-[#222222] dark:text-white">
+                  <FlagIcon countryCode={rel.from.countryIso} size="sm" />
+                  <span className="truncate">{rel.from.name}</span>
+                  <span className="text-neutral-400">→</span>
+                  <FlagIcon countryCode={rel.to.countryIso} size="sm" />
+                  <span className="truncate">{rel.to.name}</span>
+                </div>
+                <ArrowRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-[#E85D4E] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+              </Link>
             ))}
           </div>
-        </div>
+        </section>
+      )}
 
-        {/* Server-Rendered Plain HTML Key Facts Table for SEO / No-JS crawlers */}
-        <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-neutral-500 mb-3">
-            Quick Reference Facts
-          </h3>
-          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-sans">
-            <div className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
-              <dt className="text-neutral-500 text-[11px]">Time Difference</dt>
-              <dd className="font-bold text-neutral-900 dark:text-neutral-100 mt-0.5">
-                {diff.relationTextShort}
-              </dd>
-            </div>
-            <div className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
-              <dt className="text-neutral-500 text-[11px]">{placeA.name} Zone</dt>
-              <dd className="font-bold text-neutral-900 dark:text-neutral-100 mt-0.5">
-                {diff.fromTime.timeZoneAbbr} ({diff.fromTime.utcOffsetString})
-              </dd>
-            </div>
-            <div className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
-              <dt className="text-neutral-500 text-[11px]">{placeB.name} Zone</dt>
-              <dd className="font-bold text-neutral-900 dark:text-neutral-100 mt-0.5">
-                {diff.toTime.timeZoneAbbr} ({diff.toTime.utcOffsetString})
-              </dd>
-            </div>
-            <div className="p-3 rounded-xl bg-neutral-50 dark:bg-neutral-800/50">
-              <dt className="text-neutral-500 text-[11px]">Direct Distance</dt>
-              <dd className="font-bold text-neutral-900 dark:text-neutral-100 mt-0.5">
-                {dist.formattedKm}
-              </dd>
-            </div>
-          </dl>
+      {/* Server-Rendered Plain HTML for SEO Bots (Google indexable without JS) */}
+      <noscript>
+        <div className="p-4 bg-neutral-100 rounded-xl text-xs space-y-2">
+          <p>Time difference between {placeA.name} and {placeB.name}: {diff.verbalSummary}</p>
+          <p>Distance: {dist.formattedKm} ({dist.formattedMiles}).</p>
+          <p>Calling window: {bestTime.overlapHoursCount} hours of daylight overlap.</p>
         </div>
-      </section>
-
-      {/* FAQ Section with FAQPage JSON-LD Schema */}
-      <FaqBlock
-        faqs={faqs}
-        title={`Frequently Asked Questions: ${placeA.name} to ${placeB.name}`}
-      />
-
-      {/* Related Pairs Internal Links (SEO Silo Architecture) */}
-      <section className="pt-4">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-3 flex items-center gap-1.5">
-          <Clock className="w-4 h-4 text-emerald-500" />
-          Related Time Differences & Corridors
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {relatedPairs.map((r) => (
-            <Link
-              key={r.url}
-              href={r.url}
-              className="p-3.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 hover:border-emerald-500/50 hover:shadow-xs transition-all group flex items-center justify-between"
-            >
-              <div>
-                <p className="font-semibold text-xs text-neutral-900 dark:text-neutral-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                  {r.from.name} to {r.to.name}
-                </p>
-                <p className="text-[11px] text-neutral-500">
-                  {r.from.countryName} → {r.to.countryName}
-                </p>
-              </div>
-              <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-emerald-500 group-hover:translate-x-0.5 transition-all" />
-            </Link>
-          ))}
-        </div>
-      </section>
+      </noscript>
     </div>
   );
 }

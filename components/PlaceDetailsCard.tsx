@@ -1,0 +1,284 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { Place, formatPlaceDisplayName } from "@/lib/places";
+import { getSolarTimes, getDstInfo } from "@/lib/astronomy";
+import { formatTimeDifference } from "@/lib/time";
+import FlagIcon from "@/components/FlagIcon";
+import WeatherIcon from "@/components/WeatherIcon";
+import {
+  X,
+  Sunrise,
+  Sunset,
+  ArrowRight,
+  Calendar,
+  Clock,
+  Sparkles,
+} from "lucide-react";
+import { DateTime } from "luxon";
+
+interface WeatherData {
+  success: boolean;
+  current?: {
+    temperature: number;
+    feelsLike: number;
+    condition: string;
+    icon: string;
+    isDay: boolean;
+  };
+  forecast?: Array<{
+    date: string;
+    day: string;
+    maxTemp: number;
+    minTemp: number;
+    condition: string;
+    icon: string;
+  }>;
+  attribution?: string;
+}
+
+interface HolidayData {
+  isHoliday: boolean;
+  holidayName: string | null;
+}
+
+interface PlaceDetailsCardProps {
+  place: Place;
+  userTimezone: string;
+  onCompareWith: (place: Place) => void;
+  onClose: () => void;
+}
+
+export default function PlaceDetailsCard({
+  place,
+  userTimezone,
+  onCompareWith,
+  onClose,
+}: PlaceDetailsCardProps) {
+  const [currentTime, setCurrentTime] = useState<string>("");
+  const [currentDate, setCurrentDate] = useState<string>("");
+  const [utcOffsetStr, setUtcOffsetStr] = useState<string>("");
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [holiday, setHoliday] = useState<HolidayData | null>(null);
+  const [loadingWeather, setLoadingWeather] = useState(true);
+
+  // Live clock
+  useEffect(() => {
+    function updateClock() {
+      const dt = DateTime.now().setZone(place.timezone);
+      setCurrentTime(dt.toFormat("h:mm:ss a"));
+      setCurrentDate(dt.toFormat("cccc, d LLLL yyyy"));
+      setUtcOffsetStr(dt.toFormat("ZZZZ")); // e.g. "GMT+5:30"
+    }
+
+    updateClock();
+    const timer = setInterval(updateClock, 1000);
+    return () => clearInterval(timer);
+  }, [place.timezone]);
+
+  // Fetch Weather & Holidays
+  useEffect(() => {
+    let active = true;
+    setLoadingWeather(true);
+
+    // Weather fetch
+    fetch(`/api/weather?lat=${place.lat}&lng=${place.lng}`)
+      .then((res) => res.json())
+      .then((data: WeatherData) => {
+        if (active) {
+          setWeather(data);
+          setLoadingWeather(false);
+        }
+      })
+      .catch(() => {
+        if (active) setLoadingWeather(false);
+      });
+
+    // Holiday fetch
+    if (place.countryIso) {
+      const today = DateTime.now().setZone(place.timezone).toFormat("yyyy-MM-dd");
+      fetch(`/api/holidays?countryCode=${place.countryIso}&date=${today}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (active && data.success) {
+            setHoliday({
+              isHoliday: data.isHoliday,
+              holidayName: data.holidayName,
+            });
+          }
+        })
+        .catch(() => {});
+    }
+
+    return () => {
+      active = false;
+    };
+  }, [place.lat, place.lng, place.countryIso, place.timezone]);
+
+  // Astronomical calculations
+  const solarTimes = getSolarTimes(place.lat, place.lng, place.timezone);
+  const dstInfo = getDstInfo(place.timezone);
+
+  // Difference from user
+  const diffFromUser = formatTimeDifference(userTimezone, place.timezone);
+
+  return (
+    <aside
+      aria-label="Location details"
+      className="w-full sm:w-[380px] bg-white dark:bg-[#181818] rounded-2xl shadow-xl border border-neutral-200/80 dark:border-neutral-800 p-5 sm:p-6 flex flex-col gap-5 text-neutral-900 dark:text-neutral-100 transition-all duration-200"
+    >
+      {/* Header with Name, Flag and Close */}
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <FlagIcon countryCode={place.countryIso} size="md" />
+          <div>
+            <h2 className="text-xl font-semibold tracking-tight leading-tight">
+              {formatPlaceDisplayName(place)}
+            </h2>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+              {place.timezone} ({utcOffsetStr || "UTC"})
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={onClose}
+          aria-label="Close details"
+          className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
+        >
+          <X className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Public Holiday Banner if active */}
+      {holiday?.isHoliday && (
+        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-amber-800 dark:text-amber-200 text-xs">
+          <Sparkles className="w-3.5 h-3.5 shrink-0 text-amber-600 dark:text-amber-400" />
+          <span className="font-medium">
+            Public Holiday today: <strong>{holiday.holidayName}</strong>
+          </span>
+        </div>
+      )}
+
+      {/* Live Time & Date */}
+      <div className="p-4 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800">
+        <div className="text-[11px] font-medium uppercase tracking-wider text-neutral-400 dark:text-neutral-400 mb-1 flex items-center gap-1.5">
+          <Clock className="w-3.5 h-3.5" />
+          <span>Local Time</span>
+        </div>
+        <div className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white tabular-nums">
+          {currentTime || "--:--:--"}
+        </div>
+        <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-1 flex items-center gap-1.5">
+          <Calendar className="w-3 h-3" />
+          <span>{currentDate || "Loading date..."}</span>
+        </div>
+        <div className="mt-2.5 pt-2.5 border-t border-neutral-200/60 dark:border-neutral-800 text-xs font-medium text-neutral-600 dark:text-neutral-300">
+          {diffFromUser.isSameTime ? (
+            <span>Same time as your location</span>
+          ) : (
+            <span>
+              {diffFromUser.aheadOrBehindText} ({diffFromUser.hoursPart}h {diffFromUser.minutesPart}m {diffFromUser.isAhead ? "ahead" : "behind"})
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Sun Times & DST */}
+      <div className="grid grid-cols-2 gap-2 text-xs">
+        <div className="p-3 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800">
+          <div className="flex items-center gap-1 text-neutral-500 dark:text-neutral-400 mb-1">
+            <Sunrise className="w-3.5 h-3.5 text-amber-500" />
+            <span className="text-[11px]">Sunrise</span>
+          </div>
+          <span className="font-semibold text-neutral-800 dark:text-neutral-200">
+            {solarTimes.sunrise}
+          </span>
+        </div>
+
+        <div className="p-3 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800">
+          <div className="flex items-center gap-1 text-neutral-500 dark:text-neutral-400 mb-1">
+            <Sunset className="w-3.5 h-3.5 text-orange-500" />
+            <span className="text-[11px]">Sunset</span>
+          </div>
+          <span className="font-semibold text-neutral-800 dark:text-neutral-200">
+            {solarTimes.sunset}
+          </span>
+        </div>
+      </div>
+
+      {/* Daylight Saving Info */}
+      <div className="px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800 text-xs">
+        <div className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400">
+          Daylight Saving Time
+        </div>
+        <div className="text-neutral-800 dark:text-neutral-200 mt-0.5 font-medium">
+          {dstInfo.nextTransition}
+        </div>
+      </div>
+
+      {/* Weather Section */}
+      <div className="p-4 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800 text-xs">
+        <div className="text-[11px] font-medium uppercase tracking-wider text-neutral-400 dark:text-neutral-400 mb-2">
+          Current Weather
+        </div>
+
+        {loadingWeather ? (
+          <div className="text-xs text-neutral-400 py-2">Loading weather...</div>
+        ) : weather?.success && weather.current ? (
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <WeatherIcon
+                  icon={weather.current.icon}
+                  isDay={weather.current.isDay}
+                  className="w-5 h-5 text-neutral-700 dark:text-neutral-300"
+                />
+                <span className="text-xl font-semibold text-neutral-900 dark:text-white">
+                  {weather.current.temperature}°C
+                </span>
+                <span className="text-xs text-neutral-400">
+                  (Feels {weather.current.feelsLike}°C)
+                </span>
+              </div>
+              <span className="text-xs font-medium text-neutral-600 dark:text-neutral-300">
+                {weather.current.condition}
+              </span>
+            </div>
+
+            {/* 3-Day Forecast */}
+            {weather.forecast && weather.forecast.length > 0 && (
+              <div className="pt-2.5 border-t border-neutral-200/60 dark:border-neutral-800 grid grid-cols-3 gap-1 text-center">
+                {weather.forecast.map((f, i) => (
+                  <div key={i} className="py-1">
+                    <div className="text-[10px] text-neutral-400 font-medium">{f.day}</div>
+                    <div className="my-1 flex justify-center">
+                      <WeatherIcon icon={f.icon} className="w-3.5 h-3.5 text-neutral-500" />
+                    </div>
+                    <div className="text-[11px] font-medium text-neutral-700 dark:text-neutral-300">
+                      {f.maxTemp}° / {f.minTemp}°
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="mt-2 text-[10px] text-neutral-400 text-right">
+              {weather.attribution}
+            </div>
+          </div>
+        ) : (
+          <div className="text-xs text-neutral-400">Weather data temporarily unavailable</div>
+        )}
+      </div>
+
+      {/* Primary Compare Action Button */}
+      <button
+        onClick={() => onCompareWith(place)}
+        className="w-full py-3 px-4 rounded-xl font-medium text-sm text-white bg-[#E85D4E] hover:bg-[#d94f40] transition-colors flex items-center justify-center gap-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#E85D4E]/50"
+      >
+        <span>Compare with another place</span>
+        <ArrowRight className="w-4 h-4" />
+      </button>
+    </aside>
+  );
+}

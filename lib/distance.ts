@@ -3,6 +3,7 @@
  */
 
 export interface DistanceResult {
+  km: number;
   kilometers: number;
   miles: number;
   nauticalMiles: number;
@@ -23,6 +24,23 @@ function toRadians(degrees: number): number {
 
 function toDegrees(radians: number): number {
   return (radians * 180) / Math.PI;
+}
+
+export function formatDistanceKm(km?: number): string {
+  if (km === undefined || isNaN(km)) return "0 km";
+  return `${km.toLocaleString("en-US")} km`;
+}
+
+export function formatDistanceMiles(miles?: number): string {
+  if (miles === undefined || isNaN(miles)) return "0 mi";
+  return `${miles.toLocaleString("en-US")} mi`;
+}
+
+export function estimateFlightTime(km: number): { hours: number; minutes: number } {
+  const totalMinutes = Math.round((km / 850) * 60 + 30);
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return { hours, minutes };
 }
 
 /**
@@ -67,6 +85,7 @@ export function calculateDistance(
   const flightHours = km > 0 ? Number((km / 850 + 0.5).toFixed(1)) : 0;
 
   return {
+    km,
     kilometers: km,
     miles,
     nauticalMiles,

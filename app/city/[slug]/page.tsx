@@ -8,14 +8,15 @@ import { siteConfig } from "@/lib/config";
 import LiveClock from "@/components/LiveClock";
 import WorldMapContainer from "@/components/Map";
 import AdSlot from "@/components/AdSlot";
-import { MapPin, Clock, ArrowRight } from "lucide-react";
+import FlagIcon from "@/components/FlagIcon";
+import { ArrowRight } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  const cities = getCities().slice(0, 150); // Pre-generate top 150 cities statically, remainder on-demand
+  const cities = getCities().slice(0, 150);
   return cities.map((c) => ({
     slug: c.slug,
   }));
@@ -65,39 +66,37 @@ export default async function CityPage({ params }: PageProps) {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8">
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-neutral-500">
-        <Link href="/" className="hover:text-emerald-600 transition-colors">
+      <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#6B6B6B] dark:text-[#A0A0A0]">
+        <Link href="/" className="hover:text-[#222222] dark:hover:text-white transition-colors">
           Home
         </Link>
         <span>/</span>
         <Link
           href={`/country/${city.countrySlug}`}
-          className="hover:text-emerald-600 transition-colors"
+          className="hover:text-[#222222] dark:hover:text-white transition-colors"
         >
           {city.countryName}
         </Link>
         <span>/</span>
-        <span className="text-neutral-900 dark:text-neutral-100 font-medium">
+        <span className="text-[#222222] dark:text-white font-medium">
           {city.name}
         </span>
       </nav>
 
       {/* Hero Header */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 text-xs font-semibold mb-3">
-          <MapPin className="w-3.5 h-3.5" />
-          <span>City Local Clock & Time Zone</span>
+        <div className="flex items-center gap-2.5 mb-2">
+          <FlagIcon countryCode={city.countryIso} size="md" />
+          <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#222222] dark:text-white">
+            Current local time in {city.name}, {city.countryName}
+          </h1>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-neutral-950 dark:text-white tracking-tight">
-          Current Local Time in {city.name}, {city.countryName}
-        </h1>
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-3xl leading-relaxed">
+        <p className="text-sm text-[#6B6B6B] dark:text-[#A0A0A0] max-w-3xl leading-relaxed">
           {city.name} observes the{" "}
-          <span className="font-mono font-semibold">{city.timezone}</span> time zone (
-          {timeInfo.utcOffsetString}). Track real-time digital clocks, current day/night
-          illumination, and calculate exact time differences with other global hubs.
+          <span className="font-mono font-medium text-neutral-800 dark:text-neutral-200">{city.timezone}</span> time zone (
+          {timeInfo.utcOffsetString}).
         </p>
       </div>
 
@@ -114,66 +113,58 @@ export default async function CityPage({ params }: PageProps) {
           />
         </div>
 
-        {/* City Quick Info Card */}
-        <div className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between text-xs space-y-3">
-          <h2 className="font-bold text-sm text-neutral-900 dark:text-white uppercase tracking-wider text-[11px]">
-            City Details
+        {/* City Stats Card */}
+        <div className="p-5 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/80 dark:border-neutral-800 flex flex-col justify-between text-xs space-y-3">
+          <h2 className="font-semibold text-xs text-[#222222] dark:text-white uppercase tracking-wider">
+            City facts
           </h2>
           <div className="space-y-2">
             <div className="flex justify-between py-1 border-b border-neutral-100 dark:border-neutral-800">
-              <span className="text-neutral-500">Country:</span>
-              <Link
-                href={`/country/${city.countrySlug}`}
-                className="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
-              >
-                {city.countryName} ({city.countryIso})
-              </Link>
-            </div>
-            <div className="flex justify-between py-1 border-b border-neutral-100 dark:border-neutral-800">
-              <span className="text-neutral-500">Time Zone:</span>
-              <span className="font-mono font-bold text-neutral-900 dark:text-white truncate max-w-[140px]">
-                {city.timezone}
-              </span>
-            </div>
-            <div className="flex justify-between py-1 border-b border-neutral-100 dark:border-neutral-800">
-              <span className="text-neutral-500">Coordinates:</span>
-              <span className="font-mono text-neutral-700 dark:text-neutral-300">
-                {city.lat.toFixed(2)}°, {city.lng.toFixed(2)}°
+              <span className="text-neutral-500">Country</span>
+              <span className="font-medium text-neutral-900 dark:text-white">
+                {city.countryName}
               </span>
             </div>
             {city.population && (
               <div className="flex justify-between py-1 border-b border-neutral-100 dark:border-neutral-800">
-                <span className="text-neutral-500">Population:</span>
-                <span className="font-mono font-semibold text-neutral-900 dark:text-white">
-                  ~{city.population.toLocaleString("en-US")}
+                <span className="text-neutral-500">Population</span>
+                <span className="font-semibold text-neutral-900 dark:text-white">
+                  {city.population.toLocaleString()}
                 </span>
               </div>
             )}
+            <div className="flex justify-between py-1 border-b border-neutral-100 dark:border-neutral-800">
+              <span className="text-neutral-500">Coordinates</span>
+              <span className="font-mono text-neutral-700 dark:text-neutral-300">
+                {city.lat.toFixed(2)}°, {city.lng.toFixed(2)}°
+              </span>
+            </div>
             <div className="flex justify-between py-1">
-              <span className="text-neutral-500">Daylight Saving:</span>
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-                {timeInfo.isDST ? "Active (Summer Time)" : "Standard Time"}
+              <span className="text-neutral-500">Daylight saving</span>
+              <span className="font-medium text-[#E85D4E]">
+                {timeInfo.isDST ? "Active" : "Standard time"}
               </span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Interactive Map Centered on City */}
-      <div>
-        <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-2">
-          {city.name} on Live World Map
-        </h2>
-        <WorldMapContainer placeA={city} placeB={null} className="h-[460px] w-full" />
+      {/* Map */}
+      <div className="rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-neutral-800 shadow-sm">
+        <WorldMapContainer
+          placeA={city}
+          placeB={null}
+          userTimezone={city.timezone}
+          className="h-[460px] w-full"
+        />
       </div>
 
-      <AdSlot type="in-content" />
+      <AdSlot slotId="city-bottom" format="horizontal" />
 
-      {/* Popular Time Differences for this City */}
+      {/* Popular pairs */}
       <section>
-        <h2 className="text-base font-bold text-neutral-900 dark:text-white mb-3 flex items-center gap-2">
-          <Clock className="w-4 h-4 text-emerald-500" />
-          Popular Corridors for {city.name}
+        <h2 className="text-base font-semibold text-[#222222] dark:text-white mb-3">
+          Popular comparisons for {city.name}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {cityPairs.length > 0 ? (
@@ -186,25 +177,24 @@ export default async function CityPage({ params }: PageProps) {
                 <Link
                   key={`${p.from}-${p.to}`}
                   href={`/time-difference/${p.from}-to-${p.to}`}
-                  className="p-3.5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 hover:border-emerald-500/50 hover:shadow-xs transition-all group flex items-center justify-between"
+                  className="p-3.5 rounded-xl bg-white dark:bg-[#181818] border border-neutral-200/80 dark:border-neutral-800 hover:border-[#E85D4E]/60 hover:shadow-sm transition-all group flex items-center justify-between"
                 >
-                  <div>
-                    <p className="font-semibold text-xs text-neutral-900 dark:text-neutral-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                      {pFrom.name} to {pTo.name}
-                    </p>
-                    <p className="text-[11px] text-neutral-500">
-                      Live difference & overlap table
-                    </p>
+                  <div className="flex items-center gap-2 text-xs font-medium text-[#222222] dark:text-white truncate">
+                    <FlagIcon countryCode={pFrom.countryIso} size="sm" />
+                    <span className="truncate">{pFrom.name}</span>
+                    <span className="text-neutral-400">→</span>
+                    <FlagIcon countryCode={pTo.countryIso} size="sm" />
+                    <span className="truncate">{pTo.name}</span>
                   </div>
-                  <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-emerald-500 group-hover:translate-x-0.5 transition-all" />
+                  <ArrowRight className="w-3.5 h-3.5 text-neutral-400 group-hover:text-[#E85D4E] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
                 </Link>
               );
             })
           ) : (
             <p className="text-xs text-neutral-500 col-span-3">
-              Compare {city.name} with any world destination using the{" "}
-              <Link href="/" className="text-emerald-600 underline">
-                homepage world time calculator
+              Check out all comparisons on the{" "}
+              <Link href="/" className="text-[#E85D4E] underline">
+                interactive map
               </Link>
               .
             </p>

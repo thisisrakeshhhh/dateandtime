@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { siteConfig } from "@/lib/config";
-import { Clock } from "lucide-react";
 import CookieConsent from "@/components/CookieConsent";
 
 export const metadata: Metadata = {
@@ -57,49 +56,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#070b14] text-slate-900 dark:text-slate-100 antialiased selection:bg-emerald-500 selection:text-white">
-        {/* Top Navigation Bar */}
-        <header className="sticky top-0 z-40 w-full backdrop-blur-md bg-white/80 dark:bg-neutral-950/80 border-b border-neutral-200/80 dark:border-neutral-800">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <body className="min-h-screen flex flex-col bg-white dark:bg-[#141414] text-[#222222] dark:text-[#f5f5f5] antialiased selection:bg-[#E85D4E] selection:text-white">
+        {/* Slim Top Bar */}
+        <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#141414]/95 backdrop-blur-md border-b border-[#E5E5E5] dark:border-[#262626]">
+          <div className="w-full px-4 sm:px-6 h-14 flex items-center justify-between">
+            {/* Logo Text Left */}
             <Link
               href="/"
-              className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-lg p-1"
+              className="flex items-center gap-2 group focus:outline-none"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-sm shadow-emerald-500/20 group-hover:scale-105 transition-transform">
-                <Clock className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-extrabold text-lg tracking-tight text-neutral-900 dark:text-white leading-none">
-                  {siteConfig.name}
-                </span>
-                <span className="text-[10px] text-neutral-500 dark:text-neutral-400 font-medium">
-                  World Time & Day/Night Map
-                </span>
-              </div>
+              <span className="w-3 h-3 rounded-full bg-[#E85D4E] shrink-0" />
+              <span className="font-semibold text-base sm:text-lg tracking-tight text-[#222222] dark:text-white">
+                {siteConfig.name}
+              </span>
             </Link>
 
-            <nav className="flex items-center gap-1 sm:gap-4 text-xs font-medium text-neutral-600 dark:text-neutral-400">
-              <Link
-                href="/"
-                className="px-3 py-1.5 rounded-lg hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              >
-                World Map
-              </Link>
+            {/* 3 Links + Light/Dark indicator */}
+            <nav className="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm font-medium text-[#6B6B6B] dark:text-[#A0A0A0]">
               <Link
                 href="/time-difference/india-to-united-kingdom"
-                className="hidden sm:inline-block px-3 py-1.5 rounded-lg hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
-                Time Difference
+                Time difference
               </Link>
               <Link
                 href="/best-time-to-call/united-kingdom-from-india"
-                className="hidden md:inline-block px-3 py-1.5 rounded-lg hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="hidden sm:inline-block px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
-                Best Time to Call
+                Best time to call
               </Link>
               <Link
                 href="/about"
-                className="px-3 py-1.5 rounded-lg hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
                 About
               </Link>
@@ -107,113 +95,89 @@ export default function RootLayout({
           </div>
         </header>
 
-        {/* Main Content Area */}
-        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        {/* Main Viewport Content */}
+        <main className="flex-1 w-full flex flex-col">
           {children}
         </main>
 
-        {/* Global Footer (AdSense Compliant with real links) */}
-        <footer className="w-full border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 py-10 mt-16 text-xs text-neutral-500 dark:text-neutral-400">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-              <div className="md:col-span-2">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
-                    <Clock className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="font-bold text-sm text-neutral-900 dark:text-white">
-                    {siteConfig.name}
-                  </span>
-                </div>
-                <p className="max-w-md text-neutral-500 dark:text-neutral-400 leading-relaxed text-xs">
-                  {siteConfig.description} Powered by IANA time zone database,
-                  astronomical solar calculations, and OpenStreetMap data.
+        {/* Short Footer (3 columns, small grey text) */}
+        <footer className="w-full border-t border-[#E5E5E5] dark:border-[#262626] bg-white dark:bg-[#141414] py-8 text-xs text-[#6B6B6B] dark:text-[#888888]">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+              <div>
+                <p className="font-semibold text-[#222222] dark:text-white mb-2">
+                  {siteConfig.name}
+                </p>
+                <p className="leading-relaxed text-[11px] max-w-xs">
+                  World time difference tool with interactive solar terminator map,
+                  live weather and minute-accurate calling hours.
                 </p>
               </div>
 
               <div>
-                <p className="font-semibold text-neutral-900 dark:text-white uppercase tracking-wider text-[11px] mb-3">
-                  Quick Corridors
+                <p className="font-semibold text-[#222222] dark:text-white mb-2">
+                  Popular corridors
                 </p>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1 text-[11px]">
                   <li>
-                    <Link
-                      href="/time-difference/india-to-united-kingdom"
-                      className="hover:underline hover:text-emerald-500"
-                    >
-                      India to UK Time Difference
+                    <Link href="/time-difference/india-to-united-kingdom" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      India to UK time
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/time-difference/india-to-united-states"
-                      className="hover:underline hover:text-emerald-500"
-                    >
-                      India to USA Time Difference
+                    <Link href="/time-difference/india-to-united-states" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      India to USA time
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/time-difference/united-states-to-united-kingdom"
-                      className="hover:underline hover:text-emerald-500"
-                    >
-                      USA to UK Time Difference
+                    <Link href="/time-difference/united-states-to-united-kingdom" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      USA to UK time
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/time-difference/australia-to-india"
-                      className="hover:underline hover:text-emerald-500"
-                    >
-                      Australia to India Time
+                    <Link href="/time-difference/australia-to-india" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Australia to India time
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <p className="font-semibold text-neutral-900 dark:text-white uppercase tracking-wider text-[11px] mb-3">
-                  Legal & Support
+                <p className="font-semibold text-[#222222] dark:text-white mb-2">
+                  Information
                 </p>
-                <ul className="space-y-1.5">
+                <ul className="space-y-1 text-[11px]">
                   <li>
-                    <Link href="/about" className="hover:underline hover:text-emerald-500">
-                      About Us
+                    <Link href="/about" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      About
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact" className="hover:underline hover:text-emerald-500">
-                      Contact Support
+                    <Link href="/contact" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Contact
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      href="/privacy-policy"
-                      className="hover:underline hover:text-emerald-500"
-                    >
-                      Privacy Policy
+                    <Link href="/privacy-policy" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Privacy policy
                     </Link>
                   </li>
                   <li>
-                    <Link href="/terms" className="hover:underline hover:text-emerald-500">
-                      Terms of Service
+                    <Link href="/terms" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Terms of service
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-neutral-100 dark:border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px]">
-              <p>
-                &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
-                reserved.
-              </p>
-              <p className="text-neutral-400">
-                Data sources: IANA Time Zone Database · OpenStreetMap · NOAA Solar Position.
-              </p>
+            <div className="pt-4 border-t border-[#E5E5E5] dark:border-[#262626] flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px]">
+              <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+              <p>Data: IANA · Open-Meteo · Nager.Date · OpenStreetMap</p>
             </div>
           </div>
         </footer>
+
         <CookieConsent />
       </body>
     </html>

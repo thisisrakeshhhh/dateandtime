@@ -20,14 +20,11 @@ export default function LiveClock({
   lng,
   placeName,
   countryName,
-  badgeColor = "emerald",
 }: LiveClockProps) {
-  // Initialize with current time for the given timezone
   const [time, setTime] = useState(() => DateTime.now().setZone(timezone));
   const [is24Hour, setIs24Hour] = useState(false);
 
   useEffect(() => {
-    // Isolated 1-second interval ticking strictly inside this leaf component
     const interval = setInterval(() => {
       setTime(DateTime.now().setZone(timezone));
     }, 1000);
@@ -42,89 +39,70 @@ export default function LiveClock({
 
   const formattedTime = is24Hour
     ? time.toFormat("HH:mm:ss")
-    : time.toFormat("hh:mm:ss a");
+    : time.toFormat("h:mm:ss a");
 
-  const formattedDate = time.toFormat("cccc, MMMM d, yyyy");
+  const formattedDate = time.toFormat("cccc, d LLLL yyyy");
   const timeZoneAbbr = time.offsetNameShort || time.toFormat("ZZZZ") || "UTC";
   const offsetString = time.toFormat("ZZZZ");
 
-  const accentColor =
-    badgeColor === "emerald"
-      ? "text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-500/10"
-      : "text-indigo-600 dark:text-indigo-400 border-indigo-500/30 bg-indigo-500/10";
-
   return (
-    <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 shadow-xs flex flex-col justify-between transition-all">
-      {/* Header with Place info and Day/Night badge */}
+    <div className="p-5 sm:p-6 rounded-2xl bg-white dark:bg-[#181818] border border-neutral-200/80 dark:border-neutral-800 shadow-sm flex flex-col justify-between transition-all">
+      {/* Header */}
       <div className="flex items-start justify-between gap-2 mb-3">
         <div>
-          <div className="flex items-center gap-1.5">
-            <span
-              className={`w-2 h-2 rounded-full ${
-                badgeColor === "emerald" ? "bg-emerald-500" : "bg-indigo-500"
-              }`}
-            />
-            <h3 className="font-bold text-base sm:text-lg text-neutral-900 dark:text-white truncate">
-              {placeName}
-            </h3>
-          </div>
+          <h3 className="font-semibold text-lg text-neutral-900 dark:text-white truncate">
+            {placeName}
+          </h3>
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
             {countryName}
           </p>
         </div>
 
-        {/* Day / Night Indicator Pill */}
-        <div
-          className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${
-            isDay
-              ? "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
-              : "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 border-indigo-500/20"
-          }`}
-        >
+        {/* Day / Night Indicator */}
+        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300">
           {isDay ? (
             <>
               <Sun className="w-3.5 h-3.5 text-amber-500" />
-              <span>Daytime</span>
+              <span>Day</span>
             </>
           ) : (
             <>
-              <Moon className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Nighttime</span>
+              <Moon className="w-3.5 h-3.5 text-neutral-400" />
+              <span>Night</span>
             </>
           )}
         </div>
       </div>
 
-      {/* Main Digital Clock Display */}
+      {/* Main Clock */}
       <div className="my-2">
         <div className="flex items-baseline justify-between">
-          <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 dark:text-neutral-50 tabular-nums">
+          <span className="font-mono text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white tabular-nums">
             {formattedTime}
           </span>
           <button
             type="button"
             onClick={() => setIs24Hour((prev) => !prev)}
-            className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
-            title="Toggle 12h/24h format"
+            className="text-[11px] font-mono px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-700 text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors"
           >
-            {is24Hour ? "24H" : "12H"}
+            {is24Hour ? "24h" : "12h"}
           </button>
         </div>
-        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1 font-medium">
+        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
           {formattedDate}
         </p>
       </div>
 
-      {/* Timezone Meta Footer */}
-      <div className="mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
-        <span className="font-medium flex items-center gap-1 font-mono text-[11px]">
-          <span className={`px-1.5 py-0.5 rounded ${accentColor}`}>
+      {/* Footer */}
+      <div className="mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
+        <span className="font-mono text-[11px] flex items-center gap-1.5">
+          <span className="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 font-semibold text-neutral-800 dark:text-neutral-200">
             {timeZoneAbbr}
           </span>
           <span>{offsetString}</span>
         </span>
         {time.isInDST && (
-          <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+          <span className="text-[11px] font-medium text-[#E85D4E] bg-[#E85D4E]/10 px-2 py-0.5 rounded-full">
             DST Active
           </span>
         )}

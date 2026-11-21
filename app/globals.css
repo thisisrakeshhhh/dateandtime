@@ -68,3 +68,71 @@ body {
   border-radius: 14px !important;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25) !important;
 }
+
+/* Live Map Label Pill (Airbnb Calm & Premium Style) */
+.map-label-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  background-color: rgba(255, 255, 255, 0.94);
+  color: #222222;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  user-select: none;
+}
+
+.map-label-pill:hover {
+  transform: scale(1.08);
+  background-color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  z-index: 1000 !important;
+}
+
+.map-label-pill.is-selected {
+  background-color: #E85D4E !important;
+  color: #ffffff !important;
+  border-color: #d94f40 !important;
+  box-shadow: 0 4px 14px rgba(232, 93, 78, 0.45) !important;
+}
+
+.map-label-pill .pill-time {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #111111;
+}
+
+.map-label-pill.is-selected .pill-time {
+  color: #ffffff;
+}
+
+.map-label-pill .pill-diff {
+  padding: 1px 4px;
+  background-color: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  font-size: 10px;
+  color: #666666;
+}
+
+.map-label-pill.is-selected .pill-diff {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.map-label-pill .pill-day {
+  font-size: 9px;
+  color: #c2410c;
+  font-weight: 600;
+}
+
+.map-label-pill.is-selected .pill-day {
+  color: #fef08a;
+}

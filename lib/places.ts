@@ -80,6 +80,31 @@ for (const c of cities) {
   }
 }
 
+export function formatPlaceDisplayName(place: Place): string {
+  if (place.type === "country") {
+    return place.name;
+  }
+  if (place.countryName && place.name.toLowerCase() !== place.countryName.toLowerCase()) {
+    return `${place.name}, ${place.countryName}`;
+  }
+  return place.name;
+}
+
+export function getPlaceByTimezone(ianaZone: string): Place | undefined {
+  if (!ianaZone) return undefined;
+  const all = getAllPlaces();
+  const match = all.find((p) => p.timezone === ianaZone);
+  if (match) return match;
+  const otherMatch = all.find((p) => p.otherZones?.includes(ianaZone));
+  if (otherMatch) return otherMatch;
+  const cityPart = ianaZone.split("/").pop()?.replace(/_/g, " ").toLowerCase();
+  if (cityPart) {
+    const cityMatch = all.find((p) => p.name.toLowerCase() === cityPart);
+    if (cityMatch) return cityMatch;
+  }
+  return undefined;
+}
+
 export function getAllPlaces(): Place[] {
   return [...countries, ...cities];
 }

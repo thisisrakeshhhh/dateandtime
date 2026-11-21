@@ -7,7 +7,8 @@ import { Place } from "@/lib/places";
 interface MapWrapperProps {
   placeA: Place | null;
   placeB: Place | null;
-  onSelectPlace?: (place: Place, target: "A" | "B") => void;
+  userTimezone: string;
+  onSelectPlace?: (place: Place) => void;
   className?: string;
 }
 
@@ -15,10 +16,10 @@ interface MapWrapperProps {
 const DynamicWorldMap = dynamic(() => import("./WorldMap"), {
   ssr: false,
   loading: () => (
-    <div className="relative w-full h-[480px] rounded-2xl bg-neutral-900 border border-neutral-800 flex flex-col items-center justify-center gap-3 overflow-hidden animate-pulse">
-      <div className="w-12 h-12 rounded-full border-2 border-emerald-500 border-t-transparent animate-spin" />
-      <p className="text-xs font-mono text-neutral-400">
-        Loading live day/night solar terminator map...
+    <div className="relative w-full h-full min-h-[500px] bg-neutral-100 dark:bg-neutral-900 flex flex-col items-center justify-center gap-3">
+      <div className="w-8 h-8 rounded-full border-2 border-[#E85D4E] border-t-transparent animate-spin" />
+      <p className="text-xs text-[#6B6B6B] dark:text-[#A0A0A0]">
+        Loading interactive map...
       </p>
     </div>
   ),

@@ -1,18 +1,19 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useEffect, useRef, useMemo, useCallback } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Place } from "@/lib/places";
 import { computeSolarTerminator } from "@/lib/solar";
 import { isCoordinateDaytime, getPlaceTimeInfo } from "@/lib/time";
-import { calculateDistance } from "@/lib/distance";
+import { getVisibleMapPlaces, MapLabelItem } from "@/lib/mapLabels";
 import citiesData from "@/data/cities.json";
 
 interface WorldMapProps {
   placeA: Place | null;
   placeB: Place | null;
-  onSelectPlace?: (place: Place, target: "A" | "B") => void;
+  userTimezone: string;
+  onSelectPlace?: (place: Place) => void;
   className?: string;
 }
 
@@ -32,7 +33,6 @@ function getGreatCircleArc(
   const φ2 = lat2 * d2r;
   const λ2 = lon2 * d2r;
 
-  // Angular distance in radians
   const dλ = λ2 - λ1;
   const cosσ =
     Math.sin(φ1) * Math.sin(φ2) + Math.cos(φ1) * Math.cos(φ2) * Math.cos(dλ);
@@ -66,8 +66,9 @@ function getGreatCircleArc(
 export default function WorldMap({
   placeA,
   placeB,
+  userTimezone,
   onSelectPlace,
-  className = "h-[480px] w-full",
+  className = "h-full w-full",
 }: WorldMapProps) {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
@@ -75,25 +76,78 @@ export default function WorldMap({
   // Layer groups
   const terminatorLayerRef = useRef<L.Polygon | null>(null);
   const nightLightsGroupRef = useRef<L.LayerGroup | null>(null);
+  const labelsGroupRef = useRef<L.LayerGroup | null>(null);
   const markersGroupRef = useRef<L.LayerGroup | null>(null);
   const flightPathLayerRef = useRef<L.Polyline | null>(null);
-  const distanceBadgeRef = useRef<L.Marker | null>(null);
 
-  // Active target place to replace on map click: "A" | "B"
-  const [clickTarget, setClickTarget] = useState<"A" | "B">("B");
-
-  // Filter top prominent cities for night light visualization (top populated)
+  // Top populated cities for night light visualization
   const prominentCities = useMemo(() => {
     return citiesData
-      .filter((c) => c.population && c.population > 500000)
-      .slice(0, 180);
+      .filter((c) => c.population && c.population > 600000)
+      .slice(0, 160);
   }, []);
+
+  // Update visible label pills
+  const updateLabels = useCallback(() => {
+    const map = mapInstanceRef.current;
+    const group = labelsGroupRef.current;
+    if (!map || !group) return;
+
+    group.clearLayers();
+
+    const zoom = map.getZoom();
+    const bounds = map.getBounds();
+    const b = {
+      north: bounds.getNorth(),
+      south: bounds.getSouth(),
+      east: bounds.getEast(),
+      west: bounds.getWest(),
+    };
+
+    const labelItems: MapLabelItem[] = getVisibleMapPlaces(zoom, userTimezone || "UTC", b);
+
+    labelItems.forEach((item) => {
+      // Don't show generic label if place is already selected as A or B
+      const isSelected =
+        (placeA && placeA.slug === item.place.slug) ||
+        (placeB && placeB.slug === item.place.slug);
+
+      const pillHtml = `
+        <div class="map-label-pill ${isSelected ? "is-selected" : ""}">
+          <span>${item.place.name}</span>
+          <span class="pill-time">${item.timeStr}</span>
+          <span class="pill-diff">${item.diffStr}</span>
+          ${item.isDiffDay ? `<span class="pill-day">${item.dayStr}</span>` : ""}
+        </div>
+      `;
+
+      const labelIcon = L.divIcon({
+        className: "custom-label-icon",
+        html: pillHtml,
+        iconSize: [0, 0],
+        iconAnchor: [0, 0],
+      });
+
+      const marker = L.marker([item.place.lat, item.place.lng], {
+        icon: labelIcon,
+        zIndexOffset: isSelected ? 800 : 100,
+      });
+
+      marker.on("click", (e) => {
+        L.DomEvent.stopPropagation(e);
+        if (onSelectPlace) {
+          onSelectPlace(item.place);
+        }
+      });
+
+      group.addLayer(marker);
+    });
+  }, [userTimezone, placeA, placeB, onSelectPlace]);
 
   // 1. Initialize Leaflet Map
   useEffect(() => {
     if (!mapContainerRef.current || mapInstanceRef.current) return;
 
-    // Fix default marker icon assets for Leaflet
     delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
@@ -102,7 +156,7 @@ export default function WorldMap({
     });
 
     const map = L.map(mapContainerRef.current, {
-      center: [20, 0],
+      center: [22, 10],
       zoom: 2,
       minZoom: 2,
       maxZoom: 10,
@@ -111,31 +165,41 @@ export default function WorldMap({
       attributionControl: true,
     });
 
-    // Pure OpenStreetMap standard tiles (100% free, no API key required)
+    // Standard OpenStreetMap tiles
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 19,
     }).addTo(map);
 
-    // Zoom controls in top right
-    L.control.zoom({ position: "topright" }).addTo(map);
+    // Zoom controls in bottom right
+    L.control.zoom({ position: "bottomright" }).addTo(map);
 
-    // Layer groups for dynamic elements
+    // Dynamic layer groups
     const nightGroup = L.layerGroup().addTo(map);
+    const labelsGroup = L.layerGroup().addTo(map);
     const markersGroup = L.layerGroup().addTo(map);
 
     nightLightsGroupRef.current = nightGroup;
+    labelsGroupRef.current = labelsGroup;
     markersGroupRef.current = markersGroup;
     mapInstanceRef.current = map;
+
+    // Listen to zoom and move events for label updates
+    map.on("zoomend moveend", () => {
+      updateLabels();
+    });
+
+    // Initial label load
+    updateLabels();
 
     return () => {
       map.remove();
       mapInstanceRef.current = null;
     };
-  }, []);
+  }, [updateLabels]);
 
-  // 2. Render and Update Day/Night Terminator + Night City Lights (every 60 seconds)
+  // 2. Terminator & Night Lights updates every minute
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (!map) return;
@@ -144,33 +208,30 @@ export default function WorldMap({
       if (!map) return;
       const termData = computeSolarTerminator(new Date());
 
-      // Update or create Terminator polygon (deep indigo night shadow)
       if (terminatorLayerRef.current) {
         terminatorLayerRef.current.setLatLngs(termData.nightPolygonLatLngs);
       } else {
         const nightPolygon = L.polygon(termData.nightPolygonLatLngs, {
           color: "#0f172a",
           fillColor: "#020617",
-          fillOpacity: 0.52,
+          fillOpacity: 0.48,
           weight: 1,
           stroke: true,
-          dashArray: "4, 6",
+          dashArray: "3, 5",
           className: "leaflet-terminator-shadow pointer-events-none",
         }).addTo(map);
         terminatorLayerRef.current = nightPolygon;
       }
 
-      // Update night city glowing lights inside the night shadow
       if (nightLightsGroupRef.current) {
         nightLightsGroupRef.current.clearLayers();
 
         prominentCities.forEach((city) => {
           const isDay = isCoordinateDaytime(city.lat, city.lng);
           if (!isDay) {
-            // City is at night: render warm glowing light
             const lightMarker = L.circleMarker([city.lat, city.lng], {
-              radius: city.population > 3000000 ? 3.5 : 2.5,
-              fillColor: "#fde047", // Warm golden city light
+              radius: city.population > 3000000 ? 3 : 2,
+              fillColor: "#fde047",
               fillOpacity: 0.85,
               color: "#fbbf24",
               weight: 1,
@@ -178,15 +239,8 @@ export default function WorldMap({
               className: "night-city-dot cursor-pointer",
             });
 
-            lightMarker.bindTooltip(
-              `<div class="text-xs font-sans">
-                <strong>${city.name}</strong> (${city.country})<br/>
-                <span class="text-amber-500 font-medium">🌙 Night</span>
-              </div>`,
-              { direction: "top", offset: [0, -3] }
-            );
-
-            lightMarker.on("click", () => {
+            lightMarker.on("click", (e) => {
+              L.DomEvent.stopPropagation(e);
               if (onSelectPlace) {
                 const placeObj: Place = {
                   id: `city-${city.slug}`,
@@ -201,9 +255,7 @@ export default function WorldMap({
                   timezone: city.timezone,
                   population: city.population,
                 };
-                onSelectPlace(placeObj, clickTarget);
-                // Toggle target for next click
-                setClickTarget((t) => (t === "A" ? "B" : "A"));
+                onSelectPlace(placeObj);
               }
             });
 
@@ -214,12 +266,15 @@ export default function WorldMap({
     }
 
     updateDayNight();
-    const interval = setInterval(updateDayNight, 60000); // Live update every minute
+    const interval = setInterval(() => {
+      updateDayNight();
+      updateLabels();
+    }, 60000);
 
     return () => clearInterval(interval);
-  }, [prominentCities, onSelectPlace, clickTarget]);
+  }, [prominentCities, onSelectPlace, updateLabels]);
 
-  // 3. Render Place A, Place B Markers, Geodesic Line and Auto-fit Bounds
+  // 3. Render Markers for Place A & Place B, curved Great-Circle line, and fly-to
   useEffect(() => {
     const map = mapInstanceRef.current;
     const markersGroup = markersGroupRef.current;
@@ -231,189 +286,93 @@ export default function WorldMap({
       map.removeLayer(flightPathLayerRef.current);
       flightPathLayerRef.current = null;
     }
-    if (distanceBadgeRef.current) {
-      map.removeLayer(distanceBadgeRef.current);
-      distanceBadgeRef.current = null;
-    }
+
+    // Update labels whenever placeA or placeB changes
+    updateLabels();
 
     const boundsLatLngs: L.LatLngExpression[] = [];
 
-    // Custom pulsing pin for Place A (Emerald/Green)
+    // Place A Marker
     if (placeA) {
       const timeInfoA = getPlaceTimeInfo(placeA.timezone, placeA.lat, placeA.lng);
       const iconA = L.divIcon({
-        className: "custom-map-marker marker-place-a",
+        className: "custom-selected-marker",
         html: `
-          <div class="relative flex items-center justify-center">
-            <span class="absolute w-8 h-8 rounded-full bg-emerald-500/30 animate-ping"></span>
-            <span class="absolute w-6 h-6 rounded-full bg-emerald-500/40"></span>
-            <div class="relative w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shadow-lg border-2 border-white dark:border-neutral-900">
+          <div class="relative flex flex-col items-center cursor-pointer" style="transform: translate(-50%, -100%);">
+            <div class="px-2.5 py-1 rounded-full bg-neutral-900 text-white text-[11px] font-semibold shadow-md whitespace-nowrap mb-1">
+              ${placeA.name} · ${timeInfoA.formattedTime}
+            </div>
+            <div class="w-7 h-7 rounded-full bg-[#E85D4E] text-white flex items-center justify-center font-bold text-xs shadow-lg border-2 border-white">
               A
             </div>
           </div>
         `,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
+        iconSize: [0, 0],
+        iconAnchor: [0, 0],
       });
 
-      const markerA = L.marker([placeA.lat, placeA.lng], { icon: iconA });
-      markerA.bindPopup(`
-        <div class="p-1 text-neutral-900 dark:text-neutral-100 font-sans">
-          <div class="flex items-center gap-1.5 font-bold text-sm">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-            Place A: ${placeA.name}
-          </div>
-          <div class="text-xs text-neutral-500 mt-0.5">${placeA.countryName}</div>
-          <div class="mt-2 text-xs font-mono font-semibold bg-neutral-100 dark:bg-neutral-800 p-1.5 rounded">
-            🕒 ${timeInfoA.formattedTime} · ${timeInfoA.timeZoneAbbr}
-          </div>
-        </div>
-      `);
+      const markerA = L.marker([placeA.lat, placeA.lng], { icon: iconA, zIndexOffset: 1000 });
       markersGroup.addLayer(markerA);
       boundsLatLngs.push([placeA.lat, placeA.lng]);
     }
 
-    // Custom pulsing pin for Place B (Indigo/Blue)
+    // Place B Marker
     if (placeB) {
       const timeInfoB = getPlaceTimeInfo(placeB.timezone, placeB.lat, placeB.lng);
       const iconB = L.divIcon({
-        className: "custom-map-marker marker-place-b",
+        className: "custom-selected-marker",
         html: `
-          <div class="relative flex items-center justify-center">
-            <span class="absolute w-8 h-8 rounded-full bg-indigo-500/30 animate-ping"></span>
-            <span class="absolute w-6 h-6 rounded-full bg-indigo-500/40"></span>
-            <div class="relative w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-lg border-2 border-white dark:border-neutral-900">
+          <div class="relative flex flex-col items-center cursor-pointer" style="transform: translate(-50%, -100%);">
+            <div class="px-2.5 py-1 rounded-full bg-neutral-900 text-white text-[11px] font-semibold shadow-md whitespace-nowrap mb-1">
+              ${placeB.name} · ${timeInfoB.formattedTime}
+            </div>
+            <div class="w-7 h-7 rounded-full bg-[#E85D4E] text-white flex items-center justify-center font-bold text-xs shadow-lg border-2 border-white">
               B
             </div>
           </div>
         `,
-        iconSize: [28, 28],
-        iconAnchor: [14, 14],
+        iconSize: [0, 0],
+        iconAnchor: [0, 0],
       });
 
-      const markerB = L.marker([placeB.lat, placeB.lng], { icon: iconB });
-      markerB.bindPopup(`
-        <div class="p-1 text-neutral-900 dark:text-neutral-100 font-sans">
-          <div class="flex items-center gap-1.5 font-bold text-sm">
-            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
-            Place B: ${placeB.name}
-          </div>
-          <div class="text-xs text-neutral-500 mt-0.5">${placeB.countryName}</div>
-          <div class="mt-2 text-xs font-mono font-semibold bg-neutral-100 dark:bg-neutral-800 p-1.5 rounded">
-            🕒 ${timeInfoB.formattedTime} · ${timeInfoB.timeZoneAbbr}
-          </div>
-        </div>
-      `);
+      const markerB = L.marker([placeB.lat, placeB.lng], { icon: iconB, zIndexOffset: 1000 });
       markersGroup.addLayer(markerB);
       boundsLatLngs.push([placeB.lat, placeB.lng]);
     }
 
-    // Connect Place A and Place B with Geodesic Flight Line
+    // Great-Circle Curved Route Line if both places exist
     if (placeA && placeB) {
       const arcPoints = getGreatCircleArc(
         placeA.lat,
         placeA.lng,
         placeB.lat,
         placeB.lng,
-        50
+        80
       );
 
-      const flightPath = L.polyline(arcPoints, {
-        color: "#6366f1", // Indigo curve
+      const path = L.polyline(arcPoints, {
+        color: "#E85D4E",
         weight: 3,
-        opacity: 0.85,
-        dashArray: "6, 8",
+        opacity: 0.9,
         lineCap: "round",
       }).addTo(map);
 
-      flightPathLayerRef.current = flightPath;
+      flightPathLayerRef.current = path;
 
-      // Distance Badge in center of arc
-      const distInfo = calculateDistance(
-        placeA.lat,
-        placeA.lng,
-        placeB.lat,
-        placeB.lng
-      );
-      const midPoint = arcPoints[Math.floor(arcPoints.length / 2)];
-
-      const badgeIcon = L.divIcon({
-        className: "distance-map-badge",
-        html: `
-          <div class="bg-neutral-900/90 text-white backdrop-blur-sm text-[11px] font-mono px-2 py-0.5 rounded-full shadow-md border border-neutral-700 whitespace-nowrap transform -translate-x-1/2 -translate-y-1/2">
-            ✈️ ${distInfo.formattedKm} (${distInfo.formattedMiles})
-          </div>
-        `,
-        iconSize: [0, 0],
-      });
-
-      const badgeMarker = L.marker(midPoint, {
-        icon: badgeIcon,
-        interactive: false,
-      }).addTo(map);
-      distanceBadgeRef.current = badgeMarker;
-    }
-
-    // Auto-fit map viewport to encompass both points smoothly
-    if (boundsLatLngs.length > 1) {
-      const bounds = L.latLngBounds(boundsLatLngs);
-      map.fitBounds(bounds, {
+      map.fitBounds(L.latLngBounds(boundsLatLngs), {
         padding: [60, 60],
-        maxZoom: 5,
+        maxZoom: 6,
         animate: true,
       });
-    } else if (boundsLatLngs.length === 1) {
-      map.setView(boundsLatLngs[0], 4, { animate: true });
+    } else if (placeA && !placeB) {
+      // Single place: fly to it smoothly
+      map.flyTo([placeA.lat, placeA.lng], 4, { duration: 1.2 });
     }
-  }, [placeA, placeB]);
+  }, [placeA, placeB, updateLabels]);
 
   return (
-    <div className="relative w-full rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-lg bg-neutral-950">
-      {/* Map Header Status Bar */}
-      <div className="absolute top-3 left-3 z-[1000] flex flex-wrap items-center gap-2">
-        <div className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-neutral-200/80 dark:border-neutral-800 shadow-sm flex items-center gap-2 text-xs font-medium text-neutral-700 dark:text-neutral-300">
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Live Day & Night Terminator
-          </span>
-          <span className="text-neutral-300 dark:text-neutral-700">|</span>
-          <span className="flex items-center gap-1 text-[11px] text-amber-500">
-            ✨ Glowing Night Lights
-          </span>
-        </div>
-
-        {/* Quick Click-to-Select Target Selector */}
-        {onSelectPlace && (
-          <div className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md px-2.5 py-1 rounded-xl border border-neutral-200/80 dark:border-neutral-800 shadow-sm flex items-center gap-1 text-[11px]">
-            <span className="text-neutral-400">Clicking map selects:</span>
-            <button
-              type="button"
-              onClick={() => setClickTarget("A")}
-              className={`px-2 py-0.5 rounded-md font-semibold transition-all ${
-                clickTarget === "A"
-                  ? "bg-emerald-600 text-white"
-                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-              }`}
-            >
-              Place A
-            </button>
-            <button
-              type="button"
-              onClick={() => setClickTarget("B")}
-              className={`px-2 py-0.5 rounded-md font-semibold transition-all ${
-                clickTarget === "B"
-                  ? "bg-indigo-600 text-white"
-                  : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-              }`}
-            >
-              Place B
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* Map Canvas */}
-      <div ref={mapContainerRef} className={`${className} z-0 min-h-[360px]`} />
+    <div className={`relative overflow-hidden ${className}`}>
+      <div ref={mapContainerRef} className="w-full h-full min-h-[450px]" />
     </div>
   );
 }

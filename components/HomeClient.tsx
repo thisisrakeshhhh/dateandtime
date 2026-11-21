@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Place, getPlaceBySlug, getPopularPairs } from "@/lib/places";
-import PlaceSearch from "@/components/PlaceSearch";
+import React, { useState, useEffect } from "react";
+import { Place, getPlaceByTimezone, getPopularPairs } from "@/lib/places";
 import WorldMapContainer from "@/components/Map";
-import ResultCard from "@/components/ResultCard";
-import BestTimeToCallBox from "@/components/BestTimeToCallBox";
-import MeetingTable from "@/components/MeetingTable";
-import { ArrowLeftRight, Clock, ArrowRight } from "lucide-react";
+import MapSearchOverlay from "@/components/MapSearchOverlay";
+import PlaceDetailsCard from "@/components/PlaceDetailsCard";
+import CompareCard from "@/components/CompareCard";
+import PopularRoutesRow from "@/components/PopularRoutesRow";
+import AdSlot from "@/components/AdSlot";
 
 interface HomeClientProps {
   initialPlaceA: Place | null;
@@ -21,165 +20,165 @@ export default function HomeClient({
 }: HomeClientProps) {
   const [placeA, setPlaceA] = useState<Place | null>(initialPlaceA);
   const [placeB, setPlaceB] = useState<Place | null>(initialPlaceB);
+  const [userPlace, setUserPlace] = useState<Place | null>(null);
+  const [userTimezone, setUserTimezone] = useState<string>("UTC");
+  const [isComparing, setIsComparing] = useState<boolean>(!!(initialPlaceA && initialPlaceB));
+  const [showSidePanel, setShowSidePanel] = useState<boolean>(true);
 
-  function handleSwap() {
-    setPlaceA(placeB);
-    setPlaceB(placeA);
+  // Auto-detect user's timezone on mount
+  useEffect(() => {
+    try {
+      const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (detected) {
+        setUserTimezone(detected);
+        const matched = getPlaceByTimezone(detected);
+        if (matched) {
+          setUserPlace(matched);
+          // If no initial places were provided via URL, set user's place as placeA
+          if (!initialPlaceA && !initialPlaceB) {
+            setPlaceA(matched);
+          }
+        }
+      }
+    } catch {
+      // Fallback silently to UTC
+    }
+  }, [initialPlaceA, initialPlaceB]);
+
+  // Update URL seamlessly when comparison changes
+  useEffect(() => {
+    if (placeA && placeB) {
+      const targetUrl = `/time-difference/${placeA.slug}-to-${placeB.slug}`;
+      if (typeof window !== "undefined" && window.location.pathname !== targetUrl) {
+        window.history.pushState(null, "", targetUrl);
+      }
+    }
+  }, [placeA, placeB]);
+
+  function handleSelectPlace(selected: Place) {
+    if (isComparing || (placeA && !placeB)) {
+      if (!placeA) {
+        setPlaceA(selected);
+      } else if (selected.slug === placeA.slug) {
+        // Clicked the same place again
+        setPlaceA(selected);
+      } else {
+        setPlaceB(selected);
+        setIsComparing(true);
+      }
+    } else {
+      setPlaceA(selected);
+    }
+    setShowSidePanel(true);
   }
 
-  function handleSelectFromMap(place: Place, target: "A" | "B") {
-    if (target === "A") {
-      setPlaceA(place);
-    } else {
-      setPlaceB(place);
+  function handleCompareWith(selected: Place) {
+    setPlaceA(selected);
+    setPlaceB(null);
+    setIsComparing(true);
+  }
+
+  function handleSwap() {
+    if (placeA && placeB) {
+      const tempA = placeA;
+      setPlaceA(placeB);
+      setPlaceB(tempA);
+      window.history.pushState(null, "", `/time-difference/${placeB.slug}-to-${tempA.slug}`);
     }
   }
 
-  const popularPairs = getPopularPairs().slice(0, 18);
+  function handleClear() {
+    if (placeB) {
+      setPlaceB(null);
+      setIsComparing(false);
+      if (typeof window !== "undefined") {
+        window.history.pushState(null, "", "/");
+      }
+    } else {
+      setPlaceA(userPlace);
+      setShowSidePanel(false);
+      if (typeof window !== "undefined") {
+        window.history.pushState(null, "", "/");
+      }
+    }
+  }
+
+  const popularPairs = getPopularPairs();
 
   return (
-    <div className="w-full space-y-8">
-      {/* Search & Selection Controls Card */}
-      <div className="bg-white dark:bg-neutral-900/90 rounded-3xl border border-neutral-200/80 dark:border-neutral-800 p-4 sm:p-6 shadow-sm">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
-          <PlaceSearch
-            label="Place A (Origin)"
-            selectedPlace={placeA}
-            onSelectPlace={(p) => setPlaceA(p)}
-            badgeColor="emerald"
-            placeholder="Search country or city (e.g. India, New York)..."
-          />
+    <div className="w-full flex flex-col">
+      {/* Hero Fullscreen Google-Maps-Style Section */}
+      <div className="relative w-full h-[calc(100vh-56px)] min-h-[580px] bg-neutral-100 dark:bg-[#141414] overflow-hidden">
+        {/* Fullscreen Interactive Leaflet Map */}
+        <WorldMapContainer
+          placeA={placeA}
+          placeB={placeB}
+          userTimezone={userTimezone}
+          onSelectPlace={handleSelectPlace}
+          className="w-full h-full"
+        />
 
-          <div className="flex md:flex-col items-center justify-center pt-5">
-            <button
-              type="button"
-              onClick={handleSwap}
-              title="Swap Place A and Place B"
-              className="p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-all shadow-xs active:scale-95"
-            >
-              <ArrowLeftRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          <PlaceSearch
-            label="Place B (Destination)"
-            selectedPlace={placeB}
-            onSelectPlace={(p) => setPlaceB(p)}
-            badgeColor="indigo"
-            placeholder="Search country or city (e.g. United Kingdom, London)..."
+        {/* Floating Top-Left Search Overlay */}
+        <div className="absolute top-4 left-4 z-[1001] max-w-[calc(100vw-32px)] sm:max-w-md">
+          <MapSearchOverlay
+            placeA={placeA}
+            placeB={placeB}
+            userPlace={userPlace}
+            onSelectPlace={handleSelectPlace}
+            onClear={handleClear}
+            isCompareMode={isComparing && !placeB}
           />
         </div>
 
-        {/* Selected Pair Permalink Strip */}
-        {placeA && placeB && (
-          <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-800/80 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
-              <span className="font-semibold text-neutral-900 dark:text-neutral-100">
-                Selected Pair:
-              </span>
-              <span>
-                {placeA.name} ({placeA.countryName}) → {placeB.name} ({placeB.countryName})
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <Link
-                href={`/time-difference/${placeA.slug}-to-${placeB.slug}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition-colors"
-              >
-                Dedicated Page
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              <Link
-                href={`/best-time-to-call/${placeB.slug}-from-${placeA.slug}`}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 text-xs font-medium transition-colors"
-              >
-                Best Time to Call
-              </Link>
-            </div>
+        {/* Floating Side Panel on Desktop / Bottom Sheet on Mobile */}
+        {showSidePanel && (
+          <div className="absolute z-[1001] bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:top-4 sm:bottom-auto max-h-[85vh] overflow-y-auto max-w-full sm:max-w-[420px] transition-transform duration-300">
+            {placeA && placeB ? (
+              <CompareCard
+                placeA={placeA}
+                placeB={placeB}
+                onSwap={handleSwap}
+                onClear={handleClear}
+              />
+            ) : placeA ? (
+              <PlaceDetailsCard
+                place={placeA}
+                userTimezone={userTimezone}
+                onCompareWith={handleCompareWith}
+                onClose={() => setShowSidePanel(false)}
+              />
+            ) : null}
           </div>
         )}
       </div>
 
-      {/* Interactive Map */}
-      <div>
-        <WorldMapContainer
-          placeA={placeA}
-          placeB={placeB}
-          onSelectPlace={handleSelectFromMap}
-          className="h-[520px] w-full"
-        />
-        <div className="mt-2 px-1 flex flex-wrap items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400">
-          <p>
-            💡 Tip: Click any glowing city dot on the night map to instantly select it.
-          </p>
-          <p>Terminator shadow updates live every 60 seconds.</p>
+      {/* Popular Routes Section */}
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        <PopularRoutesRow pairs={popularPairs} />
+
+        {/* AdSense Placement */}
+        <div className="my-8">
+          <AdSlot slotId="home-bottom" format="horizontal" />
         </div>
-      </div>
 
-      {/* Result Card: Exact Difference, Live Clocks, Distance */}
-      {placeA && placeB && (
-        <ResultCard
-          placeA={placeA}
-          placeB={placeB}
-          onSwapPlaces={handleSwap}
-        />
-      )}
-
-      {/* Best Time to Call Box */}
-      {placeA && placeB && (
-        <BestTimeToCallBox
-          fromPlace={placeA}
-          toPlace={placeB}
-        />
-      )}
-
-      {/* 24-Hour Comparison Table */}
-      {placeA && placeB && (
-        <MeetingTable
-          placeA={placeA}
-          placeB={placeB}
-        />
-      )}
-
-      {/* Popular Pairs Quick Navigation */}
-      <section className="pt-4">
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 flex items-center gap-2">
-            <Clock className="w-4 h-4 text-emerald-500" />
-            Popular Time Difference Corridors
+        {/* Clean Human SEO Section */}
+        <section className="pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-xs leading-relaxed text-[#6B6B6B] dark:text-[#A0A0A0] max-w-3xl">
+          <h2 className="text-sm font-semibold text-[#222222] dark:text-white mb-2">
+            Accurate world time difference and calling overlap
           </h2>
-          <span className="text-xs text-neutral-400">
-            Frequently tracked corridors
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
-          {popularPairs.map((pair) => {
-            const pFrom = getPlaceBySlug(pair.from);
-            const pTo = getPlaceBySlug(pair.to);
-            if (!pFrom || !pTo) return null;
-
-            return (
-              <Link
-                key={`${pair.from}-${pair.to}`}
-                href={`/time-difference/${pair.from}-to-${pair.to}`}
-                className="p-2.5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 hover:border-emerald-500/50 hover:shadow-sm transition-all group flex flex-col justify-between"
-              >
-                <div className="text-xs font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors truncate">
-                  {pFrom.name}
-                </div>
-                <div className="text-[11px] text-neutral-400 flex items-center gap-1 mt-1">
-                  <span>to</span>
-                  <span className="font-medium text-neutral-700 dark:text-neutral-300 truncate">
-                    {pTo.name}
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
+          <p className="mb-2">
+            TimeBridge calculates real-time time differences between any two countries or cities
+            using the official IANA time zone database. Daylight Saving Time transitions,
+            half-hour and 45-minute offsets (such as India Standard Time, Nepal, and Newfoundland),
+            and solar day/night boundaries are handled dynamically without guesswork.
+          </p>
+          <p>
+            Click any location on the map to see its live local time, sunrise and sunset,
+            current weather, and upcoming clock changes. Pick a second destination to calculate
+            the exact calling overlap between 9:00 AM and 9:00 PM in both locations.
+          </p>
+        </section>
+      </div>
     </div>
   );
 }

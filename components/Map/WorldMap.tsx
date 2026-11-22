@@ -138,14 +138,6 @@ export default function WorldMap({
       });
     }
 
-    // Top-left floating search card zone (keep clear on desktop)
-    const searchCardBox = {
-      minX: 0,
-      maxX: 410,
-      minY: 0,
-      maxY: 220,
-    };
-
     for (const item of labelItems) {
       // Don't show generic label if place is already selected as A or B
       const isSelected =
@@ -159,11 +151,6 @@ export default function WorldMap({
 
       // Filter out points outside visible viewport bounds with safe padding
       if (pt.x < 40 || pt.x > mapSize.x - 40 || pt.y < 35 || pt.y > mapSize.y - 35) {
-        continue;
-      }
-
-      // Avoid rendering labels behind the top-left search overlay
-      if (pt.x < searchCardBox.maxX && pt.y < searchCardBox.maxY) {
         continue;
       }
 
@@ -294,10 +281,17 @@ export default function WorldMap({
       if (!map) return;
       const termData = computeSolarTerminator(new Date());
 
+      // Seamless Multi-Polygon covering standard world and wrapped horizontally adjacent copies [-540, 540]
+      const base = termData.nightPolygonLatLngs;
+      const copyMinus1: [number, number][] = base.map(([lat, lng]) => [lat, lng - 360]);
+      const copy0: [number, number][] = base;
+      const copyPlus1: [number, number][] = base.map(([lat, lng]) => [lat, lng + 360]);
+      const multiRings = [copy0, copyMinus1, copyPlus1];
+
       if (terminatorLayerRef.current) {
-        terminatorLayerRef.current.setLatLngs(termData.nightPolygonLatLngs);
+        terminatorLayerRef.current.setLatLngs(multiRings);
       } else {
-        const nightPolygon = L.polygon(termData.nightPolygonLatLngs, {
+        const nightPolygon = L.polygon(multiRings, {
           fill: true,
           fillColor: "#0f172a",
           fillOpacity: 0.38,
@@ -315,37 +309,39 @@ export default function WorldMap({
         prominentCities.forEach((city) => {
           const isDay = isCoordinateDaytime(city.lat, city.lng);
           if (!isDay) {
-            const lightMarker = L.circleMarker([city.lat, city.lng], {
-              radius: city.population > 3000000 ? 3 : 2,
-              fillColor: "#fde047",
-              fillOpacity: 0.85,
-              color: "#fbbf24",
-              weight: 1,
-              opacity: 0.6,
-              className: "night-city-dot cursor-pointer",
-            });
+            [-360, 0, 360].forEach((offset) => {
+              const lightMarker = L.circleMarker([city.lat, city.lng + offset], {
+                radius: city.population > 3000000 ? 3 : 2,
+                fillColor: "#fde047",
+                fillOpacity: 0.85,
+                color: "#fbbf24",
+                weight: 1,
+                opacity: 0.6,
+                className: "night-city-dot cursor-pointer",
+              });
 
-            lightMarker.on("click", (e) => {
-              L.DomEvent.stopPropagation(e);
-              if (onSelectPlace) {
-                const placeObj: Place = {
-                  id: `city-${city.slug}`,
-                  name: city.name,
-                  slug: city.slug,
-                  type: "city",
-                  countryName: city.country,
-                  countrySlug: city.countrySlug,
-                  countryIso: city.countryIso,
-                  lat: city.lat,
-                  lng: city.lng,
-                  timezone: city.timezone,
-                  population: city.population,
-                };
-                onSelectPlace(placeObj);
-              }
-            });
+              lightMarker.on("click", (e) => {
+                L.DomEvent.stopPropagation(e);
+                if (onSelectPlace) {
+                  const placeObj: Place = {
+                    id: `city-${city.slug}`,
+                    name: city.name,
+                    slug: city.slug,
+                    type: "city",
+                    countryName: city.country,
+                    countrySlug: city.countrySlug,
+                    countryIso: city.countryIso,
+                    lat: city.lat,
+                    lng: city.lng,
+                    timezone: city.timezone,
+                    population: city.population,
+                  };
+                  onSelectPlace(placeObj);
+                }
+              });
 
-            nightLightsGroupRef.current?.addLayer(lightMarker);
+              nightLightsGroupRef.current?.addLayer(lightMarker);
+            });
           }
         });
       }

@@ -154,8 +154,22 @@ export default function HomeClient({
 
   return (
     <div className="w-full flex flex-col">
+      {/* Full-width Search and Controls Bar across the full row */}
+      <div className="w-full bg-white/90 dark:bg-[#121212]/90 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.08] shadow-xs z-30 transition-colors">
+        <div className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 py-2">
+          <MapSearchOverlay
+            placeA={placeA}
+            placeB={placeB}
+            userPlace={userPlace}
+            onSelectPlace={handleSelectPlace}
+            onClear={handleClear}
+            isCompareMode={isComparing && !placeB}
+          />
+        </div>
+      </div>
+
       {/* Hero Fullscreen Google-Maps-Style Section */}
-      <div className="relative w-full h-[calc(100vh-56px)] min-h-[580px] bg-neutral-100 dark:bg-[#141414] overflow-hidden">
+      <div className="relative w-full h-[calc(100vh-56px-53px)] min-h-[500px] bg-neutral-100 dark:bg-[#141414] overflow-hidden">
         {/* Fullscreen Interactive Leaflet Map */}
         <WorldMapContainer
           placeA={placeA}
@@ -164,20 +178,6 @@ export default function HomeClient({
           onSelectPlace={handleSelectPlace}
           className="w-full h-full"
         />
-
-        {/* Floating Top-Left Search Overlay */}
-        <div className="absolute top-3 left-3 right-3 md:right-auto md:top-4 md:left-4 md:w-[420px] z-[1001] pointer-events-none">
-          <div className="pointer-events-auto w-full">
-            <MapSearchOverlay
-              placeA={placeA}
-              placeB={placeB}
-              userPlace={userPlace}
-              onSelectPlace={handleSelectPlace}
-              onClear={handleClear}
-              isCompareMode={isComparing && !placeB}
-            />
-          </div>
-        </div>
 
         {/* One-Time Location Modal Popup */}
         <LocationModal

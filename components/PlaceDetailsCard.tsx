@@ -156,17 +156,20 @@ export default function PlaceDetailsCard({
   return (
     <aside
       aria-label="Location details"
-      className="w-full sm:w-[380px] bg-white dark:bg-[#181818] rounded-2xl shadow-xl border border-neutral-200/80 dark:border-neutral-800 p-5 sm:p-6 flex flex-col gap-5 text-neutral-900 dark:text-neutral-100 transition-all duration-200"
+      className="w-full bg-white dark:bg-[#181818] rounded-t-2xl md:rounded-2xl shadow-xl border border-neutral-200/80 dark:border-neutral-800 p-4 sm:p-6 flex flex-col gap-4 sm:gap-5 text-neutral-900 dark:text-neutral-100 transition-all duration-200"
     >
+      {/* Mobile Drag Indicator Bar */}
+      <div className="w-12 h-1.5 bg-neutral-300 dark:bg-neutral-600 rounded-full mx-auto -mt-0.5 mb-1 md:hidden shrink-0" />
+
       {/* Header with Name, Flag and Close */}
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 min-w-0">
           <FlagIcon countryCode={place.countryIso} size="md" />
-          <div>
-            <h2 className="text-xl font-semibold tracking-tight leading-tight">
+          <div className="min-w-0">
+            <h2 className="text-lg sm:text-xl font-semibold tracking-tight leading-tight truncate">
               {formatPlaceDisplayName(place)}
             </h2>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 truncate">
               {place.timezone} ({utcOffsetStr || "UTC"})
             </p>
           </div>
@@ -174,7 +177,7 @@ export default function PlaceDetailsCard({
         <button
           onClick={onClose}
           aria-label="Close details"
-          className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
+          className="p-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors shrink-0 cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>

@@ -36,11 +36,11 @@ export default function HeaderLocationButton() {
     <button
       type="button"
       onClick={handleClick}
-      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700/80 hover:border-[#E85D4E]/50 hover:bg-[#E85D4E]/5 dark:hover:bg-[#E85D4E]/10 text-[#222222] dark:text-neutral-200 transition-colors cursor-pointer text-xs sm:text-sm font-medium"
+      className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700/80 hover:border-[#E85D4E]/50 hover:bg-[#E85D4E]/5 dark:hover:bg-[#E85D4E]/10 text-[#222222] dark:text-neutral-200 transition-colors cursor-pointer text-xs sm:text-sm font-medium shrink-0"
       title={locationName ? `Current location: ${locationName}. Click to change.` : "Add your location"}
     >
       <MapPin className="w-3.5 h-3.5 text-[#E85D4E] shrink-0" />
-      <span className="truncate max-w-[110px]">
+      <span className="truncate max-w-[85px] sm:max-w-[120px]">
         {locationName ? locationName : "Add location"}
       </span>
     </button>

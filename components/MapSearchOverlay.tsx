@@ -128,7 +128,7 @@ export default function MapSearchOverlay({
                 ? "Search second place to compare..."
                 : "Search any country or city..."
             }
-            className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-neutral-50 dark:bg-[#222222] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E85D4E]/40 focus:border-[#E85D4E] transition-all"
+            className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-neutral-50 dark:bg-[#222222] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E85D4E]/40 focus:border-[#E85D4E] transition-all"
           />
           {query && (
             <button
@@ -136,9 +136,9 @@ export default function MapSearchOverlay({
                 setQuery("");
                 setIsOpen(false);
               }}
-              className="absolute right-3 p-1 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200"
+              className="absolute right-3 p-1.5 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 cursor-pointer"
             >
-              <X className="w-3.5 h-3.5" />
+              <X className="w-4 h-4" />
             </button>
           )}
         </div>
@@ -154,25 +154,25 @@ export default function MapSearchOverlay({
                     key={place.id}
                     onClick={() => handleSelect(place)}
                     onMouseEnter={() => setHighlightIndex(index)}
-                    className={`w-full px-3.5 py-2.5 text-left flex items-center justify-between text-xs transition-colors ${
+                    className={`w-full px-3.5 py-2.5 text-left flex items-center justify-between text-xs transition-colors cursor-pointer ${
                       isHighlight
                         ? "bg-neutral-100 dark:bg-neutral-800"
                         : "hover:bg-neutral-50 dark:hover:bg-neutral-800/50"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-2.5 min-w-0 flex-1">
                       <FlagIcon countryCode={place.countryIso} size="sm" />
-                      <div>
-                        <div className="font-medium text-neutral-900 dark:text-white">
+                      <div className="min-w-0 flex-1">
+                        <div className="font-medium text-neutral-900 dark:text-white truncate">
                           {formatPlaceDisplayName(place)}
                         </div>
-                        <div className="text-[10px] text-neutral-400">
+                        <div className="text-[10px] text-neutral-400 truncate">
                           {place.timezone}
                         </div>
                       </div>
                     </div>
                     <span
-                      className={`text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full ${
+                      className={`text-[10px] uppercase font-semibold px-2 py-0.5 rounded-full shrink-0 ml-2 ${
                         place.type === "country"
                           ? "bg-rose-500/10 text-[#E85D4E] dark:bg-rose-500/20"
                           : "bg-blue-500/10 text-blue-600 dark:text-blue-400 dark:bg-blue-500/20"

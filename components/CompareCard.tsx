@@ -135,9 +135,12 @@ export default function CompareCard({
       } ${diff.isAhead ? "ahead of" : "behind"} ${placeB.name}.`;
 
   return (
-    <div className="w-full bg-white dark:bg-[#181818] rounded-2xl shadow-xl border border-neutral-200/80 dark:border-neutral-800 p-5 sm:p-7 flex flex-col gap-6 text-neutral-900 dark:text-neutral-100">
+    <div className="w-full bg-white dark:bg-[#181818] rounded-t-2xl md:rounded-2xl shadow-xl border border-neutral-200/80 dark:border-neutral-800 p-4 sm:p-7 flex flex-col gap-4 sm:gap-6 text-neutral-900 dark:text-neutral-100">
+      {/* Mobile Drag Indicator Bar */}
+      <div className="w-12 h-1.5 bg-neutral-300 dark:bg-neutral-600 rounded-full mx-auto -mt-0.5 mb-1 md:hidden shrink-0" />
+
       {/* Top Action Bar */}
-      <div className="flex items-center justify-between gap-3 border-b border-neutral-100 dark:border-neutral-800 pb-4">
+      <div className="flex items-center justify-between gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-3 sm:pb-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-xs font-medium text-neutral-600 dark:text-neutral-300">
           <span>{formatPlaceDisplayName(placeA)}</span>
           <span className="text-neutral-400">→</span>

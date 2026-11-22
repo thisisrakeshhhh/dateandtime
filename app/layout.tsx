@@ -3,7 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import { siteConfig } from "@/lib/config";
 import CookieConsent from "@/components/CookieConsent";
-import HeaderLocationButton from "@/components/HeaderLocationButton";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -56,46 +56,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col bg-white dark:bg-[#141414] text-[#222222] dark:text-[#f5f5f5] antialiased selection:bg-[#E85D4E] selection:text-white">
-        {/* Slim Top Bar */}
-        <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#141414]/95 backdrop-blur-md border-b border-[#E5E5E5] dark:border-[#262626]">
-          <div className="w-full px-4 sm:px-6 h-14 flex items-center justify-between">
-            {/* Logo Text Left */}
-            <Link
-              href="/"
-              className="flex items-center gap-2 group focus:outline-none"
-            >
-              <span className="w-3 h-3 rounded-full bg-[#E85D4E] shrink-0" />
-              <span className="font-semibold text-base sm:text-lg tracking-tight text-[#222222] dark:text-white">
-                {siteConfig.name}
-              </span>
-            </Link>
-
-            {/* 3 Links + Location Button */}
-            <nav className="flex items-center gap-1 sm:gap-4 text-xs sm:text-sm font-medium text-[#6B6B6B] dark:text-[#A0A0A0]">
-              <HeaderLocationButton />
-              <Link
-                href="/time-difference/new-york-to-london"
-                className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              >
-                Time difference
-              </Link>
-              <Link
-                href="/best-time-to-call/london-from-new-york"
-                className="hidden sm:inline-block px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              >
-                Best time to call
-              </Link>
-              <Link
-                href="/about"
-                className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              >
-                About
-              </Link>
-            </nav>
-          </div>
-        </header>
+    <html lang="en" className="overflow-x-hidden">
+      <body className="min-h-screen flex flex-col overflow-x-hidden bg-white dark:bg-[#141414] text-[#222222] dark:text-[#f5f5f5] antialiased selection:bg-[#E85D4E] selection:text-white">
+        {/* Responsive Top Bar with Mobile Navigation Drawer */}
+        <Navbar />
 
         {/* Main Viewport Content */}
         <main className="flex-1 w-full flex flex-col">

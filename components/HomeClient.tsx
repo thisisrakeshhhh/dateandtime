@@ -166,15 +166,17 @@ export default function HomeClient({
         />
 
         {/* Floating Top-Left Search Overlay */}
-        <div className="absolute top-4 left-4 z-[1001] max-w-[calc(100vw-32px)] sm:max-w-md">
-          <MapSearchOverlay
-            placeA={placeA}
-            placeB={placeB}
-            userPlace={userPlace}
-            onSelectPlace={handleSelectPlace}
-            onClear={handleClear}
-            isCompareMode={isComparing && !placeB}
-          />
+        <div className="absolute top-3 left-3 right-3 md:right-auto md:top-4 md:left-4 md:w-[420px] z-[1001] pointer-events-none">
+          <div className="pointer-events-auto w-full">
+            <MapSearchOverlay
+              placeA={placeA}
+              placeB={placeB}
+              userPlace={userPlace}
+              onSelectPlace={handleSelectPlace}
+              onClear={handleClear}
+              isCompareMode={isComparing && !placeB}
+            />
+          </div>
         </div>
 
         {/* One-Time Location Modal Popup */}
@@ -187,7 +189,7 @@ export default function HomeClient({
 
         {/* Floating Side Panel on Desktop / Bottom Sheet on Mobile */}
         {showSidePanel && (
-          <div className="absolute z-[1001] bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:top-4 sm:bottom-auto max-h-[85vh] overflow-y-auto max-w-full sm:max-w-[420px] transition-transform duration-300">
+          <div className="fixed md:absolute z-[1002] inset-x-0 bottom-0 md:inset-auto md:top-4 md:right-6 max-h-[80vh] md:max-h-[85vh] overflow-y-auto w-full md:w-[400px] md:max-w-[420px] transition-all duration-300 rounded-t-2xl md:rounded-2xl shadow-2xl">
             {placeA && placeB ? (
               <CompareCard
                 placeA={placeA}

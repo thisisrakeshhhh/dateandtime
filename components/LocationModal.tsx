@@ -77,10 +77,10 @@ export default function LocationModal({
     <div
       role="region"
       aria-label="Location selection prompt"
-      className="fixed inset-0 z-[1050] flex items-center justify-center p-4 pointer-events-none"
+      className="fixed inset-0 z-[1050] flex items-center justify-center p-3 sm:p-4 pointer-events-none"
     >
       <div
-        className="pointer-events-auto relative w-full max-w-md rounded-2xl bg-white dark:bg-[#1a1a1a] border border-neutral-200 dark:border-neutral-800 p-5 shadow-2xl animate-in zoom-in-95 duration-200 text-neutral-800 dark:text-neutral-100"
+        className="pointer-events-auto relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-[#1a1a1a] border border-neutral-200 dark:border-neutral-800 p-4 sm:p-5 shadow-2xl animate-in zoom-in-95 duration-200 text-neutral-800 dark:text-neutral-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -132,7 +132,7 @@ export default function LocationModal({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search your city or country..."
-              className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-neutral-50 dark:bg-[#242424] border border-neutral-200 dark:border-neutral-700 text-xs sm:text-sm text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#E85D4E]/40 focus:border-[#E85D4E] transition-all"
+              className="w-full pl-9 pr-8 py-2.5 rounded-xl bg-neutral-50 dark:bg-[#242424] border border-neutral-200 dark:border-neutral-700 text-base sm:text-sm text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#E85D4E]/40 focus:border-[#E85D4E] transition-all"
             />
             {searchQuery && (
               <button

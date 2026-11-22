@@ -2,39 +2,38 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Cookie, X } from "lucide-react";
 
 export default function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
-    // Never show intrusive popup on the fullscreen home map screen
-    if (pathname === "/") {
-      setIsVisible(false);
-      return;
-    }
-
-    // Check if consent was previously recorded
-    const consent = localStorage.getItem("timebridge_cookie_consent");
-    if (!consent) {
-      const timer = setTimeout(() => setIsVisible(true), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [pathname]);
+    try {
+      // Check if consent was previously recorded
+      const consent = localStorage.getItem("timebridge_cookie_consent");
+      if (!consent) {
+        // One-time popup after gentle delay
+        const timer = setTimeout(() => setIsVisible(true), 1500);
+        return () => clearTimeout(timer);
+      }
+    } catch {}
+  }, []);
 
   function handleAccept() {
-    localStorage.setItem("timebridge_cookie_consent", "accepted");
+    try {
+      localStorage.setItem("timebridge_cookie_consent", "accepted");
+    } catch {}
     setIsVisible(false);
   }
 
   function handleDismiss() {
-    localStorage.setItem("timebridge_cookie_consent", "dismissed");
+    try {
+      localStorage.setItem("timebridge_cookie_consent", "dismissed");
+    } catch {}
     setIsVisible(false);
   }
 
-  if (!isVisible || pathname === "/") return null;
+  if (!isVisible) return null;
 
   return (
     <div className="fixed bottom-3 right-4 z-40 max-w-sm p-3.5 rounded-xl bg-white/95 dark:bg-[#181818]/95 backdrop-blur-md border border-neutral-200/80 dark:border-neutral-800 shadow-lg text-xs text-neutral-600 dark:text-neutral-300 animate-in fade-in duration-200">

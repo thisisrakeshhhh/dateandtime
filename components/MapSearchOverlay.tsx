@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Place, searchPlaces, formatPlaceDisplayName } from "@/lib/places";
 import FlagIcon from "@/components/FlagIcon";
-import { Search, X, MapPin, Navigation } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 interface MapSearchOverlayProps {
   placeA: Place | null;
@@ -11,8 +11,6 @@ interface MapSearchOverlayProps {
   userPlace: Place | null;
   onSelectPlace: (place: Place) => void;
   onClear: () => void;
-  onRequestLocation?: () => void;
-  isLocating?: boolean;
   isCompareMode: boolean;
 }
 
@@ -22,48 +20,14 @@ export default function MapSearchOverlay({
   userPlace,
   onSelectPlace,
   onClear,
-  onRequestLocation,
-  isLocating = false,
   isCompareMode,
 }: MapSearchOverlayProps) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [results, setResults] = useState<Place[]>([]);
   const [highlightIndex, setHighlightIndex] = useState(0);
-  const [isPromptDismissed, setIsPromptDismissed] = useState<boolean>(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // Check if location prompt was already dismissed once
-  useEffect(() => {
-    try {
-      const dismissed = localStorage.getItem("timebridge_location_prompt_dismissed");
-      if (!dismissed) {
-        setIsPromptDismissed(false);
-      }
-    } catch {
-      setIsPromptDismissed(false);
-    }
-  }, []);
-
-  function handleDismissPrompt() {
-    setIsPromptDismissed(true);
-    try {
-      localStorage.setItem("timebridge_location_prompt_dismissed", "true");
-    } catch {}
-  }
-
-  function handleDetectAndDismiss() {
-    handleDismissPrompt();
-    if (onRequestLocation) {
-      onRequestLocation();
-    }
-  }
-
-  function handleSetPlaceAndDismiss(place: Place) {
-    handleDismissPrompt();
-    onSelectPlace(place);
-  }
 
   useEffect(() => {
     if (query.trim().length > 0) {
@@ -262,62 +226,6 @@ export default function MapSearchOverlay({
           </div>
         )}
       </div>
-
-      {/* Starting Location Prompt (explains time difference & distance calculation) */}
-      {!placeA && !placeB && !isPromptDismissed && (
-        <div className="mt-3 p-3 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-200/80 dark:border-neutral-800 text-xs relative animate-in fade-in duration-200">
-          <div className="flex items-start gap-2.5">
-            <div className="w-5 h-5 rounded-full bg-rose-500/10 text-[#E85D4E] flex items-center justify-center shrink-0 mt-0.5">
-              <MapPin className="w-3 h-3" />
-            </div>
-            <div className="flex-1 min-w-0 pr-4">
-              <div className="flex items-center justify-between gap-1">
-                <span className="font-semibold text-neutral-900 dark:text-white text-xs">
-                  Your Current Location
-                </span>
-                {userPlace && (
-                  <span className="text-[11px] text-neutral-500 dark:text-neutral-400 font-medium truncate">
-                    {formatPlaceDisplayName(userPlace)}
-                  </span>
-                )}
-              </div>
-              <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed">
-                We use your location to calculate real-time time differences and exact distances to any country or city you compare.
-              </p>
-              <div className="mt-2.5 flex items-center gap-2">
-                {onRequestLocation && (
-                  <button
-                    type="button"
-                    onClick={handleDetectAndDismiss}
-                    disabled={isLocating}
-                    className="px-2.5 py-1.5 rounded-lg bg-[#E85D4E] hover:bg-[#d94f40] text-white font-medium text-[11px] transition-colors flex items-center gap-1.5 shadow-xs disabled:opacity-60 cursor-pointer"
-                  >
-                    <Navigation className="w-3 h-3" />
-                    <span>{isLocating ? "Detecting..." : "Detect My Location"}</span>
-                  </button>
-                )}
-                {userPlace && (
-                  <button
-                    type="button"
-                    onClick={() => handleSetPlaceAndDismiss(userPlace)}
-                    className="px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200 font-medium text-[11px] transition-colors cursor-pointer"
-                  >
-                    Set as {userPlace.name}
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={handleDismissPrompt}
-            aria-label="Dismiss location prompt"
-            className="absolute top-2.5 right-2.5 p-1 rounded-md text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors cursor-pointer"
-          >
-            <X className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      )}
     </div>
   );
 }

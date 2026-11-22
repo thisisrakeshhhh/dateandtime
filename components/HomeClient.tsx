@@ -11,6 +11,7 @@ import WorldMapContainer from "@/components/Map";
 import MapSearchOverlay from "@/components/MapSearchOverlay";
 import PlaceDetailsCard from "@/components/PlaceDetailsCard";
 import CompareCard from "@/components/CompareCard";
+import LocationModal from "@/components/LocationModal";
 
 interface HomeClientProps {
   initialPlaceA: Place | null;
@@ -156,11 +157,17 @@ export default function HomeClient({
             userPlace={userPlace}
             onSelectPlace={handleSelectPlace}
             onClear={handleClear}
-            onRequestLocation={handleRequestGeolocation}
-            isLocating={isLocating}
             isCompareMode={isComparing && !placeB}
           />
         </div>
+
+        {/* One-Time Location Modal Popup */}
+        <LocationModal
+          userPlace={userPlace}
+          onRequestLocation={handleRequestGeolocation}
+          onSetPlace={handleSelectPlace}
+          isLocating={isLocating}
+        />
 
         {/* Floating Side Panel on Desktop / Bottom Sheet on Mobile */}
         {showSidePanel && (

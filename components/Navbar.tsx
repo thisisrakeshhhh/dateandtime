@@ -52,6 +52,12 @@ export default function Navbar() {
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-1.5 text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-300">
             <Link
+              href="/converter"
+              className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
+            >
+              Converters
+            </Link>
+            <Link
               href="/time-difference/new-york-to-london"
               className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
             >
@@ -87,6 +93,13 @@ export default function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-black/[0.06] dark:border-white/[0.08] bg-white/95 dark:bg-[#141414]/95 backdrop-blur-2xl px-4 py-3.5 shadow-2xl animate-in slide-in-from-top-2 duration-200">
           <nav className="flex flex-col gap-1 text-sm font-medium">
+            <Link
+              href="/converter"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
+            >
+              <Clock className="w-4 h-4 text-[#E85D4E]" />
+              <span>Zone converters</span>
+            </Link>
             <Link
               href="/time-difference/new-york-to-london"
               className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"

@@ -1,0 +1,390 @@
+[
+  {
+    "code": "EST",
+    "name": "Eastern Standard Time",
+    "defaultIana": "America/New_York",
+    "type": "standard",
+    "standardOffset": "UTC-05:00",
+    "daylightOffset": "UTC-04:00",
+    "daylightPartner": "EDT",
+    "seasonalWarning": "EST is observed only in autumn and winter (from the first Sunday in November to the second Sunday in March). During spring and summer, locations like New York, Toronto, and Miami observe Eastern Daylight Time (EDT, UTC-4). If your event is scheduled between March and November, you should convert from EDT instead.",
+    "ambiguityWarning": "EST strictly refers to North American Eastern Standard Time (UTC-5). It should not be confused with AEST (Australian Eastern Standard Time, UTC+10).",
+    "whenObserved": "First Sunday in November to second Sunday in March",
+    "majorCities": [
+      { "name": "New York", "country": "United States", "timezone": "America/New_York" },
+      { "name": "Toronto", "country": "Canada", "timezone": "America/Toronto" },
+      { "name": "Miami", "country": "United States", "timezone": "America/New_York" },
+      { "name": "Atlanta", "country": "United States", "timezone": "America/New_York" },
+      { "name": "Boston", "country": "United States", "timezone": "America/New_York" },
+      { "name": "Washington, D.C.", "country": "United States", "timezone": "America/New_York" }
+    ]
+  },
+  {
+    "code": "EDT",
+    "name": "Eastern Daylight Time",
+    "defaultIana": "America/New_York",
+    "type": "daylight",
+    "standardOffset": "UTC-05:00",
+    "daylightOffset": "UTC-04:00",
+    "standardPartner": "EST",
+    "seasonalWarning": "EDT is the daylight saving time observed from the second Sunday in March to the first Sunday in November. In winter, these regions revert back to EST (UTC-5).",
+    "ambiguityWarning": "EDT is used exclusively in the Eastern United States, parts of Eastern Canada, and the Caribbean during summer.",
+    "whenObserved": "Second Sunday in March to first Sunday in November",
+    "majorCities": [
+      { "name": "New York", "country": "United States", "timezone": "America/New_York" },
+      { "name": "Toronto", "country": "Canada", "timezone": "America/Toronto" },
+      { "name": "Miami", "country": "United States", "timezone": "America/New_York" },
+      { "name": "Montreal", "country": "Canada", "timezone": "America/Toronto" },
+      { "name": "Philadelphia", "country": "United States", "timezone": "America/New_York" }
+    ]
+  },
+  {
+    "code": "CST",
+    "name": "Central Standard Time",
+    "defaultIana": "America/Chicago",
+    "type": "standard",
+    "standardOffset": "UTC-06:00",
+    "daylightOffset": "UTC-05:00",
+    "daylightPartner": "CDT",
+    "seasonalWarning": "North American CST is observed during winter (November to March). In summer, cities like Chicago, Dallas, and Houston switch to Central Daylight Time (CDT, UTC-5).",
+    "ambiguityWarning": "CST is heavily ambiguous: it can mean North American Central Standard Time (UTC-6), China Standard Time (UTC+8, no DST), or Cuba Standard Time (UTC-5). This converter defaults to North American Central Standard Time.",
+    "whenObserved": "First Sunday in November to second Sunday in March (North America)",
+    "majorCities": [
+      { "name": "Chicago", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "Dallas", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "Houston", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "Austin", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "Minneapolis", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "Mexico City", "country": "Mexico", "timezone": "America/Mexico_City" }
+    ]
+  },
+  {
+    "code": "CDT",
+    "name": "Central Daylight Time",
+    "defaultIana": "America/Chicago",
+    "type": "daylight",
+    "standardOffset": "UTC-06:00",
+    "daylightOffset": "UTC-05:00",
+    "standardPartner": "CST",
+    "seasonalWarning": "CDT is observed during the summer months (second Sunday in March to first Sunday in November). During winter, clocks shift back 1 hour to CST (UTC-6).",
+    "ambiguityWarning": "CDT refers to North American Central Daylight Time (UTC-5) or Cuba Daylight Time (UTC-4).",
+    "whenObserved": "Second Sunday in March to first Sunday in November",
+    "majorCities": [
+      { "name": "Chicago", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "Houston", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "Dallas", "country": "United States", "timezone": "America/Chicago" },
+      { "name": "San Antonio", "country": "United States", "timezone": "America/Chicago" }
+    ]
+  },
+  {
+    "code": "PST",
+    "name": "Pacific Standard Time",
+    "defaultIana": "America/Los_Angeles",
+    "type": "standard",
+    "standardOffset": "UTC-08:00",
+    "daylightOffset": "UTC-07:00",
+    "daylightPartner": "PDT",
+    "seasonalWarning": "PST is observed in autumn and winter (November to March). In summer, cities like Los Angeles, San Francisco, Seattle, and Vancouver shift to Pacific Daylight Time (PDT, UTC-7).",
+    "ambiguityWarning": "PST refers to North American Pacific Standard Time (UTC-8). Do not confuse with Pakistan Standard Time (PKT, UTC+5) or Philippine Standard Time (PHT, UTC+8).",
+    "whenObserved": "First Sunday in November to second Sunday in March",
+    "majorCities": [
+      { "name": "Los Angeles", "country": "United States", "timezone": "America/Los_Angeles" },
+      { "name": "San Francisco", "country": "United States", "timezone": "America/Los_Angeles" },
+      { "name": "Seattle", "country": "United States", "timezone": "America/Los_Angeles" },
+      { "name": "Vancouver", "country": "Canada", "timezone": "America/Vancouver" },
+      { "name": "Las Vegas", "country": "United States", "timezone": "America/Los_Angeles" },
+      { "name": "San Diego", "country": "United States", "timezone": "America/Los_Angeles" }
+    ]
+  },
+  {
+    "code": "PDT",
+    "name": "Pacific Daylight Time",
+    "defaultIana": "America/Los_Angeles",
+    "type": "daylight",
+    "standardOffset": "UTC-08:00",
+    "daylightOffset": "UTC-07:00",
+    "standardPartner": "PST",
+    "seasonalWarning": "PDT is observed from the second Sunday in March to the first Sunday in November. In winter, regions revert back to PST (UTC-8).",
+    "ambiguityWarning": "PDT refers to North American Pacific Daylight Time (UTC-7).",
+    "whenObserved": "Second Sunday in March to first Sunday in November",
+    "majorCities": [
+      { "name": "Los Angeles", "country": "United States", "timezone": "America/Los_Angeles" },
+      { "name": "San Francisco", "country": "United States", "timezone": "America/Los_Angeles" },
+      { "name": "Seattle", "country": "United States", "timezone": "America/Los_Angeles" },
+      { "name": "Vancouver", "country": "Canada", "timezone": "America/Vancouver" }
+    ]
+  },
+  {
+    "code": "MST",
+    "name": "Mountain Standard Time",
+    "defaultIana": "America/Denver",
+    "type": "standard",
+    "standardOffset": "UTC-07:00",
+    "daylightOffset": "UTC-06:00",
+    "daylightPartner": "MDT",
+    "seasonalWarning": "MST is observed in winter by Colorado, Utah, and Alberta. Most of Arizona observes MST year-round without daylight saving changes.",
+    "ambiguityWarning": "Note that Phoenix, Arizona remains on MST (UTC-7) all year, while Denver shifts between MST (UTC-7) and MDT (UTC-6).",
+    "whenObserved": "First Sunday in November to second Sunday in March (except Arizona which is year-round)",
+    "majorCities": [
+      { "name": "Denver", "country": "United States", "timezone": "America/Denver" },
+      { "name": "Phoenix", "country": "United States", "timezone": "America/Phoenix" },
+      { "name": "Salt Lake City", "country": "United States", "timezone": "America/Denver" },
+      { "name": "Calgary", "country": "Canada", "timezone": "America/Edmonton" }
+    ]
+  },
+  {
+    "code": "MDT",
+    "name": "Mountain Daylight Time",
+    "defaultIana": "America/Denver",
+    "type": "daylight",
+    "standardOffset": "UTC-07:00",
+    "daylightOffset": "UTC-06:00",
+    "standardPartner": "MST",
+    "seasonalWarning": "MDT is observed in summer (March to November) by Denver, Salt Lake City, and Edmonton. Arizona does not observe MDT.",
+    "ambiguityWarning": "MDT is UTC-6, identical in offset to CST in winter.",
+    "whenObserved": "Second Sunday in March to first Sunday in November",
+    "majorCities": [
+      { "name": "Denver", "country": "United States", "timezone": "America/Denver" },
+      { "name": "Salt Lake City", "country": "United States", "timezone": "America/Denver" },
+      { "name": "Calgary", "country": "Canada", "timezone": "America/Edmonton" }
+    ]
+  },
+  {
+    "code": "IST",
+    "name": "India Standard Time",
+    "defaultIana": "Asia/Kolkata",
+    "type": "permanent",
+    "standardOffset": "UTC+05:30",
+    "daylightOffset": "UTC+05:30",
+    "seasonalWarning": "India Standard Time does not observe Daylight Saving Time. It remains fixed at UTC+05:30 all year round across the entire country.",
+    "ambiguityWarning": "IST is ambiguous: it can mean India Standard Time (UTC+5:30), Irish Standard Time (UTC+1, summer), or Israel Standard Time (UTC+2, winter). This tool calculates India Standard Time.",
+    "whenObserved": "All year round (Permanent UTC+05:30)",
+    "majorCities": [
+      { "name": "Mumbai", "country": "India", "timezone": "Asia/Kolkata" },
+      { "name": "Delhi", "country": "India", "timezone": "Asia/Kolkata" },
+      { "name": "Bengaluru", "country": "India", "timezone": "Asia/Kolkata" },
+      { "name": "Hyderabad", "country": "India", "timezone": "Asia/Kolkata" },
+      { "name": "Chennai", "country": "India", "timezone": "Asia/Kolkata" },
+      { "name": "Kolkata", "country": "India", "timezone": "Asia/Kolkata" }
+    ]
+  },
+  {
+    "code": "GMT",
+    "name": "Greenwich Mean Time",
+    "defaultIana": "Europe/London",
+    "type": "standard",
+    "standardOffset": "UTC+00:00",
+    "daylightOffset": "UTC+01:00",
+    "daylightPartner": "BST",
+    "seasonalWarning": "The United Kingdom observes GMT during the winter months only (late October to late March). In summer, clocks in the UK advance by 1 hour to British Summer Time (BST, UTC+1). Iceland and parts of West Africa observe GMT year-round.",
+    "ambiguityWarning": "GMT is often treated synonymously with UTC (Universal Coordinated Time) because both share UTC+0. However, GMT is a time zone while UTC is a precise scientific time standard.",
+    "whenObserved": "Last Sunday in October to last Sunday in March (UK/Ireland); Year-round in Iceland and Ghana",
+    "majorCities": [
+      { "name": "London", "country": "United Kingdom", "timezone": "Europe/London" },
+      { "name": "Dublin", "country": "Ireland", "timezone": "Europe/Dublin" },
+      { "name": "Lisbon", "country": "Portugal", "timezone": "Europe/Lisbon" },
+      { "name": "Reykjavik", "country": "Iceland", "timezone": "Atlantic/Reykjavik" },
+      { "name": "Accra", "country": "Ghana", "timezone": "Africa/Accra" }
+    ]
+  },
+  {
+    "code": "BST",
+    "name": "British Summer Time",
+    "defaultIana": "Europe/London",
+    "type": "daylight",
+    "standardOffset": "UTC+00:00",
+    "daylightOffset": "UTC+01:00",
+    "standardPartner": "GMT",
+    "seasonalWarning": "BST is observed in the United Kingdom from the last Sunday in March to the last Sunday in October. In winter, the UK reverts back to GMT (UTC+0).",
+    "ambiguityWarning": "BST in this tool refers to British Summer Time (UTC+1). In other regions, BST can mean Bangladesh Standard Time (UTC+6) or Bougainville Standard Time (UTC+11).",
+    "whenObserved": "Last Sunday in March to last Sunday in October",
+    "majorCities": [
+      { "name": "London", "country": "United Kingdom", "timezone": "Europe/London" },
+      { "name": "Manchester", "country": "United Kingdom", "timezone": "Europe/London" },
+      { "name": "Edinburgh", "country": "United Kingdom", "timezone": "Europe/London" },
+      { "name": "Birmingham", "country": "United Kingdom", "timezone": "Europe/London" },
+      { "name": "Glasgow", "country": "United Kingdom", "timezone": "Europe/London" }
+    ]
+  },
+  {
+    "code": "UTC",
+    "name": "Coordinated Universal Time",
+    "defaultIana": "UTC",
+    "type": "permanent",
+    "standardOffset": "UTC+00:00",
+    "daylightOffset": "UTC+00:00",
+    "seasonalWarning": "UTC never changes for daylight saving time. It serves as the immutable zero-offset baseline for global timekeeping, aviation, internet protocols, and military coordination.",
+    "ambiguityWarning": "UTC is the global reference standard. It is identical in clock time to GMT during winter, but has no seasonal variations.",
+    "whenObserved": "All year round (Permanent UTC+00:00)",
+    "majorCities": [
+      { "name": "Universal Reference", "country": "Worldwide", "timezone": "UTC" },
+      { "name": "Reykjavik", "country": "Iceland", "timezone": "Atlantic/Reykjavik" }
+    ]
+  },
+  {
+    "code": "CET",
+    "name": "Central European Time",
+    "defaultIana": "Europe/Paris",
+    "type": "standard",
+    "standardOffset": "UTC+01:00",
+    "daylightOffset": "UTC+02:00",
+    "daylightPartner": "CEST",
+    "seasonalWarning": "CET (UTC+1) is observed in winter across Central and Western mainland Europe. During summer, countries switch to Central European Summer Time (CEST, UTC+2).",
+    "ambiguityWarning": "Observed by over 30 European countries during winter months.",
+    "whenObserved": "Last Sunday in October to last Sunday in March",
+    "majorCities": [
+      { "name": "Paris", "country": "France", "timezone": "Europe/Paris" },
+      { "name": "Berlin", "country": "Germany", "timezone": "Europe/Berlin" },
+      { "name": "Rome", "country": "Italy", "timezone": "Europe/Rome" },
+      { "name": "Madrid", "country": "Spain", "timezone": "Europe/Madrid" },
+      { "name": "Amsterdam", "country": "Netherlands", "timezone": "Europe/Amsterdam" }
+    ]
+  },
+  {
+    "code": "CEST",
+    "name": "Central European Summer Time",
+    "defaultIana": "Europe/Paris",
+    "type": "daylight",
+    "standardOffset": "UTC+01:00",
+    "daylightOffset": "UTC+02:00",
+    "standardPartner": "CET",
+    "seasonalWarning": "CEST (UTC+2) is observed in summer (late March to late October) across France, Germany, Italy, Spain, and Central Europe. In winter, clocks revert to CET (UTC+1).",
+    "ambiguityWarning": "CEST shares UTC+2 offset with Eastern European Time (EET) and Central Africa Time (CAT).",
+    "whenObserved": "Last Sunday in March to last Sunday in October",
+    "majorCities": [
+      { "name": "Paris", "country": "France", "timezone": "Europe/Paris" },
+      { "name": "Berlin", "country": "Germany", "timezone": "Europe/Berlin" },
+      { "name": "Rome", "country": "Italy", "timezone": "Europe/Rome" },
+      { "name": "Madrid", "country": "Spain", "timezone": "Europe/Madrid" },
+      { "name": "Vienna", "country": "Austria", "timezone": "Europe/Vienna" }
+    ]
+  },
+  {
+    "code": "AEST",
+    "name": "Australian Eastern Standard Time",
+    "defaultIana": "Australia/Sydney",
+    "type": "standard",
+    "standardOffset": "UTC+10:00",
+    "daylightOffset": "UTC+11:00",
+    "daylightPartner": "AEDT",
+    "seasonalWarning": "AEST is observed during the Southern Hemisphere winter (first Sunday in April to first Sunday in October) in Sydney and Melbourne. Queensland (Brisbane) observes AEST year-round without daylight saving.",
+    "ambiguityWarning": "AEST (UTC+10) should not be confused with North American EST (UTC-5).",
+    "whenObserved": "First Sunday in April to first Sunday in October (NSW/VIC); Year-round in Queensland",
+    "majorCities": [
+      { "name": "Sydney", "country": "Australia", "timezone": "Australia/Sydney" },
+      { "name": "Melbourne", "country": "Australia", "timezone": "Australia/Melbourne" },
+      { "name": "Brisbane", "country": "Australia", "timezone": "Australia/Brisbane" },
+      { "name": "Canberra", "country": "Australia", "timezone": "Australia/Sydney" }
+    ]
+  },
+  {
+    "code": "AEDT",
+    "name": "Australian Eastern Daylight Time",
+    "defaultIana": "Australia/Sydney",
+    "type": "daylight",
+    "standardOffset": "UTC+10:00",
+    "daylightOffset": "UTC+11:00",
+    "standardPartner": "AEST",
+    "seasonalWarning": "AEDT is observed in the Southern Hemisphere summer (first Sunday in October to first Sunday in April) in New South Wales, Victoria, Tasmania, and ACT. Brisbane and Queensland remain on AEST (UTC+10).",
+    "ambiguityWarning": "AEDT (UTC+11) is 16 hours ahead of US Eastern Standard Time and 5 hours 30 minutes ahead of India.",
+    "whenObserved": "First Sunday in October to first Sunday in April",
+    "majorCities": [
+      { "name": "Sydney", "country": "Australia", "timezone": "Australia/Sydney" },
+      { "name": "Melbourne", "country": "Australia", "timezone": "Australia/Melbourne" },
+      { "name": "Hobart", "country": "Australia", "timezone": "Australia/Hobart" },
+      { "name": "Canberra", "country": "Australia", "timezone": "Australia/Sydney" }
+    ]
+  },
+  {
+    "code": "ACST",
+    "name": "Australian Central Standard Time",
+    "defaultIana": "Australia/Adelaide",
+    "type": "standard",
+    "standardOffset": "UTC+09:30",
+    "daylightOffset": "UTC+10:30",
+    "daylightPartner": "ACDT",
+    "seasonalWarning": "ACST is a fractional time zone (UTC+9:30). Observed in winter in South Australia (Adelaide) and year-round in the Northern Territory (Darwin).",
+    "ambiguityWarning": "South Australia switches to ACDT (UTC+10:30) in summer, while Darwin stays on ACST (UTC+9:30) year-round.",
+    "whenObserved": "First Sunday in April to first Sunday in October (Adelaide); Year-round in Darwin",
+    "majorCities": [
+      { "name": "Adelaide", "country": "Australia", "timezone": "Australia/Adelaide" },
+      { "name": "Darwin", "country": "Australia", "timezone": "Australia/Darwin" }
+    ]
+  },
+  {
+    "code": "ACDT",
+    "name": "Australian Central Daylight Time",
+    "defaultIana": "Australia/Adelaide",
+    "type": "daylight",
+    "standardOffset": "UTC+09:30",
+    "daylightOffset": "UTC+10:30",
+    "standardPartner": "ACST",
+    "seasonalWarning": "ACDT is observed in South Australia during summer (October to April) at UTC+10:30. Darwin does not observe daylight saving.",
+    "ambiguityWarning": "ACDT is exactly 5 hours ahead of India Standard Time (UTC+5:30).",
+    "whenObserved": "First Sunday in October to first Sunday in April",
+    "majorCities": [
+      { "name": "Adelaide", "country": "Australia", "timezone": "Australia/Adelaide" }
+    ]
+  },
+  {
+    "code": "AWST",
+    "name": "Australian Western Standard Time",
+    "defaultIana": "Australia/Perth",
+    "type": "permanent",
+    "standardOffset": "UTC+08:00",
+    "daylightOffset": "UTC+08:00",
+    "seasonalWarning": "Western Australia does not observe Daylight Saving Time. AWST remains UTC+08:00 year-round.",
+    "ambiguityWarning": "AWST shares the UTC+8 offset with Singapore (SGT), Hong Kong (HKT), and China (CST).",
+    "whenObserved": "All year round (Permanent UTC+08:00)",
+    "majorCities": [
+      { "name": "Perth", "country": "Australia", "timezone": "Australia/Perth" }
+    ]
+  },
+  {
+    "code": "JST",
+    "name": "Japan Standard Time",
+    "defaultIana": "Asia/Tokyo",
+    "type": "permanent",
+    "standardOffset": "UTC+09:00",
+    "daylightOffset": "UTC+09:00",
+    "seasonalWarning": "Japan does not observe Daylight Saving Time. JST remains constant at UTC+09:00 all year round.",
+    "ambiguityWarning": "JST is shared in offset with Korean Standard Time (KST, UTC+9).",
+    "whenObserved": "All year round (Permanent UTC+09:00)",
+    "majorCities": [
+      { "name": "Tokyo", "country": "Japan", "timezone": "Asia/Tokyo" },
+      { "name": "Osaka", "country": "Japan", "timezone": "Asia/Tokyo" },
+      { "name": "Kyoto", "country": "Japan", "timezone": "Asia/Tokyo" },
+      { "name": "Yokohama", "country": "Japan", "timezone": "Asia/Tokyo" }
+    ]
+  },
+  {
+    "code": "SGT",
+    "name": "Singapore Standard Time",
+    "defaultIana": "Asia/Singapore",
+    "type": "permanent",
+    "standardOffset": "UTC+08:00",
+    "daylightOffset": "UTC+08:00",
+    "seasonalWarning": "Singapore does not observe Daylight Saving Time. SGT remains constant at UTC+08:00 all year round.",
+    "ambiguityWarning": "SGT is 2 hours and 30 minutes ahead of India Standard Time (IST) year-round.",
+    "whenObserved": "All year round (Permanent UTC+08:00)",
+    "majorCities": [
+      { "name": "Singapore", "country": "Singapore", "timezone": "Asia/Singapore" }
+    ]
+  },
+  {
+    "code": "GST",
+    "name": "Gulf Standard Time",
+    "defaultIana": "Asia/Dubai",
+    "type": "permanent",
+    "standardOffset": "UTC+04:00",
+    "daylightOffset": "UTC+04:00",
+    "seasonalWarning": "Gulf Standard Time does not observe Daylight Saving Time. It remains fixed at UTC+04:00 all year round.",
+    "ambiguityWarning": "GST can sometimes be confused with Greenwich Standard Time. In this context, GST refers to the Gulf Standard Time observed in UAE and Oman.",
+    "whenObserved": "All year round (Permanent UTC+04:00)",
+    "majorCities": [
+      { "name": "Dubai", "country": "United Arab Emirates", "timezone": "Asia/Dubai" },
+      { "name": "Abu Dhabi", "country": "United Arab Emirates", "timezone": "Asia/Dubai" },
+      { "name": "Muscat", "country": "Oman", "timezone": "Asia/Muscat" }
+    ]
+  }
+]

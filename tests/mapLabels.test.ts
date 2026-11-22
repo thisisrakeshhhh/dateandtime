@@ -9,23 +9,25 @@ describe("mapLabels utils", () => {
     expect(formatOffsetDiff(-210)).toBe("-3h 30m");
   });
 
-  it("computes exact real-time distance from user coordinates (e.g. Chandigarh) for map country pills", () => {
-    // Chandigarh coordinates
-    const chandigarhCoords = { lat: 30.7333, lng: 76.7794 };
-    const places = getVisibleMapPlaces(2, "Asia/Kolkata", undefined, chandigarhCoords);
+  it("returns country pills showing local time and time difference from user place (e.g. +5h 30m)", () => {
+    // When user is in India (Asia/Kolkata, UTC+5:30)
+    const places = getVisibleMapPlaces(2, "Asia/Kolkata");
     expect(places.length).toBeGreaterThan(10);
 
-    // US should have a distance calculated from Chandigarh (> 10,000 km)
-    const usPlace = places.find((p) => p.place.slug === "united-states");
-    expect(usPlace).toBeDefined();
-    expect(usPlace?.distanceKm).toBeGreaterThan(10000);
-    expect(usPlace?.distanceStr).toContain("km");
+    // Every item has valid local timeStr (HH:mm) and diffStr (+5h 30m or -5h)
+    places.forEach((p) => {
+      expect(p.timeStr).toMatch(/^\d{2}:\d{2}$/);
+      expect(p.diffStr).toBeDefined();
+    });
 
-    // UK should have a distance calculated from Chandigarh (~ 6,700 km)
-    const ukPlace = places.find((p) => p.place.slug === "united-kingdom");
-    expect(ukPlace).toBeDefined();
-    expect(ukPlace?.distanceKm).toBeGreaterThan(6000);
-    expect(ukPlace?.distanceKm).toBeLessThan(8000);
-    expect(ukPlace?.distanceStr).toContain("km");
+    // UK from India in winter is -5h 30m
+    const uk = places.find((p) => p.place.slug === "united-kingdom");
+    expect(uk).toBeDefined();
+    expect(uk?.diffStr).toMatch(/-(4h 30m|5h 30m)/);
+
+    // Japan from India is +3h 30m
+    const japan = places.find((p) => p.place.slug === "japan");
+    expect(japan).toBeDefined();
+    expect(japan?.diffStr).toBe("+3h 30m");
   });
 });

@@ -158,7 +158,7 @@ export default function WorldMap({
       }
 
       // Calculate label box dimensions with generous calm spacing
-      const pillHalfWidth = Math.max(50, item.place.name.length * 4.2 + (item.distanceStr ? 60 : 35));
+      const pillHalfWidth = Math.max(50, item.place.name.length * 4.2 + 35);
       const pillHalfHeight = 16;
       const marginX = zoom <= 3 ? 24 : 14; // Greater breathing room at world scale
       const marginY = zoom <= 3 ? 18 : 10;
@@ -190,7 +190,6 @@ export default function WorldMap({
           <span>${item.place.name}</span>
           <span class="pill-time">${item.timeStr}</span>
           <span class="pill-diff">${item.diffStr}</span>
-          ${item.distanceStr ? `<span class="pill-dist">${item.distanceStr}</span>` : ""}
           ${item.isDiffDay ? `<span class="pill-day">${item.dayStr}</span>` : ""}
         </div>
       `;

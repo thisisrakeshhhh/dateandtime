@@ -39,6 +39,17 @@ describe("Time & Timezone Calculations - Step 0 Validation", () => {
   });
 
   describe("India (Asia/Kolkata, UTC+5:30) calculations", () => {
+    it("regression test: confirms India vs UK call window is India 2:30 PM-9:00 PM = UK 9:00 AM-3:30 PM", () => {
+      const winterRef = DateTime.fromISO("2026-01-15T12:00:00Z");
+      const bestTime = calculateBestTimeToCall("Asia/Kolkata", "Europe/London", "India", "UK", 28.6, 77.2, 51.5, -0.12, winterRef);
+      expect(bestTime.recommendedWindowFrom).toBe("2:30 PM to 9:00 PM");
+      expect(bestTime.recommendedWindowTo).toBe("9:00 AM to 3:30 PM");
+      expect(bestTime.formattedDuration).toBe("6h 30m");
+      expect(bestTime.officeWindowFrom).toBe("2:30 PM to 5:00 PM");
+      expect(bestTime.officeWindowTo).toBe("9:00 AM to 11:30 AM");
+      expect(bestTime.officeFormattedDuration).toBe("2h 30m");
+    });
+
     it("calculates accurate time difference and non-contradictory summary in winter (GMT)", () => {
       // In winter (Nov - March), UK is on GMT (UTC+0), India is UTC+5:30
       // India is 5h 30m ahead of UK

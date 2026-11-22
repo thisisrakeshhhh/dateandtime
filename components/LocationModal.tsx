@@ -57,13 +57,12 @@ export default function LocationModal({
 
   return (
     <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="location-modal-title"
-      className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs animate-in fade-in duration-200"
+      role="region"
+      aria-label="Location permission prompt"
+      className="fixed inset-0 z-[1050] flex items-center justify-center p-4 pointer-events-none"
     >
       <div
-        className="relative w-full max-w-sm rounded-2xl bg-white dark:bg-[#1a1a1a] border border-neutral-200 dark:border-neutral-800 p-5 shadow-2xl animate-in zoom-in-95 duration-200 text-neutral-800 dark:text-neutral-100"
+        className="pointer-events-auto relative w-full max-w-sm rounded-2xl bg-white/95 dark:bg-[#1e1e1e]/95 backdrop-blur-md border border-neutral-200 dark:border-neutral-700 p-5 shadow-2xl animate-in zoom-in-95 duration-200 text-neutral-800 dark:text-neutral-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}

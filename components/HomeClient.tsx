@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import {
   Place,
   getPlaceByTimezone,
-  getPopularPairs,
   getAllPlaces,
 } from "@/lib/places";
 import { calculateDistance } from "@/lib/distance";
@@ -12,8 +11,6 @@ import WorldMapContainer from "@/components/Map";
 import MapSearchOverlay from "@/components/MapSearchOverlay";
 import PlaceDetailsCard from "@/components/PlaceDetailsCard";
 import CompareCard from "@/components/CompareCard";
-import PopularRoutesRow from "@/components/PopularRoutesRow";
-import AdSlot from "@/components/AdSlot";
 
 interface HomeClientProps {
   initialPlaceA: Place | null;
@@ -138,8 +135,6 @@ export default function HomeClient({
     }
   }
 
-  const popularPairs = getPopularPairs();
-
   return (
     <div className="w-full flex flex-col">
       {/* Hero Fullscreen Google-Maps-Style Section */}
@@ -188,34 +183,6 @@ export default function HomeClient({
             ) : null}
           </div>
         )}
-      </div>
-
-      {/* Popular Routes Section */}
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-8">
-        <PopularRoutesRow pairs={popularPairs} />
-
-        {/* AdSense Placement */}
-        <div className="my-8">
-          <AdSlot slotId="home-bottom" format="horizontal" />
-        </div>
-
-        {/* Clean Human SEO Section */}
-        <section className="pt-6 border-t border-[#E5E5E5] dark:border-[#262626] text-xs leading-relaxed text-[#6B6B6B] dark:text-[#A0A0A0] max-w-3xl">
-          <h2 className="text-sm font-semibold text-[#222222] dark:text-white mb-2">
-            Accurate world time difference and calling overlap
-          </h2>
-          <p className="mb-2">
-            TimeBridge calculates real-time time differences between any two countries or cities
-            using the official IANA time zone database. Daylight Saving Time transitions,
-            half-hour and 45-minute offsets (such as India Standard Time, Nepal, and Newfoundland),
-            and solar day/night boundaries are handled dynamically without guesswork.
-          </p>
-          <p>
-            Click any location on the map to see its live local time, sunrise and sunset,
-            current weather, and upcoming clock changes. Pick a second destination to calculate
-            the exact calling overlap between 9:00 AM and 9:00 PM in both locations.
-          </p>
-        </section>
       </div>
     </div>
   );

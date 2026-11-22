@@ -1,5 +1,55 @@
 [
   {
+    "from": "united-states",
+    "to": "united-kingdom",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "united-states",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "australia",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "germany",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "canada",
+    "category": "Country"
+  },
+  {
+    "from": "united-kingdom",
+    "to": "japan",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "france",
+    "category": "Country"
+  },
+  {
+    "from": "united-states",
+    "to": "singapore",
+    "category": "Country"
+  },
+  {
     "from": "india",
     "to": "united-kingdom",
     "category": "Country"

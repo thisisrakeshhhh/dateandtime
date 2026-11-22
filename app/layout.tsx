@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import { siteConfig } from "@/lib/config";
 import CookieConsent from "@/components/CookieConsent";
+import HeaderLocationButton from "@/components/HeaderLocationButton";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -71,8 +72,9 @@ export default function RootLayout({
               </span>
             </Link>
 
-            {/* 3 Links + Light/Dark indicator */}
-            <nav className="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm font-medium text-[#6B6B6B] dark:text-[#A0A0A0]">
+            {/* 3 Links + Location Button */}
+            <nav className="flex items-center gap-1 sm:gap-4 text-xs sm:text-sm font-medium text-[#6B6B6B] dark:text-[#A0A0A0]">
+              <HeaderLocationButton />
               <Link
                 href="/time-difference/new-york-to-london"
                 className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"

@@ -20,18 +20,11 @@ export default function LocationModal({
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    try {
-      const dismissed = localStorage.getItem("timebridge_location_prompt_dismissed");
-      if (!dismissed) {
-        // Show as a sleek popup after a brief moment
-        const timer = setTimeout(() => {
-          setIsOpen(true);
-        }, 600);
-        return () => clearTimeout(timer);
-      }
-    } catch {
-      // Handle private browsing or localStorage restriction
+    function handleOpen() {
+      setIsOpen(true);
     }
+    window.addEventListener("open-location-modal", handleOpen);
+    return () => window.removeEventListener("open-location-modal", handleOpen);
   }, []);
 
   function handleDismiss() {

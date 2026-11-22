@@ -51,6 +51,10 @@ export default function HomeClient({
           if (closest) {
             setUserPlace(closest);
             setUserTimezone(closest.timezone);
+            try {
+              localStorage.setItem("timebridge_user_place", JSON.stringify(closest));
+              window.dispatchEvent(new CustomEvent("timebridge-location-updated"));
+            } catch {}
           }
           setIsLocating(false);
         },
@@ -62,8 +66,20 @@ export default function HomeClient({
     }
   }
 
-  // Auto-detect user's timezone on mount
+  // Auto-detect user's timezone on mount (or use saved location if exists)
   useEffect(() => {
+    try {
+      const saved = localStorage.getItem("timebridge_user_place");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.name) {
+          setUserPlace(parsed);
+          setUserTimezone(parsed.timezone);
+          return;
+        }
+      }
+    } catch {}
+
     try {
       const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
       if (detected) {

@@ -79,18 +79,8 @@ export default function MapSearchOverlay({
   return (
     <div
       ref={containerRef}
-      className="w-full max-w-md bg-white/95 dark:bg-[#181818]/95 backdrop-blur-md rounded-2xl shadow-lg border border-neutral-200/80 dark:border-neutral-800 p-4 transition-all duration-200"
+      className="w-full max-w-md bg-white/95 dark:bg-[#181818]/95 backdrop-blur-md rounded-2xl shadow-lg border border-neutral-200/80 dark:border-neutral-800 p-2.5 sm:p-3 transition-all duration-200"
     >
-      {/* Headings */}
-      <div className="mb-3">
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
-          What time is it there?
-        </h1>
-        <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
-          Pick two places to see the time difference, weather and best time to call.
-        </p>
-      </div>
-
       {/* Selected Pair Chip (if active) */}
       {(placeA || placeB) && (
         <div className="flex items-center justify-between bg-neutral-100 dark:bg-neutral-800/80 px-3 py-1.5 rounded-xl text-xs font-medium mb-3">

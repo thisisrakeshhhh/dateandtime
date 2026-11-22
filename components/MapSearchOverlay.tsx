@@ -79,21 +79,21 @@ export default function MapSearchOverlay({
   return (
     <div
       ref={containerRef}
-      className="w-full max-w-md bg-white/95 dark:bg-[#181818]/95 backdrop-blur-md rounded-2xl shadow-lg border border-neutral-200/80 dark:border-neutral-800 p-2.5 sm:p-3 transition-all duration-200"
+      className="w-full bg-white/90 dark:bg-[#161616]/90 backdrop-blur-2xl rounded-2xl shadow-[0_10px_35px_-5px_rgba(0,0,0,0.14)] dark:shadow-[0_12px_36px_-6px_rgba(0,0,0,0.55)] border border-black/[0.08] dark:border-white/[0.12] p-2.5 sm:p-3 transition-all duration-200"
     >
       {/* Selected Pair Chip (if active) */}
       {(placeA || placeB) && (
-        <div className="flex items-center justify-between bg-neutral-100 dark:bg-neutral-800/80 px-3 py-1.5 rounded-xl text-xs font-medium mb-3">
+        <div className="flex items-center justify-between bg-gradient-to-r from-neutral-100 to-neutral-50 dark:from-[#202020] dark:to-[#1a1a1a] border border-neutral-200/80 dark:border-white/[0.08] px-3.5 py-2 rounded-xl text-xs font-medium mb-2.5 shadow-2xs">
           <div className="flex items-center gap-1.5 truncate">
             {placeA && (
-              <span className="flex items-center gap-1 text-neutral-900 dark:text-white truncate">
+              <span className="flex items-center gap-1 text-neutral-900 dark:text-white truncate font-semibold">
                 <FlagIcon countryCode={placeA.countryIso} size="sm" />
                 <span>{formatPlaceDisplayName(placeA)}</span>
               </span>
             )}
-            {placeA && placeB && <span className="text-neutral-400 px-1">→</span>}
+            {placeA && placeB && <span className="text-[#E85D4E] px-1 font-bold">→</span>}
             {placeB && (
-              <span className="flex items-center gap-1 text-neutral-900 dark:text-white truncate">
+              <span className="flex items-center gap-1 text-neutral-900 dark:text-white truncate font-semibold">
                 <FlagIcon countryCode={placeB.countryIso} size="sm" />
                 <span>{formatPlaceDisplayName(placeB)}</span>
               </span>
@@ -102,7 +102,7 @@ export default function MapSearchOverlay({
 
           <button
             onClick={onClear}
-            className="p-1 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 transition-colors shrink-0"
+            className="p-1 rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors shrink-0 cursor-pointer"
             title="Clear selection"
           >
             <X className="w-3.5 h-3.5" />
@@ -111,9 +111,9 @@ export default function MapSearchOverlay({
       )}
 
       {/* Search Input Box */}
-      <div className="relative">
+      <div className="relative group">
         <div className="relative flex items-center">
-          <Search className="absolute left-3.5 w-4 h-4 text-neutral-400 pointer-events-none" />
+          <Search className="absolute left-3.5 w-4 h-4 text-neutral-400 group-focus-within:text-[#E85D4E] transition-colors pointer-events-none" />
           <input
             ref={inputRef}
             type="text"
@@ -128,7 +128,7 @@ export default function MapSearchOverlay({
                 ? "Search second place to compare..."
                 : "Search any country or city..."
             }
-            className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-neutral-50 dark:bg-[#222222] border border-neutral-200 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#E85D4E]/40 focus:border-[#E85D4E] transition-all"
+            className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-neutral-100/80 dark:bg-[#202020]/80 border border-neutral-200/80 dark:border-white/[0.08] text-neutral-900 dark:text-white placeholder-neutral-400 text-base sm:text-sm focus:outline-none focus:ring-4 focus:ring-[#E85D4E]/15 focus:border-[#E85D4E] transition-all"
           />
           {query && (
             <button
@@ -145,7 +145,7 @@ export default function MapSearchOverlay({
 
         {/* Autocomplete Dropdown */}
         {isOpen && results.length > 0 && (
-          <div className="absolute top-full left-0 right-0 mt-1.5 bg-white dark:bg-[#1f1f1f] border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-xl overflow-hidden z-50 divide-y divide-neutral-100 dark:divide-neutral-800">
+          <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 dark:bg-[#1a1a1a]/95 backdrop-blur-2xl border border-neutral-200/90 dark:border-white/[0.12] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.22)] overflow-hidden z-50 divide-y divide-neutral-100 dark:divide-neutral-800">
             <div className="max-h-72 overflow-y-auto divide-y divide-neutral-100 dark:divide-neutral-800">
               {results.map((place, index) => {
                 const isHighlight = index === highlightIndex;

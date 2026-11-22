@@ -80,7 +80,7 @@ export default function LocationModal({
       className="fixed inset-0 z-[1050] flex items-center justify-center p-3 sm:p-4 pointer-events-none"
     >
       <div
-        className="pointer-events-auto relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-[#1a1a1a] border border-neutral-200 dark:border-neutral-800 p-4 sm:p-5 shadow-2xl animate-in zoom-in-95 duration-200 text-neutral-800 dark:text-neutral-100"
+        className="pointer-events-auto relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl bg-white/95 dark:bg-[#181818]/95 backdrop-blur-2xl border border-neutral-200/90 dark:border-white/[0.12] p-5 sm:p-6 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.35)] dark:shadow-[0_25px_70px_-15px_rgba(0,0,0,0.75)] animate-in zoom-in-95 duration-200 text-neutral-800 dark:text-neutral-100"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -88,18 +88,18 @@ export default function LocationModal({
           type="button"
           onClick={handleDismiss}
           aria-label="Close location prompt"
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 p-1.5 rounded-xl text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-200 hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Header with Title & Explanation */}
-        <div className="flex items-start gap-3 mb-3">
-          <div className="w-10 h-10 rounded-full bg-rose-500/10 text-[#E85D4E] flex items-center justify-center shrink-0 mt-0.5">
+        <div className="flex items-start gap-3.5 mb-3.5">
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#E85D4E]/20 to-[#E85D4E]/5 border border-[#E85D4E]/25 text-[#E85D4E] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(232,93,78,0.2)] mt-0.5">
             <MapPin className="w-5 h-5" />
           </div>
           <div className="min-w-0 pr-6">
-            <h2 id="location-modal-title" className="font-semibold text-lg text-neutral-900 dark:text-white leading-tight">
+            <h2 id="location-modal-title" className="font-semibold text-lg sm:text-xl text-neutral-900 dark:text-white leading-tight">
               Where are you?
             </h2>
             <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1 leading-relaxed">
@@ -186,12 +186,12 @@ export default function LocationModal({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <button
             type="button"
             onClick={handleDetect}
             disabled={isLocating}
-            className="flex-1 py-2.5 px-4 rounded-xl bg-[#E85D4E] hover:bg-[#d94f40] text-white font-medium text-xs transition-colors flex items-center justify-center gap-2 shadow-sm disabled:opacity-60 cursor-pointer"
+            className="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#E85D4E] to-[#d94f40] hover:from-[#d94f40] hover:to-[#c84335] text-white font-medium text-xs transition-all flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(232,93,78,0.35)] hover:shadow-[0_6px_20px_rgba(232,93,78,0.45)] active:scale-[0.98] disabled:opacity-60 cursor-pointer"
           >
             <Navigation className="w-3.5 h-3.5" />
             <span>{isLocating ? "Detecting location..." : "Detect My Location"}</span>
@@ -200,7 +200,7 @@ export default function LocationModal({
           <button
             type="button"
             onClick={handleDismiss}
-            className="py-2.5 px-3.5 rounded-xl border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium text-xs transition-colors cursor-pointer"
+            className="py-2.5 px-4 rounded-xl border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium text-xs transition-colors cursor-pointer active:scale-[0.98]"
           >
             Not now
           </button>

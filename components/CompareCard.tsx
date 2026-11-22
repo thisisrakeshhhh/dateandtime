@@ -135,15 +135,15 @@ export default function CompareCard({
       } ${diff.isAhead ? "ahead of" : "behind"} ${placeB.name}.`;
 
   return (
-    <div className="w-full bg-white dark:bg-[#181818] rounded-t-2xl md:rounded-2xl shadow-xl border border-neutral-200/80 dark:border-neutral-800 p-4 sm:p-7 flex flex-col gap-4 sm:gap-6 text-neutral-900 dark:text-neutral-100">
+    <div className="w-full bg-white/95 dark:bg-[#161616]/95 backdrop-blur-2xl rounded-t-2xl md:rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] border border-neutral-200/90 dark:border-white/[0.1] p-4 sm:p-7 flex flex-col gap-4 sm:gap-6 text-neutral-900 dark:text-neutral-100">
       {/* Mobile Drag Indicator Bar */}
       <div className="w-12 h-1.5 bg-neutral-300 dark:bg-neutral-600 rounded-full mx-auto -mt-0.5 mb-1 md:hidden shrink-0" />
 
       {/* Top Action Bar */}
       <div className="flex items-center justify-between gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-3 sm:pb-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-xs font-medium text-neutral-600 dark:text-neutral-300">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200/60 dark:border-white/[0.06] text-xs font-semibold text-neutral-700 dark:text-neutral-200 shadow-2xs">
           <span>{formatPlaceDisplayName(placeA)}</span>
-          <span className="text-neutral-400">→</span>
+          <span className="text-[#E85D4E] font-bold">→</span>
           <span>{formatPlaceDisplayName(placeB)}</span>
         </div>
 
@@ -151,16 +151,16 @@ export default function CompareCard({
           <button
             onClick={onSwap}
             title="Swap places"
-            className="p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 text-xs font-medium flex items-center gap-1.5 transition-colors"
+            className="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800/80 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200/60 dark:border-white/[0.06] text-neutral-700 dark:text-neutral-200 text-xs font-medium flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
           >
-            <ArrowLeftRight className="w-3.5 h-3.5" />
+            <ArrowLeftRight className="w-3.5 h-3.5 text-[#E85D4E]" />
             <span className="hidden sm:inline">Swap</span>
           </button>
 
           <button
             onClick={handleShare}
             title="Copy share link"
-            className="p-2 rounded-xl bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-200 text-xs font-medium flex items-center gap-1.5 transition-colors"
+            className="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-neutral-100 dark:bg-neutral-800/80 hover:bg-neutral-200 dark:hover:bg-neutral-700 border border-neutral-200/60 dark:border-white/[0.06] text-neutral-700 dark:text-neutral-200 text-xs font-medium flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
           >
             {copied ? (
               <>
@@ -178,7 +178,7 @@ export default function CompareCard({
           <button
             onClick={onClear}
             title="Clear comparison"
-            className="p-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors"
+            className="p-2 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>

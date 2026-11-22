@@ -31,41 +31,41 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   return (
-    <header ref={navRef} className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#141414]/95 backdrop-blur-md border-b border-[#E5E5E5] dark:border-[#262626]">
-      <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 h-14 flex items-center justify-between">
+    <header ref={navRef} className="sticky top-0 z-40 w-full bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.08] shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-colors">
+      <div className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 h-14 flex items-center justify-between">
         {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 group focus:outline-none shrink-0"
+          className="flex items-center gap-2.5 group focus:outline-none shrink-0"
         >
-          <span className="w-3 h-3 rounded-full bg-[#E85D4E] shrink-0" />
-          <span className="font-semibold text-base sm:text-lg tracking-tight text-[#222222] dark:text-white">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#E85D4E] shadow-[0_0_10px_rgba(232,93,78,0.7)] group-hover:scale-125 transition-transform duration-300 shrink-0" />
+          <span className="font-semibold text-base sm:text-lg tracking-tight text-[#1c1c1c] dark:text-white group-hover:text-[#E85D4E] transition-colors">
             {siteConfig.name}
           </span>
         </Link>
 
         {/* Right Navigation */}
-        <div className="flex items-center gap-1.5 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Location Button (Always visible on mobile & desktop) */}
           <HeaderLocationButton />
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-3 text-xs sm:text-sm font-medium text-[#6B6B6B] dark:text-[#A0A0A0]">
+          <nav className="hidden md:flex items-center gap-1.5 text-xs sm:text-sm font-medium text-neutral-600 dark:text-neutral-300">
             <Link
               href="/time-difference/new-york-to-london"
-              className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
             >
               Time difference
             </Link>
             <Link
               href="/best-time-to-call/london-from-new-york"
-              className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
             >
               Best time to call
             </Link>
             <Link
               href="/about"
-              className="px-2.5 py-1.5 rounded-lg hover:text-[#222222] dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
             >
               About
             </Link>
@@ -76,7 +76,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            className="md:hidden p-2 rounded-lg text-neutral-600 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+            className="md:hidden p-2 rounded-xl text-neutral-600 dark:text-neutral-300 hover:bg-black/[0.04] dark:hover:bg-white/[0.06] active:scale-95 transition-all cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -85,32 +85,32 @@ export default function Navbar() {
 
       {/* Mobile Drawer Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#141414] px-4 py-3 shadow-xl animate-in slide-in-from-top-2 duration-150">
+        <div className="md:hidden border-t border-black/[0.06] dark:border-white/[0.08] bg-white/95 dark:bg-[#141414]/95 backdrop-blur-2xl px-4 py-3.5 shadow-2xl animate-in slide-in-from-top-2 duration-200">
           <nav className="flex flex-col gap-1 text-sm font-medium">
             <Link
               href="/time-difference/new-york-to-london"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
             >
               <Clock className="w-4 h-4 text-[#E85D4E]" />
               <span>Time difference calculator</span>
             </Link>
             <Link
               href="/best-time-to-call/london-from-new-york"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
             >
               <PhoneCall className="w-4 h-4 text-[#E85D4E]" />
               <span>Best time to call planner</span>
             </Link>
             <Link
               href="/about"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
             >
               <Info className="w-4 h-4 text-[#E85D4E]" />
               <span>About TimeBridge</span>
             </Link>
             <a
               href="mailto:mickeygorveth@gmail.com?subject=Add%20City%20or%20Feedback"
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-800 dark:text-neutral-200"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
             >
               <Mail className="w-4 h-4 text-[#E85D4E]" />
               <span>Suggest city / Feedback</span>

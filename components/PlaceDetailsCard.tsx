@@ -194,23 +194,29 @@ export default function PlaceDetailsCard({
       )}
 
       {/* Live Time & Date */}
-      <div className="p-4 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800">
-        <div className="text-[11px] font-medium uppercase tracking-wider text-neutral-400 dark:text-neutral-400 mb-1 flex items-center gap-1.5">
-          <Clock className="w-3.5 h-3.5" />
-          <span>Local Time</span>
+      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-neutral-50 to-neutral-100/70 dark:from-[#202020] dark:to-[#181818] border border-neutral-200/80 dark:border-white/[0.08] shadow-2xs">
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 dark:text-neutral-400 mb-1.5 flex items-center justify-between">
+          <span className="flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-[#E85D4E]" />
+            <span>Local Time</span>
+          </span>
+          <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            Live
+          </span>
         </div>
-        <div className="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white tabular-nums">
+        <div className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white tabular-nums">
           {currentTime || "--:--:--"}
         </div>
-        <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-1 flex items-center gap-1.5">
-          <Calendar className="w-3 h-3" />
+        <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 flex items-center gap-1.5">
+          <Calendar className="w-3.5 h-3.5 text-neutral-400" />
           <span>{currentDate || "Loading date..."}</span>
         </div>
-        <div className="mt-2.5 pt-2.5 border-t border-neutral-200/60 dark:border-neutral-800 text-xs font-medium text-neutral-600 dark:text-neutral-300">
+        <div className="mt-3 pt-3 border-t border-neutral-200/60 dark:border-white/[0.06] flex items-center justify-between text-xs">
           {diffFromUser.isSameTime ? (
-            <span>Same time as your location</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-medium">Same time as your location</span>
           ) : (
-            <span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E85D4E]/10 dark:bg-[#E85D4E]/15 text-[#E85D4E] dark:text-rose-400 font-semibold text-[11px]">
               {diffFromUser.aheadOrBehindText} ({diffFromUser.hoursPart}h {diffFromUser.minutesPart}m {diffFromUser.isAhead ? "ahead" : "behind"})
             </span>
           )}
@@ -460,7 +466,7 @@ export default function PlaceDetailsCard({
       {/* Primary Compare Action Button */}
       <button
         onClick={() => onCompareWith(place)}
-        className="w-full py-3 px-4 rounded-xl font-medium text-sm text-white bg-[#E85D4E] hover:bg-[#d94f40] transition-colors flex items-center justify-center gap-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#E85D4E]/50"
+        className="w-full py-3 px-4 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#E85D4E] to-[#d94f40] hover:from-[#d94f40] hover:to-[#c84335] shadow-[0_4px_16px_rgba(232,93,78,0.3)] hover:shadow-[0_6px_22px_rgba(232,93,78,0.45)] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#E85D4E]/25"
       >
         <span>Compare with another place</span>
         <ArrowRight className="w-4 h-4" />

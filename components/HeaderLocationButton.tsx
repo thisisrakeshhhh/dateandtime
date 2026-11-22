@@ -36,10 +36,19 @@ export default function HeaderLocationButton() {
     <button
       type="button"
       onClick={handleClick}
-      className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-lg border border-neutral-200 dark:border-neutral-700/80 hover:border-[#E85D4E]/50 hover:bg-[#E85D4E]/5 dark:hover:bg-[#E85D4E]/10 text-[#222222] dark:text-neutral-200 transition-colors cursor-pointer text-xs sm:text-sm font-medium shrink-0"
+      className={`group flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer shrink-0 shadow-xs active:scale-95 ${
+        locationName
+          ? "bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/30 text-rose-700 dark:text-rose-300 hover:bg-rose-500/20"
+          : "bg-neutral-100/90 dark:bg-neutral-800/90 border border-neutral-200 dark:border-white/10 text-neutral-700 dark:text-neutral-200 hover:border-[#E85D4E]/40 hover:bg-neutral-200/60 dark:hover:bg-neutral-700/60"
+      }`}
       title={locationName ? `Current location: ${locationName}. Click to change.` : "Add your location"}
     >
-      <MapPin className="w-3.5 h-3.5 text-[#E85D4E] shrink-0" />
+      <span className="relative flex items-center justify-center">
+        <MapPin className="w-3.5 h-3.5 text-[#E85D4E] group-hover:scale-110 transition-transform" />
+        {locationName && (
+          <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#E85D4E] rounded-full ring-2 ring-white dark:ring-[#141414] animate-pulse" />
+        )}
+      </span>
       <span className="truncate max-w-[85px] sm:max-w-[120px]">
         {locationName ? locationName : "Add location"}
       </span>

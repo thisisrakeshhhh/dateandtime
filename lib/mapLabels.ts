@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import { Place, getCountries } from "@/lib/places";
+import { calculateDistance } from "@/lib/distance";
 
 export interface MapLabelItem {
   place: Place;
@@ -8,6 +9,8 @@ export interface MapLabelItem {
   isDiffDay: boolean;
   dayStr: string;
   isNight: boolean;
+  distanceKm?: number;
+  distanceStr?: string;
 }
 
 export function formatOffsetDiff(diffMinutes: number): string {
@@ -66,7 +69,8 @@ const priorityCountrySlugs = [
 export function getVisibleMapPlaces(
   zoom: number,
   userTimezone: string,
-  bounds?: { north: number; south: number; east: number; west: number }
+  bounds?: { north: number; south: number; east: number; west: number },
+  userCoordinates?: { lat: number; lng: number }
 ): MapLabelItem[] {
   const now = DateTime.now();
   const userNow = now.setZone(userTimezone);
@@ -116,6 +120,18 @@ export function getVisibleMapPlaces(
     const hour = placeNow.hour;
     const isNight = hour < 6 || hour >= 19;
 
+    let distanceKm: number | undefined;
+    let distanceStr: string | undefined;
+
+    if (userCoordinates) {
+      const d = calculateDistance(userCoordinates.lat, userCoordinates.lng, place.lat, place.lng);
+      const km = Math.round(d.km);
+      if (km > 50) {
+        distanceKm = km;
+        distanceStr = `${km.toLocaleString()} km`;
+      }
+    }
+
     results.push({
       place,
       timeStr: placeNow.toFormat("HH:mm"),
@@ -123,6 +139,8 @@ export function getVisibleMapPlaces(
       isDiffDay,
       dayStr,
       isNight,
+      distanceKm,
+      distanceStr,
     });
   }
 

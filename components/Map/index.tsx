@@ -8,6 +8,7 @@ interface MapWrapperProps {
   placeA: Place | null;
   placeB: Place | null;
   userTimezone: string;
+  userPlace?: Place | null;
   onSelectPlace?: (place: Place) => void;
   className?: string;
 }

@@ -175,6 +175,7 @@ export default function HomeClient({
           placeA={placeA}
           placeB={placeB}
           userTimezone={userTimezone}
+          userPlace={userPlace}
           onSelectPlace={handleSelectPlace}
           className="w-full h-full"
         />

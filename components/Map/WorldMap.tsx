@@ -13,6 +13,7 @@ interface WorldMapProps {
   placeA: Place | null;
   placeB: Place | null;
   userTimezone: string;
+  userPlace?: Place | null;
   onSelectPlace?: (place: Place) => void;
   className?: string;
 }
@@ -67,6 +68,7 @@ export default function WorldMap({
   placeA,
   placeB,
   userTimezone,
+  userPlace,
   onSelectPlace,
   className = "h-full w-full",
 }: WorldMapProps) {
@@ -105,7 +107,8 @@ export default function WorldMap({
       west: bounds.getWest(),
     };
 
-    const labelItems: MapLabelItem[] = getVisibleMapPlaces(zoom, userTimezone || "UTC", b);
+    const userCoords = userPlace ? { lat: userPlace.lat, lng: userPlace.lng } : undefined;
+    const labelItems: MapLabelItem[] = getVisibleMapPlaces(zoom, userTimezone || "UTC", b, userCoords);
 
     // Screen-space bounding boxes to prevent ANY label overlap
     const occupiedBoxes: Array<{
@@ -155,7 +158,7 @@ export default function WorldMap({
       }
 
       // Calculate label box dimensions with generous calm spacing
-      const pillHalfWidth = Math.max(50, item.place.name.length * 4.2 + 35);
+      const pillHalfWidth = Math.max(50, item.place.name.length * 4.2 + (item.distanceStr ? 60 : 35));
       const pillHalfHeight = 16;
       const marginX = zoom <= 3 ? 24 : 14; // Greater breathing room at world scale
       const marginY = zoom <= 3 ? 18 : 10;
@@ -187,6 +190,7 @@ export default function WorldMap({
           <span>${item.place.name}</span>
           <span class="pill-time">${item.timeStr}</span>
           <span class="pill-diff">${item.diffStr}</span>
+          ${item.distanceStr ? `<span class="pill-dist">${item.distanceStr}</span>` : ""}
           ${item.isDiffDay ? `<span class="pill-day">${item.dayStr}</span>` : ""}
         </div>
       `;
@@ -212,7 +216,7 @@ export default function WorldMap({
 
       group.addLayer(marker);
     }
-  }, [userTimezone, placeA, placeB, onSelectPlace]);
+  }, [userTimezone, userPlace, placeA, placeB, onSelectPlace]);
 
   // 1. Initialize Leaflet Map
   useEffect(() => {

@@ -65,7 +65,7 @@ export function generatePairArticle(
   // Paragraph 4: Best Time to Call & Work Collaboration Strategy
   let p4 = "";
   if (bestTime.hasOverlap) {
-    p4 = `For effective communication, the recommended awake calling window (9:00 AM to 9:00 PM in both regions) spans from ${bestTime.recommendedWindowFrom} in ${nameA}, corresponding to ${bestTime.recommendedWindowTo} in ${nameB}. For professional business teams requiring concurrent office hours (9:00 AM to 5:00 PM), there ${bestTime.officeOverlapCount > 0 ? `are ${bestTime.officeOverlapCount} hours of direct overlap (${bestTime.officeWindowFrom} in ${nameA})` : `is limited direct office overlap, making early mornings or late afternoons the most productive sync windows`}.`;
+    p4 = `For effective communication, the recommended awake calling window (9:00 AM to 9:00 PM in both regions) spans from ${bestTime.recommendedWindowFrom} in ${nameA}, corresponding to ${bestTime.recommendedWindowTo} in ${nameB}. For professional business teams requiring concurrent office hours (9:00 AM to 5:00 PM), there ${bestTime.hasOfficeOverlap ? `is ${bestTime.officeFormattedDuration} of direct overlap (${bestTime.officeWindowFrom} in ${nameA})` : `is limited direct office overlap, making early mornings or late afternoons the most productive sync windows`}.`;
   } else {
     p4 = `Due to the extensive timezone gap between ${nameA} and ${nameB}, normal awake hours (9:00 AM to 9:00 PM) do not directly overlap. To conduct real-time phone calls or urgent meetings without disrupting nighttime sleep, one party typically needs to connect slightly early in the morning (around 7:30 AM to 8:30 AM) or connect in the late evening (around 9:30 PM to 10:30 PM). Asynchronous updates and recorded voice memos often serve as the most courteous communication channels across this schedule gap.`;
   }
@@ -97,8 +97,8 @@ export function generatePairFaqs(
       answer: diff.isSameTime
         ? `${nameA} and ${nameB} share the exact same local time (${diff.fromTime.timeZoneAbbr}). There is zero time difference.`
         : diff.isToAhead
-        ? `${nameB} is ${diff.relationTextShort} of ${nameA}. When it is 12:00 PM in ${nameA}, it is ${diff.toTime.formattedTime} in ${nameB}.`
-        : `${nameA} is ${diff.relationTextShort.replace("behind", "ahead of")} ${nameB} (meaning ${nameB} is ${diff.relationTextShort} of ${nameA}).`,
+        ? `${nameB} is ${diff.relationTextShort} of ${nameA}. When it is 12:00 PM in ${nameA}, it is already ${diff.toTime.formattedTime} in ${nameB}.`
+        : `${nameA} is ${diff.hoursPart}h ${diff.minutesPart > 0 ? `${diff.minutesPart}m ` : ""}ahead of ${nameB} (${nameB} is ${diff.relationTextShort} of ${nameA}). When it is 12:00 PM in ${nameA}, it is ${diff.toTime.formattedTime} in ${nameB}.`,
     },
     {
       question: `What is the best time to call someone in ${nameB} from ${nameA}?`,
@@ -124,8 +124,8 @@ export function generatePairFaqs(
     {
       question: `What are the overlapping working hours for a business meeting between ${nameA} and ${nameB}?`,
       answer:
-        bestTime.officeOverlapCount > 0
-          ? `There are ${bestTime.officeOverlapCount} hours of concurrent standard business hours (9:00 AM – 5:00 PM): from ${bestTime.officeWindowFrom} in ${nameA} (${bestTime.officeWindowTo} in ${nameB}).`
+        bestTime.officeOverlapMinutes > 0
+          ? `There is ${bestTime.officeFormattedDuration} of concurrent standard business hours (9:00 AM – 5:00 PM): from ${bestTime.officeWindowFrom} in ${nameA} (${bestTime.officeWindowTo} in ${nameB}).`
           : `There is no direct standard 9:00 AM – 5:00 PM office hours overlap. Remote teams typically schedule cross-time-zone meetings at the start or end of the respective workdays.`,
     },
   ];

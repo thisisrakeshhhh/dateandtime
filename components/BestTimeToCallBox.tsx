@@ -50,7 +50,7 @@ export default function BestTimeToCallBox({
               General Awake Window (9 AM – 9 PM)
             </span>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold">
-              {result.overlapHoursCount}h overlap
+              {result.formattedDuration} overlap
             </span>
           </div>
 
@@ -86,12 +86,12 @@ export default function BestTimeToCallBox({
               Business Hours Overlap (9 AM – 5 PM)
             </span>
             <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold">
-              {result.officeOverlapCount}h overlap
+              {result.officeFormattedDuration} overlap
             </span>
           </div>
 
           <div className="space-y-2 my-2">
-            {result.officeOverlapCount > 0 ? (
+            {result.hasOfficeOverlap ? (
               <>
                 <div>
                   <p className="text-[11px] text-neutral-500 uppercase tracking-wider font-semibold">

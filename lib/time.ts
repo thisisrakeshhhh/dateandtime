@@ -70,13 +70,15 @@ export interface BestTimeToCallResult {
   overlapMinutes: number;
   overlapHoursCount: number; // For backward compatibility / display
   overlapHoursFloat: number; // 6.5
-  formattedDuration: string; // "6.5 hours"
-  recommendedWindowFrom: string; // "2:30 PM – 9:00 PM"
-  recommendedWindowTo: string;   // "9:00 AM – 3:30 PM"
+  formattedDuration: string; // "6h 30m" or "6.5 hours"
+  recommendedWindowFrom: string; // "2:30 PM to 9:00 PM"
+  recommendedWindowTo: string;   // "9:00 AM to 3:30 PM"
   description: string;
+  hasOfficeOverlap: boolean;
   officeOverlapMinutes: number;
   officeOverlapHoursFloat: number;
   officeOverlapCount: number;
+  officeFormattedDuration: string; // "2h 30m"
   officeWindowFrom?: string;
   officeWindowTo?: string;
   fromStartMinute?: number;
@@ -84,6 +86,23 @@ export interface BestTimeToCallResult {
   toStartMinute?: number;
   toEndMinute?: number;
   slots: OverlapHour[];
+}
+
+/**
+ * Formats a duration in minutes into a clean readable string.
+ * Example: 390 -> "6h 30m", 150 -> "2h 30m", 480 -> "8 hours", 45 -> "45m"
+ */
+export function formatMinutesDuration(totalMinutes: number): string {
+  if (totalMinutes <= 0) return "0 hours";
+  const hours = Math.floor(totalMinutes / 60);
+  const mins = totalMinutes % 60;
+  if (hours > 0 && mins > 0) {
+    return `${hours}h ${mins}m`;
+  }
+  if (hours > 0) {
+    return `${hours} hour${hours > 1 ? "s" : ""}`;
+  }
+  return `${mins}m`;
 }
 
 /**
@@ -128,16 +147,7 @@ export function calculateIntervalOverlap(
         const toStartDt = DateTime.fromMillis(overlapStartMillis).setZone(toZone);
         const toEndDt = DateTime.fromMillis(overlapEndMillis).setZone(toZone);
 
-        const hours = Math.floor(minutes / 60);
-        const mins = minutes % 60;
-        let formattedDuration = `${hoursFloat} hours`;
-        if (mins === 30) {
-          formattedDuration = `${hoursFloat} hours`;
-        } else if (mins > 0) {
-          formattedDuration = `${hours}h ${mins}m`;
-        } else {
-          formattedDuration = `${hours} hour${hours > 1 ? "s" : ""}`;
-        }
+        const formattedDuration = formatMinutesDuration(minutes);
 
         bestOverlap = {
           overlapMinutes: minutes,
@@ -216,13 +226,16 @@ export function calculateBestTimeToCall(
     description = `No direct 9:00 AM to 9:00 PM overlap. A good compromise is early morning around 8:00 AM or late evening around 9:00 PM in ${fromName}.`;
   }
 
-  let officeWindowFrom: string | undefined;
-  let officeWindowTo: string | undefined;
+  const hasOfficeOverlap = officeOverlap !== null && officeOverlap.overlapMinutes > 0;
   const officeOverlapMinutes = officeOverlap ? officeOverlap.overlapMinutes : 0;
   const officeOverlapHoursFloat = officeOverlap ? officeOverlap.overlapHoursFloat : 0;
   const officeOverlapCount = Math.round(officeOverlapHoursFloat);
+  const officeFormattedDuration = officeOverlap ? officeOverlap.formattedDuration : "0 hours";
 
-  if (officeOverlap && officeOverlap.overlapMinutes > 0) {
+  let officeWindowFrom: string | undefined;
+  let officeWindowTo: string | undefined;
+
+  if (hasOfficeOverlap && officeOverlap) {
     officeWindowFrom = `${officeOverlap.fromStartFormatted} to ${officeOverlap.fromEndFormatted}`;
     officeWindowTo = `${officeOverlap.toStartFormatted} to ${officeOverlap.toEndFormatted}`;
   }
@@ -236,9 +249,11 @@ export function calculateBestTimeToCall(
     recommendedWindowFrom,
     recommendedWindowTo,
     description,
+    hasOfficeOverlap,
     officeOverlapMinutes,
     officeOverlapHoursFloat,
     officeOverlapCount,
+    officeFormattedDuration,
     officeWindowFrom,
     officeWindowTo,
     fromStartMinute: awakeOverlap ? awakeOverlap.fromStartMinute : undefined,
@@ -353,15 +368,33 @@ export function getPlaceTimeInfo(
 /**
  * Calculates exact time difference between two places with varying daylight saving status and fractional offsets.
  */
-export function formatTimeDifference(fromZone: string, toZone: string) {
-  const diff = calculateTimeDifference(fromZone, toZone);
+export function formatTimeDifference(
+  fromZone: string,
+  toZone: string,
+  fromName?: string,
+  toName?: string,
+  referenceDate?: DateTime
+) {
+  const diff = calculateTimeDifference(
+    fromZone,
+    toZone,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    referenceDate,
+    fromName,
+    toName
+  );
   return {
     isSameTime: diff.isSameTime,
     isAhead: diff.isToAhead,
     hoursPart: diff.hoursPart,
     minutesPart: diff.minutesPart,
+    diffMinutes: diff.diffMinutes,
     aheadOrBehindText: diff.relationTextShort,
     verbalSummary: diff.verbalSummary,
+    diffFormatted: formatHourMinuteDiff(diff.hoursPart, diff.minutesPart),
   };
 }
 
@@ -372,7 +405,9 @@ export function calculateTimeDifference(
   fromLng?: number,
   toLat?: number,
   toLng?: number,
-  referenceDate?: DateTime
+  referenceDate?: DateTime,
+  fromName: string = "Place A",
+  toName: string = "Place B"
 ): TimeDifferenceResult {
   const fromTime = getPlaceTimeInfo(fromZone, fromLat, fromLng, referenceDate);
   const toTime = getPlaceTimeInfo(toZone, toLat, toLng, referenceDate);
@@ -393,17 +428,17 @@ export function calculateTimeDifference(
   let verbalSummary = "";
 
   if (isSameTime) {
-    relationText = "Both places share the exact same local time";
+    relationText = `${fromName} and ${toName} share the exact same local time`;
     relationTextShort = "Same time";
-    verbalSummary = "There is no time difference. Both locations share identical local standard clocks.";
+    verbalSummary = `${fromName} and ${toName} share the exact same local time (${fromTime.timeZoneAbbr}). There is no time difference.`;
   } else if (isToAhead) {
-    relationText = `ahead by ${diffFormatted}`;
+    relationText = `${toName} is ${diffFormatted} ahead of ${fromName}`;
     relationTextShort = `${diffFormatted} ahead`;
-    verbalSummary = `Clocks are ${diffFormatted} ahead. When planning calls or flights, keep in mind they are operating ahead in their day.`;
+    verbalSummary = `${toName} is ${diffFormatted} ahead of ${fromName}. When it is 12:00 PM in ${fromName}, it is already ${toTime.formattedTime} in ${toName}.`;
   } else {
-    relationText = `behind by ${diffFormatted}`;
+    relationText = `${fromName} is ${diffFormatted} ahead of ${toName}`;
     relationTextShort = `${diffFormatted} behind`;
-    verbalSummary = `Clocks are ${diffFormatted} behind. When planning calls or flights, keep in mind they are operating earlier in their day.`;
+    verbalSummary = `${fromName} is ${diffFormatted} ahead of ${toName} (${toName} is ${diffFormatted} behind). When it is 12:00 PM in ${fromName}, it is ${toTime.formattedTime} in ${toName}.`;
   }
 
   let dstNotice: string | undefined;
@@ -442,10 +477,12 @@ export function generate24HourTable(
   fromLng?: number,
   toLat?: number,
   toLng?: number,
-  startHour: number = 0
+  startHour: number = 0,
+  referenceDate?: DateTime
 ): OverlapHour[] {
   const result: OverlapHour[] = [];
-  const now = DateTime.now().setZone(fromZone).startOf("day");
+  const baseDate = referenceDate || DateTime.now();
+  const now = baseDate.setZone(fromZone).startOf("day");
 
   for (let i = 0; i < 24; i++) {
     const currentHour = (startHour + i) % 24;
@@ -479,14 +516,16 @@ export function generate24HourTable(
         ? isCoordinateDaytime(toLat, toLng, toDt)
         : hourB >= 6 && hourB < 18;
 
-    // Calling hours: 9 AM to 9 PM (9:00 to 21:00)
-    const isWorkHourA = hourA >= siteConfig.workHours.start && hourA < siteConfig.workHours.end;
-    const isWorkHourB = hourB >= siteConfig.workHours.start && hourB < siteConfig.workHours.end;
+    // Calling hours: 9 AM to 9 PM (9:00 to 21:00 = 540 to 1260 minutes)
+    const minuteA = hourA * 60 + fromDt.minute;
+    const isWorkHourA = minuteA >= siteConfig.workHours.start * 60 && minuteA <= siteConfig.workHours.end * 60;
+    const minuteB = hourB * 60 + toDt.minute;
+    const isWorkHourB = minuteB >= siteConfig.workHours.start * 60 && minuteB <= siteConfig.workHours.end * 60;
     const isOverlapBothCalling = isWorkHourA && isWorkHourB;
 
-    // Office hours: 9 AM to 5 PM (9:00 to 17:00)
-    const isOfficeA = hourA >= siteConfig.officeHours.start && hourA < siteConfig.officeHours.end;
-    const isOfficeB = hourB >= siteConfig.officeHours.start && hourB < siteConfig.officeHours.end;
+    // Office hours: 9 AM to 5 PM (9:00 to 17:00 = 540 to 1020 minutes)
+    const isOfficeA = minuteA >= siteConfig.officeHours.start * 60 && minuteA <= siteConfig.officeHours.end * 60;
+    const isOfficeB = minuteB >= siteConfig.officeHours.start * 60 && minuteB <= siteConfig.officeHours.end * 60;
     const isOverlapBothOffice = isOfficeA && isOfficeB;
 
     result.push({

@@ -3,7 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { Place } from "@/lib/places";
-import { calculateTimeDifference } from "@/lib/time";
+import { calculateTimeDifference, formatHourMinuteDiff } from "@/lib/time";
 import { calculateDistance } from "@/lib/distance";
 import { ArrowLeftRight, Plane, Clock, Info } from "lucide-react";
 
@@ -51,12 +51,13 @@ export default function ResultCard({
 
   // Determine lead summary
   let diffHeadline = "";
+  const diffStr = formatHourMinuteDiff(timeDiff.hoursPart, timeDiff.minutesPart);
   if (timeDiff.isSameTime) {
     diffHeadline = `${placeA.name} and ${placeB.name} have the exact same time`;
   } else if (timeDiff.isToAhead) {
-    diffHeadline = `${placeB.name} is ${timeDiff.relationTextShort} of ${placeA.name}`;
+    diffHeadline = `${placeB.name} is ${diffStr} ahead of ${placeA.name}`;
   } else {
-    diffHeadline = `${placeA.name} is ${timeDiff.relationTextShort.replace("behind", "ahead of")} ${placeB.name}`;
+    diffHeadline = `${placeA.name} is ${diffStr} ahead of ${placeB.name}`;
   }
 
   return (

@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   );
 
   const title = `Best Time to Call ${placeTo.name} from ${placeFrom.name} | Calling Hours Guide`;
-  const description = `Find the best time to call ${placeTo.name} from ${placeFrom.name}: optimal 9 AM - 9 PM awake overlap (${bestTime.overlapHoursCount}h), office hours overlap, and interactive 24h timeline.`;
+  const description = `Find the best time to call ${placeTo.name} from ${placeFrom.name}: optimal 9 AM - 9 PM awake overlap (${bestTime.formattedDuration}), office hours overlap (${bestTime.officeFormattedDuration}), and interactive 24h timeline.`;
   const pageUrl = `${siteConfig.siteUrl}/best-time-to-call/${placeTo.slug}-from-${placeFrom.slug}`;
 
   return {

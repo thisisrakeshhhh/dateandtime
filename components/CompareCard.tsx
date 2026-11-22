@@ -103,7 +103,7 @@ export default function CompareCard({
   }, [placeA.lat, placeA.lng, placeB.lat, placeB.lng]);
 
   // Calculations
-  const diff = formatTimeDifference(placeB.timezone, placeA.timezone);
+  const diff = formatTimeDifference(placeA.timezone, placeB.timezone, placeA.name, placeB.name);
   const distance = calculateDistance(placeA.lat, placeA.lng, placeB.lat, placeB.lng);
   const flightTime = estimateFlightTime(distance.km);
 
@@ -123,16 +123,16 @@ export default function CompareCard({
 
   // Headline calculation
   const headlineText = diff.isSameTime
-    ? "Same time zone"
-    : `${diff.hoursPart}h ${diff.minutesPart > 0 ? `${diff.minutesPart}m ` : ""}${
-        diff.isAhead ? "ahead" : "behind"
-      }`;
+    ? "Same Local Time"
+    : diff.isAhead
+    ? `${placeB.name} is ${diff.diffFormatted} ahead`
+    : `${placeB.name} is ${diff.diffFormatted} behind`;
 
   const sublineText = diff.isSameTime
     ? `${placeA.name} and ${placeB.name} share the same local time.`
-    : `${placeA.name} is ${diff.hoursPart} hour${diff.hoursPart !== 1 ? "s" : ""}${
-        diff.minutesPart > 0 ? ` and ${diff.minutesPart} minutes` : ""
-      } ${diff.isAhead ? "ahead of" : "behind"} ${placeB.name}.`;
+    : diff.isAhead
+    ? `Clocks in ${placeB.name} are ${diff.diffFormatted} ahead of ${placeA.name}.`
+    : `Clocks in ${placeB.name} are ${diff.diffFormatted} behind ${placeA.name} (${placeA.name} is ${diff.diffFormatted} ahead).`;
 
   return (
     <div className="w-full bg-white/95 dark:bg-[#161616]/95 backdrop-blur-2xl rounded-t-2xl md:rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] border border-neutral-200/90 dark:border-white/[0.1] p-4 sm:p-7 flex flex-col gap-4 sm:gap-6 text-neutral-900 dark:text-neutral-100">

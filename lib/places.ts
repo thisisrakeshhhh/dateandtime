@@ -94,6 +94,13 @@ for (const c of cities) {
   }
 }
 
+export function getZoneCityLabel(ianaZone: string): string {
+  if (!ianaZone) return "";
+  const parts = ianaZone.split("/");
+  const cityRaw = parts[parts.length - 1];
+  return cityRaw.replace(/_/g, " ");
+}
+
 export function formatPlaceDisplayName(place: Place): string {
   if (place.type === "country") {
     return place.name;
@@ -102,6 +109,19 @@ export function formatPlaceDisplayName(place: Place): string {
     return `${place.name}, ${place.countryName}`;
   }
   return place.name;
+}
+
+/**
+ * For countries spanning multiple time zones (e.g. US, Canada, Australia, Russia, Brazil,
+ * Mexico, Indonesia, Kazakhstan), names the primary reference city/zone (e.g. "United States (New York)"),
+ * avoiding misleading single-offset assumptions.
+ */
+export function formatPlaceWithZone(place: Place): string {
+  if (place.type === "country" && place.otherZones && place.otherZones.length > 0) {
+    const zoneCity = getZoneCityLabel(place.timezone);
+    return `${place.name} (${zoneCity})`;
+  }
+  return formatPlaceDisplayName(place);
 }
 
 export function getPlaceByTimezone(ianaZone: string): Place | undefined {

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Place, searchPlaces, formatPlaceDisplayName, getPlaceBySlug } from "@/lib/places";
+import { Place, searchPlaces, formatPlaceDisplayName, formatPlaceWithZone, getPlaceBySlug } from "@/lib/places";
 import FlagIcon from "@/components/FlagIcon";
-import { Search, X, Sparkles, MapPin } from "lucide-react";
+import { Search, X, Sparkles } from "lucide-react";
 
 interface MapSearchOverlayProps {
   placeA: Place | null;
@@ -26,7 +26,7 @@ const POPULAR_SLUGS = [
 export default function MapSearchOverlay({
   placeA,
   placeB,
-  userPlace,
+  userPlace: _userPlace,
   onSelectPlace,
   onClear,
   isCompareMode,
@@ -183,14 +183,14 @@ export default function MapSearchOverlay({
               {placeA && (
                 <span className="flex items-center gap-1 text-neutral-900 dark:text-white truncate font-semibold">
                   <FlagIcon countryCode={placeA.countryIso} size="sm" />
-                  <span>{formatPlaceDisplayName(placeA)}</span>
+                  <span>{formatPlaceWithZone(placeA)}</span>
                 </span>
               )}
               {placeA && placeB && <span className="text-[#E85D4E] px-0.5 font-bold">→</span>}
               {placeB && (
                 <span className="flex items-center gap-1 text-neutral-900 dark:text-white truncate font-semibold">
                   <FlagIcon countryCode={placeB.countryIso} size="sm" />
-                  <span>{formatPlaceDisplayName(placeB)}</span>
+                  <span>{formatPlaceWithZone(placeB)}</span>
                 </span>
               )}
               {placeA && !placeB && isCompareMode && (

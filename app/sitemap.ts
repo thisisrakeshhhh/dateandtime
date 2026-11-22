@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
 import { getCountries, getCities, getPopularPairs } from "@/lib/places";
+import { getAllAbbreviationPairs } from "@/lib/abbreviations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.siteUrl;
@@ -75,11 +76,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // 6. Abbreviation Converter Pages
+  const abbreviationPairs = getAllAbbreviationPairs();
+  const converterHub: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/converter`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+  ];
+  const converterPages: MetadataRoute.Sitemap = abbreviationPairs.map((pair) => ({
+    url: `${baseUrl}/converter/${pair.slug}`,
+    lastModified: now,
+    changeFrequency: "daily",
+    priority: 0.8,
+  }));
+
+  // 7. Shift Converter Pages
+  const shiftPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/shift-converter`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/us-shift-timings-in-ist`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/uk-shift-timings-in-ist`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+  ];
+
   return [
     ...staticPages,
     ...timeDifferencePages,
     ...bestTimeToCallPages,
     ...countryPages,
     ...cityPages,
+    ...converterHub,
+    ...converterPages,
+    ...shiftPages,
   ];
 }

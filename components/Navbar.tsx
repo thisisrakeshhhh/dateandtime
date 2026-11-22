@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/config";
 import HeaderLocationButton from "@/components/HeaderLocationButton";
-import { Menu, X, Clock, PhoneCall, Info, Mail } from "lucide-react";
+import { Menu, X, Clock, PhoneCall, Info, Mail, Briefcase } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,7 +55,13 @@ export default function Navbar() {
               href="/converter"
               className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
             >
-              Converters
+              Converter
+            </Link>
+            <Link
+              href="/shift-converter"
+              className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
+            >
+              Shift converter
             </Link>
             <Link
               href="/time-difference/new-york-to-london"
@@ -98,7 +104,14 @@ export default function Navbar() {
               className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
             >
               <Clock className="w-4 h-4 text-[#E85D4E]" />
-              <span>Zone converters</span>
+              <span>Converter</span>
+            </Link>
+            <Link
+              href="/shift-converter"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
+            >
+              <Briefcase className="w-4 h-4 text-[#E85D4E]" />
+              <span>Shift converter</span>
             </Link>
             <Link
               href="/time-difference/new-york-to-london"

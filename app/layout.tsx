@@ -114,6 +114,16 @@ export default function RootLayout({
                 </p>
                 <ul className="space-y-1 text-[11px]">
                   <li>
+                    <Link href="/converter" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Converter
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/shift-converter" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Shift converter
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/about" className="hover:text-[#222] dark:hover:text-white hover:underline">
                       About
                     </Link>

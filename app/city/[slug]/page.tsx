@@ -15,6 +15,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const cities = getCities().slice(0, 150);
   return cities.map((c) => ({

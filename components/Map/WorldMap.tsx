@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useMemo, useCallback, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Place } from "@/lib/places";
+import { Place, formatPlaceWithZone } from "@/lib/places";
 import { computeSolarTerminator } from "@/lib/solar";
 import { isCoordinateDaytime, getPlaceTimeInfo } from "@/lib/time";
 import { getVisibleMapPlaces, MapLabelItem } from "@/lib/mapLabels";
@@ -158,7 +158,8 @@ export default function WorldMap({
       }
 
       // Calculate label box dimensions with generous calm spacing
-      const pillHalfWidth = Math.max(50, item.place.name.length * 4.2 + 35);
+      const pillLabel = formatPlaceWithZone(item.place);
+      const pillHalfWidth = Math.max(50, pillLabel.length * 4.2 + 35);
       const pillHalfHeight = 16;
       const marginX = zoom <= 3 ? 24 : 14; // Greater breathing room at world scale
       const marginY = zoom <= 3 ? 18 : 10;
@@ -187,7 +188,7 @@ export default function WorldMap({
 
       const pillHtml = `
         <div class="map-label-pill">
-          <span>${item.place.name}</span>
+          <span>${pillLabel}</span>
           <span class="pill-time">${item.timeStr}</span>
           <span class="pill-diff">${item.diffStr}</span>
           ${item.isDiffDay ? `<span class="pill-day">${item.dayStr}</span>` : ""}

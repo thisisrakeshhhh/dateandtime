@@ -6,8 +6,9 @@ import {
   getPlaceBySlug,
   getPopularPairs,
   getRelatedPairs,
+  formatPlaceWithZone,
 } from "@/lib/places";
-import { calculateTimeDifference, calculateBestTimeToCall } from "@/lib/time";
+import { calculateTimeDifference, calculateBestTimeToCall, getPlaceTimeInfo } from "@/lib/time";
 import { calculateDistance } from "@/lib/distance";
 import {
   generatePairArticle,
@@ -24,6 +25,8 @@ import { ArrowRight } from "lucide-react";
 interface PageProps {
   params: Promise<{ pair: string }>;
 }
+
+export const revalidate = 60;
 
 function parsePairParam(pairParam: string): { fromSlug: string; toSlug: string } | null {
   const parts = pairParam.split("-to-");
@@ -125,11 +128,14 @@ export default async function TimeDifferencePage({ params }: PageProps) {
   const faqs = generatePairFaqs(placeA, placeB, diff, bestTime, dist);
   const relatedPairs = getRelatedPairs(placeA.slug, placeB.slug, 6);
 
+  const nameA = formatPlaceWithZone(placeA);
+  const nameB = formatPlaceWithZone(placeB);
+
   // Breadcrumbs
   const breadcrumbItems = [
     { name: "Home", url: "/" },
     { name: "Time Difference", url: "/" },
-    { name: `${placeA.name} to ${placeB.name}`, url: `/time-difference/${placeA.slug}-to-${placeB.slug}` },
+    { name: `${nameA} to ${nameB}`, url: `/time-difference/${placeA.slug}-to-${placeB.slug}` },
   ];
   const breadcrumbJsonLd = generateBreadcrumbSchema(breadcrumbItems);
 
@@ -150,7 +156,7 @@ export default async function TimeDifferencePage({ params }: PageProps) {
         <span className="text-neutral-400">Time difference</span>
         <span>/</span>
         <span className="text-[#222222] dark:text-white font-medium">
-          {placeA.name} to {placeB.name}
+          {nameA} to {nameB}
         </span>
       </nav>
 
@@ -183,6 +189,75 @@ export default async function TimeDifferencePage({ params }: PageProps) {
           </p>
         ))}
       </section>
+
+      {/* Multi-Timezone Country Breakdown: Other zones in Place A or Place B */}
+      {(placeA.otherZones && placeA.otherZones.length > 0) && (
+        <section className="bg-white dark:bg-[#181818] rounded-2xl border border-neutral-200/80 dark:border-neutral-800 p-6 shadow-sm">
+          <h2 className="text-base font-semibold text-[#222222] dark:text-white mb-2">
+            Other time zones in {placeA.name}
+          </h2>
+          <p className="text-xs text-[#6B6B6B] dark:text-[#A0A0A0] mb-4">
+            {placeA.name} covers multiple standard time zones. The primary calculation above references {placeA.timezone} ({formatPlaceWithZone(placeA)}):
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {placeA.otherZones.map((zone) => {
+              const zoneTime = getPlaceTimeInfo(zone);
+              return (
+                <div
+                  key={zone}
+                  className="p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200/70 dark:border-neutral-800 flex items-center justify-between"
+                >
+                  <div>
+                    <p className="font-mono text-xs font-medium text-neutral-900 dark:text-white">
+                      {zone.split("/").pop()?.replace(/_/g, " ")}
+                    </p>
+                    <p className="text-[11px] text-neutral-500 font-mono">
+                      {zoneTime.timeZoneAbbr} ({zoneTime.utcOffsetString})
+                    </p>
+                  </div>
+                  <span className="font-mono text-xs font-semibold text-neutral-900 dark:text-white">
+                    {zoneTime.formattedTime}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {(placeB.otherZones && placeB.otherZones.length > 0) && (
+        <section className="bg-white dark:bg-[#181818] rounded-2xl border border-neutral-200/80 dark:border-neutral-800 p-6 shadow-sm">
+          <h2 className="text-base font-semibold text-[#222222] dark:text-white mb-2">
+            Other time zones in {placeB.name}
+          </h2>
+          <p className="text-xs text-[#6B6B6B] dark:text-[#A0A0A0] mb-4">
+            {placeB.name} covers multiple standard time zones. The primary calculation above references {placeB.timezone} ({formatPlaceWithZone(placeB)}):
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {placeB.otherZones.map((zone) => {
+              const zoneTime = getPlaceTimeInfo(zone);
+              return (
+                <div
+                  key={zone}
+                  className="p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200/70 dark:border-neutral-800 flex items-center justify-between"
+                >
+                  <div>
+                    <p className="font-mono text-xs font-medium text-neutral-900 dark:text-white">
+                      {zone.split("/").pop()?.replace(/_/g, " ")}
+                    </p>
+                    <p className="text-[11px] text-neutral-500 font-mono">
+                      {zoneTime.timeZoneAbbr} ({zoneTime.utcOffsetString})
+                    </p>
+                  </div>
+                  <span className="font-mono text-xs font-semibold text-neutral-900 dark:text-white">
+                    {zoneTime.formattedTime}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* 3. FAQ as a clean list with a small down arrow */}
       <FaqBlock faqs={faqs} />

@@ -6,8 +6,9 @@ import {
   getPlaceBySlug,
   getPopularPairs,
   getRelatedPairs,
+  formatPlaceWithZone,
 } from "@/lib/places";
-import { calculateTimeDifference, calculateBestTimeToCall } from "@/lib/time";
+import { calculateTimeDifference, calculateBestTimeToCall, getPlaceTimeInfo } from "@/lib/time";
 import { calculateDistance } from "@/lib/distance";
 import {
   generatePairArticle,
@@ -24,6 +25,8 @@ import { ArrowRight } from "lucide-react";
 interface PageProps {
   params: Promise<{ pair: string }>;
 }
+
+export const revalidate = 60;
 
 function parseFromParam(pairParam: string): { toSlug: string; fromSlug: string } | null {
   const parts = pairParam.split("-from-");
@@ -117,10 +120,13 @@ export default async function BestTimeToCallPage({ params }: PageProps) {
   const faqs = generatePairFaqs(placeFrom, placeTo, diff, bestTime, dist);
   const relatedPairs = getRelatedPairs(placeFrom.slug, placeTo.slug, 6);
 
+  const nameTo = formatPlaceWithZone(placeTo);
+  const nameFrom = formatPlaceWithZone(placeFrom);
+
   const breadcrumbItems = [
     { name: "Home", url: "/" },
     { name: "Best Time to Call", url: "/" },
-    { name: `${placeTo.name} from ${placeFrom.name}`, url: `/best-time-to-call/${placeTo.slug}-from-${placeFrom.slug}` },
+    { name: `${nameTo} from ${nameFrom}`, url: `/best-time-to-call/${placeTo.slug}-from-${placeFrom.slug}` },
   ];
   const breadcrumbJsonLd = generateBreadcrumbSchema(breadcrumbItems);
 
@@ -141,14 +147,14 @@ export default async function BestTimeToCallPage({ params }: PageProps) {
         <span className="text-neutral-400">Best time to call</span>
         <span>/</span>
         <span className="text-[#222222] dark:text-white font-medium">
-          {placeTo.name} from {placeFrom.name}
+          {nameTo} from {nameFrom}
         </span>
       </nav>
 
       {/* Title */}
       <div>
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#222222] dark:text-white">
-          Best time to call {placeTo.name} from {placeFrom.name}
+          Best time to call {nameTo} from {nameFrom}
         </h1>
         <p className="text-sm text-[#6B6B6B] dark:text-[#A0A0A0] mt-1.5 leading-relaxed">
           Based on 9:00 AM to 9:00 PM waking hours in both locations.
@@ -174,6 +180,75 @@ export default async function BestTimeToCallPage({ params }: PageProps) {
           </p>
         ))}
       </section>
+
+      {/* Multi-Timezone Country Breakdown: Other zones in Place From or Place To */}
+      {(placeFrom.otherZones && placeFrom.otherZones.length > 0) && (
+        <section className="bg-white dark:bg-[#181818] rounded-2xl border border-neutral-200/80 dark:border-neutral-800 p-6 shadow-sm">
+          <h2 className="text-base font-semibold text-[#222222] dark:text-white mb-2">
+            Other time zones in {placeFrom.name}
+          </h2>
+          <p className="text-xs text-[#6B6B6B] dark:text-[#A0A0A0] mb-4">
+            {placeFrom.name} covers multiple standard time zones. The primary calculation above references {placeFrom.timezone} ({formatPlaceWithZone(placeFrom)}):
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {placeFrom.otherZones.map((zone) => {
+              const zoneTime = getPlaceTimeInfo(zone);
+              return (
+                <div
+                  key={zone}
+                  className="p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200/70 dark:border-neutral-800 flex items-center justify-between"
+                >
+                  <div>
+                    <p className="font-mono text-xs font-medium text-neutral-900 dark:text-white">
+                      {zone.split("/").pop()?.replace(/_/g, " ")}
+                    </p>
+                    <p className="text-[11px] text-neutral-500 font-mono">
+                      {zoneTime.timeZoneAbbr} ({zoneTime.utcOffsetString})
+                    </p>
+                  </div>
+                  <span className="font-mono text-xs font-semibold text-neutral-900 dark:text-white">
+                    {zoneTime.formattedTime}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      {(placeTo.otherZones && placeTo.otherZones.length > 0) && (
+        <section className="bg-white dark:bg-[#181818] rounded-2xl border border-neutral-200/80 dark:border-neutral-800 p-6 shadow-sm">
+          <h2 className="text-base font-semibold text-[#222222] dark:text-white mb-2">
+            Other time zones in {placeTo.name}
+          </h2>
+          <p className="text-xs text-[#6B6B6B] dark:text-[#A0A0A0] mb-4">
+            {placeTo.name} covers multiple standard time zones. The primary calculation above references {placeTo.timezone} ({formatPlaceWithZone(placeTo)}):
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {placeTo.otherZones.map((zone) => {
+              const zoneTime = getPlaceTimeInfo(zone);
+              return (
+                <div
+                  key={zone}
+                  className="p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200/70 dark:border-neutral-800 flex items-center justify-between"
+                >
+                  <div>
+                    <p className="font-mono text-xs font-medium text-neutral-900 dark:text-white">
+                      {zone.split("/").pop()?.replace(/_/g, " ")}
+                    </p>
+                    <p className="text-[11px] text-neutral-500 font-mono">
+                      {zoneTime.timeZoneAbbr} ({zoneTime.utcOffsetString})
+                    </p>
+                  </div>
+                  <span className="font-mono text-xs font-semibold text-neutral-900 dark:text-white">
+                    {zoneTime.formattedTime}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* 3. FAQ */}
       <FaqBlock faqs={faqs} />

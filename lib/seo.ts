@@ -1,4 +1,4 @@
-import { Place } from "./places";
+import { Place, formatPlaceWithZone } from "./places";
 import { TimeDifferenceResult, BestTimeToCallResult } from "./time";
 import { DistanceResult } from "./distance";
 import { siteConfig } from "./config";
@@ -28,8 +28,8 @@ export function generatePairArticle(
   metaDescription: string;
   paragraphs: string[];
 } {
-  const nameA = placeA.name;
-  const nameB = placeB.name;
+  const nameA = formatPlaceWithZone(placeA);
+  const nameB = formatPlaceWithZone(placeB);
   const countryA = placeA.countryName;
   const countryB = placeB.countryName;
 
@@ -88,8 +88,8 @@ export function generatePairFaqs(
   bestTime: BestTimeToCallResult,
   dist: DistanceResult
 ): FaqItem[] {
-  const nameA = placeA.name;
-  const nameB = placeB.name;
+  const nameA = formatPlaceWithZone(placeA);
+  const nameB = formatPlaceWithZone(placeB);
 
   return [
     {

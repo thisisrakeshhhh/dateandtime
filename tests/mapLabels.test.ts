@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { formatOffsetDiff, getVisibleMapPlaces } from "@/lib/mapLabels";
+import { formatPlaceWithZone, getPlaceBySlug } from "@/lib/places";
 
 describe("mapLabels utils", () => {
   it("formats offset diff properly", () => {
@@ -7,6 +8,24 @@ describe("mapLabels utils", () => {
     expect(formatOffsetDiff(330)).toBe("+5h 30m");
     expect(formatOffsetDiff(-300)).toBe("-5h");
     expect(formatOffsetDiff(-210)).toBe("-3h 30m");
+  });
+
+  it("names the zone used for multi-timezone countries", () => {
+    const us = getPlaceBySlug("united-states");
+    expect(us).toBeDefined();
+    expect(formatPlaceWithZone(us!)).toBe("United States (New York)");
+
+    const australia = getPlaceBySlug("australia");
+    expect(australia).toBeDefined();
+    expect(formatPlaceWithZone(australia!)).toBe("Australia (Sydney)");
+
+    const canada = getPlaceBySlug("canada");
+    expect(canada).toBeDefined();
+    expect(formatPlaceWithZone(canada!)).toBe("Canada (Toronto)");
+
+    const india = getPlaceBySlug("india");
+    expect(india).toBeDefined();
+    expect(formatPlaceWithZone(india!)).toBe("India");
   });
 
   it("returns country pills showing local time and time difference from user place (e.g. +5h 30m)", () => {

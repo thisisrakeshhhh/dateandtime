@@ -15,6 +15,8 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const countries = getCountries();
   return countries.map((c) => ({

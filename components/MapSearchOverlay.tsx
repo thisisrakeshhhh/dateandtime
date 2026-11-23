@@ -103,6 +103,11 @@ export default function MapSearchOverlay({
           <input
             ref={inputRef}
             type="text"
+            aria-label={
+              isCompareMode
+                ? "Search second place to compare"
+                : "Search any country or city"
+            }
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => {
@@ -118,6 +123,8 @@ export default function MapSearchOverlay({
           />
           {query && (
             <button
+              type="button"
+              aria-label="Clear search input"
               onClick={() => {
                 setQuery("");
                 setIsOpen(false);
@@ -200,17 +207,19 @@ export default function MapSearchOverlay({
             </div>
 
             <button
+              type="button"
               onClick={onClear}
-              className="p-1 rounded-full hover:bg-neutral-200 dark:hover:bg-white/10 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition-colors shrink-0 cursor-pointer ml-1"
+              className="p-1.5 rounded-full hover:bg-neutral-200 dark:hover:bg-white/10 text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-100 transition-colors shrink-0 cursor-pointer ml-1"
               title="Clear selection"
+              aria-label="Clear selection"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
         ) : (
           <div className="hidden sm:flex items-center gap-1.5 text-xs">
-            <span className="text-neutral-400 dark:text-neutral-500 font-medium flex items-center gap-1 mr-1">
-              <Sparkles className="w-3 h-3 text-[#E85D4E]" />
+            <span className="text-neutral-500 dark:text-neutral-400 font-semibold flex items-center gap-1 mr-1">
+              <Sparkles className="w-3 h-3 text-[#C93527]" />
               Popular:
             </span>
             {POPULAR_SLUGS.map((slug) => {
@@ -221,8 +230,10 @@ export default function MapSearchOverlay({
               return (
                 <button
                   key={slug}
+                  type="button"
+                  aria-label={`Select ${label}`}
                   onClick={() => handleQuickPick(slug)}
-                  className="px-2.5 py-1 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-[#1c1c1c] dark:hover:text-white bg-neutral-100/80 dark:bg-white/[0.04] hover:bg-neutral-200/80 dark:hover:bg-white/[0.08] border border-neutral-200/60 dark:border-white/[0.04] transition-all cursor-pointer font-medium text-[11px]"
+                  className="min-h-[28px] px-3 py-1.5 rounded-lg text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white bg-neutral-100 dark:bg-white/[0.06] hover:bg-neutral-200 dark:hover:bg-white/[0.1] border border-neutral-200 dark:border-white/[0.08] transition-all cursor-pointer font-medium text-xs"
                 >
                   {label}
                 </button>

@@ -96,12 +96,14 @@ export default function ConverterClient({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
         {/* Time Selector */}
         <div>
-          <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1.5">
+          <label htmlFor="converter-time-input" className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1.5">
             Select Time in {fromAbbr.code} ({fromAbbr.name}):
           </label>
           <div className="relative flex items-center">
             <Clock className="absolute left-3 w-4 h-4 text-neutral-400 pointer-events-none" />
             <input
+              id="converter-time-input"
+              aria-label={`Select Time in ${fromAbbr.code}`}
               type="time"
               value={timeStr}
               onChange={(e) => setTimeStr(e.target.value)}
@@ -112,12 +114,14 @@ export default function ConverterClient({
 
         {/* Date Selector */}
         <div>
-          <label className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1.5">
+          <label htmlFor="converter-date-input" className="block text-xs font-semibold text-neutral-700 dark:text-neutral-300 mb-1.5">
             Select Calendar Date:
           </label>
           <div className="relative flex items-center">
             <Calendar className="absolute left-3 w-4 h-4 text-neutral-400 pointer-events-none" />
             <input
+              id="converter-date-input"
+              aria-label="Select Calendar Date"
               type="date"
               value={dateIso}
               onChange={(e) => setDateIso(e.target.value)}
@@ -129,18 +133,18 @@ export default function ConverterClient({
 
       {/* Quick Time Presets */}
       <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 mb-5">
-        <span className="text-[11px] font-medium text-neutral-400 dark:text-neutral-500 mr-1 flex items-center gap-1">
-          <Sparkles className="w-3 h-3 text-[#E85D4E]" /> Quick:
+        <span className="text-xs font-semibold text-neutral-600 dark:text-neutral-300 mr-1 flex items-center gap-1 shrink-0">
+          <Sparkles className="w-3.5 h-3.5 text-[#C93527]" /> Quick:
         </span>
         {QUICK_TIMES.map((qt) => (
           <button
             key={qt.value}
             type="button"
             onClick={() => setTimeStr(qt.value)}
-            className={`px-2.5 py-1 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer ${
+            className={`min-h-[36px] px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer ${
               timeStr === qt.value
-                ? "bg-[#E85D4E] text-white shadow-2xs"
-                : "bg-neutral-100 dark:bg-[#202020] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                ? "bg-[#C93527] text-white shadow-xs"
+                : "bg-neutral-100 dark:bg-[#202020] text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-700"
             }`}
           >
             {qt.label}

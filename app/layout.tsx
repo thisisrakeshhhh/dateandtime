@@ -74,24 +74,24 @@ export default function RootLayout({
                 <p className="font-semibold text-[#222222] dark:text-white mb-2">
                   Popular corridors
                 </p>
-                <ul className="space-y-1 text-[11px]">
+                <ul className="space-y-2 text-xs">
                   <li>
-                    <Link href="/time-difference/new-york-to-london" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/time-difference/new-york-to-london" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       New York to London time
                     </Link>
                   </li>
                   <li>
-                    <Link href="/time-difference/london-to-tokyo" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/time-difference/london-to-tokyo" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       London to Tokyo time
                     </Link>
                   </li>
                   <li>
-                    <Link href="/time-difference/united-states-to-united-kingdom" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/time-difference/united-states-to-united-kingdom" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       USA to UK time
                     </Link>
                   </li>
                   <li>
-                    <Link href="/time-difference/sydney-to-los-angeles" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/time-difference/sydney-to-los-angeles" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       Sydney to Los Angeles time
                     </Link>
                   </li>
@@ -102,39 +102,39 @@ export default function RootLayout({
                 <p className="font-semibold text-[#222222] dark:text-white mb-2">
                   Information
                 </p>
-                <ul className="space-y-1 text-[11px]">
+                <ul className="space-y-2 text-xs">
                   <li>
-                    <Link href="/converter" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/converter" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       Converter
                     </Link>
                   </li>
                   <li>
-                    <Link href="/shift-converter" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/shift-converter" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       Shift converter
                     </Link>
                   </li>
                   <li>
-                    <Link href="/event" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/event" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       Share event
                     </Link>
                   </li>
                   <li>
-                    <Link href="/about" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/about" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       About
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/contact" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       Contact
                     </Link>
                   </li>
                   <li>
-                    <Link href="/privacy-policy" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/privacy-policy" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       Privacy policy
                     </Link>
                   </li>
                   <li>
-                    <Link href="/terms" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                    <Link href="/terms" className="hover:text-[#222] dark:hover:text-white hover:underline py-1 inline-block">
                       Terms of service
                     </Link>
                   </li>

@@ -7,14 +7,16 @@ import ContactFormClient from '@/components/ContactFormClient';
 
 export const metadata: Metadata = {
   title: `Contact Us | ${siteConfig.name}`,
-  description: `Get in touch with the ${siteConfig.name} team. Inquire about time zone corrections, data partnerships, or general technical support.`,
+  description: `Get in touch with the ${siteConfig.name} team. Submit inquiries regarding time zone corrections, data partnerships, or technical support.`,
   alternates: {
     canonical: `${siteConfig.siteUrl}/contact`,
   },
 };
 
 export default function ContactPage() {
-  const hasDestination = Boolean(siteConfig.contactEmail);
+  const destinationEmail = (process.env.CONTACT_EMAIL || siteConfig.contactEmail || '').trim();
+  const resendApiKey = (process.env.RESEND_API_KEY || '').trim();
+  const isDeliveryConfigured = Boolean(resendApiKey && destinationEmail);
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 py-4">
@@ -44,16 +46,10 @@ export default function ContactPage() {
         <div className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm md:col-span-1 space-y-4 text-xs">
           <div>
             <span className="text-neutral-400 uppercase font-semibold text-[10px] tracking-wider">
-              Email Destination
+              Contact Mode
             </span>
-            <p className="font-mono font-medium text-neutral-900 dark:text-white mt-0.5 break-all">
-              {hasDestination ? (
-                <a href={`mailto:${siteConfig.contactEmail}`} className="hover:underline text-[#C93527]">
-                  {siteConfig.contactEmail}
-                </a>
-              ) : (
-                <span className="text-neutral-400 italic">No destination configured</span>
-              )}
+            <p className="font-medium text-neutral-900 dark:text-white mt-0.5">
+              {isDeliveryConfigured ? 'Email Dispatch (Active)' : 'Direct Form (Offline)'}
             </p>
           </div>
           <div>
@@ -74,23 +70,20 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Contact Form OR Clear Disabled Note */}
+        {/* Contact Form OR Plain Notice */}
         <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm md:col-span-2">
-          {hasDestination ? (
-            <ContactFormClient destinationEmail={siteConfig.contactEmail} />
+          {isDeliveryConfigured ? (
+            <ContactFormClient />
           ) : (
             <div className="space-y-4 py-4">
-              <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-foreground flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-foreground flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-neutral-500 shrink-0 mt-0.5" />
                 <div className="space-y-1.5">
-                  <div className="text-sm font-bold text-amber-600 dark:text-amber-400">
-                    Direct Contact Form Disabled
+                  <div className="text-sm font-semibold text-neutral-900 dark:text-white">
+                    Direct Contact Form Unavailable
                   </div>
                   <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
-                    Direct messaging is currently inactive because no destination email address (CONTACT_EMAIL) or ticketing integration is configured in the application environment.
-                  </p>
-                  <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
-                    To activate contact submissions, set the <code className="font-mono bg-neutral-200/70 dark:bg-neutral-800 px-1 py-0.5 rounded">CONTACT_EMAIL</code> environment variable with a verified address.
+                    Our direct messaging form is temporarily unavailable as the email delivery service is currently not configured in this environment. Please check back later.
                   </p>
                 </div>
               </div>

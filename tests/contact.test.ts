@@ -1,34 +1,50 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import fs from 'fs';
-import path from 'path';
+import { describe, it, expect } from 'vitest';
+import { POST } from '../app/api/contact/route';
+import { NextRequest } from 'next/server';
 
-describe('Contact Form Routing & Destination Safety', () => {
-  const inquiriesPath = path.join(process.cwd(), 'data', 'inquiries.json');
+describe('Contact Form API & Serverless Security', () => {
+  it('returns 503 when RESEND_API_KEY is not configured', async () => {
+    const originalKey = process.env.RESEND_API_KEY;
+    delete process.env.RESEND_API_KEY;
 
-  it('safely handles inquiries ledger creation and records data', () => {
-    const testRecord = {
-      id: `test_${Date.now()}`,
-      receivedAt: new Date().toISOString(),
-      destination: 'support@verified-domain.com',
-      name: 'Jane Doe',
-      email: 'jane@example.com',
-      subject: 'Time difference inquiry',
-      message: 'Need help with London offset.',
-    };
+    const req = new NextRequest('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: 'Test',
+        email: 'test@example.com',
+        subject: 'Inquiry',
+        message: 'Hello world',
+      }),
+    });
 
-    let list = [];
-    if (fs.existsSync(inquiriesPath)) {
-      list = JSON.parse(fs.readFileSync(inquiriesPath, 'utf-8'));
-    }
-    list.unshift(testRecord);
-    fs.writeFileSync(inquiriesPath, JSON.stringify(list, null, 2), 'utf-8');
+    const res = await POST(req);
+    expect(res.status).toBe(503);
+    const data = await res.json();
+    expect(data.success).toBe(false);
+    expect(data.error).toContain('service is not configured');
 
-    const updated = JSON.parse(fs.readFileSync(inquiriesPath, 'utf-8'));
-    expect(updated[0].id).toBe(testRecord.id);
-    expect(updated[0].destination).toBe('support@verified-domain.com');
+    process.env.RESEND_API_KEY = originalKey;
+  });
 
-    // Clean up test entry
-    const cleaned = updated.filter((item: any) => item.id !== testRecord.id);
-    fs.writeFileSync(inquiriesPath, JSON.stringify(cleaned, null, 2), 'utf-8');
+  it('rejects incomplete submissions with 400 Bad Request', async () => {
+    process.env.RESEND_API_KEY = 're_test_dummy_key';
+    process.env.CONTACT_EMAIL = 'support@example.com';
+
+    const req = new NextRequest('http://localhost:3000/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: '',
+        email: 'test@example.com',
+        subject: '',
+        message: '',
+      }),
+    });
+
+    const res = await POST(req);
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.success).toBe(false);
   });
 });

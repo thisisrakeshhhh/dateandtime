@@ -1,25 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { siteConfig } from '@/lib/config';
-
-interface InquiryRecord {
-  id: string;
-  receivedAt: string;
-  destination: string;
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
 
 export async function POST(req: NextRequest) {
   try {
-    const destination = siteConfig.contactEmail;
-    if (!destination) {
+    const resendApiKey = process.env.RESEND_API_KEY?.trim();
+    const destination = (process.env.CONTACT_EMAIL || siteConfig.contactEmail)?.trim();
+
+    if (!resendApiKey || !destination) {
       return NextResponse.json(
-        { success: false, error: 'No contact email destination is configured on the server.' },
-        { status: 400 }
+        { success: false, error: 'Contact email service is not configured.' },
+        { status: 503 }
       );
     }
 
@@ -33,57 +23,34 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Record inquiry to persistent file so administrators can read submitted messages
-    const inquiryRecord: InquiryRecord = {
-      id: `inq_${Date.now()}`,
-      receivedAt: new Date().toISOString(),
-      destination,
-      name: String(name).trim(),
-      email: String(email).trim(),
-      subject: String(subject).trim(),
-      message: String(message).trim(),
-    };
+    const fromAddress = process.env.RESEND_FROM_EMAIL?.trim() || 'TimeBridge Contact <onboarding@resend.dev>';
 
-    const inquiriesFilePath = path.join(process.cwd(), 'data', 'inquiries.json');
-    let existing: InquiryRecord[] = [];
-    try {
-      if (fs.existsSync(inquiriesFilePath)) {
-        const fileContent = fs.readFileSync(inquiriesFilePath, 'utf-8');
-        existing = JSON.parse(fileContent);
-      }
-    } catch {
-      existing = [];
-    }
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: fromAddress,
+        to: destination,
+        reply_to: String(email).trim(),
+        subject: `[TimeBridge Contact] ${String(subject).trim()}`,
+        text: `Sender Name: ${String(name).trim()}\nSender Email: ${String(email).trim()}\nSubject: ${String(subject).trim()}\n\nMessage:\n${String(message).trim()}`,
+      }),
+    });
 
-    existing.unshift(inquiryRecord);
-    fs.writeFileSync(inquiriesFilePath, JSON.stringify(existing, null, 2), 'utf-8');
-
-    // If an email provider (such as Resend) is configured, dispatch the message
-    if (process.env.RESEND_API_KEY) {
-      try {
-        await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: 'TimeBridge Inquiries <notifications@timebridge.app>',
-            to: destination,
-            reply_to: email,
-            subject: `[TimeBridge Contact] ${subject}`,
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-          }),
-        });
-      } catch (err) {
-        console.warn('Optional Resend dispatch failed:', err);
-      }
+    if (!resendResponse.ok) {
+      const errData = await resendResponse.json().catch(() => ({}));
+      return NextResponse.json(
+        { success: false, error: errData.message || 'Email delivery failed through API provider.' },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({
       success: true,
-      message: `Your message has been delivered to ${destination} and logged into our inquiry ledger.`,
-      inquiryId: inquiryRecord.id,
+      message: 'Your message has been sent successfully via email.',
     });
   } catch (error: unknown) {
     const errorMsg = error instanceof Error ? error.message : 'Internal server error while processing inquiry.';

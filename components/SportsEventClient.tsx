@@ -10,17 +10,19 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
   const {
     event,
     targetCountry,
+    isConfirmed,
     isScheduled,
     tentativeMessage,
     targetCountryTimeFormatted,
     targetCountryDateFormatted,
+    dayDifference,
+    calendarShiftText,
+    localBroadcasters,
+    localViewingAdvice,
     majorAudiences,
     lastUpdated,
     source,
     sourceUrl,
-    overview,
-    broadcastInfo,
-    timingAdvice,
     faqs,
   } = report;
 
@@ -43,7 +45,7 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
         const startUtc = startLocal.toUTC();
         const diff = startUtc.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
         if (startUtc.toMillis() <= now.toMillis()) {
-          setCountdownStr('Event has started or concluded');
+          setCountdownStr('Event has concluded');
         } else {
           const d = Math.floor(diff.days || 0);
           const h = Math.floor(diff.hours || 0);
@@ -93,7 +95,7 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
           <div className="text-xs text-muted flex items-center gap-2 sm:gap-3 flex-wrap">
             {source && (
               <span>
-                Source:{' '}
+                Official Source:{' '}
                 {sourceUrl ? (
                   <a
                     href={sourceUrl}
@@ -110,7 +112,7 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
               </span>
             )}
             <span>•</span>
-            <span>Last checked: {report.lastChecked || lastUpdated}</span>
+            <span>Verified: {report.lastChecked || lastUpdated}</span>
           </div>
         </div>
 
@@ -124,12 +126,12 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
         </div>
 
         {/* Tentative Schedule Warning Block */}
-        {!isScheduled ? (
+        {!isConfirmed ? (
           <div className="mt-6 p-5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-foreground flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
             <div>
               <div className="text-sm font-bold text-amber-600 dark:text-amber-400">
-                Official Broadcast Date Not Announced
+                Official Broadcast Schedule Pending Confirmation (TBC)
               </div>
               <p className="text-xs text-muted mt-1 leading-relaxed">
                 {tentativeMessage}
@@ -152,6 +154,14 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
               <div className="text-xs text-muted mt-2">
                 Time Zone: {targetCountry.timezone}
               </div>
+
+              {/* Calendar Day Difference Notice */}
+              {dayDifference !== 0 && (
+                <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs font-medium">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>{calendarShiftText}</span>
+                </div>
+              )}
             </div>
 
             {/* Auto-detected Visitor Time Block */}
@@ -203,6 +213,23 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
         )}
       </div>
 
+      {/* Broadcast & Television Schedule for Target Country */}
+      <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="flex items-center gap-2 text-foreground font-semibold">
+          <Tv className="w-4 h-4 text-accent" />
+          <h2 className="text-lg sm:text-xl font-bold">Broadcasting in {targetCountry.name}</h2>
+        </div>
+        <p className="text-xs sm:text-sm text-muted leading-relaxed">
+          {localBroadcasters}
+        </p>
+        <div className="p-4 rounded-xl bg-card border border-theme text-xs space-y-2">
+          <div className="font-semibold text-foreground">Viewing Guide for {targetCountry.name}:</div>
+          <div className="text-muted leading-relaxed">
+            {localViewingAdvice}
+          </div>
+        </div>
+      </div>
+
       {/* Event Overview & Background */}
       <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
         <div className="flex items-center gap-2 text-foreground font-semibold">
@@ -210,39 +237,25 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
           <h2 className="text-lg sm:text-xl font-bold">Event Overview & Competition History</h2>
         </div>
         <p className="text-xs sm:text-sm text-muted leading-relaxed">
-          {overview}
+          {event.overview || event.description}
         </p>
         <div className="p-4 rounded-xl bg-card border border-theme text-xs space-y-2">
           <div className="font-semibold text-foreground">Host Venue Information:</div>
           <div className="text-muted leading-relaxed">
-            Staged in {event.venueCity}, {event.venueCountry} ({event.hostTimezone}). Local start times reflect the regional daylight saving time parameters of the venue during the competition month.
+            Staged in {event.venueCity}, {event.venueCountry} within the {event.hostTimezone} time zone.
           </div>
         </div>
       </div>
 
-      {/* Broadcast & Television Schedule */}
-      <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
-        <div className="flex items-center gap-2 text-foreground font-semibold">
-          <Tv className="w-4 h-4 text-accent" />
-          <h2 className="text-lg sm:text-xl font-bold">Official Broadcast & Streaming Coverage</h2>
-        </div>
-        <p className="text-xs sm:text-sm text-muted leading-relaxed">
-          {broadcastInfo}
-        </p>
-        <p className="text-xs text-muted leading-relaxed">
-          {timingAdvice}
-        </p>
-      </div>
-
       {/* Major Global Audiences Table */}
-      {isScheduled && majorAudiences.length > 0 && (
+      {isConfirmed && majorAudiences.length > 0 && (
         <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm">
           <div className="mb-4">
             <h2 className="text-xl font-bold text-foreground">
               Broadcast Start Times for Major Global Audiences
             </h2>
             <p className="text-xs sm:text-sm text-muted mt-1">
-              Kickoff / opening converted for prime international viewership markets.
+              Kickoff / opening converted across international viewership markets.
             </p>
           </div>
 
@@ -284,7 +297,7 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
         <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
           <div className="flex items-center gap-2 text-foreground font-semibold">
             <HelpCircle className="w-4 h-4 text-accent" />
-            <h2 className="text-lg sm:text-xl font-bold">Frequently Asked Questions</h2>
+            <h2 className="text-lg sm:text-xl font-bold">Frequently Asked Questions ({targetCountry.name})</h2>
           </div>
           <div className="space-y-3">
             {faqs.map((faq, idx) => (

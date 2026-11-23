@@ -11,7 +11,7 @@ import {
   calculateAbbreviationConversion,
   generateAbbreviationFaqs,
 } from '../lib/abbreviations';
-import { getAllEvents, generateSportsEventReport } from '../lib/sports';
+import { getAllEvents, generateSportsEventReport, TARGET_VIEWER_COUNTRIES } from '../lib/sports';
 import { generateCountryArticle } from '../lib/countryContent';
 import { generateDSTReport } from '../lib/dstReport';
 
@@ -248,10 +248,12 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
     });
   }
 
-  // 4. Audit Sports Events (cross-compared against all other sports events)
+  // 4. Audit Sports Events (Confirmed events in US, UK, India, Australia + TBC pages)
   const sports = getAllEvents();
   const sportsItems: Array<{
+    urlPath: string;
     slug: string;
+    countrySlug: string;
     isIndexable: boolean;
     wordCount: number;
     shingles: Set<string>;
@@ -261,47 +263,78 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
   }> = [];
 
   for (const s of sports) {
-    const report = generateSportsEventReport(s, 'united-states');
-    if (!report) continue;
-
     const isConfirmed =
+      s.status === 'confirmed' &&
       Boolean(s.isScheduled) &&
       Boolean(s.scheduledStartIso) &&
       Boolean(s.sourceUrl) &&
       new Date(s.scheduledStartIso).getTime() > Date.now();
 
-    const { shingles, wordCount } = getShingles(report.fullText);
-    const canonicalUrl = `${siteConfig.siteUrl}/sports/${s.slug}-time-in-united-states`;
-    const canonicalHost = new URL(canonicalUrl).host;
-    const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
-    const faqsValid = report.faqs.length > 0 && report.faqs.every((f) => Boolean(f.question?.trim()) && Boolean(f.answer?.trim()));
+    if (isConfirmed) {
+      for (const countrySlug of TARGET_VIEWER_COUNTRIES) {
+        const report = generateSportsEventReport(s, countrySlug);
+        if (!report) continue;
 
-    sportsItems.push({
-      slug: s.slug,
-      isIndexable: isConfirmed,
-      wordCount,
-      shingles,
-      canonicalHost,
-      canonicalValid,
-      faqsValid,
-    });
+        const { shingles, wordCount } = getShingles(report.fullText);
+        const canonicalUrl = `${siteConfig.siteUrl}/sports/${s.slug}-time-in-${countrySlug}`;
+        const canonicalHost = new URL(canonicalUrl).host;
+        const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
+        const faqsValid =
+          report.faqs.length > 0 && report.faqs.every((f) => Boolean(f.question?.trim()) && Boolean(f.answer?.trim()));
+
+        sportsItems.push({
+          urlPath: `/sports/${s.slug}-time-in-${countrySlug}`,
+          slug: s.slug,
+          countrySlug,
+          isIndexable: true,
+          wordCount,
+          shingles,
+          canonicalHost,
+          canonicalValid,
+          faqsValid,
+        });
+      }
+    } else {
+      // TBC events: not indexable
+      const report = generateSportsEventReport(s, 'united-states');
+      if (!report) continue;
+      const { shingles, wordCount } = getShingles(report.fullText);
+      const canonicalUrl = `${siteConfig.siteUrl}/sports/${s.slug}-time-in-united-states`;
+      const canonicalHost = new URL(canonicalUrl).host;
+      const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
+
+      sportsItems.push({
+        urlPath: `/sports/${s.slug}-time-in-united-states`,
+        slug: s.slug,
+        countrySlug: 'united-states',
+        isIndexable: false,
+        wordCount,
+        shingles,
+        canonicalHost,
+        canonicalValid,
+        faqsValid: true,
+      });
+    }
   }
 
-  // Cross-compare indexable sports events against all other indexable sports events
+  // Cross-compare every indexable sports variant against all other indexable sports pages
   for (let i = 0; i < sportsItems.length; i++) {
     const item = sportsItems[i];
     let maxSim = 0;
 
-    for (let j = 0; j < sportsItems.length; j++) {
-      if (i === j) continue;
-      const sim = computeSimilarity(item.shingles, sportsItems[j].shingles);
-      if (sim > maxSim) maxSim = sim;
+    if (item.isIndexable) {
+      for (let j = 0; j < sportsItems.length; j++) {
+        if (i === j || !sportsItems[j].isIndexable) continue;
+        const sim = computeSimilarity(item.shingles, sportsItems[j].shingles);
+        if (sim > maxSim) maxSim = sim;
+      }
     }
 
-    const passed = !item.isIndexable || (item.wordCount >= 250 && item.canonicalValid && item.faqsValid && maxSim <= 60);
+    const passed =
+      !item.isIndexable || (item.wordCount >= 250 && item.canonicalValid && item.faqsValid && maxSim <= 60);
 
     results.push({
-      urlPath: `/sports/${item.slug}-time-in-united-states`,
+      urlPath: item.urlPath,
       pageType: 'Sports Event',
       isIndexable: item.isIndexable,
       wordCount: item.wordCount,

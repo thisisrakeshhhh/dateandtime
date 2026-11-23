@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getAllEvents, getEventBySlug, generateSportsEventReport } from '@/lib/sports';
+import {
+  getEventBySlug,
+  getConfirmedEvents,
+  generateSportsEventReport,
+  TARGET_VIEWER_COUNTRIES,
+} from '@/lib/sports';
 import { getCountryBySlug } from '@/lib/places';
 import { siteConfig } from '@/lib/config';
 import SportsEventClient from '@/components/SportsEventClient';
@@ -13,23 +18,12 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const TOP_COUNTRIES = [
-  'united-states',
-  'united-kingdom',
-  'india',
-  'australia',
-  'canada',
-  'germany',
-  'france',
-  'japan',
-];
-
 export async function generateStaticParams() {
-  const events = getAllEvents();
+  const events = getConfirmedEvents();
   const params: Array<{ slug: string }> = [];
 
   for (const event of events) {
-    for (const countrySlug of TOP_COUNTRIES) {
+    for (const countrySlug of TARGET_VIEWER_COUNTRIES) {
       params.push({
         slug: `${event.slug}-time-in-${countrySlug}`,
       });
@@ -59,19 +53,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!event || !country) return { title: 'Event Not Found | TimeBridge' };
 
   const isConfirmed =
+    event.status === 'confirmed' &&
     Boolean(event.isScheduled) &&
     Boolean(event.scheduledStartIso) &&
+    Boolean(event.sourceUrl) &&
     new Date(event.scheduledStartIso).getTime() > Date.now();
 
+  const title = `What Time is ${event.name} in ${country.name}? Broadcast Schedule`;
+  const description = `Official start time for ${event.name} converted to ${country.name} local time (${country.timezone}). Includes date change notice, TV broadcasters, and auto-detected countdown.`;
+  const canonical = `${siteConfig.siteUrl}/sports/${slug}`;
+
   return {
-    title: `What Time is ${event.name} in ${country.name}? Broadcast Schedule`,
-    description: `Official start time for ${event.name} converted to ${country.name} local time (${country.timezone}). Includes auto-detected viewer countdown and major audience TV schedule.`,
+    title,
+    description,
     alternates: {
-      canonical: `${siteConfig.siteUrl}/sports/${slug}`,
+      canonical,
     },
     robots: {
       index: isConfirmed,
       follow: true,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: siteConfig.name,
+      type: 'article',
     },
   };
 }

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/config';
 import { getCountries, getPopularPairs } from '@/lib/places';
 import { getAllAbbreviationPairs } from '@/lib/abbreviations';
-import { getAllEvents } from '@/lib/sports';
+import { getConfirmedEvents, TARGET_VIEWER_COUNTRIES } from '@/lib/sports';
 import top300Cities from '@/data/top300Cities.json';
 
 export function getActiveWave(): number {
@@ -121,21 +121,21 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
     ];
   }
 
-  // 7. Sports Events (Confirmed Schedules with Verified Sources Only)
+  // 7. Sports Events (Confirmed Schedules for US, UK, India, Australia)
   if (id === 'sports') {
-    const events = getAllEvents().filter(
-      (e) =>
-        Boolean(e.isScheduled) &&
-        Boolean(e.scheduledStartIso) &&
-        Boolean(e.sourceUrl) &&
-        new Date(e.scheduledStartIso).getTime() > Date.now()
-    );
-    return events.map((e) => ({
-      url: `${baseUrl}/sports/${e.slug}-time-in-united-states`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    }));
+    const events = getConfirmedEvents();
+    const sportsPages: MetadataRoute.Sitemap = [];
+    for (const e of events) {
+      for (const c of TARGET_VIEWER_COUNTRIES) {
+        sportsPages.push({
+          url: `${baseUrl}/sports/${e.slug}-time-in-${c}`,
+          lastModified: now,
+          changeFrequency: 'weekly',
+          priority: 0.7,
+        });
+      }
+    }
+    return sportsPages;
   }
 
   return [];

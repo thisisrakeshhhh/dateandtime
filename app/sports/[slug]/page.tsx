@@ -54,11 +54,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!event || !country) return { title: 'Event Not Found | TimeBridge' };
 
   const isPast = isEventPast(event);
+  const hasEvidence = Boolean(event.evidence?.found && event.evidence?.dateText && event.evidence?.pageUrl);
   const isConfirmed =
     event.status === 'confirmed' &&
     Boolean(event.isScheduled) &&
     Boolean(event.scheduledStartIso) &&
-    Boolean(event.sourceUrl) &&
+    hasEvidence &&
     !isPast;
 
   const title = isPast

@@ -154,15 +154,31 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
           <div className="mt-8 space-y-6">
             {/* Primary Target Country Box */}
             <div className="p-6 rounded-2xl bg-accent/5 border border-accent/20">
-              <div className="text-xs font-semibold uppercase tracking-wider text-accent mb-1">
-                Official Start Time in {targetCountry.name}
+              <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+                <div className="text-xs font-semibold uppercase tracking-wider text-accent">
+                  Official Start Time in {targetCountry.name}
+                </div>
+                {report.timePrecision === 'approx' && (
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30">
+                    Start time is approximate
+                  </span>
+                )}
               </div>
-              <div className="text-3xl sm:text-4xl font-mono font-bold text-foreground">
-                {targetCountryTimeFormatted}
-              </div>
-              <div className="text-sm font-medium text-foreground/80 mt-1">
-                {targetCountryDateFormatted}
-              </div>
+              {report.timePrecision === 'date-only' ? (
+                <div className="text-2xl sm:text-3xl font-bold text-foreground">
+                  {targetCountryDateFormatted}
+                  <span className="block text-xs font-normal text-muted mt-1">Start time not announced</span>
+                </div>
+              ) : (
+                <>
+                  <div className="text-3xl sm:text-4xl font-mono font-bold text-foreground">
+                    {targetCountryTimeFormatted}
+                  </div>
+                  <div className="text-sm font-medium text-foreground/80 mt-1">
+                    {targetCountryDateFormatted}
+                  </div>
+                </>
+              )}
               <div className="text-xs text-muted mt-2">
                 Time Zone: {targetCountry.timezone}
               </div>

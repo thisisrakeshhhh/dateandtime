@@ -264,11 +264,12 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
 
   for (const s of sports) {
     const isPast = isEventPast(s);
+    const hasEvidence = Boolean(s.evidence?.found && s.evidence?.dateText && s.evidence?.pageUrl);
     const isConfirmed =
       s.status === 'confirmed' &&
       Boolean(s.isScheduled) &&
       Boolean(s.scheduledStartIso) &&
-      Boolean(s.sourceUrl) &&
+      hasEvidence &&
       !isPast;
 
     if (isConfirmed) {

@@ -33,35 +33,70 @@ describe('Sports and Global Events Start Times', () => {
     expect(report?.majorAudiences).toHaveLength(5);
     expect(report?.dayDifference).toBe(1);
     expect(report?.calendarShiftText).toContain('Next-Day Calendar Shift');
-    // Requirement 4: Broadcaster fallback notice
+    // Broadcaster fallback notice
     expect(report?.localBroadcasters).toBe('Broadcasters vary by country and year. Check your local listings.');
     expect(report?.faqs.find((f) => f.question.includes('broadcast'))?.answer).toBe(
       'Broadcasters vary by country and year. Check your local listings.'
     );
   });
 
-  it('handles tentative or unscheduled events with a clear TBC message and no guesswork', () => {
-    const unscheduledEvent: SportsEvent = {
-      slug: 'tba-event',
-      name: 'Unscheduled Test Cup',
-      sport: 'Motorsport',
-      venueCity: 'Tokyo',
-      venueCountry: 'Japan',
-      hostTimezone: 'Asia/Tokyo',
-      scheduledStartIso: '',
-      status: 'tbc',
-      isScheduled: false,
-      lastUpdated: '2026-11-20',
-      description: 'Test event awaiting confirmation',
-    };
+  it('enforces timePrecision field rules: Masters, Kentucky Derby, Boston Marathon, Tour de France, and LA28 must be approx or date-only', () => {
+    const masters = getEventBySlug('masters-tournament-final-round');
+    expect(['approx', 'date-only']).toContain(masters?.timePrecision);
 
-    const report = generateSportsEventReport(unscheduledEvent, 'united-kingdom');
-    expect(report?.isScheduled).toBe(false);
-    expect(report?.isConfirmed).toBe(false);
-    expect(report?.isPast).toBe(false);
-    expect(report?.tentativeMessage).toContain('TBC');
-    expect(report?.targetCountryTimeFormatted).toBe('Schedule TBC');
-    expect(report?.localBroadcasters).toBe('Broadcasters vary by country and year. Check your local listings.');
+    const derby = getEventBySlug('kentucky-derby');
+    expect(['approx', 'date-only']).toContain(derby?.timePrecision);
+
+    const boston = getEventBySlug('boston-marathon');
+    expect(['approx', 'date-only']).toContain(boston?.timePrecision);
+
+    const tdf = getEventBySlug('tour-de-france-final');
+    expect(['approx', 'date-only']).toContain(tdf?.timePrecision);
+
+    const la28 = getEventBySlug('summer-olympics-opening-ceremony');
+    expect(['approx', 'date-only']).toContain(la28?.timePrecision);
+
+    if (masters) {
+      const report = generateSportsEventReport(masters, 'united-states');
+      expect(report?.timePrecisionLabel).toBe('Start time is approximate');
+      expect(report?.calendarShiftText).toContain('Start time is approximate');
+      expect(report?.faqs[0].answer).toContain('Start time is approximate');
+    }
+  });
+
+  it('verifies ICC Cricket World Cup Final and Monaco Grand Prix are set to TBC (noindex)', () => {
+    const monaco = getEventBySlug('monaco-grand-prix');
+    expect(monaco?.status).toBe('tbc');
+    expect(monaco?.isScheduled).toBe(false);
+    expect(monaco?.scheduledStartIso).toBe('');
+    expect(monaco?.evidence?.found).toBe(false);
+
+    const cwc = getEventBySlug('icc-cricket-world-cup-final');
+    expect(cwc?.status).toBe('tbc');
+    expect(cwc?.isScheduled).toBe(false);
+    expect(cwc?.scheduledStartIso).toBe('');
+    expect(cwc?.evidence?.found).toBe(false);
+
+    const monacoReport = generateSportsEventReport(monaco!, 'united-states');
+    expect(monacoReport?.isConfirmed).toBe(false);
+    expect(monacoReport?.targetCountryTimeFormatted).toBe('Schedule TBC');
+
+    const cwcReport = generateSportsEventReport(cwc!, 'india');
+    expect(cwcReport?.isConfirmed).toBe(false);
+    expect(cwcReport?.targetCountryTimeFormatted).toBe('Schedule TBC');
+  });
+
+  it('requires official date evidence to be confirmed and indexed', () => {
+    const confirmedEvents = getConfirmedEvents();
+    expect(confirmedEvents.length).toBe(13); // exactly 13 confirmed events
+    for (const ev of confirmedEvents) {
+      expect(ev.status).toBe('confirmed');
+      expect(ev.isScheduled).toBe(true);
+      expect(ev.evidence).toBeDefined();
+      expect(ev.evidence.found).toBe(true);
+      expect(ev.evidence.dateText.length).toBeGreaterThan(0);
+      expect(ev.evidence.pageUrl.startsWith('https://')).toBe(true);
+    }
   });
 
   it('automatically classifies past events as finished, excludes them from sitemap and marks noindex', () => {
@@ -76,8 +111,15 @@ describe('Sports and Global Events Start Times', () => {
       venueCountry: 'United Kingdom',
       hostTimezone: 'Europe/London',
       scheduledStartIso: '2026-07-12T14:00:00', // Past event (July 2026 is before November 2026)
+      timePrecision: 'exact',
       status: 'confirmed',
       isScheduled: true,
+      evidence: {
+        found: true,
+        dateText: '12 July 2026',
+        pageUrl: 'https://example.com/archive',
+        checkDate: '2026-11-23',
+      },
       lastUpdated: '2026-07-13',
       lastChecked: '2026-07-13',
       source: 'Official Archive',
@@ -116,19 +158,5 @@ describe('Sports and Global Events Start Times', () => {
     const t20 = getEventBySlug('icc-t20-world-cup-final');
     expect(t20?.status).toBe('tbc');
     expect(t20?.isScheduled).toBe(false);
-  });
-
-  it('confirms scheduled dates and verified sources for Monaco GP and ICC Cricket World Cup Final', () => {
-    const monaco = getEventBySlug('monaco-grand-prix');
-    expect(monaco?.status).toBe('confirmed');
-    expect(monaco?.isScheduled).toBe(true);
-    expect(monaco?.scheduledStartIso).toBe('2027-06-06T15:00:00');
-    expect(monaco?.sourceUrl).toBe('https://www.formula1.com/');
-
-    const cwc = getEventBySlug('icc-cricket-world-cup-final');
-    expect(cwc?.status).toBe('confirmed');
-    expect(cwc?.isScheduled).toBe(true);
-    expect(cwc?.scheduledStartIso).toBe('2027-11-21T13:30:00');
-    expect(cwc?.sourceUrl).toBe('https://www.icc-cricket.com/');
   });
 });

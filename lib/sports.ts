@@ -2,6 +2,15 @@ import { DateTime } from 'luxon';
 import eventsData from '@/data/events.json';
 import { getCountryBySlug, Place } from '@/lib/places';
 
+export type TimePrecision = 'exact' | 'approx' | 'date-only';
+
+export interface SportsEvidence {
+  found: boolean;
+  dateText: string;
+  pageUrl: string;
+  checkDate: string;
+}
+
 export interface SportsEvent {
   slug: string;
   name: string;
@@ -10,8 +19,10 @@ export interface SportsEvent {
   venueCountry: string;
   hostTimezone: string;
   scheduledStartIso: string;
+  timePrecision: TimePrecision;
   status?: 'confirmed' | 'tbc';
   isScheduled: boolean;
+  evidence: SportsEvidence;
   lastUpdated: string;
   lastChecked?: string;
   source?: string;
@@ -38,6 +49,8 @@ export interface SportsEventReport {
   isConfirmed: boolean;
   isScheduled: boolean;
   isPast?: boolean;
+  timePrecision: TimePrecision;
+  timePrecisionLabel: string;
   status: 'confirmed' | 'tbc';
   tentativeMessage?: string;
   finishedMessage?: string;
@@ -54,6 +67,7 @@ export interface SportsEventReport {
   lastChecked?: string;
   source?: string;
   sourceUrl?: string;
+  evidence: SportsEvidence;
   faqs: SportsEventFaq[];
   fullText: string;
   wordCount: number;
@@ -83,7 +97,7 @@ export function isEventPast(event: SportsEvent, referenceDate: Date = new Date()
 
 /**
  * Confirmed future events: must be marked confirmed, scheduled, have a valid ISO date,
- * and its scheduled time must not have passed.
+ * have verified official evidence, and its scheduled time must not have passed.
  */
 export function getConfirmedEvents(): SportsEvent[] {
   return getAllEvents().filter(
@@ -91,7 +105,9 @@ export function getConfirmedEvents(): SportsEvent[] {
       e.status === 'confirmed' &&
       e.isScheduled &&
       Boolean(e.scheduledStartIso) &&
-      Boolean(e.sourceUrl) &&
+      Boolean(e.evidence?.found) &&
+      Boolean(e.evidence?.dateText) &&
+      Boolean(e.evidence?.pageUrl) &&
       !isEventPast(e)
   );
 }
@@ -143,6 +159,13 @@ export function generateSportsEventReport(
   };
 
   const isPast = isEventPast(event, referenceDate);
+  const timePrecision = event.timePrecision || 'exact';
+  const timePrecisionLabel =
+    timePrecision === 'approx'
+      ? 'Start time is approximate'
+      : timePrecision === 'date-only'
+      ? 'Date only'
+      : 'Exact start time';
 
   // 1. Past Event Handling
   if (isPast) {
@@ -165,9 +188,10 @@ export function generateSportsEventReport(
       event.description,
       event.overview || '',
       countryInfo.viewingGuide,
-      `Official Source: ${event.source} (${event.sourceUrl || ''}). Last checked: ${
+      `Official Source: ${event.source} (${event.sourceUrl || ''}). Verified on ${
         event.lastChecked || event.lastUpdated
       }.`,
+      `Official Date Evidence: "${event.evidence?.dateText || 'Concluded'}" verified at ${event.evidence?.pageUrl || ''}.`,
       `Has ${event.name} already finished? This event has finished. The competition took place on ${
         hostStartLocal ? hostStartLocal.toFormat('cccc, LLLL d, yyyy') : 'its scheduled date'
       }.`,
@@ -182,6 +206,8 @@ export function generateSportsEventReport(
       isConfirmed: false,
       isScheduled: false,
       isPast: true,
+      timePrecision,
+      timePrecisionLabel,
       status: 'confirmed',
       finishedMessage: finishedNotice,
       hostStartLocal,
@@ -197,6 +223,7 @@ export function generateSportsEventReport(
       lastChecked: event.lastChecked,
       source: event.source,
       sourceUrl: event.sourceUrl,
+      evidence: event.evidence,
       faqs: [
         {
           question: `Has ${event.name} already finished?`,
@@ -214,11 +241,12 @@ export function generateSportsEventReport(
     };
   }
 
+  const hasEvidence = Boolean(event.evidence?.found && event.evidence?.dateText && event.evidence?.pageUrl);
   const isConfirmed =
     event.status === 'confirmed' &&
     Boolean(event.isScheduled) &&
     Boolean(event.scheduledStartIso) &&
-    Boolean(event.sourceUrl) &&
+    hasEvidence &&
     !isPast;
 
   // 2. Tentative / Unconfirmed Event Handling
@@ -238,6 +266,7 @@ export function generateSportsEventReport(
       `Official Source: ${event.source} (${event.sourceUrl || ''}). Last checked: ${
         event.lastChecked || event.lastUpdated
       }.`,
+      `Official Evidence: Date not announced on official portal (${event.evidence?.pageUrl || event.sourceUrl || ''}).`,
       `When will the official date for ${event.name} be announced? Organizers at ${
         event.source || 'the governing body'
       } publish official timetables several months in advance. Our schedule verification is checked regularly.`,
@@ -252,6 +281,8 @@ export function generateSportsEventReport(
       isConfirmed: false,
       isScheduled: false,
       isPast: false,
+      timePrecision: 'date-only',
+      timePrecisionLabel: 'Date only',
       status: 'tbc',
       tentativeMessage: tentativeMsg,
       hostStartLocal: null,
@@ -267,6 +298,7 @@ export function generateSportsEventReport(
       lastChecked: event.lastChecked,
       source: event.source,
       sourceUrl: event.sourceUrl,
+      evidence: event.evidence,
       faqs: [
         {
           question: `When will the official date for ${event.name} be announced?`,
@@ -296,24 +328,29 @@ export function generateSportsEventReport(
   const targetDateDt = DateTime.fromISO(targetDateStr);
   const dayDifference = Math.round(targetDateDt.diff(hostDateDt, 'days').days);
 
+  const approxTag = timePrecision === 'approx' ? ' (Start time is approximate)' : '';
+
   let calendarShiftText = `Same-Day Broadcast: The event starts on ${targetCountryStartLocal.toFormat(
     'cccc, LLLL d, yyyy'
-  )} in both ${targetCountry.name} and the venue location in ${event.venueCity}.`;
+  )}${approxTag} in both ${targetCountry.name} and the venue location in ${event.venueCity}.`;
   if (dayDifference > 0) {
     calendarShiftText = `Next-Day Calendar Shift: Due to the international time difference across the globe, ${
       event.name
     } takes place on ${targetCountryStartLocal.toFormat('cccc, LLLL d')} in ${
       targetCountry.name
-    }, while starting on ${hostStartLocal.toFormat('cccc, LLLL d')} at the venue in ${event.venueCity}.`;
+    }${approxTag}, while starting on ${hostStartLocal.toFormat('cccc, LLLL d')} at the venue in ${event.venueCity}.`;
   } else if (dayDifference < 0) {
     calendarShiftText = `Previous-Day Calendar Shift: Because of time zone variance, viewers in ${
       targetCountry.name
-    } will watch on ${targetCountryStartLocal.toFormat('cccc, LLLL d')}, prior to the local venue calendar day in ${
+    } will watch on ${targetCountryStartLocal.toFormat('cccc, LLLL d')}${approxTag}, prior to the local venue calendar day in ${
       event.venueCity
     }.`;
   }
 
-  const targetCountryTimeFormatted = targetCountryStartLocal.toFormat('h:mm a');
+  const targetCountryTimeFormatted =
+    timePrecision === 'date-only'
+      ? 'Date only (Start time not announced)'
+      : targetCountryStartLocal.toFormat('h:mm a');
   const targetCountryDateFormatted = targetCountryStartLocal.toFormat('cccc, LLLL d, yyyy');
 
   const majorAudiences: AudienceBroadcastTime[] = [
@@ -352,9 +389,14 @@ export function generateSportsEventReport(
   const faqs: SportsEventFaq[] = [
     {
       question: `What time does ${event.name} start in ${targetCountry.name}?`,
-      answer: `In ${targetCountry.name} (${targetCountry.timezone}), ${event.name} begins at ${targetCountryTimeFormatted} on ${targetCountryDateFormatted}. Local time at the venue in ${event.venueCity}, ${event.venueCountry} is ${hostStartLocal.toFormat(
-        'h:mm a'
-      )} (${event.hostTimezone}).`,
+      answer:
+        timePrecision === 'date-only'
+          ? `In ${targetCountry.name} (${targetCountry.timezone}), ${event.name} takes place on ${targetCountryDateFormatted}. Exact session start time has not been published.`
+          : `In ${targetCountry.name} (${targetCountry.timezone}), ${event.name} begins at ${targetCountryTimeFormatted} on ${targetCountryDateFormatted}${
+              timePrecision === 'approx' ? ' (Start time is approximate)' : ''
+            }. Local time at the venue in ${event.venueCity}, ${event.venueCountry} is ${hostStartLocal.toFormat(
+              'h:mm a'
+            )} (${event.hostTimezone}).`,
     },
     {
       question: `Does the calendar date change for viewers in ${targetCountry.name}?`,
@@ -376,6 +418,7 @@ export function generateSportsEventReport(
     event.description,
     event.overview || '',
     `Official Start Time in ${targetCountry.name}: ${targetCountryTimeFormatted} on ${targetCountryDateFormatted} (${targetCountry.timezone}).`,
+    timePrecision === 'approx' ? 'Start time is approximate.' : '',
     `Local venue time in ${event.venueCity}: ${hostStartLocal.toFormat('h:mm a')} (${event.hostTimezone}).`,
     calendarShiftText,
     `Broadcasting in ${targetCountry.name}: ${BROADCASTER_NOTICE}`,
@@ -383,7 +426,7 @@ export function generateSportsEventReport(
     `Daylight Saving Notice: ${countryInfo.dstNotice}`,
     majorAudiences.map((a) => `${a.regionLabel}: ${a.timeFormatted} on ${a.dateFormatted}`).join('. '),
     faqs.map((f) => `${f.question} ${f.answer}`).join(' '),
-    `Official Source: ${event.source} (${event.sourceUrl || ''}). Verified on ${
+    `Official Source Evidence: "${event.evidence?.dateText}" verified on official page ${event.evidence?.pageUrl}. Last checked: ${
       event.lastChecked || event.lastUpdated
     }.`,
   ].join(' ');
@@ -396,6 +439,8 @@ export function generateSportsEventReport(
     isConfirmed: true,
     isScheduled: true,
     isPast: false,
+    timePrecision,
+    timePrecisionLabel,
     status: 'confirmed',
     hostStartLocal,
     targetCountryStartLocal,
@@ -410,6 +455,7 @@ export function generateSportsEventReport(
     lastChecked: event.lastChecked,
     source: event.source,
     sourceUrl: event.sourceUrl,
+    evidence: event.evidence,
     faqs,
     fullText,
     wordCount,

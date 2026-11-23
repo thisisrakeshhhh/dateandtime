@@ -5,6 +5,7 @@ import {
   getEventBySlug,
   getConfirmedEvents,
   generateSportsEventReport,
+  isEventPast,
   TARGET_VIEWER_COUNTRIES,
 } from '@/lib/sports';
 import { getCountryBySlug } from '@/lib/places';
@@ -52,15 +53,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const country = getCountryBySlug(parsed.countrySlug);
   if (!event || !country) return { title: 'Event Not Found | TimeBridge' };
 
+  const isPast = isEventPast(event);
   const isConfirmed =
     event.status === 'confirmed' &&
     Boolean(event.isScheduled) &&
     Boolean(event.scheduledStartIso) &&
     Boolean(event.sourceUrl) &&
-    new Date(event.scheduledStartIso).getTime() > Date.now();
+    !isPast;
 
-  const title = `What Time is ${event.name} in ${country.name}? Broadcast Schedule`;
-  const description = `Official start time for ${event.name} converted to ${country.name} local time (${country.timezone}). Includes date change notice, TV broadcasters, and auto-detected countdown.`;
+  const title = isPast
+    ? `This Event Has Finished: ${event.name} in ${country.name} | TimeBridge`
+    : `What Time is ${event.name} in ${country.name}? Broadcast Schedule`;
+
+  const description = isPast
+    ? `This event has finished. The scheduled competition for ${event.name} has concluded.`
+    : `Official start time for ${event.name} converted to ${country.name} local time (${country.timezone}). Includes date change notice, broadcast guidance, and auto-detected countdown.`;
+
   const canonical = `${siteConfig.siteUrl}/sports/${slug}`;
 
   return {

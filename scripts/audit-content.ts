@@ -11,7 +11,7 @@ import {
   calculateAbbreviationConversion,
   generateAbbreviationFaqs,
 } from '../lib/abbreviations';
-import { getAllEvents, generateSportsEventReport, TARGET_VIEWER_COUNTRIES } from '../lib/sports';
+import { getAllEvents, generateSportsEventReport, TARGET_VIEWER_COUNTRIES, isEventPast } from '../lib/sports';
 import { generateCountryArticle } from '../lib/countryContent';
 import { generateDSTReport } from '../lib/dstReport';
 
@@ -263,12 +263,13 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
   }> = [];
 
   for (const s of sports) {
+    const isPast = isEventPast(s);
     const isConfirmed =
       s.status === 'confirmed' &&
       Boolean(s.isScheduled) &&
       Boolean(s.scheduledStartIso) &&
       Boolean(s.sourceUrl) &&
-      new Date(s.scheduledStartIso).getTime() > Date.now();
+      !isPast;
 
     if (isConfirmed) {
       for (const countrySlug of TARGET_VIEWER_COUNTRIES) {

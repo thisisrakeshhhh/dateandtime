@@ -45,7 +45,7 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
         const startUtc = startLocal.toUTC();
         const diff = startUtc.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
         if (startUtc.toMillis() <= now.toMillis()) {
-          setCountdownStr('Event has concluded');
+          setCountdownStr('This event has finished');
         } else {
           const d = Math.floor(diff.days || 0);
           const h = Math.floor(diff.hours || 0);
@@ -125,8 +125,20 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
           </p>
         </div>
 
-        {/* Tentative Schedule Warning Block */}
-        {!isConfirmed ? (
+        {/* Finished Event or Tentative Schedule Warning Block */}
+        {report.isPast ? (
+          <div className="mt-6 p-5 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-foreground flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-neutral-500 shrink-0 mt-0.5" />
+            <div>
+              <div className="text-sm font-bold text-neutral-900 dark:text-white">
+                This event has finished
+              </div>
+              <p className="text-xs text-muted mt-1 leading-relaxed">
+                {report.finishedMessage || 'This event has finished.'}
+              </p>
+            </div>
+          </div>
+        ) : !isConfirmed ? (
           <div className="mt-6 p-5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-foreground flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
             <div>

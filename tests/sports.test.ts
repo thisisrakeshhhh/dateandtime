@@ -17,22 +17,23 @@ describe('Sports and Global Events Start Times', () => {
     expect(getEventBySlug('winter-olympics-opening-ceremony')).toBeUndefined();
   });
 
-  it('accurately converts Super Bowl kickoff into India Standard Time (IST) and uses fallback broadcaster note', () => {
-    const sb = getEventBySlug('super-bowl');
-    expect(sb).toBeDefined();
-    if (!sb) return;
+  it('accurately converts Australian Open Men Final kickoff into India Standard Time (IST) and uses typical precision', () => {
+    const ao = getEventBySlug('australian-open-mens-final');
+    expect(ao).toBeDefined();
+    if (!ao) return;
 
-    const report = generateSportsEventReport(sb, 'india');
+    const report = generateSportsEventReport(ao, 'india');
     expect(report).not.toBeNull();
     expect(report?.isScheduled).toBe(true);
     expect(report?.isConfirmed).toBe(true);
     expect(report?.isPast).toBe(false);
     expect(report?.targetCountry.name).toBe('India');
-    // 15:30 PST = 23:30 UTC = 05:00 AM IST next morning
-    expect(report?.targetCountryTimeFormatted).toBe('5:00 AM');
+    // 19:30 AEDT (UTC+11) = 08:30 UTC = 14:00 (2:00 PM IST)
+    expect(report?.targetCountryTimeFormatted).toBe('2:00 PM');
     expect(report?.majorAudiences).toHaveLength(5);
-    expect(report?.dayDifference).toBe(1);
-    expect(report?.calendarShiftText).toContain('Next-Day Calendar Shift');
+    expect(report?.timePrecision).toBe('typical');
+    expect(report?.timePrecisionLabel).toBe('Typical start time. Official order of play is announced closer to the date.');
+    expect(report?.fullText).toContain('Typical start time. Official order of play is announced closer to the date.');
     // Broadcaster fallback notice
     expect(report?.localBroadcasters).toBe('Broadcasters vary by country and year. Check your local listings.');
     expect(report?.faqs.find((f) => f.question.includes('broadcast'))?.answer).toBe(
@@ -40,24 +41,39 @@ describe('Sports and Global Events Start Times', () => {
     );
   });
 
-  it('enforces timePrecision field rules: Masters, Kentucky Derby, Boston Marathon, Tour de France, and LA28 must be approx or date-only', () => {
+  it('enforces timePrecision field rules: Wimbledon, AO, RG, US Open are typical; LA28 is date-only; Daytona 500 is TBC', () => {
+    const wim = getEventBySlug('wimbledon-mens-final');
+    expect(wim?.timePrecision).toBe('typical');
+
+    const wimW = getEventBySlug('wimbledon-womens-final');
+    expect(wimW?.timePrecision).toBe('typical');
+
+    const ao = getEventBySlug('australian-open-mens-final');
+    expect(ao?.timePrecision).toBe('typical');
+
+    const rg = getEventBySlug('roland-garros-mens-final');
+    expect(rg?.timePrecision).toBe('typical');
+
+    const usOpen = getEventBySlug('us-open-tennis-mens-final');
+    expect(usOpen?.timePrecision).toBe('typical');
+
+    const la28 = getEventBySlug('summer-olympics-opening-ceremony');
+    expect(la28?.timePrecision).toBe('date-only');
+
+    const daytona = getEventBySlug('daytona-500');
+    expect(daytona?.status).toBe('tbc');
+
     const masters = getEventBySlug('masters-tournament-final-round');
     expect(['approx', 'date-only']).toContain(masters?.timePrecision);
 
-    const derby = getEventBySlug('kentucky-derby');
-    expect(['approx', 'date-only']).toContain(derby?.timePrecision);
-
     const boston = getEventBySlug('boston-marathon');
-    expect(['approx', 'date-only']).toContain(boston?.timePrecision);
+    expect(boston?.timePrecision).toBe('approx');
 
     const tdf = getEventBySlug('tour-de-france-final');
-    expect(['approx', 'date-only']).toContain(tdf?.timePrecision);
+    expect(tdf?.timePrecision).toBe('approx');
 
-    const la28 = getEventBySlug('summer-olympics-opening-ceremony');
-    expect(['approx', 'date-only']).toContain(la28?.timePrecision);
-
-    if (masters) {
-      const report = generateSportsEventReport(masters, 'united-states');
+    if (boston) {
+      const report = generateSportsEventReport(boston, 'united-states');
       expect(report?.timePrecisionLabel).toBe('Start time is approximate');
       expect(report?.calendarShiftText).toContain('Start time is approximate');
       expect(report?.faqs[0].answer).toContain('Start time is approximate');
@@ -88,7 +104,7 @@ describe('Sports and Global Events Start Times', () => {
 
   it('requires official date evidence to be confirmed and indexed', () => {
     const confirmedEvents = getConfirmedEvents();
-    expect(confirmedEvents.length).toBe(13); // exactly 13 confirmed events
+    expect(confirmedEvents.length).toBe(5); // exactly 5 confirmed events with verified deep non-homepage URLs
     for (const ev of confirmedEvents) {
       expect(ev.status).toBe('confirmed');
       expect(ev.isScheduled).toBe(true);

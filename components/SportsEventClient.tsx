@@ -163,11 +163,15 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
                     Start time is approximate
                   </span>
                 )}
+                {report.timePrecision === 'typical' && (
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-700 dark:text-blue-300 border border-blue-500/30">
+                    Typical start time. Official order of play is announced closer to the date.
+                  </span>
+                )}
               </div>
               {report.timePrecision === 'date-only' ? (
                 <div className="text-2xl sm:text-3xl font-bold text-foreground">
                   {targetCountryDateFormatted}
-                  <span className="block text-xs font-normal text-muted mt-1">Start time not announced</span>
                 </div>
               ) : (
                 <>

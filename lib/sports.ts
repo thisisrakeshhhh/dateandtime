@@ -2,7 +2,7 @@ import { DateTime } from 'luxon';
 import eventsData from '@/data/events.json';
 import { getCountryBySlug, Place } from '@/lib/places';
 
-export type TimePrecision = 'exact' | 'approx' | 'date-only';
+export type TimePrecision = 'exact' | 'approx' | 'typical' | 'date-only';
 
 export interface SportsEvidence {
   found: boolean;
@@ -161,7 +161,9 @@ export function generateSportsEventReport(
   const isPast = isEventPast(event, referenceDate);
   const timePrecision = event.timePrecision || 'exact';
   const timePrecisionLabel =
-    timePrecision === 'approx'
+    timePrecision === 'typical'
+      ? 'Typical start time. Official order of play is announced closer to the date.'
+      : timePrecision === 'approx'
       ? 'Start time is approximate'
       : timePrecision === 'date-only'
       ? 'Date only'
@@ -328,21 +330,26 @@ export function generateSportsEventReport(
   const targetDateDt = DateTime.fromISO(targetDateStr);
   const dayDifference = Math.round(targetDateDt.diff(hostDateDt, 'days').days);
 
-  const approxTag = timePrecision === 'approx' ? ' (Start time is approximate)' : '';
+  const precisionTag =
+    timePrecision === 'approx'
+      ? ' (Start time is approximate)'
+      : timePrecision === 'typical'
+      ? ' (Typical start time. Official order of play is announced closer to the date.)'
+      : '';
 
   let calendarShiftText = `Same-Day Broadcast: The event starts on ${targetCountryStartLocal.toFormat(
     'cccc, LLLL d, yyyy'
-  )}${approxTag} in both ${targetCountry.name} and the venue location in ${event.venueCity}.`;
+  )}${precisionTag} in both ${targetCountry.name} and the venue location in ${event.venueCity}.`;
   if (dayDifference > 0) {
     calendarShiftText = `Next-Day Calendar Shift: Due to the international time difference across the globe, ${
       event.name
     } takes place on ${targetCountryStartLocal.toFormat('cccc, LLLL d')} in ${
       targetCountry.name
-    }${approxTag}, while starting on ${hostStartLocal.toFormat('cccc, LLLL d')} at the venue in ${event.venueCity}.`;
+    }${precisionTag}, while starting on ${hostStartLocal.toFormat('cccc, LLLL d')} at the venue in ${event.venueCity}.`;
   } else if (dayDifference < 0) {
     calendarShiftText = `Previous-Day Calendar Shift: Because of time zone variance, viewers in ${
       targetCountry.name
-    } will watch on ${targetCountryStartLocal.toFormat('cccc, LLLL d')}${approxTag}, prior to the local venue calendar day in ${
+    } will watch on ${targetCountryStartLocal.toFormat('cccc, LLLL d')}${precisionTag}, prior to the local venue calendar day in ${
       event.venueCity
     }.`;
   }
@@ -392,6 +399,10 @@ export function generateSportsEventReport(
       answer:
         timePrecision === 'date-only'
           ? `In ${targetCountry.name} (${targetCountry.timezone}), ${event.name} takes place on ${targetCountryDateFormatted}. Exact session start time has not been published.`
+          : timePrecision === 'typical'
+          ? `In ${targetCountry.name} (${targetCountry.timezone}), ${event.name} typically begins at ${targetCountryTimeFormatted} on ${targetCountryDateFormatted}. Typical start time. Official order of play is announced closer to the date. Local time at the venue in ${event.venueCity}, ${event.venueCountry} is ${hostStartLocal.toFormat(
+              'h:mm a'
+            )} (${event.hostTimezone}).`
           : `In ${targetCountry.name} (${targetCountry.timezone}), ${event.name} begins at ${targetCountryTimeFormatted} on ${targetCountryDateFormatted}${
               timePrecision === 'approx' ? ' (Start time is approximate)' : ''
             }. Local time at the venue in ${event.venueCity}, ${event.venueCountry} is ${hostStartLocal.toFormat(
@@ -418,7 +429,11 @@ export function generateSportsEventReport(
     event.description,
     event.overview || '',
     `Official Start Time in ${targetCountry.name}: ${targetCountryTimeFormatted} on ${targetCountryDateFormatted} (${targetCountry.timezone}).`,
-    timePrecision === 'approx' ? 'Start time is approximate.' : '',
+    timePrecision === 'approx'
+      ? 'Start time is approximate.'
+      : timePrecision === 'typical'
+      ? 'Typical start time. Official order of play is announced closer to the date.'
+      : '',
     `Local venue time in ${event.venueCity}: ${hostStartLocal.toFormat('h:mm a')} (${event.hostTimezone}).`,
     calendarShiftText,
     `Broadcasting in ${targetCountry.name}: ${BROADCASTER_NOTICE}`,

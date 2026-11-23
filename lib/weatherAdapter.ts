@@ -15,6 +15,9 @@
 export interface WeatherResult {
   success: boolean;
   isPlaceholder?: boolean;
+  label?: string; // "Typical weather in [Month]" or "Live weather"
+  tempC?: number;
+  tempF?: number;
   current: {
     temperature: number;
     feelsLike: number;
@@ -54,7 +57,11 @@ function getWmoCondition(code: number): { name: string; icon: string } {
  * when no commercial API key is provided, ensuring 100% compliance with ad terms.
  */
 function getPlaceholderWeather(lat: number): WeatherResult {
-  const month = new Date().getMonth(); // 0-11
+  const today = new Date();
+  const month = today.getMonth(); // 0-11
+  const monthName = today.toLocaleDateString("en-US", { month: "long" });
+  const label = `Typical weather in ${monthName}`;
+
   // Simple hemispheric seasonal model
   const isNorthern = lat >= 0;
   const isSummer = isNorthern ? (month >= 5 && month <= 7) : (month >= 11 || month <= 1);
@@ -66,7 +73,6 @@ function getPlaceholderWeather(lat: number): WeatherResult {
   if (isSummer) baseTemp += 5;
   if (isWinter) baseTemp -= 6;
 
-  const today = new Date();
   const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   const forecast = [0, 1, 2].map((offset) => {
@@ -77,7 +83,7 @@ function getPlaceholderWeather(lat: number): WeatherResult {
       day: offset === 0 ? "Today" : dayNames[d.getDay()],
       maxTemp: baseTemp + 2 + (offset % 2),
       minTemp: baseTemp - 5 + (offset % 2),
-      condition: "Seasonal average",
+      condition: `Typical for ${monthName}`,
       icon: "cloud-sun",
     };
   });
@@ -85,16 +91,19 @@ function getPlaceholderWeather(lat: number): WeatherResult {
   return {
     success: true,
     isPlaceholder: true,
+    label,
+    tempC: baseTemp,
+    tempF: Math.round((baseTemp * 9) / 5 + 32),
     current: {
       temperature: baseTemp,
       feelsLike: baseTemp - 1,
-      condition: "Seasonal estimate",
+      condition: label,
       icon: "cloud-sun",
       isDay: true,
     },
     forecast,
-    attribution: "Seasonal estimates (Open-Meteo free tier restricted for ad-supported sites).",
-    note: "Commercial weather API key not configured. Displaying seasonal climate averages.",
+    attribution: `${label} (seasonal baseline without API key).`,
+    note: `Commercial weather API key not configured. Displaying ${label.toLowerCase()}.`,
   };
 }
 
@@ -147,17 +156,22 @@ export async function fetchWeather(lat: number, lng: number): Promise<WeatherRes
       };
     });
 
+    const tempC = Math.round(current.temperature_2m ?? 0);
     return {
       success: true,
+      isPlaceholder: false,
+      label: "Live weather",
+      tempC,
+      tempF: Math.round((tempC * 9) / 5 + 32),
       current: {
-        temperature: Math.round(current.temperature_2m ?? 0),
+        temperature: tempC,
         feelsLike: Math.round(current.apparent_temperature ?? 0),
         condition: condition.name,
         icon: condition.icon,
         isDay: current.is_day === 1,
       },
       forecast,
-      attribution: "Weather data by Open-Meteo.com (CC BY 4.0)",
+      attribution: "Live weather data provided by Open-Meteo.com (CC BY 4.0)",
     };
   } catch {
     return getPlaceholderWeather(lat);

@@ -66,7 +66,7 @@ export default function RootLayout({
                 </p>
                 <p className="leading-relaxed text-[11px] max-w-xs">
                   World time difference tool with interactive solar terminator map,
-                  live weather and minute-accurate calling hours.
+                  seasonal weather estimates and minute-accurate calling hours.
                 </p>
               </div>
 

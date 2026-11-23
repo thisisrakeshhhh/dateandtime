@@ -32,6 +32,8 @@ import { DateTime } from "luxon";
 
 interface WeatherData {
   success: boolean;
+  isPlaceholder?: boolean;
+  label?: string;
   current?: {
     temperature: number;
     feelsLike: number;
@@ -412,7 +414,9 @@ export default function PlaceDetailsCard({
       {/* Weather Section */}
       <div className="p-4 rounded-xl bg-neutral-50 dark:bg-[#202020] border border-neutral-100 dark:border-neutral-800 text-xs">
         <div className="text-[11px] font-medium uppercase tracking-wider text-neutral-400 dark:text-neutral-400 mb-2">
-          Current Weather
+          {weather?.isPlaceholder
+            ? (weather.label || `Typical weather in ${new Date().toLocaleDateString('en-US', { month: 'long' })}`)
+            : 'Live Weather'}
         </div>
 
         {loadingWeather ? (

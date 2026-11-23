@@ -10,6 +10,8 @@ interface WeatherData {
   tempC?: number;
   tempF?: number;
   condition?: string;
+  label?: string;
+  isPlaceholder?: boolean;
   humidity?: number;
   windKmh?: number;
 }
@@ -128,12 +130,12 @@ export default function CityTimeClient({ report }: { report: CityTimeReport }) {
           <div className="p-3.5 rounded-xl bg-card border border-theme">
             <div className="flex items-center gap-1.5 text-xs text-muted mb-1">
               <Thermometer className="w-4 h-4 text-sky-500" />
-              <span>Weather</span>
+              <span>{weather?.label || (weather?.isPlaceholder ? `Typical weather in ${DateTime.now().toFormat('LLLL')}` : 'Weather')}</span>
             </div>
             <div className="text-sm font-semibold text-foreground">
               {weather && typeof weather.tempC === 'number'
                 ? `${Math.round(weather.tempC)}°C (${Math.round((weather.tempC * 9) / 5 + 32)}°F)`
-                : 'Mild / Clear'}
+                : 'Seasonal baseline'}
             </div>
           </div>
         </div>

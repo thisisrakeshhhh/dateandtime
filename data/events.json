@@ -11,7 +11,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "NFL.com Official Schedule Release",
-    "description": "The annual championship game of the National Football League (NFL) featuring kickoff, halftime show and global broadcasts."
+    "sourceUrl": "https://www.nfl.com/schedules/",
+    "description": "The annual championship game of the National Football League (NFL) featuring kickoff, halftime show and global broadcasts.",
+    "overview": "Super Bowl LXI brings the culmination of the NFL postseason to SoFi Stadium in Inglewood, California. Two conference champions compete for the Vince Lombardi Trophy before a global audience of over 120 million viewers.",
+    "broadcastInfo": "Broadcast live on flagship national networks in the United States, ITV and Sky Sports in the UK, DAZN across Europe, and ESPN / Star Sports across Australia and Asia.",
+    "timingAdvice": "Kickoff is scheduled for late afternoon Pacific Standard Time (PST, UTC-8). Viewers in Europe and the UK will watch in late night or early Monday morning hours, while viewers in Asia and Australasia tune in Monday morning."
   },
   {
     "slug": "uefa-champions-league-final",
@@ -25,7 +29,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "UEFA.com Competition Calendar",
-    "description": "European club football pinnacle showdown contested by the top two clubs in Europe."
+    "sourceUrl": "https://www.uefa.com/uefachampionsleague/",
+    "description": "European club football pinnacle showdown contested by the top two clubs in Europe.",
+    "overview": "The UEFA Champions League Final stands as the most prestigious match in European club football. Hosted at the Allianz Arena in Munich, the match crowns the continental club champion of the season.",
+    "broadcastInfo": "Televised internationally via TNT Sports and Discovery+ in the United Kingdom, CBS Sports and Paramount+ in the United States, Canal+ and ZDF in Western Europe, and Sony Sports Network in India.",
+    "timingAdvice": "Kickoff is fixed at 21:00 Central European Summer Time (CEST, UTC+2). American audiences watch in the mid-afternoon (3:00 PM Eastern), while Indian viewers watch in early Sunday morning (12:30 AM IST)."
   },
   {
     "slug": "fifa-world-cup-final",
@@ -35,11 +43,15 @@
     "venueCountry": "United States",
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2026-07-19T15:00:00",
-    "isScheduled": true,
+    "isScheduled": false,
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "FIFA.com Match Schedule Publication",
-    "description": "The culmination of the 48-nation FIFA World Cup tournament taking place at MetLife Stadium."
+    "sourceUrl": "https://www.fifa.com/tournaments/mens/worldcup/canadamexicousa2026",
+    "description": "The culmination of the 48-nation FIFA World Cup tournament taking place at MetLife Stadium.",
+    "overview": "The 2026 FIFA World Cup concluded at MetLife Stadium. Official dates and host bidding for the subsequent tournament final remain pending official FIFA executive congress confirmation.",
+    "broadcastInfo": "Global coverage provided by FIFA rights-holding broadcasters including Fox Sports, BBC, ITV, Telemundo, and JioCinema.",
+    "timingAdvice": "Future tournament kickoff timing has not yet been announced. This event entry is archived and pending future championship confirmation."
   },
   {
     "slug": "wimbledon-mens-final",
@@ -52,8 +64,12 @@
     "isScheduled": true,
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
-    "source": "Wimbledon.com Order of Play Announcement",
-    "description": "The historic grass-court Grand Slam championship final on Centre Court at the All England Club."
+    "source": "Wimbledon.com Official Tournament Dates",
+    "sourceUrl": "https://www.wimbledon.com/",
+    "description": "The historic grass-court Grand Slam championship final on Centre Court at the All England Club.",
+    "overview": "The Gentlemen's Singles Final at the All England Lawn Tennis and Croquet Club represents the pinnacle of traditional grass-court tennis, deciding the recipient of the coveted Challenge Cup.",
+    "broadcastInfo": "Broadcast comprehensively by BBC One and BBC iPlayer in the UK, ESPN and Tennis Channel in the United States, Eurosport across Europe, and Stan Sport in Australia.",
+    "timingAdvice": "Centre Court action begins at 14:00 British Summer Time (BST, UTC+1). This corresponds to 9:00 AM US Eastern Time, 6:30 PM Indian Standard Time, and 11:00 PM Australian Eastern Standard Time."
   },
   {
     "slug": "wimbledon-womens-final",
@@ -66,8 +82,12 @@
     "isScheduled": true,
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
-    "source": "Wimbledon.com Order of Play Announcement",
-    "description": "The ladies' Grand Slam tennis final played on Centre Court at Wimbledon."
+    "source": "Wimbledon.com Official Tournament Dates",
+    "sourceUrl": "https://www.wimbledon.com/",
+    "description": "The ladies' Grand Slam tennis final played on Centre Court at Wimbledon.",
+    "overview": "Contested on the second Saturday of the Wimbledon fortnight, the Ladies' Singles Final awards the prestigious Venus Rosewater Dish to the champion of world grass-court tennis.",
+    "broadcastInfo": "Live worldwide television feeds anchored by BBC Sport, ESPN, Nine Network Australia, and Star Sports / Disney+ Hotstar.",
+    "timingAdvice": "Match play commences at 14:00 BST. Fans in North America can watch morning breakfast tennis, while viewers in the Asia-Pacific region enjoy evening primetime coverage."
   },
   {
     "slug": "monaco-grand-prix",
@@ -81,7 +101,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "Formula1.com Official Championship Calendar",
-    "description": "The most glamorous street circuit race on the Formula 1 calendar through Monte Carlo and La Condamine."
+    "sourceUrl": "https://www.formula1.com/",
+    "description": "The most glamorous street circuit race on the Formula 1 calendar through Monte Carlo and La Condamine.",
+    "overview": "The Monaco Grand Prix tasks Formula 1 drivers with 78 punishing laps around the narrow streets of the Principality. Precise qualifying and race-day strategy are critical along the tight harbor barriers.",
+    "broadcastInfo": "Carried live by Sky Sports F1 in the UK, ESPN and F1 TV Pro in the US, Canal+ in France, ServusTV in Austria, and FanCode in India.",
+    "timingAdvice": "Lights out occur at 15:00 Central European Summer Time (CEST, UTC+2). This translates to 9:00 AM EDT in New York, 2:00 PM BST in London, and 6:30 PM IST in New Delhi."
   },
   {
     "slug": "tour-de-france-final",
@@ -95,7 +119,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "Letour.fr Official Route Announcement",
-    "description": "The ceremonial sprint finish and podium presentation along the Avenue des Champs-Élysées."
+    "sourceUrl": "https://www.letour.fr/",
+    "description": "The ceremonial sprint finish and podium presentation along the Avenue des Champs-Élysées.",
+    "overview": "Stage 21 of the Tour de France concludes three grueling weeks of Grand Tour cycling. The peloton parades into Paris before high-speed laps on the cobbles of the Champs-Élysées decide the stage winner and yellow jersey celebration.",
+    "broadcastInfo": "Produced by France Télévisions and broadcast across Europe on Eurosport / Discovery+, NBC Sports / Peacock in the US, and SBS in Australia.",
+    "timingAdvice": "The ceremonial roll-out starts in late afternoon around 16:30 CEST with the high-octane final sprint concluding around 19:30 CEST. North American viewers watch midday Sunday."
   },
   {
     "slug": "icc-cricket-world-cup-final",
@@ -109,7 +137,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "ICC-cricket.com Future Tours Programme (FTP)",
-    "description": "The 50-over One Day International (ODI) World Cup championship match contested in South Africa."
+    "sourceUrl": "https://www.icc-cricket.com/",
+    "description": "The 50-over One Day International (ODI) World Cup championship match contested in South Africa.",
+    "overview": "The ICC Cricket World Cup Final is the undisputed crown of international 50-over cricket, co-hosted across South Africa, Zimbabwe, and Namibia. The Wanderers Stadium in Johannesburg stages the title clash.",
+    "broadcastInfo": "Televised worldwide by Star Sports and Disney+ Hotstar in India, Sky Sports in the UK, SuperSport in South Africa, and Willow TV in the United States.",
+    "timingAdvice": "First ball is scheduled for 13:30 South Africa Standard Time (SAST, UTC+2). SAST is 3.5 hours behind Indian Standard Time, meaning a convenient 5:00 PM IST start for the subcontinent."
   },
   {
     "slug": "icc-t20-world-cup-final",
@@ -123,7 +155,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "ICC-cricket.com Official Board Notice",
-    "description": "The 20-over fast-paced international cricket championship final."
+    "sourceUrl": "https://www.icc-cricket.com/",
+    "description": "The 20-over fast-paced international cricket championship final.",
+    "overview": "The ICC T20 World Cup represents explosive short-form cricket tournament play. Final match scheduling and stadium allocation remain pending formal ICC board ratification.",
+    "broadcastInfo": "Broadcasters will be announced following tournament group-stage schedule releases.",
+    "timingAdvice": "Official match start time is pending calendar announcement. Please monitor verified ICC press releases."
   },
   {
     "slug": "ipl-final",
@@ -137,7 +173,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "IPLt20.com Season Fixtures",
-    "description": "The title clash of the world's most lucrative and watched domestic cricket league."
+    "sourceUrl": "https://www.iplt20.com/",
+    "description": "The title clash of the world's most lucrative and watched domestic cricket league.",
+    "overview": "The Narendra Modi Stadium in Ahmedabad, holding over 100,000 spectators, hosts the grand final of the Indian Premier League. The match crowns the winner of the 10-franchise T20 tournament.",
+    "broadcastInfo": "Streamed digitally on JioCinema and televised on the Star Sports network in India, Sky Sports Cricket in the UK, and Willow TV in North America.",
+    "timingAdvice": "Toss takes place at 19:00 IST with the first ball bowled at 19:30 IST (UTC+5:30). European viewers watch in early afternoon (3:00 PM BST), and US East Coast viewers watch at 10:00 AM EDT."
   },
   {
     "slug": "nba-finals-game-1",
@@ -151,7 +191,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "NBA.com Key Dates Calendar",
-    "description": "Opening game of the best-of-seven series deciding the National Basketball Association champion."
+    "sourceUrl": "https://www.nba.com/",
+    "description": "Opening game of the best-of-seven series deciding the National Basketball Association champion.",
+    "overview": "Game 1 of the NBA Finals initiates the championship series between the Eastern and Western Conference playoff winners, competing for the Larry O'Brien Championship Trophy.",
+    "broadcastInfo": "Exclusively broadcast on ABC and ESPN in the United States, TNT Sports in the UK, and NBA League Pass globally.",
+    "timingAdvice": "Tip-off is set for 20:30 Eastern Daylight Time (EDT, UTC-4). International audiences in Europe face late-night 1:30 AM BST viewing, while Asian fans tune in on Friday morning (6:00 AM IST)."
   },
   {
     "slug": "masters-tournament-final-round",
@@ -165,7 +209,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "Masters.com Tournament Schedule",
-    "description": "Final 18 holes at Augusta National Golf Club awarding the prestigious Green Jacket."
+    "sourceUrl": "https://www.masters.com/",
+    "description": "Final 18 holes at Augusta National Golf Club awarding the prestigious Green Jacket.",
+    "overview": "Sunday at the Masters is golf's most storied tradition. Players navigate Amen Corner and the azalea-lined fairways of Augusta National in search of golf immortality and the Green Jacket.",
+    "broadcastInfo": "Live television coverage provided by CBS Sports and ESPN in the USA, Sky Sports Golf in the UK and Ireland, and Fox Sports Australia.",
+    "timingAdvice": "Leaders tee off around 14:00 to 14:40 EDT (UTC-4) with tournament conclusion expected around 19:00 EDT. British viewers watch Sunday evening between 19:00 and 00:00 BST."
   },
   {
     "slug": "australian-open-mens-final",
@@ -179,7 +227,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "AusOpen.com Tournament Schedule",
-    "description": "First Grand Slam tournament of the tennis calendar on the blue hard courts of Rod Laver Arena."
+    "sourceUrl": "https://ausopen.com/",
+    "description": "First Grand Slam tournament of the tennis calendar on the blue hard courts of Rod Laver Arena.",
+    "overview": "The Norman Brookes Challenge Cup is on the line at Melbourne Park during the Australian Open Men's Final, concluding two weeks of high-intensity summer tennis in Victoria.",
+    "broadcastInfo": "Host broadcaster Nine Network (9Now) in Australia, ESPN in North America, Eurosport across mainland Europe, and Sony Sports in South Asia.",
+    "timingAdvice": "Night session start time is 19:30 Australian Eastern Daylight Time (AEDT, UTC+11). That equals 8:30 AM GMT in London, 3:30 AM EST in New York, and 2:00 PM IST in India."
   },
   {
     "slug": "roland-garros-mens-final",
@@ -193,7 +245,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "RolandGarros.com Official Program",
-    "description": "The premier red-clay Grand Slam tennis final played on Court Philippe-Chatrier."
+    "sourceUrl": "https://www.rolandgarros.com/",
+    "description": "The premier red-clay Grand Slam tennis final played on Court Philippe-Chatrier.",
+    "overview": "Court Philippe-Chatrier welcomes the two finalists competing for the Coupe des Mousquetaires. The physical endurance required on red clay makes this the toughest Grand Slam title in tennis.",
+    "broadcastInfo": "Produced by France Télévisions, with international distribution on Eurosport, NBC / Peacock in the US, and Sony Sports in India.",
+    "timingAdvice": "Walk-on takes place at 15:00 CEST (UTC+2). This provides optimal Sunday afternoon viewing in Europe (2:00 PM BST) and morning viewing in the Americas (9:00 AM EDT)."
   },
   {
     "slug": "us-open-tennis-mens-final",
@@ -207,7 +263,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "USOpen.org Tournament Schedule",
-    "description": "Final Grand Slam of the year under the lights at Arthur Ashe Stadium."
+    "sourceUrl": "https://www.usopen.org/",
+    "description": "Final Grand Slam of the year under the lights at Arthur Ashe Stadium.",
+    "overview": "The US Open Men's Singles Final closes the Grand Slam season inside Arthur Ashe Stadium at the USTA Billie Jean King National Tennis Center in Flushing Meadows, Queens.",
+    "broadcastInfo": "Live coverage on ESPN and ABC in the United States, Sky Sports in the UK and Germany, and Stan Sport in Australia.",
+    "timingAdvice": "Play begins at 16:00 EDT (UTC-4). This matches 21:00 BST in London and 1:30 AM Monday morning IST in India."
   },
   {
     "slug": "daytona-500",
@@ -221,7 +281,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "NASCAR.com Cup Series Schedule",
-    "description": "The 500-mile NASCAR Cup Series season-opening stock car race at Daytona International Speedway."
+    "sourceUrl": "https://www.nascar.com/",
+    "description": "The 500-mile NASCAR Cup Series season-opening stock car race at Daytona International Speedway.",
+    "overview": "Known as 'The Great American Race', the Daytona 500 opens the NASCAR Cup Series season with 200 high-speed laps on the 31-degree banking of Daytona International Speedway in Florida.",
+    "broadcastInfo": "Televised on FOX and the FOX Sports App in the United States, Premier Sports in the UK, and Motorvision in Europe.",
+    "timingAdvice": "Green flag waves at 14:30 Eastern Standard Time (EST, UTC-5). Fans in Europe can catch the full 500-mile contest starting at 19:30 GMT."
   },
   {
     "slug": "kentucky-derby",
@@ -235,7 +299,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "KentuckyDerby.com Official Timetable",
-    "description": "The Run for the Roses at Churchill Downs, the most storied leg of the American Triple Crown."
+    "sourceUrl": "https://www.kentuckyderby.com/",
+    "description": "The Run for the Roses at Churchill Downs, the most storied leg of the American Triple Crown.",
+    "overview": "The Kentucky Derby is the longest continuously held sporting event in American history. Twenty three-year-old thoroughbreds race one and a quarter miles in 'The Most Exciting Two Minutes in Sports'.",
+    "broadcastInfo": "NBC Sports and Peacock broadcast the full Derby Day card in the US, with Sky Sports Racing covering the event in the UK and Ireland.",
+    "timingAdvice": "Post time for the Derby is strictly scheduled for 18:57 EDT (UTC-4). UK and Irish viewers watch Saturday night at 23:57 BST."
   },
   {
     "slug": "summer-olympics-opening-ceremony",
@@ -249,7 +317,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "Olympics.com IOC Media Press Release",
-    "description": "Spectacular opening ceremony welcoming over 10,000 global Olympians to Los Angeles."
+    "sourceUrl": "https://olympics.com/",
+    "description": "Spectacular opening ceremony welcoming over 10,000 global Olympians to Los Angeles.",
+    "overview": "The Games of the XXXIV Olympiad will return to Southern California in 2028. Ceremony minute-by-minute timetable will be published following IOC coordination.",
+    "broadcastInfo": "NBCUniversal holds exclusive US rights; global broadcast rights holders coordinated via Olympic Broadcasting Services (OBS).",
+    "timingAdvice": "Exact ceremony start hour remains unconfirmed. Entry status is marked tentative and pending official IOC announcement."
   },
   {
     "slug": "winter-olympics-opening-ceremony",
@@ -263,7 +335,11 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "Olympics.com Milestone Archive",
-    "description": "Opening celebration of the XXV Olympic Winter Games staged at the San Siro Stadium."
+    "sourceUrl": "https://olympics.com/",
+    "description": "Opening celebration of the XXV Olympic Winter Games staged at the San Siro Stadium.",
+    "overview": "The Milano Cortina 2026 Olympic Winter Games schedule entry has concluded or is pending future Olympic edition transition.",
+    "broadcastInfo": "Archived Olympic broadcast information available via the International Olympic Committee media portal.",
+    "timingAdvice": "Schedule status is archived and not indexable for upcoming live viewing."
   },
   {
     "slug": "boston-marathon",
@@ -277,6 +353,10 @@
     "lastUpdated": "2026-11-23",
     "lastChecked": "2026-11-23",
     "source": "BAA.org Boston Athletic Association",
-    "description": "World's oldest annual marathon traversing from Hopkinton to Boylston Street in Boston."
+    "sourceUrl": "https://www.baa.org/races/boston-marathon",
+    "description": "World's oldest annual marathon traversing from Hopkinton to Boylston Street in Boston.",
+    "overview": "Held on Patriots' Day, the Boston Marathon brings 30,000 runners across 26.2 miles through Hopkinton, the Newton hills (including Heartbreak Hill), and into Copley Square.",
+    "broadcastInfo": "Carried locally on WCVB Channel 5 and nationally in the US on ESPN2, with FloTrack providing international digital streaming.",
+    "timingAdvice": "Elite wheelchair divisions commence at 9:02 AM EDT, followed by elite men at 9:37 AM EDT and elite women at 9:47 AM EDT. European viewers follow live throughout Monday afternoon."
   }
 ]

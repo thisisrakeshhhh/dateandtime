@@ -14,7 +14,11 @@ export interface SportsEvent {
   lastUpdated: string;
   lastChecked?: string;
   source?: string;
+  sourceUrl?: string;
   description: string;
+  overview?: string;
+  broadcastInfo?: string;
+  timingAdvice?: string;
 }
 
 export interface AudienceBroadcastTime {
@@ -22,6 +26,11 @@ export interface AudienceBroadcastTime {
   timezone: string;
   timeFormatted: string;
   dateFormatted: string;
+}
+
+export interface SportsEventFaq {
+  question: string;
+  answer: string;
 }
 
 export interface SportsEventReport {
@@ -37,6 +46,13 @@ export interface SportsEventReport {
   lastUpdated: string;
   lastChecked?: string;
   source?: string;
+  sourceUrl?: string;
+  overview: string;
+  broadcastInfo: string;
+  timingAdvice: string;
+  faqs: SportsEventFaq[];
+  fullText: string;
+  wordCount: number;
 }
 
 export function getAllEvents(): SportsEvent[] {
@@ -51,12 +67,29 @@ export function generateSportsEventReport(event: SportsEvent, targetCountrySlug:
   const targetCountry = getCountryBySlug(targetCountrySlug);
   if (!targetCountry) return null;
 
-  if (!event.isScheduled || !event.scheduledStartIso) {
+  const isConfirmed =
+    Boolean(event.isScheduled) &&
+    Boolean(event.scheduledStartIso) &&
+    new Date(event.scheduledStartIso).getTime() > Date.now();
+
+  const overview = event.overview || event.description;
+  const broadcastInfo =
+    event.broadcastInfo ||
+    `Official global broadcast feeds for ${event.name} are distributed through certified television networks and verified streaming platforms in the host nation (${event.venueCountry}) and international partner territories.`;
+  const timingAdvice =
+    event.timingAdvice ||
+    `Event starts in time zone ${event.hostTimezone}. Use our auto-detected countdown and viewer clock to synchronize local viewing with your home country without missing kickoff.`;
+
+  if (!isConfirmed) {
+    const tentativeMsg = `Official broadcast date and start time have not been announced by event organizers (${event.source || 'governing body'}). Schedule status verified as tentative or concluded on ${event.lastChecked || event.lastUpdated}.`;
+    const fullText = `${event.name} ${event.sport} in ${targetCountry.name}. ${event.description} ${overview} ${tentativeMsg} ${broadcastInfo} ${timingAdvice}`;
+    const wordCount = fullText.split(/\s+/).filter(Boolean).length;
+
     return {
       event,
       targetCountry,
       isScheduled: false,
-      tentativeMessage: `Official broadcast date and start time have not been announced by event organizers (${event.source || 'governing body'}). Schedule status verified as tentative and pending confirmation on ${event.lastChecked || event.lastUpdated}.`,
+      tentativeMessage: tentativeMsg,
       hostStartLocal: null,
       targetCountryStartLocal: null,
       targetCountryTimeFormatted: 'Date not announced',
@@ -65,6 +98,18 @@ export function generateSportsEventReport(event: SportsEvent, targetCountrySlug:
       lastUpdated: event.lastUpdated,
       lastChecked: event.lastChecked,
       source: event.source,
+      sourceUrl: event.sourceUrl,
+      overview,
+      broadcastInfo,
+      timingAdvice,
+      faqs: [
+        {
+          question: `When is the next ${event.name}?`,
+          answer: `Official schedule dates are currently pending announcement by the governing federation (${event.source || 'official organizers'}). Check back following the next schedule release.`,
+        },
+      ],
+      fullText,
+      wordCount,
     };
   }
 
@@ -102,7 +147,7 @@ export function generateSportsEventReport(event: SportsEvent, targetCountrySlug:
       dateFormatted: startUtc.setZone('Asia/Kolkata').toFormat('cccc, LLLL d, yyyy'),
     },
     {
-      regionLabel: 'Australia (Sydney)',
+      regionLabel: 'Australia (Sydney - AEST/AEDT)',
       timezone: 'Australia/Sydney',
       timeFormatted: startUtc.setZone('Australia/Sydney').toFormat('h:mm a'),
       dateFormatted: startUtc.setZone('Australia/Sydney').toFormat('cccc, LLLL d, yyyy'),
@@ -115,17 +160,52 @@ export function generateSportsEventReport(event: SportsEvent, targetCountrySlug:
     },
   ];
 
+  const targetCountryTimeFormatted = targetCountryStartLocal.toFormat('h:mm a');
+  const targetCountryDateFormatted = targetCountryStartLocal.toFormat('cccc, LLLL d, yyyy');
+
+  const faqs: SportsEventFaq[] = [
+    {
+      question: `What time does ${event.name} start in ${targetCountry.name}?`,
+      answer: `In ${targetCountry.name} (${targetCountry.timezone}), ${event.name} is scheduled to begin at ${targetCountryTimeFormatted} on ${targetCountryDateFormatted}. Venue local start time in ${event.venueCity}, ${event.venueCountry} is ${hostStartLocal.toFormat('h:mm a')} (${event.hostTimezone}).`,
+    },
+    {
+      question: `Where is ${event.name} being held this year?`,
+      answer: `The competition is hosted in ${event.venueCity}, ${event.venueCountry} within the ${event.hostTimezone} time zone.`,
+    },
+    {
+      question: `What official television channels and digital streams broadcast the event?`,
+      answer: `${broadcastInfo} Check with regional program guides to verify local subscription and cable availability.`,
+    },
+    {
+      question: `How can international viewers convert the start time to their local clock?`,
+      answer: `${timingAdvice} Use our auto-detected live countdown and timezone converter to accurately track start times without manual UTC offset calculations.`,
+    },
+  ];
+
+  const audiencesText = majorAudiences.map((a) => `${a.regionLabel} ${a.timeFormatted} ${a.dateFormatted}`).join(' ');
+  const faqsText = faqs.map((f) => `${f.question} ${f.answer}`).join(' ');
+  const fullText = `${event.name} in ${targetCountry.name}. ${event.sport} competition hosted in ${event.venueCity}, ${event.venueCountry}. ${event.description} ${overview} ${broadcastInfo} ${timingAdvice} Official start time: ${targetCountryTimeFormatted} ${targetCountryDateFormatted} in ${targetCountry.timezone}. Global broadcast audience schedule: ${audiencesText}. Frequently asked questions: ${faqsText} Source: ${event.source} ${event.sourceUrl || ''}. Last verified: ${event.lastChecked || event.lastUpdated}.`;
+
+  const wordCount = fullText.split(/\s+/).filter(Boolean).length;
+
   return {
     event,
     targetCountry,
     isScheduled: true,
     hostStartLocal,
     targetCountryStartLocal,
-    targetCountryTimeFormatted: targetCountryStartLocal.toFormat('h:mm a'),
-    targetCountryDateFormatted: targetCountryStartLocal.toFormat('cccc, LLLL d, yyyy'),
+    targetCountryTimeFormatted,
+    targetCountryDateFormatted,
     majorAudiences,
     lastUpdated: event.lastUpdated,
     lastChecked: event.lastChecked,
     source: event.source,
+    sourceUrl: event.sourceUrl,
+    overview,
+    broadcastInfo,
+    timingAdvice,
+    faqs,
+    fullText,
+    wordCount,
   };
 }

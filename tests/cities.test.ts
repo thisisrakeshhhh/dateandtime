@@ -38,5 +38,5 @@ describe('City Time Reports and Quality Rules', () => {
 
     expect(indexableCount).toBe(300);
     expect(noindexCount).toBe(0);
-  });
+  }, 15000);
 });

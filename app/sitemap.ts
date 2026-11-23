@@ -5,21 +5,44 @@ import { getAllAbbreviationPairs } from '@/lib/abbreviations';
 import { getAllEvents } from '@/lib/sports';
 import top300Cities from '@/data/top300Cities.json';
 
+export function getActiveWave(): number {
+  const envVal = process.env.INDEX_WAVE;
+  const parsed = parseInt(envVal || '1', 10);
+  return isNaN(parsed) || parsed < 1 ? 1 : parsed > 3 ? 3 : parsed;
+}
+
 export async function generateSitemaps() {
-  return [
+  const wave = getActiveWave();
+  // Wave 1 includes: pair (corridors), converter, shift, confirmed sports, core
+  const sitemaps: Array<{ id: string }> = [
     { id: 'core' },
     { id: 'corridors' },
-    { id: 'cities' },
-    { id: 'countries' },
     { id: 'converters' },
     { id: 'shifts' },
     { id: 'sports' },
   ];
+
+  // Wave 2 adds cities
+  if (wave >= 2) {
+    sitemaps.push({ id: 'cities' });
+  }
+
+  // Wave 3 adds countries and DST pages
+  if (wave >= 3) {
+    sitemaps.push({ id: 'countries' });
+  }
+
+  return sitemaps;
 }
 
 export default async function sitemap({ id }: { id: string }): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.siteUrl;
   const now = new Date();
+  const wave = getActiveWave();
+
+  // Wave filtering guard: pages outside current wave return empty array
+  if (id === 'cities' && wave < 2) return [];
+  if (id === 'countries' && wave < 3) return [];
 
   // 1. Core & Hub Pages
   if (id === 'core') {
@@ -51,8 +74,8 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
     }));
   }
 
-  // 3. Top 300 Cities (What Time Is It In)
-  if (id === 'cities') {
+  // 3. Top 300 Cities (What Time Is It In) - Wave 2+
+  if (id === 'cities' && wave >= 2) {
     return top300Cities.map((slug) => ({
       url: `${baseUrl}/what-time-is-it-in/${slug}`,
       lastModified: now,
@@ -61,8 +84,8 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
     }));
   }
 
-  // 4. Countries and Daylight Saving Time
-  if (id === 'countries') {
+  // 4. Countries and Daylight Saving Time - Wave 3
+  if (id === 'countries' && wave >= 3) {
     const countries = getCountries();
     const countryPages: MetadataRoute.Sitemap = countries.map((c) => ({
       url: `${baseUrl}/country/${c.slug}`,
@@ -98,25 +121,21 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
     ];
   }
 
-  // 7. Sports Events (Confirmed Schedules Only)
+  // 7. Sports Events (Confirmed Schedules with Verified Sources Only)
   if (id === 'sports') {
     const events = getAllEvents().filter(
-      (e) => e.isScheduled && e.scheduledStartIso && new Date(e.scheduledStartIso).getTime() > Date.now()
+      (e) =>
+        Boolean(e.isScheduled) &&
+        Boolean(e.scheduledStartIso) &&
+        Boolean(e.sourceUrl) &&
+        new Date(e.scheduledStartIso).getTime() > Date.now()
     );
-    const topCountries = ['united-states', 'united-kingdom', 'india', 'australia', 'canada', 'germany', 'france', 'japan'];
-    const sportsPages: MetadataRoute.Sitemap = [];
-
-    for (const e of events) {
-      for (const c of topCountries) {
-        sportsPages.push({
-          url: `${baseUrl}/sports/${e.slug}-time-in-${c}`,
-          lastModified: now,
-          changeFrequency: 'weekly',
-          priority: 0.7,
-        });
-      }
-    }
-    return sportsPages;
+    return events.map((e) => ({
+      url: `${baseUrl}/sports/${e.slug}-time-in-united-states`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    }));
   }
 
   return [];

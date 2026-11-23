@@ -1,13 +1,17 @@
 import { siteConfig } from '../lib/config';
-import { getPopularPairs, getPlaceBySlug, getCities } from '../lib/places';
+import { getPopularPairs, getPlaceBySlug, getCountries } from '../lib/places';
 import { generatePairArticle, generatePairFaqs } from '../lib/seo';
 import { calculateTimeDifference, calculateBestTimeToCall } from '../lib/time';
 import { calculateDistance } from '../lib/distance';
 import { generateCityTimeReport } from '../lib/cityTime';
 import top300Cities from '../data/top300Cities.json';
-import { getAllAbbreviationPairs, getAbbreviation, generateAbbreviationFaqs } from '../lib/abbreviations';
-import { getAllEvents } from '../lib/sports';
-import { getCountries } from '../lib/places';
+import {
+  getAllAbbreviationPairs,
+  getAbbreviation,
+  calculateAbbreviationConversion,
+  generateAbbreviationFaqs,
+} from '../lib/abbreviations';
+import { getAllEvents, generateSportsEventReport } from '../lib/sports';
 import { generateCountryArticle } from '../lib/countryContent';
 import { generateDSTReport } from '../lib/dstReport';
 
@@ -29,7 +33,7 @@ const STOP_WORDS = new Set([
   'the', 'is', 'at', 'which', 'on', 'a', 'an', 'and', 'or', 'in', 'of', 'to', 'for', 'with', 'from', 'by', 'this', 'that', 'it', 'be', 'are', 'as', 'will', 'has', 'have', 'there'
 ]);
 
-function getShingles(text: string): Set<string> {
+function getShingles(text: string): { shingles: Set<string>; wordCount: number } {
   const words = text
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, ' ')
@@ -39,7 +43,7 @@ function getShingles(text: string): Set<string> {
   for (let i = 0; i <= words.length - 5; i++) {
     shingles.add(`${words[i]} ${words[i + 1]} ${words[i + 2]} ${words[i + 3]} ${words[i + 4]}`);
   }
-  return shingles;
+  return { shingles, wordCount: words.length };
 }
 
 function computeSimilarity(setA: Set<string>, setB: Set<string>): number {
@@ -96,9 +100,8 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
 
     const faqsValid = faqs.length > 0 && faqs.every((f) => Boolean(f.question?.trim()) && Boolean(f.answer?.trim()));
     const fullText = `${article.h1} ${diff.verbalSummary} ${article.paragraphs.join(' ')}`;
-    const shingles = getShingles(fullText);
+    const { shingles } = getShingles(fullText);
 
-    // Measure similarity against previous pairs
     let maxSim = 0;
     for (const prev of pairShingles) {
       const sim = computeSimilarity(shingles, prev.shingles);
@@ -123,7 +126,7 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
       similarityMaxPercent: maxSim,
       passed,
       failureReason: !passed
-        ? `Failed: wordCount=${article.wordCount} (min 300), canon=${canonicalValid}, faqs=${faqsValid}, sim=${maxSim}%`
+        ? `Failed: wordCount=${article.wordCount} (min 250), canon=${canonicalValid}, faqs=${faqsValid}, sim=${maxSim}%`
         : undefined,
     });
   }
@@ -135,7 +138,7 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
     if (!city || city.type !== 'city') continue;
 
     const report = generateCityTimeReport(city);
-    const shingles = getShingles(report.articleText);
+    const { shingles } = getShingles(report.articleText);
 
     let maxSim = 0;
     for (const prev of cityShingles) {
@@ -164,49 +167,152 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
     });
   }
 
-  // 3. Audit Abbreviation Converters
+  // 3. Audit Abbreviation Converters (computed against all other converter pages)
   const abbrPairs = getAllAbbreviationPairs();
+  const converterItems: Array<{
+    pairSlug: string;
+    fromCode: string;
+    toCode: string;
+    text: string;
+    faqsValid: boolean;
+    canonicalHost: string;
+    canonicalValid: boolean;
+    shingles: Set<string>;
+    wordCount: number;
+  }> = [];
+
   for (const ap of abbrPairs) {
     const fromAbbr = getAbbreviation(ap.from);
     const toAbbr = getAbbreviation(ap.to);
     if (!fromAbbr || !toAbbr) continue;
-    const faqs = generateAbbreviationFaqs(fromAbbr, toAbbr);
+
+    const conv = calculateAbbreviationConversion(fromAbbr.code, toAbbr.code, '2026-11-23', '12:00');
+    const faqs = generateAbbreviationFaqs(fromAbbr, toAbbr, '2026-11-23');
     const faqsValid = faqs.length > 0 && faqs.every((f) => Boolean(f.question?.trim()) && Boolean(f.answer?.trim()));
+
+    const text = [
+      `${fromAbbr.code} to ${toAbbr.code} Time Zone Converter`,
+      `${fromAbbr.name} (${fromAbbr.standardOffset}) to ${toAbbr.name} (${toAbbr.standardOffset})`,
+      conv?.oneLineAnswer || '',
+      `Offset difference: ${conv?.diffFormatted || ''}. Calculated using official IANA database: ${fromAbbr.defaultIana} to ${toAbbr.defaultIana}`,
+      `Seasonal notice for ${fromAbbr.code} (${fromAbbr.name}): ${fromAbbr.seasonalWarning} Ambiguity: ${fromAbbr.ambiguityWarning}`,
+      `Seasonal notice for ${toAbbr.code} (${toAbbr.name}): ${toAbbr.seasonalWarning} Ambiguity: ${toAbbr.ambiguityWarning}`,
+      `Cities observing ${fromAbbr.code}: When observed: ${fromAbbr.whenObserved}. Major metropolitan areas: ${fromAbbr.majorCities.map((c) => `${c.name} ${c.country}`).join(', ')}`,
+      `Cities observing ${toAbbr.code}: When observed: ${toAbbr.whenObserved}. Major metropolitan areas: ${toAbbr.majorCities.map((c) => `${c.name} ${c.country}`).join(', ')}`,
+      faqs.map((f) => `${f.question} ${f.answer}`).join(' '),
+    ].join(' ');
+
+    const { shingles, wordCount } = getShingles(text);
     const canonicalUrl = `${siteConfig.siteUrl}/converter/${ap.slug}`;
     const canonicalHost = new URL(canonicalUrl).host;
     const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
 
-    results.push({
-      urlPath: `/converter/${ap.slug}`,
-      pageType: 'Abbreviation Converter',
-      isIndexable: true,
-      wordCount: 350,
+    converterItems.push({
+      pairSlug: ap.slug,
+      fromCode: fromAbbr.code,
+      toCode: toAbbr.code,
+      text,
+      faqsValid,
       canonicalHost,
       canonicalValid,
-      faqsValid,
-      similarityMaxPercent: 0,
-      passed: canonicalValid && faqsValid,
+      shingles,
+      wordCount,
     });
   }
 
-  // 4. Audit Sports Events
+  // Cross-compare every converter page against all other converter pages
+  for (let i = 0; i < converterItems.length; i++) {
+    let maxSim = 0;
+    for (let j = 0; j < converterItems.length; j++) {
+      if (i === j) continue;
+      const sim = computeSimilarity(converterItems[i].shingles, converterItems[j].shingles);
+      if (sim > maxSim) maxSim = sim;
+    }
+
+    const item = converterItems[i];
+    const passed = item.wordCount >= 250 && item.canonicalValid && item.faqsValid && maxSim <= 60;
+
+    results.push({
+      urlPath: `/converter/${item.pairSlug}`,
+      pageType: 'Abbreviation Converter',
+      isIndexable: true,
+      wordCount: item.wordCount,
+      canonicalHost: item.canonicalHost,
+      canonicalValid: item.canonicalValid,
+      faqsValid: item.faqsValid,
+      similarityMaxPercent: maxSim,
+      passed,
+      failureReason: !passed
+        ? `Failed: wordCount=${item.wordCount} (min 250), canon=${item.canonicalValid}, faqs=${item.faqsValid}, sim=${maxSim}%`
+        : undefined,
+    });
+  }
+
+  // 4. Audit Sports Events (cross-compared against all other sports events)
   const sports = getAllEvents();
+  const sportsItems: Array<{
+    slug: string;
+    isIndexable: boolean;
+    wordCount: number;
+    shingles: Set<string>;
+    canonicalHost: string;
+    canonicalValid: boolean;
+    faqsValid: boolean;
+  }> = [];
+
   for (const s of sports) {
-    const isConfirmed = s.isScheduled && Boolean(s.scheduledStartIso);
+    const report = generateSportsEventReport(s, 'united-states');
+    if (!report) continue;
+
+    const isConfirmed =
+      Boolean(s.isScheduled) &&
+      Boolean(s.scheduledStartIso) &&
+      Boolean(s.sourceUrl) &&
+      new Date(s.scheduledStartIso).getTime() > Date.now();
+
+    const { shingles, wordCount } = getShingles(report.fullText);
     const canonicalUrl = `${siteConfig.siteUrl}/sports/${s.slug}-time-in-united-states`;
     const canonicalHost = new URL(canonicalUrl).host;
     const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
+    const faqsValid = report.faqs.length > 0 && report.faqs.every((f) => Boolean(f.question?.trim()) && Boolean(f.answer?.trim()));
 
-    results.push({
-      urlPath: `/sports/${s.slug}-time-in-united-states`,
-      pageType: 'Sports Event',
+    sportsItems.push({
+      slug: s.slug,
       isIndexable: isConfirmed,
-      wordCount: 280,
+      wordCount,
+      shingles,
       canonicalHost,
       canonicalValid,
-      faqsValid: true,
-      similarityMaxPercent: 0,
-      passed: canonicalValid,
+      faqsValid,
+    });
+  }
+
+  // Cross-compare indexable sports events against all other indexable sports events
+  for (let i = 0; i < sportsItems.length; i++) {
+    const item = sportsItems[i];
+    let maxSim = 0;
+
+    for (let j = 0; j < sportsItems.length; j++) {
+      if (i === j) continue;
+      const sim = computeSimilarity(item.shingles, sportsItems[j].shingles);
+      if (sim > maxSim) maxSim = sim;
+    }
+
+    const passed = !item.isIndexable || (item.wordCount >= 250 && item.canonicalValid && item.faqsValid && maxSim <= 60);
+
+    results.push({
+      urlPath: `/sports/${item.slug}-time-in-united-states`,
+      pageType: 'Sports Event',
+      isIndexable: item.isIndexable,
+      wordCount: item.wordCount,
+      canonicalHost: item.canonicalHost,
+      canonicalValid: item.canonicalValid,
+      faqsValid: item.faqsValid,
+      similarityMaxPercent: maxSim,
+      passed,
+      failureReason: !passed
+        ? `Failed: wordCount=${item.wordCount} (min 250), canon=${item.canonicalValid}, faqs=${item.faqsValid}, sim=${maxSim}%`
+        : undefined,
     });
   }
 
@@ -216,7 +322,7 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
   for (const c of allCountries) {
     const report = generateDSTReport(c);
     const text = report.sections.map((s) => `${s.title} ${s.body}`).join(' ');
-    const shingles = getShingles(text);
+    const { shingles } = getShingles(text);
 
     let maxSim = 0;
     for (const prev of dstShingles) {
@@ -249,7 +355,7 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
   const countryShingles: Array<{ slug: string; shingles: Set<string> }> = [];
   for (const c of allCountries) {
     const article = generateCountryArticle(c);
-    const shingles = getShingles(article.fullText);
+    const { shingles } = getShingles(article.fullText);
 
     let maxSim = 0;
     for (const prev of countryShingles) {

@@ -3,11 +3,26 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { DateTime } from 'luxon';
 import { SportsEventReport } from '@/lib/sports';
-import { Calendar, Clock, Globe, AlertCircle, CalendarPlus, ExternalLink } from 'lucide-react';
+import { Calendar, Clock, Globe, AlertCircle, CalendarPlus, ExternalLink, Tv, Info, HelpCircle } from 'lucide-react';
 import { generateGoogleCalendarUrl, EventData } from '@/lib/events';
 
 export default function SportsEventClient({ report }: { report: SportsEventReport }) {
-  const { event, targetCountry, isScheduled, tentativeMessage, targetCountryTimeFormatted, targetCountryDateFormatted, majorAudiences, lastUpdated } = report;
+  const {
+    event,
+    targetCountry,
+    isScheduled,
+    tentativeMessage,
+    targetCountryTimeFormatted,
+    targetCountryDateFormatted,
+    majorAudiences,
+    lastUpdated,
+    source,
+    sourceUrl,
+    overview,
+    broadcastInfo,
+    timingAdvice,
+    faqs,
+  } = report;
 
   // Auto-detected visitor timezone
   const [visitorZone, setVisitorZone] = useState<string>('UTC');
@@ -75,8 +90,25 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
               Venue: {event.venueCity}, {event.venueCountry}
             </span>
           </div>
-          <div className="text-xs text-muted flex items-center gap-3">
-            {event.source && <span>Source: {event.source}</span>}
+          <div className="text-xs text-muted flex items-center gap-2 sm:gap-3 flex-wrap">
+            {source && (
+              <span>
+                Source:{' '}
+                {sourceUrl ? (
+                  <a
+                    href={sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-foreground hover:text-accent font-medium inline-flex items-center gap-0.5"
+                  >
+                    {source}
+                    <ExternalLink className="w-3 h-3 inline" />
+                  </a>
+                ) : (
+                  source
+                )}
+              </span>
+            )}
             <span>•</span>
             <span>Last checked: {report.lastChecked || lastUpdated}</span>
           </div>
@@ -84,9 +116,9 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
 
         <div className="mt-6">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-            What time is the {event.name} in {targetCountry.name}?
+            What time is {event.name} in {targetCountry.name}?
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-muted max-w-2xl">
+          <p className="mt-2 text-sm sm:text-base text-muted max-w-2xl leading-relaxed">
             {event.description}
           </p>
         </div>
@@ -171,6 +203,37 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
         )}
       </div>
 
+      {/* Event Overview & Background */}
+      <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="flex items-center gap-2 text-foreground font-semibold">
+          <Info className="w-4 h-4 text-accent" />
+          <h2 className="text-lg sm:text-xl font-bold">Event Overview & Competition History</h2>
+        </div>
+        <p className="text-xs sm:text-sm text-muted leading-relaxed">
+          {overview}
+        </p>
+        <div className="p-4 rounded-xl bg-card border border-theme text-xs space-y-2">
+          <div className="font-semibold text-foreground">Host Venue Information:</div>
+          <div className="text-muted leading-relaxed">
+            Staged in {event.venueCity}, {event.venueCountry} ({event.hostTimezone}). Local start times reflect the regional daylight saving time parameters of the venue during the competition month.
+          </div>
+        </div>
+      </div>
+
+      {/* Broadcast & Television Schedule */}
+      <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+        <div className="flex items-center gap-2 text-foreground font-semibold">
+          <Tv className="w-4 h-4 text-accent" />
+          <h2 className="text-lg sm:text-xl font-bold">Official Broadcast & Streaming Coverage</h2>
+        </div>
+        <p className="text-xs sm:text-sm text-muted leading-relaxed">
+          {broadcastInfo}
+        </p>
+        <p className="text-xs text-muted leading-relaxed">
+          {timingAdvice}
+        </p>
+      </div>
+
       {/* Major Global Audiences Table */}
       {isScheduled && majorAudiences.length > 0 && (
         <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm">
@@ -212,6 +275,32 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* Frequently Asked Questions */}
+      {faqs && faqs.length > 0 && (
+        <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="flex items-center gap-2 text-foreground font-semibold">
+            <HelpCircle className="w-4 h-4 text-accent" />
+            <h2 className="text-lg sm:text-xl font-bold">Frequently Asked Questions</h2>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((faq, idx) => (
+              <details
+                key={idx}
+                className="group p-4 rounded-xl bg-card border border-theme transition-all"
+              >
+                <summary className="font-semibold text-xs sm:text-sm text-foreground cursor-pointer list-none flex items-center justify-between">
+                  <span>{faq.question}</span>
+                  <span className="text-muted group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-2 text-xs sm:text-sm text-muted leading-relaxed">
+                  {faq.answer}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       )}

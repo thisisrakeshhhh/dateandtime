@@ -12,28 +12,32 @@ interface AdSlotProps {
   className?: string;
 }
 
-const slotDimensions: Record<AdSlotType, { height: string; label: string }> = {
+const slotDimensions: Record<AdSlotType, { height: string; label: string; mobileClass: string }> = {
   "top-banner": {
     height: "min-h-[90px] sm:min-h-[100px]",
-    label: "Advertisement · Top Banner (728x90 / Responsive)",
+    label: "Advertisement",
+    mobileClass: "hidden md:flex", // Never above tool result on mobile
   },
   "in-content": {
     height: "min-h-[250px] sm:min-h-[280px]",
-    label: "Advertisement · Content Slot (336x280 / Responsive)",
+    label: "Advertisement",
+    mobileClass: "flex",
   },
   sidebar: {
     height: "min-h-[600px]",
-    label: "Advertisement · Sidebar (300x600)",
+    label: "Advertisement",
+    mobileClass: "hidden lg:flex",
   },
   "footer-banner": {
     height: "min-h-[90px] sm:min-h-[100px]",
-    label: "Advertisement · Footer Banner (728x90)",
+    label: "Advertisement",
+    mobileClass: "flex",
   },
 };
 
 export default function AdSlot({ type = "in-content", className = "" }: AdSlotProps) {
   const dim = slotDimensions[type] || slotDimensions["in-content"];
-  const { height, label } = dim;
+  const { height, label, mobileClass } = dim;
 
   if (!siteConfig.ads.enabled) {
     return null;
@@ -41,7 +45,7 @@ export default function AdSlot({ type = "in-content", className = "" }: AdSlotPr
 
   return (
     <div
-      className={`w-full my-6 flex flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-2 overflow-hidden ${height} ${className}`}
+      className={`w-full my-6 flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 dark:border-neutral-800 bg-neutral-50/60 dark:bg-neutral-900/40 p-2 overflow-hidden ${height} ${mobileClass} ${className}`}
       data-ad-type={type}
     >
       <span className="text-[10px] uppercase font-mono tracking-wider text-neutral-400 mb-1">

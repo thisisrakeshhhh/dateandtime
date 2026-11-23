@@ -157,3 +157,35 @@ To enable AdSense ads:
 1. Set `NEXT_PUBLIC_ENABLE_ADS=true` in `.env.local` or Cloudflare dashboard.
 2. Put your Publisher ID in `NEXT_PUBLIC_ADSENSE_CLIENT`.
 3. Update `public/ads.txt` with your publisher ID.
+
+---
+
+## 🚀 Launch Checklist
+
+### 1. Google Search Console Setup
+1. **Add Property**: Open [Google Search Console](https://search.google.com/search-console) and add a **Domain Property** (e.g. `timebridge.app`).
+2. **DNS Verification**: Copy the `google-site-verification` TXT token and add it to your DNS host.
+3. **Submit Sitemaps**: Submit the primary sitemap index and sub-sitemaps:
+   - `https://timebridge.app/sitemap.xml`
+   - `https://timebridge.app/sitemap/core.xml`
+   - `https://timebridge.app/sitemap/corridors.xml`
+   - `https://timebridge.app/sitemap/cities.xml`
+   - `https://timebridge.app/sitemap/countries.xml`
+   - `https://timebridge.app/sitemap/converters.xml`
+   - `https://timebridge.app/sitemap/shifts.xml`
+   - `https://timebridge.app/sitemap/sports.xml`
+
+### 2. Vercel Custom Domain Setup
+1. In the Vercel Dashboard, navigate to **Project Settings → Domains**.
+2. Add your custom apex domain (`yourdomain.com`) and `www.yourdomain.com`.
+3. Configure DNS records with your registrar:
+   - **Type A**: `@` pointing to `76.76.21.21`
+   - **Type CNAME**: `www` pointing to `cname.vercel-dns.com`
+4. Wait for SSL certificate auto-issuance (Let's Encrypt / ZeroSSL managed by Vercel).
+5. Set `NEXT_PUBLIC_SITE_URL=https://yourdomain.com` in Vercel Environment Variables.
+
+### 3. Google AdSense & Monetization Verification
+1. **Ad Placement Rule**: All `<AdSlot />` components default to OFF via `NEXT_PUBLIC_ENABLE_ADS=false` until approved.
+2. **Never Above Results on Mobile**: The leaderboard banner uses `hidden md:flex`, guaranteeing ads never displace tool results on mobile viewports.
+3. **ads.txt**: Verify `https://yourdomain.com/ads.txt` serves HTTP 200 with your genuine `pub-XXXXXXXXXXXXXXXX` publisher ID.
+4. **GDPR/UK Cookie Consent**: Cookie consent banner automatically activates for first-time visitors, recording consent in `localStorage`.

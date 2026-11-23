@@ -124,6 +124,11 @@ export default function RootLayout({
                     </Link>
                   </li>
                   <li>
+                    <Link href="/event" className="hover:text-[#222] dark:hover:text-white hover:underline">
+                      Share event
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/about" className="hover:text-[#222] dark:hover:text-white hover:underline">
                       About
                     </Link>

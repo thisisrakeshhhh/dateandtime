@@ -64,6 +64,12 @@ export default function Navbar() {
               Shift converter
             </Link>
             <Link
+              href="/event"
+              className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
+            >
+              Share event
+            </Link>
+            <Link
               href="/time-difference/new-york-to-london"
               className="px-3 py-1.5 rounded-full hover:text-[#1c1c1c] dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-all"
             >
@@ -112,6 +118,13 @@ export default function Navbar() {
             >
               <Briefcase className="w-4 h-4 text-[#E85D4E]" />
               <span>Shift converter</span>
+            </Link>
+            <Link
+              href="/event"
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
+            >
+              <Clock className="w-4 h-4 text-[#E85D4E]" />
+              <span>Share event time</span>
             </Link>
             <Link
               href="/time-difference/new-york-to-london"

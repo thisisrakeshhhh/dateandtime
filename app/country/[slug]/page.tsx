@@ -10,6 +10,7 @@ import WorldMapContainer from "@/components/Map";
 import AdSlot from "@/components/AdSlot";
 import FlagIcon from "@/components/FlagIcon";
 import { ArrowRight } from "lucide-react";
+import { generateCountryArticle } from "@/lib/countryContent";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -62,6 +63,7 @@ export default async function CountryPage({ params }: PageProps) {
   if (!country) notFound();
 
   const timeInfo = getPlaceTimeInfo(country.timezone, country.lat, country.lng);
+  const article = generateCountryArticle(country);
   const allPopular = getPopularPairs();
   const countryPairs = allPopular.filter(
     (p) => p.from === country.slug || p.to === country.slug
@@ -195,6 +197,18 @@ export default async function CountryPage({ params }: PageProps) {
           className="h-[460px] w-full"
         />
       </div>
+
+      {/* Comprehensive Country Guide Article */}
+      <section className="bg-white dark:bg-[#181818] rounded-2xl border border-neutral-200/80 dark:border-neutral-800 p-6 sm:p-8 shadow-sm space-y-4">
+        <h2 className="text-xl font-bold tracking-tight text-[#222222] dark:text-white">
+          Timekeeping, Solar Daylight &amp; Business Operating Hours in {country.name}
+        </h2>
+        <div className="space-y-3.5 text-sm leading-relaxed text-[#555555] dark:text-[#CCCCCC]">
+          {article.paragraphs.map((p, idx) => (
+            <p key={idx}>{p}</p>
+          ))}
+        </div>
+      </section>
 
       <AdSlot slotId="country-bottom" format="horizontal" />
 

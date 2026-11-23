@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getCountryBySlug, getCountries, formatPlaceWithZone } from '@/lib/places';
 import { getDstSummaryForCountry } from '@/lib/dst';
+import { generateDSTReport } from '@/lib/dstReport';
 import { siteConfig } from '@/lib/config';
 import { ChevronRight, Home, Clock, Calendar, ArrowRight, ShieldCheck, Sun, Moon } from 'lucide-react';
 
@@ -50,6 +51,7 @@ export default async function DaylightSavingCountryPage({ params }: PageProps) {
 
   const countryLabel = formatPlaceWithZone(country);
   const dst = getDstSummaryForCountry(country.timezone, country.name);
+  const dstReport = generateDSTReport(country);
   const hasMultipleZones = country.otherZones && country.otherZones.length > 0;
   const allZones = hasMultipleZones ? [country.timezone, ...(country.otherZones || [])] : [country.timezone];
 
@@ -223,6 +225,21 @@ export default async function DaylightSavingCountryPage({ params }: PageProps) {
                 <p className="text-xs text-muted leading-relaxed pt-1">
                   {effect.explanation}
                 </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Comprehensive DST In-Depth Report */}
+        <div className="bg-surface border border-theme rounded-2xl p-6 sm:p-8 shadow-sm mt-8 space-y-6">
+          <h2 className="text-xl font-bold text-foreground">
+            Daylight Saving Time Analysis &amp; Seasonal Schedule for {country.name}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {dstReport.sections.map((sec, idx) => (
+              <div key={idx} className="p-4 rounded-xl bg-card border border-theme space-y-2">
+                <h3 className="text-sm font-semibold text-foreground">{sec.title}</h3>
+                <p className="text-xs text-muted leading-relaxed">{sec.body}</p>
               </div>
             ))}
           </div>

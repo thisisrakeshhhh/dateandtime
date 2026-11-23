@@ -77,7 +77,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const popular = getPopularPairs();
   const pairEntry = popular.find((p) => p.from === slugs.fromSlug && p.to === slugs.toSlug);
-  const isTier1 = pairEntry ? pairEntry.tier === 1 : false;
   const canonicalPair = pairEntry?.canonicalPair || `${placeA.slug}-to-${placeB.slug}`;
   const pageUrl = `${siteConfig.siteUrl}/time-difference/${canonicalPair}`;
 
@@ -85,7 +84,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: article.metaTitle,
     description: article.metaDescription,
     robots: {
-      index: isTier1,
+      index: true,
       follow: true,
     },
     alternates: {

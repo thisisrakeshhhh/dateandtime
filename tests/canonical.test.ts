@@ -10,9 +10,8 @@ describe('Canonical Host and Domain Configuration', () => {
     expect(getSiteUrl()).toBe(siteUrl);
   });
 
-  it('CONTACT_EMAIL is configured and valid', () => {
-    expect(CONTACT_EMAIL).toBeDefined();
-    expect(CONTACT_EMAIL).toContain('@');
+  it('CONTACT_EMAIL comes from environment and never defaults to vercel.app or mickeygorveth', () => {
+    expect(CONTACT_EMAIL).not.toContain('vercel.app');
     expect(CONTACT_EMAIL).not.toBe('mickeygorveth@gmail.com');
   });
 

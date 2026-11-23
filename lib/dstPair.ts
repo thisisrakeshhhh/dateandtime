@@ -92,16 +92,26 @@ export function analyzePairSeasonalDst(placeA: Place, placeB: Place, year: numbe
         summaryText = `Due to unsynchronized Daylight Saving Time changeovers, the time difference between ${shortA} and ${shortB} toggles between ${minDiffFormatted} and ${maxDiffFormatted}. With ${whichChangesFirst} switching clocks first, cross-border meeting organizers should anticipate a temporary one-hour adjustment during seasonal transition weeks.`;
       }
     } else if (nextA) {
-      if (v % 2 === 0) {
+      const vMod = v % 4;
+      if (vMod === 0) {
         summaryText = `The time difference varies throughout the year because ${shortA} observes Daylight Saving Time while ${shortB} remains on standard time year-round. Clocks in ${shortA} adjust by 1 hour, altering the time gap between ${minDiffFormatted} and ${maxDiffFormatted}.`;
+      } else if (vMod === 1) {
+        summaryText = `Because ${shortA} shifts its clocks for Daylight Saving Time while ${shortB} adheres to fixed standard time all year, the bilateral gap alternates between ${minDiffFormatted} and ${maxDiffFormatted}. Remote teams coordinating between these two regions should note that the hour difference shifts according to ${shortA}'s seasonal clock calendar.`;
+      } else if (vMod === 2) {
+        summaryText = `Civil time in ${shortA} moves forward and backward each year under daylight saving rules, whereas ${shortB} never adjusts its clocks. As a consequence, their mutual time difference expands or contracts between ${minDiffFormatted} and ${maxDiffFormatted} based entirely on ${shortA}'s seasonal schedule.`;
       } else {
-        summaryText = `Because ${shortA} shifts its clocks for Daylight Saving Time while ${shortB} adheres to fixed standard time all year, the bilateral gap alternates between ${minDiffFormatted} and ${maxDiffFormatted}.`;
+        summaryText = `Across all four seasons, the gap between ${shortA} and ${shortB} transitions between ${minDiffFormatted} and ${maxDiffFormatted}. This change is driven exclusively by ${shortA}'s statutory daylight adjustments, while counterparts in ${shortB} operate on a permanent, unwavering UTC offset.`;
       }
     } else {
-      if (v % 2 === 0) {
+      const vMod = v % 4;
+      if (vMod === 0) {
         summaryText = `The time difference shifts seasonally because ${shortB} observes Daylight Saving Time while ${shortA} operates on static standard time year-round. When ${shortB} adjusts its clocks, the offset alternates between ${minDiffFormatted} and ${maxDiffFormatted}.`;
+      } else if (vMod === 1) {
+        summaryText = `Seasonal clock changes in ${shortB} cause the operational time difference to swing between ${minDiffFormatted} and ${maxDiffFormatted}, while ${shortA} remains on uninterrupted standard time. Global calendars should account for ${shortB}'s spring and autumn transitions.`;
+      } else if (vMod === 2) {
+        summaryText = `While ${shortA} maintains an unvarying standard time throughout the year, ${shortB} shifts its clocks bi-annually for Daylight Saving Time. This creates a seasonal offset that moves between ${minDiffFormatted} and ${maxDiffFormatted}.`;
       } else {
-        summaryText = `Seasonal clock changes in ${shortB} cause the operational time difference to swing between ${minDiffFormatted} and ${maxDiffFormatted}, while ${shortA} remains on uninterrupted standard time.`;
+        summaryText = `Operating between a permanent-time region like ${shortA} and a daylight-shifting jurisdiction like ${shortB} causes their mutual time difference to toggle between ${minDiffFormatted} and ${maxDiffFormatted} twice every year.`;
       }
     }
   }

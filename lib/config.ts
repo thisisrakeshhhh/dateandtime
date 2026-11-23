@@ -49,7 +49,7 @@ export function getSiteUrl(): string {
   return "https://dateandtime-sable.vercel.app";
 }
 
-export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@dateandtime-sable.vercel.app";
+export const CONTACT_EMAIL = (process.env.CONTACT_EMAIL || process.env.NEXT_PUBLIC_CONTACT_EMAIL || "").trim();
 
 export const siteConfig: SiteConfig = {
   name: "TimeBridge",

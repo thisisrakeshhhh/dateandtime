@@ -12,16 +12,6 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "time difference calculator",
-    "world clock map",
-    "best time to call",
-    "time zone converter",
-    "day and night world map",
-    "solar terminator live",
-    "flight distance calculator",
-    "daylight saving time tracker",
-  ],
   authors: [{ name: siteConfig.name, url: siteConfig.siteUrl }],
   creator: siteConfig.name,
   openGraph: {
@@ -156,14 +146,26 @@ export default function RootLayout({
               <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
               <p>
                 Suggest a missing city or feedback:{" "}
-                <a
-                  href={`mailto:${siteConfig.contactEmail}?subject=Add%20City%20Suggestion%20or%20Feedback`}
-                  className="text-[#E85D4E] hover:underline font-semibold"
-                >
-                  {siteConfig.contactEmail}
-                </a>
+                {siteConfig.contactEmail ? (
+                  <a
+                    href={`mailto:${siteConfig.contactEmail}?subject=Add%20City%20Suggestion%20or%20Feedback`}
+                    className="text-[#E85D4E] hover:underline font-semibold"
+                  >
+                    {siteConfig.contactEmail}
+                  </a>
+                ) : (
+                  <Link href="/contact" className="text-[#E85D4E] hover:underline font-semibold">
+                    Contact form &amp; feedback
+                  </Link>
+                )}
               </p>
-              <p>Data: IANA · Open-Meteo · Nager.Date · OpenStreetMap</p>
+              <p>
+                Data:{" "}
+                <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" className="hover:underline">IANA</a> ·{" "}
+                <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Open-Meteo</a> ·{" "}
+                <a href="https://date.nager.at" target="_blank" rel="noopener noreferrer" className="hover:underline">Nager.Date</a> ·{" "}
+                <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="hover:underline">OpenStreetMap</a>
+              </p>
             </div>
           </div>
         </footer>

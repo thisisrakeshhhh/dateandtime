@@ -44,7 +44,13 @@ export default function ContactPage() {
               Email Support
             </span>
             <p className="font-mono font-medium text-neutral-900 dark:text-white mt-0.5">
-              {siteConfig.contactEmail}
+              {siteConfig.contactEmail ? (
+                <a href={`mailto:${siteConfig.contactEmail}`} className="hover:underline">
+                  {siteConfig.contactEmail}
+                </a>
+              ) : (
+                "Submit message via the contact form"
+              )}
             </p>
           </div>
           <div>

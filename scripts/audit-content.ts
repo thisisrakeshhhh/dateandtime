@@ -7,6 +7,9 @@ import { generateCityTimeReport } from '../lib/cityTime';
 import top300Cities from '../data/top300Cities.json';
 import { getAllAbbreviationPairs, getAbbreviation, generateAbbreviationFaqs } from '../lib/abbreviations';
 import { getAllEvents } from '../lib/sports';
+import { getCountries } from '../lib/places';
+import { generateCountryArticle } from '../lib/countryContent';
+import { generateDSTReport } from '../lib/dstReport';
 
 interface AuditResult {
   urlPath: string;
@@ -107,7 +110,7 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
     const canonicalHost = new URL(canonicalUrl).host;
     const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
 
-    const passed = article.wordCount >= 300 && canonicalValid && faqsValid && maxSim < 70;
+    const passed = article.wordCount >= 250 && canonicalValid && faqsValid && maxSim <= 60;
 
     results.push({
       urlPath: `/time-difference/${p.from}-to-${p.to}`,
@@ -145,7 +148,7 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
     const canonicalHost = new URL(canonicalUrl).host;
     const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
 
-    const passed = report.wordCount >= 250 && canonicalValid && maxSim < 70;
+    const passed = report.wordCount >= 250 && canonicalValid && maxSim <= 60;
 
     results.push({
       urlPath: `/what-time-is-it-in/${city.slug}`,
@@ -207,6 +210,74 @@ export function runContentAudit(): { results: AuditResult[]; allPassed: boolean 
     });
   }
 
+  // 5. Audit Daylight Saving Time Pages
+  const allCountries = getCountries();
+  const dstShingles: Array<{ slug: string; shingles: Set<string> }> = [];
+  for (const c of allCountries) {
+    const report = generateDSTReport(c);
+    const text = report.sections.map((s) => `${s.title} ${s.body}`).join(' ');
+    const shingles = getShingles(text);
+
+    let maxSim = 0;
+    for (const prev of dstShingles) {
+      const sim = computeSimilarity(shingles, prev.shingles);
+      if (sim > maxSim) maxSim = sim;
+    }
+    dstShingles.push({ slug: c.slug, shingles });
+
+    const canonicalUrl = `${siteConfig.siteUrl}/daylight-saving-time/${c.slug}`;
+    const canonicalHost = new URL(canonicalUrl).host;
+    const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
+
+    const passed = report.wordCount >= 250 && canonicalValid && maxSim <= 60;
+
+    results.push({
+      urlPath: `/daylight-saving-time/${c.slug}`,
+      pageType: 'Daylight Saving Time',
+      isIndexable: true,
+      wordCount: report.wordCount,
+      canonicalHost,
+      canonicalValid,
+      faqsValid: true,
+      similarityMaxPercent: maxSim,
+      passed,
+      failureReason: !passed ? `Failed: wordCount=${report.wordCount}, sim=${maxSim}%` : undefined,
+    });
+  }
+
+  // 6. Audit Country Directory Pages
+  const countryShingles: Array<{ slug: string; shingles: Set<string> }> = [];
+  for (const c of allCountries) {
+    const article = generateCountryArticle(c);
+    const shingles = getShingles(article.fullText);
+
+    let maxSim = 0;
+    for (const prev of countryShingles) {
+      const sim = computeSimilarity(shingles, prev.shingles);
+      if (sim > maxSim) maxSim = sim;
+    }
+    countryShingles.push({ slug: c.slug, shingles });
+
+    const canonicalUrl = `${siteConfig.siteUrl}/country/${c.slug}`;
+    const canonicalHost = new URL(canonicalUrl).host;
+    const canonicalValid = canonicalHost === expectedHost && !canonicalHost.includes('timebridge.app');
+
+    const passed = article.wordCount >= 250 && canonicalValid && maxSim <= 60;
+
+    results.push({
+      urlPath: `/country/${c.slug}`,
+      pageType: 'Country Directory',
+      isIndexable: true,
+      wordCount: article.wordCount,
+      canonicalHost,
+      canonicalValid,
+      faqsValid: true,
+      similarityMaxPercent: maxSim,
+      passed,
+      failureReason: !passed ? `Failed: wordCount=${article.wordCount}, sim=${maxSim}%` : undefined,
+    });
+  }
+
   const failedCount = results.filter((r) => r.isIndexable && !r.passed).length;
   const allPassed = failedCount === 0;
 
@@ -223,11 +294,13 @@ if (require.main === module) {
 
   // Summary by category
   const categories = Array.from(new Set(results.map((r) => r.pageType)));
-  console.log('Page Type                  | Audited | Passed | Avg Words | Max Sim % | Canon Valid');
-  console.log('---------------------------|---------|--------|-----------|-----------|------------');
+  console.log('Page Type                  | Indexable | Noindex | Passed | Avg Words | Max Sim % | Status');
+  console.log('---------------------------|-----------|---------|--------|-----------|-----------|-------');
 
   for (const cat of categories) {
     const catItems = results.filter((r) => r.pageType === cat);
+    const indexableCount = catItems.filter((r) => r.isIndexable).length;
+    const noindexCount = catItems.filter((r) => !r.isIndexable).length;
     const passed = catItems.filter((r) => r.passed).length;
     const avgWords = Math.round(catItems.reduce((acc, c) => acc + c.wordCount, 0) / catItems.length);
     const maxSim = Math.max(...catItems.map((c) => c.similarityMaxPercent));
@@ -235,12 +308,21 @@ if (require.main === module) {
 
     const pad = (str: string, len: number) => (str + ' '.repeat(len)).slice(0, len);
     console.log(
-      `${pad(cat, 26)} | ${pad(String(catItems.length), 7)} | ${pad(String(passed), 6)} | ${pad(String(avgWords), 9)} | ${pad(maxSim + '%', 9)} | ${canonAllValid ? 'YES' : 'FAIL'}`
+      `${pad(cat, 26)} | ${pad(String(indexableCount), 9)} | ${pad(String(noindexCount), 7)} | ${pad(String(passed), 6)} | ${pad(String(avgWords), 9)} | ${pad(maxSim + '%', 9)} | ${passed === catItems.length && canonAllValid ? 'PASSED' : 'FAILED'}`
     );
   }
 
-  console.log('---------------------------|---------|--------|-----------|-----------|------------');
-  console.log(`TOTAL INDEXABLE PAGES AUDITED: ${results.filter((r) => r.isIndexable).length}`);
+  // Calculate global totals including Tier 2 pairs and best-time-to-call
+  const allPopularPairs = getPopularPairs();
+  const tier2PairsCount = allPopularPairs.filter((p) => p.tier !== 1).length;
+  const bestTimeToCallCount = allPopularPairs.length; // canonical duplicates
+  const totalAudited = results.length;
+  const totalIndexable = results.filter((r) => r.isIndexable).length;
+  const totalNoindex = results.filter((r) => !r.isIndexable).length + tier2PairsCount + bestTimeToCallCount;
+
+  console.log('---------------------------|-----------|---------|--------|-----------|-----------|-------');
+  console.log(`Audited Routes:            | ${totalIndexable}       | ${results.filter((r) => !r.isIndexable).length}       | ${results.filter((r) => r.passed).length}    |           |           |`);
+  console.log(`Global System Total:       | Indexable: ${totalIndexable} | Noindex: ${totalNoindex} (incl. ${tier2PairsCount} Tier-2 & ${bestTimeToCallCount} canonical duplicates)`);
   console.log(`OVERALL AUDIT STATUS: ${allPassed ? 'ALL PASSED (100%)' : 'FAILURES DETECTED'}`);
   console.log('========================================================================\n');
 

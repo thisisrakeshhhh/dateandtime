@@ -26,7 +26,6 @@ const POPULAR_SLUGS = [
 export default function MapSearchOverlay({
   placeA,
   placeB,
-  userPlace: _userPlace,
   onSelectPlace,
   onClear,
   isCompareMode,

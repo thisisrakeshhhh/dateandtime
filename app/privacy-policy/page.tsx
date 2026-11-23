@@ -130,8 +130,20 @@ export default function PrivacyPolicyPage() {
             California (CCPA), you are entitled to statutory data protection rights, including the
             right to access, rectify, or request deletion of personal information. Because we do not
             maintain customer accounts or store identifiable customer profiles, we process zero
-            identifiable consumer databases. For questions, contact us at:{" "}
-            <span className="font-mono text-emerald-600">{siteConfig.contactEmail}</span>.
+            identifiable consumer databases. For questions, please reach out via our{" "}
+            <Link href="/contact" className="text-emerald-600 underline">
+              contact form
+            </Link>
+            {siteConfig.contactEmail ? (
+              <>
+                {" "}
+                or directly by email at:{" "}
+                <a href={`mailto:${siteConfig.contactEmail}`} className="font-mono text-emerald-600 underline">
+                  {siteConfig.contactEmail}
+                </a>
+              </>
+            ) : null}
+            .
           </p>
         </section>
       </div>

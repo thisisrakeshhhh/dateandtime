@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import {
   Place,
   getPlaceByTimezone,
@@ -155,26 +154,9 @@ export default function HomeClient({
 
   return (
     <div className="w-full flex flex-col">
-      {/* Intro & Search Bar Header */}
-      <div className="w-full bg-white/95 dark:bg-[#121212]/95 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.08] shadow-xs z-30 transition-colors">
-        <div className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col gap-2.5">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
-            <div>
-              <h1 className="text-lg sm:text-xl font-bold tracking-tight text-[#1c1c1c] dark:text-white">
-                What time is it there?
-              </h1>
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                Pick two places to see the time difference, weather and best time to call.
-              </p>
-            </div>
-            <Link
-              href="/converter"
-              className="self-start sm:self-auto text-xs font-semibold text-[#E85D4E] hover:underline flex items-center gap-1 transition-colors"
-            >
-              Time zone converters →
-            </Link>
-          </div>
-
+      {/* Compact Search Bar Header */}
+      <div className="relative w-full bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-black/[0.06] dark:border-white/[0.08] shadow-xs z-[1010] transition-colors">
+        <div className="w-full max-w-xl mx-auto px-3 sm:px-4 py-2">
           <MapSearchOverlay
             placeA={placeA}
             placeB={placeB}
@@ -187,7 +169,7 @@ export default function HomeClient({
       </div>
 
       {/* Hero Fullscreen Google-Maps-Style Section */}
-      <div className="relative w-full h-[calc(100vh-56px-53px)] min-h-[500px] bg-neutral-100 dark:bg-[#141414] overflow-hidden">
+      <div className="relative isolate z-0 w-full h-[calc(100vh-56px-48px)] min-h-[520px] bg-neutral-100 dark:bg-[#141414] overflow-hidden">
         {/* Fullscreen Interactive Leaflet Map */}
         <WorldMapContainer
           placeA={placeA}

@@ -186,32 +186,48 @@ export function searchPlaces(query: string, limit = 10): Place[] {
   const q = query.toLowerCase().trim();
 
   const exactMatches: Place[] = [];
-  const startsWithMatches: Place[] = [];
-  const containsMatches: Place[] = [];
+  const nameStartsWithMatches: Place[] = [];
+  const nameContainsMatches: Place[] = [];
+  const countryMatches: Place[] = [];
+
+  const seenIds = new Set<string>();
 
   for (const place of getAllPlaces()) {
     const nameLower = place.name.toLowerCase();
     const countryLower = place.countryName.toLowerCase();
 
     if (nameLower === q) {
-      exactMatches.push(place);
+      if (!seenIds.has(place.id)) {
+        exactMatches.push(place);
+        seenIds.add(place.id);
+      }
     } else if (nameLower.startsWith(q)) {
-      startsWithMatches.push(place);
-    } else if (nameLower.includes(q) || countryLower.includes(q)) {
-      containsMatches.push(place);
+      if (!seenIds.has(place.id)) {
+        nameStartsWithMatches.push(place);
+        seenIds.add(place.id);
+      }
+    } else if (nameLower.includes(q)) {
+      if (!seenIds.has(place.id)) {
+        nameContainsMatches.push(place);
+        seenIds.add(place.id);
+      }
+    } else if (countryLower.startsWith(q) || countryLower.includes(q)) {
+      if (!seenIds.has(place.id)) {
+        countryMatches.push(place);
+        seenIds.add(place.id);
+      }
     }
   }
 
-  // Sort startsWith and contains by importance (countries first, then by population desc)
   const sortFn = (a: Place, b: Place) => {
-    if (a.type !== b.type) return a.type === "country" ? -1 : 1;
     return (b.population ?? 0) - (a.population ?? 0);
   };
 
-  startsWithMatches.sort(sortFn);
-  containsMatches.sort(sortFn);
+  nameStartsWithMatches.sort(sortFn);
+  nameContainsMatches.sort(sortFn);
+  countryMatches.sort(sortFn);
 
-  return [...exactMatches, ...startsWithMatches, ...containsMatches].slice(0, limit);
+  return [...exactMatches, ...nameStartsWithMatches, ...nameContainsMatches, ...countryMatches].slice(0, limit);
 }
 
 export interface CityGoogleMapsInfo {

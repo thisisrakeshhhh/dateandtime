@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllEvents } from '@/lib/sports';
+import { siteConfig } from '@/lib/config';
 import { ChevronRight, Home, Calendar, ArrowRight } from 'lucide-react';
 
 export const revalidate = 60;
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Global Sports & Championship Broadcast Times | TimeBridge',
   description: 'Find official local broadcast start times for 20 premier recurring sports events, including Super Bowl, UEFA Champions League, FIFA World Cup, and Wimbledon.',
   alternates: {
-    canonical: 'https://timebridge.app/sports',
+    canonical: `${siteConfig.siteUrl}/sports`,
   },
   robots: {
     index: true,
@@ -36,13 +37,13 @@ export default function SportsHubPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://timebridge.app',
+        item: siteConfig.siteUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Sports',
-        item: 'https://timebridge.app/sports',
+        item: `${siteConfig.siteUrl}/sports`,
       },
     ],
   };

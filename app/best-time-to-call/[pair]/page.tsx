@@ -63,18 +63,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `Best Time to Call ${placeTo.name} from ${placeFrom.name} | Calling Hours Guide`;
   const description = `Find the best time to call ${placeTo.name} from ${placeFrom.name}: optimal 9 AM - 9 PM awake overlap (${bestTime.formattedDuration}), office hours overlap (${bestTime.officeFormattedDuration}), and interactive 24h timeline.`;
-  const pageUrl = `${siteConfig.siteUrl}/best-time-to-call/${placeTo.slug}-from-${placeFrom.slug}`;
+  const matchingDiffUrl = `${siteConfig.siteUrl}/time-difference/${placeFrom.slug}-to-${placeTo.slug}`;
 
   return {
     title,
     description,
+    robots: {
+      index: false,
+      follow: true,
+    },
     alternates: {
-      canonical: pageUrl,
+      canonical: matchingDiffUrl,
     },
     openGraph: {
       title,
       description,
-      url: pageUrl,
+      url: matchingDiffUrl,
       siteName: siteConfig.name,
       locale: "en_US",
       type: "article",

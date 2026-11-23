@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getAllEvents, getEventBySlug, generateSportsEventReport } from '@/lib/sports';
 import { getCountryBySlug } from '@/lib/places';
+import { siteConfig } from '@/lib/config';
 import SportsEventClient from '@/components/SportsEventClient';
 import { ChevronRight, Home } from 'lucide-react';
 
@@ -57,14 +58,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const country = getCountryBySlug(parsed.countrySlug);
   if (!event || !country) return { title: 'Event Not Found | TimeBridge' };
 
+  const isConfirmed =
+    Boolean(event.isScheduled) &&
+    Boolean(event.scheduledStartIso) &&
+    new Date(event.scheduledStartIso).getTime() > Date.now();
+
   return {
     title: `What Time is ${event.name} in ${country.name}? Broadcast Schedule`,
     description: `Official start time for ${event.name} converted to ${country.name} local time (${country.timezone}). Includes auto-detected viewer countdown and major audience TV schedule.`,
     alternates: {
-      canonical: `https://timebridge.app/sports/${slug}`,
+      canonical: `${siteConfig.siteUrl}/sports/${slug}`,
     },
     robots: {
-      index: true,
+      index: isConfirmed,
       follow: true,
     },
   };
@@ -90,19 +96,19 @@ export default async function SportsEventPage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://timebridge.app',
+        item: siteConfig.siteUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Sports & Events',
-        item: 'https://timebridge.app/sports',
+        item: `${siteConfig.siteUrl}/sports`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${event.name} in ${country.name}`,
-        item: `https://timebridge.app/sports/${slug}`,
+        item: `${siteConfig.siteUrl}/sports/${slug}`,
       },
     ],
   };

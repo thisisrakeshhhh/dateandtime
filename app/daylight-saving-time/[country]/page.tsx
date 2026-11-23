@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getCountryBySlug, getCountries, formatPlaceWithZone } from '@/lib/places';
 import { getDstSummaryForCountry } from '@/lib/dst';
+import { siteConfig } from '@/lib/config';
 import { ChevronRight, Home, Clock, Calendar, ArrowRight, ShieldCheck, Sun, Moon } from 'lucide-react';
 
 export const revalidate = 60;
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `Daylight Saving Time in ${countryLabel} - Next Clock Change Dates`,
     description: `Does ${countryLabel} have Daylight Saving Time? See the next clock change date, last transition, and seasonal time difference effects on major flight and business corridors.`,
     alternates: {
-      canonical: `https://timebridge.app/daylight-saving-time/${country.slug}`,
+      canonical: `${siteConfig.siteUrl}/daylight-saving-time/${country.slug}`,
     },
     robots: {
       index: true,
@@ -60,19 +61,19 @@ export default async function DaylightSavingCountryPage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://timebridge.app',
+        item: siteConfig.siteUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Countries',
-        item: 'https://timebridge.app/countries',
+        item: `${siteConfig.siteUrl}/countries`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${country.name} DST`,
-        item: `https://timebridge.app/daylight-saving-time/${country.slug}`,
+        item: `${siteConfig.siteUrl}/daylight-saving-time/${country.slug}`,
       },
     ],
   };

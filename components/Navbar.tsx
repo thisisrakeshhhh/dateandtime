@@ -148,7 +148,7 @@ export default function Navbar() {
               <span>About TimeBridge</span>
             </Link>
             <a
-              href="mailto:mickeygorveth@gmail.com?subject=Add%20City%20or%20Feedback"
+              href={`mailto:${siteConfig.contactEmail}?subject=Add%20City%20or%20Feedback`}
               className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-neutral-800 dark:text-neutral-200 transition-colors"
             >
               <Mail className="w-4 h-4 text-[#E85D4E]" />

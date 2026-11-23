@@ -6,6 +6,7 @@ import {
   formatPlaceDisplayName,
   getCityGoogleMapsInfo,
 } from "@/lib/places";
+import { siteConfig } from "@/lib/config";
 import { getSolarTimes, getDstInfo } from "@/lib/astronomy";
 import { formatTimeDifference } from "@/lib/time";
 import { calculateDistance } from "@/lib/distance";
@@ -476,10 +477,10 @@ export default function PlaceDetailsCard({
       <div className="text-center text-[11px] text-neutral-400 dark:text-neutral-500 pt-0.5">
         Feedback or add a missing city?{" "}
         <a
-          href="mailto:mickeygorveth@gmail.com?subject=TimeBridge%20Suggestion"
+          href={`mailto:${siteConfig.contactEmail}?subject=TimeBridge%20Suggestion`}
           className="text-[#E85D4E] hover:underline font-medium"
         >
-          mickeygorveth@gmail.com
+          {siteConfig.contactEmail}
         </a>
       </div>
     </aside>

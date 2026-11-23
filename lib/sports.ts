@@ -12,6 +12,8 @@ export interface SportsEvent {
   scheduledStartIso: string;
   isScheduled: boolean;
   lastUpdated: string;
+  lastChecked?: string;
+  source?: string;
   description: string;
 }
 
@@ -33,6 +35,8 @@ export interface SportsEventReport {
   targetCountryDateFormatted: string;
   majorAudiences: AudienceBroadcastTime[];
   lastUpdated: string;
+  lastChecked?: string;
+  source?: string;
 }
 
 export function getAllEvents(): SportsEvent[] {
@@ -52,13 +56,15 @@ export function generateSportsEventReport(event: SportsEvent, targetCountrySlug:
       event,
       targetCountry,
       isScheduled: false,
-      tentativeMessage: 'Official broadcast schedule for this event is tentative and awaiting final league and host broadcaster confirmation. Please check back closer to the event date.',
+      tentativeMessage: `Official broadcast date and start time have not been announced by event organizers (${event.source || 'governing body'}). Schedule status verified as tentative and pending confirmation on ${event.lastChecked || event.lastUpdated}.`,
       hostStartLocal: null,
       targetCountryStartLocal: null,
-      targetCountryTimeFormatted: 'Schedule Pending',
-      targetCountryDateFormatted: 'Date TBA',
+      targetCountryTimeFormatted: 'Date not announced',
+      targetCountryDateFormatted: 'Date not announced',
       majorAudiences: [],
       lastUpdated: event.lastUpdated,
+      lastChecked: event.lastChecked,
+      source: event.source,
     };
   }
 
@@ -119,5 +125,7 @@ export function generateSportsEventReport(event: SportsEvent, targetCountrySlug:
     targetCountryDateFormatted: targetCountryStartLocal.toFormat('cccc, LLLL d, yyyy'),
     majorAudiences,
     lastUpdated: event.lastUpdated,
+    lastChecked: event.lastChecked,
+    source: event.source,
   };
 }

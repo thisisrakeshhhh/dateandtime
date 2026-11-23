@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getPlaceBySlug, formatPlaceWithZone } from '@/lib/places';
 import { generateCityTimeReport } from '@/lib/cityTime';
+import { siteConfig } from '@/lib/config';
 import top300Cities from '@/data/top300Cities.json';
 import CityTimeClient from '@/components/CityTimeClient';
 import { ChevronRight, Home } from 'lucide-react';
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       follow: true,
     },
     alternates: {
-      canonical: `https://timebridge.app/what-time-is-it-in/${place.slug}`,
+      canonical: `${siteConfig.siteUrl}/what-time-is-it-in/${place.slug}`,
     },
   };
 }
@@ -59,19 +60,19 @@ export default async function WhatTimeIsInCityPage({ params }: PageProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://timebridge.app',
+        item: siteConfig.siteUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Cities',
-        item: 'https://timebridge.app/cities',
+        item: `${siteConfig.siteUrl}/cities`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: place.name,
-        item: `https://timebridge.app/what-time-is-it-in/${place.slug}`,
+        item: `${siteConfig.siteUrl}/what-time-is-it-in/${place.slug}`,
       },
     ],
   };

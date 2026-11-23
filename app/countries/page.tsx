@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getCountries, formatPlaceWithZone } from '@/lib/places';
+import { siteConfig } from '@/lib/config';
 import { ChevronRight, Home, Globe, Layers, ArrowRight } from 'lucide-react';
 
 export const revalidate = 60;
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: 'World Countries & Time Zones Directory | TimeBridge',
   description: 'Authoritative index of countries and national time zones. Identifies multiple time zones across the US, Canada, Australia, Russia and Brazil.',
   alternates: {
-    canonical: 'https://timebridge.app/countries',
+    canonical: `${siteConfig.siteUrl}/countries`,
   },
 };
 
@@ -24,13 +25,13 @@ export default function CountriesHubPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://timebridge.app',
+        item: siteConfig.siteUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Countries',
-        item: 'https://timebridge.app/countries',
+        item: `${siteConfig.siteUrl}/countries`,
       },
     ],
   };

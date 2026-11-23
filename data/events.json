@@ -8,7 +8,9 @@
     "hostTimezone": "America/Los_Angeles",
     "scheduledStartIso": "2027-02-14T15:30:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "NFL.com Official Schedule Release",
     "description": "The annual championship game of the National Football League (NFL) featuring kickoff, halftime show and global broadcasts."
   },
   {
@@ -20,7 +22,9 @@
     "hostTimezone": "Europe/Berlin",
     "scheduledStartIso": "2027-05-29T21:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "UEFA.com Competition Calendar",
     "description": "European club football pinnacle showdown contested by the top two clubs in Europe."
   },
   {
@@ -32,7 +36,9 @@
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2026-07-19T15:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "FIFA.com Match Schedule Publication",
     "description": "The culmination of the 48-nation FIFA World Cup tournament taking place at MetLife Stadium."
   },
   {
@@ -44,7 +50,9 @@
     "hostTimezone": "Europe/London",
     "scheduledStartIso": "2027-07-11T14:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "Wimbledon.com Order of Play Announcement",
     "description": "The historic grass-court Grand Slam championship final on Centre Court at the All England Club."
   },
   {
@@ -56,7 +64,9 @@
     "hostTimezone": "Europe/London",
     "scheduledStartIso": "2027-07-10T14:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "Wimbledon.com Order of Play Announcement",
     "description": "The ladies' Grand Slam tennis final played on Centre Court at Wimbledon."
   },
   {
@@ -68,7 +78,9 @@
     "hostTimezone": "Europe/Monaco",
     "scheduledStartIso": "2027-05-23T15:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "Formula1.com Official Championship Calendar",
     "description": "The most glamorous street circuit race on the Formula 1 calendar through Monte Carlo and La Condamine."
   },
   {
@@ -80,7 +92,9 @@
     "hostTimezone": "Europe/Paris",
     "scheduledStartIso": "2027-07-25T16:30:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "Letour.fr Official Route Announcement",
     "description": "The ceremonial sprint finish and podium presentation along the Avenue des Champs-Élysées."
   },
   {
@@ -92,7 +106,9 @@
     "hostTimezone": "Africa/Johannesburg",
     "scheduledStartIso": "2027-11-21T13:30:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "ICC-cricket.com Future Tours Programme (FTP)",
     "description": "The 50-over One Day International (ODI) World Cup championship match contested in South Africa."
   },
   {
@@ -102,9 +118,11 @@
     "venueCity": "Colombo",
     "venueCountry": "Sri Lanka",
     "hostTimezone": "Asia/Colombo",
-    "scheduledStartIso": "2026-03-08T19:00:00",
-    "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "scheduledStartIso": "",
+    "isScheduled": false,
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "ICC-cricket.com Official Board Notice",
     "description": "The 20-over fast-paced international cricket championship final."
   },
   {
@@ -116,7 +134,9 @@
     "hostTimezone": "Asia/Kolkata",
     "scheduledStartIso": "2027-05-30T19:30:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "IPLt20.com Season Fixtures",
     "description": "The title clash of the world's most lucrative and watched domestic cricket league."
   },
   {
@@ -128,7 +148,9 @@
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2027-06-03T20:30:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "NBA.com Key Dates Calendar",
     "description": "Opening game of the best-of-seven series deciding the National Basketball Association champion."
   },
   {
@@ -140,7 +162,9 @@
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2027-04-11T14:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "Masters.com Tournament Schedule",
     "description": "Final 18 holes at Augusta National Golf Club awarding the prestigious Green Jacket."
   },
   {
@@ -152,7 +176,9 @@
     "hostTimezone": "Australia/Melbourne",
     "scheduledStartIso": "2027-01-31T19:30:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "AusOpen.com Tournament Schedule",
     "description": "First Grand Slam tournament of the tennis calendar on the blue hard courts of Rod Laver Arena."
   },
   {
@@ -164,7 +190,9 @@
     "hostTimezone": "Europe/Paris",
     "scheduledStartIso": "2027-06-06T15:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "RolandGarros.com Official Program",
     "description": "The premier red-clay Grand Slam tennis final played on Court Philippe-Chatrier."
   },
   {
@@ -176,7 +204,9 @@
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2027-09-12T16:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "USOpen.org Tournament Schedule",
     "description": "Final Grand Slam of the year under the lights at Arthur Ashe Stadium."
   },
   {
@@ -188,7 +218,9 @@
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2027-02-21T14:30:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "NASCAR.com Cup Series Schedule",
     "description": "The 500-mile NASCAR Cup Series season-opening stock car race at Daytona International Speedway."
   },
   {
@@ -200,7 +232,9 @@
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2027-05-01T18:57:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "KentuckyDerby.com Official Timetable",
     "description": "The Run for the Roses at Churchill Downs, the most storied leg of the American Triple Crown."
   },
   {
@@ -210,9 +244,11 @@
     "venueCity": "Los Angeles",
     "venueCountry": "United States",
     "hostTimezone": "America/Los_Angeles",
-    "scheduledStartIso": "2028-07-14T19:00:00",
-    "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "scheduledStartIso": "",
+    "isScheduled": false,
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "Olympics.com IOC Media Press Release",
     "description": "Spectacular opening ceremony welcoming over 10,000 global Olympians to Los Angeles."
   },
   {
@@ -222,9 +258,11 @@
     "venueCity": "Milan",
     "venueCountry": "Italy",
     "hostTimezone": "Europe/Rome",
-    "scheduledStartIso": "2026-02-06T20:00:00",
-    "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "scheduledStartIso": "",
+    "isScheduled": false,
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "Olympics.com Milestone Archive",
     "description": "Opening celebration of the XXV Olympic Winter Games staged at the San Siro Stadium."
   },
   {
@@ -236,7 +274,9 @@
     "hostTimezone": "America/New_York",
     "scheduledStartIso": "2027-04-19T09:00:00",
     "isScheduled": true,
-    "lastUpdated": "2026-11-20",
+    "lastUpdated": "2026-11-23",
+    "lastChecked": "2026-11-23",
+    "source": "BAA.org Boston Athletic Association",
     "description": "World's oldest annual marathon traversing from Hopkinton to Boylston Street in Boston."
   }
 ]

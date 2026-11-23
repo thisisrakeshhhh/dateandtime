@@ -157,10 +157,10 @@ export default function RootLayout({
               <p>
                 Suggest a missing city or feedback:{" "}
                 <a
-                  href="mailto:mickeygorveth@gmail.com?subject=Add%20City%20Suggestion%20or%20Feedback"
+                  href={`mailto:${siteConfig.contactEmail}?subject=Add%20City%20Suggestion%20or%20Feedback`}
                   className="text-[#E85D4E] hover:underline font-semibold"
                 >
-                  mickeygorveth@gmail.com
+                  {siteConfig.contactEmail}
                 </a>
               </p>
               <p>Data: IANA · Open-Meteo · Nager.Date · OpenStreetMap</p>

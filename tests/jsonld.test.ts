@@ -3,6 +3,7 @@ import { getAbbreviationPair } from '../lib/abbreviations';
 import { getPlaceBySlug } from '../lib/places';
 import { getDstSummaryForCountry } from '../lib/dst';
 import { getEventBySlug, generateSportsEventReport } from '../lib/sports';
+import { siteConfig } from '../lib/config';
 
 describe('JSON-LD Schema.org Structured Data Validation', () => {
   it('Sample 1: Abbreviation converter FAQPage schema is valid and complete', () => {
@@ -36,9 +37,9 @@ describe('JSON-LD Schema.org Structured Data Validation', () => {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://timebridge.app' },
-        { '@type': 'ListItem', position: 2, name: 'Shift Converter', item: 'https://timebridge.app/shift-converter' },
-        { '@type': 'ListItem', position: 3, name: 'US Shifts in IST', item: 'https://timebridge.app/us-shift-timings-in-ist' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Shift Converter', item: `${siteConfig.siteUrl}/shift-converter` },
+        { '@type': 'ListItem', position: 3, name: 'US Shifts in IST', item: `${siteConfig.siteUrl}/us-shift-timings-in-ist` },
       ],
     };
 
@@ -59,9 +60,9 @@ describe('JSON-LD Schema.org Structured Data Validation', () => {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://timebridge.app' },
-        { '@type': 'ListItem', position: 2, name: 'Cities', item: 'https://timebridge.app/cities' },
-        { '@type': 'ListItem', position: 3, name: 'London', item: 'https://timebridge.app/what-time-is-it-in/london' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Cities', item: `${siteConfig.siteUrl}/cities` },
+        { '@type': 'ListItem', position: 3, name: 'London', item: `${siteConfig.siteUrl}/what-time-is-it-in/london` },
       ],
     };
 
@@ -77,9 +78,9 @@ describe('JSON-LD Schema.org Structured Data Validation', () => {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://timebridge.app' },
-        { '@type': 'ListItem', position: 2, name: 'Countries', item: 'https://timebridge.app/countries' },
-        { '@type': 'ListItem', position: 3, name: 'United States DST', item: 'https://timebridge.app/daylight-saving-time/united-states' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Countries', item: `${siteConfig.siteUrl}/countries` },
+        { '@type': 'ListItem', position: 3, name: 'United States DST', item: `${siteConfig.siteUrl}/daylight-saving-time/united-states` },
       ],
     };
 
@@ -94,9 +95,9 @@ describe('JSON-LD Schema.org Structured Data Validation', () => {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://timebridge.app' },
-        { '@type': 'ListItem', position: 2, name: 'Sports', item: 'https://timebridge.app/sports' },
-        { '@type': 'ListItem', position: 3, name: `${event?.name} in India`, item: 'https://timebridge.app/sports/super-bowl-time-in-india' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteConfig.siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Sports', item: `${siteConfig.siteUrl}/sports` },
+        { '@type': 'ListItem', position: 3, name: `${event?.name} in India`, item: `${siteConfig.siteUrl}/sports/super-bowl-time-in-india` },
       ],
     };
 

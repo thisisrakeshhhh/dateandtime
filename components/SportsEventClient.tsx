@@ -75,8 +75,10 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
               Venue: {event.venueCity}, {event.venueCountry}
             </span>
           </div>
-          <div className="text-xs text-muted flex items-center gap-2">
-            <span>Last updated: {lastUpdated}</span>
+          <div className="text-xs text-muted flex items-center gap-3">
+            {event.source && <span>Source: {event.source}</span>}
+            <span>•</span>
+            <span>Last checked: {report.lastChecked || lastUpdated}</span>
           </div>
         </div>
 
@@ -95,7 +97,7 @@ export default function SportsEventClient({ report }: { report: SportsEventRepor
             <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
             <div>
               <div className="text-sm font-bold text-amber-600 dark:text-amber-400">
-                Official Broadcast Schedule Pending
+                Official Broadcast Date Not Announced
               </div>
               <p className="text-xs text-muted mt-1 leading-relaxed">
                 {tentativeMessage}

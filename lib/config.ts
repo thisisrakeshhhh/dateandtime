@@ -35,15 +35,31 @@ export interface SiteConfig {
   audienceCountries: string[];
 }
 
+export function getSiteUrl(): string {
+  // If user provided an explicit custom domain via environment variable
+  if (process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes("timebridge.app")) {
+    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "");
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`.replace(/\/+$/, "");
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`.replace(/\/+$/, "");
+  }
+  return "https://dateandtime-sable.vercel.app";
+}
+
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@dateandtime-sable.vercel.app";
+
 export const siteConfig: SiteConfig = {
   name: "TimeBridge",
   shortName: "TimeBridge",
   tagline: "Live World Time Difference, Interactive Day/Night Map & Best Time to Call",
   description:
     "Accurate time difference calculator, live solar terminator world map, daylight saving tracker, distance measurement, and optimal call window finder across world cities and countries.",
-  domain: "timebridge.app",
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://timebridge.app",
-  contactEmail: "mickeygorveth@gmail.com",
+  domain: "dateandtime-sable.vercel.app",
+  siteUrl: getSiteUrl(),
+  contactEmail: CONTACT_EMAIL,
   defaultFromSlug: "new-york",
   defaultToSlug: "london",
   workHours: {

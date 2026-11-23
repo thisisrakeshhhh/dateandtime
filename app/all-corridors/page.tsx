@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getCorridorPairsGrouped } from '@/lib/corridors';
+import { siteConfig } from '@/lib/config';
 import { ChevronRight, Home, ArrowRight, PhoneCall, Clock, Compass } from 'lucide-react';
 
 export const revalidate = 60;
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   title: 'Global Time Corridors Directory (298 Routes) | TimeBridge',
   description: 'Explore the authoritative directory of 298 international time corridors. Compare time differences, calling overlap windows and flight hours grouped by global region.',
   alternates: {
-    canonical: 'https://timebridge.app/all-corridors',
+    canonical: `${siteConfig.siteUrl}/all-corridors`,
   },
 };
 
@@ -25,13 +26,13 @@ export default function AllCorridorsPage() {
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://timebridge.app',
+        item: siteConfig.siteUrl,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'All Corridors',
-        item: 'https://timebridge.app/all-corridors',
+        item: `${siteConfig.siteUrl}/all-corridors`,
       },
     ],
   };

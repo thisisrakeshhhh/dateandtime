@@ -56,7 +56,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     placeA.lat,
     placeA.lng,
     placeB.lat,
-    placeB.lng
+    placeB.lng,
+    undefined,
+    placeA.name,
+    placeB.name
   );
   const bestTime = calculateBestTimeToCall(
     placeA.timezone,
@@ -71,11 +74,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const dist = calculateDistance(placeA.lat, placeA.lng, placeB.lat, placeB.lng);
 
   const article = generatePairArticle(placeA, placeB, diff, bestTime, dist);
-  const pageUrl = `${siteConfig.siteUrl}/time-difference/${placeA.slug}-to-${placeB.slug}`;
+
+  const popular = getPopularPairs();
+  const pairEntry = popular.find((p) => p.from === slugs.fromSlug && p.to === slugs.toSlug);
+  const isTier1 = pairEntry ? pairEntry.tier === 1 : false;
+  const canonicalPair = pairEntry?.canonicalPair || `${placeA.slug}-to-${placeB.slug}`;
+  const pageUrl = `${siteConfig.siteUrl}/time-difference/${canonicalPair}`;
 
   return {
     title: article.metaTitle,
     description: article.metaDescription,
+    robots: {
+      index: isTier1,
+      follow: true,
+    },
     alternates: {
       canonical: pageUrl,
     },
@@ -110,7 +122,10 @@ export default async function TimeDifferencePage({ params }: PageProps) {
     placeA.lat,
     placeA.lng,
     placeB.lat,
-    placeB.lng
+    placeB.lng,
+    undefined,
+    placeA.name,
+    placeB.name
   );
   const bestTime = calculateBestTimeToCall(
     placeA.timezone,
@@ -128,14 +143,14 @@ export default async function TimeDifferencePage({ params }: PageProps) {
   const faqs = generatePairFaqs(placeA, placeB, diff, bestTime, dist);
   const relatedPairs = getRelatedPairs(placeA.slug, placeB.slug, 6);
 
-  const nameA = formatPlaceWithZone(placeA);
-  const nameB = formatPlaceWithZone(placeB);
+  const shortA = placeA.name;
+  const shortB = placeB.name;
 
   // Breadcrumbs
   const breadcrumbItems = [
-    { name: "Home", url: "/" },
-    { name: "Time Difference", url: "/" },
-    { name: `${nameA} to ${nameB}`, url: `/time-difference/${placeA.slug}-to-${placeB.slug}` },
+    { name: "Home", url: siteConfig.siteUrl },
+    { name: "Time Difference", url: `${siteConfig.siteUrl}/all-corridors` },
+    { name: `${shortA} to ${shortB}`, url: `${siteConfig.siteUrl}/time-difference/${placeA.slug}-to-${placeB.slug}` },
   ];
   const breadcrumbJsonLd = generateBreadcrumbSchema(breadcrumbItems);
 
@@ -153,10 +168,12 @@ export default async function TimeDifferencePage({ params }: PageProps) {
           Home
         </Link>
         <span>/</span>
-        <span className="text-neutral-400">Time difference</span>
+        <Link href="/all-corridors" className="hover:text-[#222222] dark:hover:text-white transition-colors">
+          Time difference
+        </Link>
         <span>/</span>
         <span className="text-[#222222] dark:text-white font-medium">
-          {nameA} to {nameB}
+          {shortA} to {shortB}
         </span>
       </nav>
 
@@ -178,12 +195,12 @@ export default async function TimeDifferencePage({ params }: PageProps) {
         <AdSlot slotId="pair-mid" format="horizontal" />
       </div>
 
-      {/* 2. Short "Good to know" section (2 or 3 short paragraphs) */}
+      {/* 2. Comprehensive Pair-Specific Editorial Guide (>300 words) */}
       <section className="bg-white dark:bg-[#181818] rounded-2xl border border-neutral-200/80 dark:border-neutral-800 p-6 sm:p-7 shadow-sm space-y-4">
         <h2 className="text-lg font-semibold text-[#222222] dark:text-white">
-          Good to know
+          Time Difference &amp; Daylight Saving Guide
         </h2>
-        {article.paragraphs.slice(0, 3).map((para, i) => (
+        {article.paragraphs.map((para, i) => (
           <p key={i} className="text-xs sm:text-sm text-[#6B6B6B] dark:text-[#A0A0A0] leading-relaxed">
             {para}
           </p>

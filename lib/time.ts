@@ -176,8 +176,8 @@ export function calculateIntervalOverlap(
 export function calculateBestTimeToCall(
   fromZone: string,
   toZone: string,
-  fromName: string = "Place A",
-  toName: string = "Place B",
+  fromName: string = fromZone.split("/").pop()?.replace(/_/g, " ") || "Origin",
+  toName: string = toZone.split("/").pop()?.replace(/_/g, " ") || "Destination",
   fromLat?: number,
   fromLng?: number,
   toLat?: number,
@@ -406,8 +406,8 @@ export function calculateTimeDifference(
   toLat?: number,
   toLng?: number,
   referenceDate?: DateTime,
-  fromName: string = "Place A",
-  toName: string = "Place B"
+  fromName: string = fromZone.split("/").pop()?.replace(/_/g, " ") || "Origin",
+  toName: string = toZone.split("/").pop()?.replace(/_/g, " ") || "Destination"
 ): TimeDifferenceResult {
   const fromTime = getPlaceTimeInfo(fromZone, fromLat, fromLng, referenceDate);
   const toTime = getPlaceTimeInfo(toZone, toLat, toLng, referenceDate);
@@ -427,18 +427,23 @@ export function calculateTimeDifference(
   let relationTextShort = "";
   let verbalSummary = "";
 
+  // Mathematically consistent 12:00 PM reference time
+  const ref12A = DateTime.fromObject({ year: 2026, month: 1, day: 15, hour: 12, minute: 0 }, { zone: fromZone });
+  const ref12B = ref12A.plus({ minutes: diffMinutes });
+  const equivTimeBStr = ref12B.toFormat("h:mm a");
+
   if (isSameTime) {
     relationText = `${fromName} and ${toName} share the exact same local time`;
     relationTextShort = "Same time";
-    verbalSummary = `${fromName} and ${toName} share the exact same local time (${fromTime.timeZoneAbbr}). There is no time difference.`;
+    verbalSummary = `${fromName} and ${toName} share the exact same local time (${fromTime.timeZoneAbbr}). When it is 12:00 PM in ${fromName}, it is also 12:00 PM in ${toName}.`;
   } else if (isToAhead) {
     relationText = `${toName} is ${diffFormatted} ahead of ${fromName}`;
     relationTextShort = `${diffFormatted} ahead`;
-    verbalSummary = `${toName} is ${diffFormatted} ahead of ${fromName}. When it is 12:00 PM in ${fromName}, it is already ${toTime.formattedTime} in ${toName}.`;
+    verbalSummary = `${toName} is ${diffFormatted} ahead of ${fromName}. When it is 12:00 PM in ${fromName}, it is ${equivTimeBStr} in ${toName}.`;
   } else {
     relationText = `${fromName} is ${diffFormatted} ahead of ${toName}`;
     relationTextShort = `${diffFormatted} behind`;
-    verbalSummary = `${fromName} is ${diffFormatted} ahead of ${toName} (${toName} is ${diffFormatted} behind). When it is 12:00 PM in ${fromName}, it is ${toTime.formattedTime} in ${toName}.`;
+    verbalSummary = `${fromName} is ${diffFormatted} ahead of ${toName} (${toName} is ${diffFormatted} behind). When it is 12:00 PM in ${fromName}, it is ${equivTimeBStr} in ${toName}.`;
   }
 
   let dstNotice: string | undefined;

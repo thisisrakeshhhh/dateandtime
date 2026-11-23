@@ -2,1491 +2,1897 @@
   {
     "from": "united-states",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-united-kingdom"
   },
   {
     "from": "united-states",
     "to": "japan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "germany",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "canada",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "japan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "france",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "singapore",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "canada",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "new-zealand",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "germany",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "singapore",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "united-arab-emirates",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "japan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "ireland",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "france",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "netherlands",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "philippines",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "qatar",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "saudi-arabia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "malaysia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "nepal",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "south-africa",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "switzerland",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "india",
     "to": "china",
-    "category": "Country"
-  },
-  {
-    "from": "united-states",
-    "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "india",
-    "category": "Country"
-  },
-  {
-    "from": "united-states",
-    "to": "australia",
-    "category": "Country"
-  },
-  {
-    "from": "united-states",
-    "to": "canada",
-    "category": "Country"
-  },
-  {
-    "from": "united-states",
-    "to": "japan",
-    "category": "Country"
-  },
-  {
-    "from": "united-states",
-    "to": "germany",
-    "category": "Country"
-  },
-  {
-    "from": "united-states",
-    "to": "france",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "india-to-united-states"
   },
   {
     "from": "united-states",
     "to": "philippines",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "new-zealand",
-    "category": "Country"
-  },
-  {
-    "from": "united-states",
-    "to": "singapore",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "mexico",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "brazil",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "ireland",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "italy",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "spain",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "china",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "south-korea",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "united-arab-emirates",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "israel",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-states",
     "to": "netherlands",
-    "category": "Country"
-  },
-  {
-    "from": "united-kingdom",
-    "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "india",
-    "category": "Country"
-  },
-  {
-    "from": "united-kingdom",
-    "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "india-to-united-kingdom"
   },
   {
     "from": "united-kingdom",
     "to": "canada",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "new-zealand",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "united-arab-emirates",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "germany",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "spain",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "france",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "singapore",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "south-africa",
-    "category": "Country"
-  },
-  {
-    "from": "united-kingdom",
-    "to": "japan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "ireland",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "italy",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "hong-kong",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "pakistan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "nigeria",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "philippines",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "netherlands",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "united-kingdom",
     "to": "switzerland",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-kingdom-to-australia"
   },
   {
     "from": "australia",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-australia"
   },
   {
     "from": "australia",
     "to": "india",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "india-to-australia"
   },
   {
     "from": "australia",
     "to": "new-zealand",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "canada",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "singapore",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "philippines",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "japan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "germany",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "united-arab-emirates",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "china",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "south-africa",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "fiji",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "thailand",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "australia",
     "to": "indonesia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-canada"
   },
   {
     "from": "canada",
     "to": "india",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "india-to-canada"
   },
   {
     "from": "canada",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-kingdom-to-canada"
   },
   {
     "from": "canada",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-canada"
   },
   {
     "from": "canada",
     "to": "philippines",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "france",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "germany",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "mexico",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "china",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "japan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "united-arab-emirates",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "canada",
     "to": "new-zealand",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "new-zealand",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-new-zealand"
   },
   {
     "from": "new-zealand",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-kingdom-to-new-zealand"
   },
   {
     "from": "new-zealand",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-new-zealand"
   },
   {
     "from": "new-zealand",
     "to": "india",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "india-to-new-zealand"
   },
   {
     "from": "new-zealand",
     "to": "canada",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "canada-to-new-zealand"
   },
   {
     "from": "new-zealand",
     "to": "fiji",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "new-zealand",
     "to": "singapore",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "new-zealand",
     "to": "philippines",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "new-zealand",
     "to": "south-africa",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "new-zealand",
     "to": "japan",
-    "category": "Country"
+    "category": "Country",
+    "tier": 1
   },
   {
     "from": "new-york",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "london",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "new-york-to-london"
   },
   {
     "from": "new-york",
     "to": "los-angeles",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "los-angeles",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "new-york-to-los-angeles"
   },
   {
     "from": "new-york",
     "to": "delhi",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "delhi",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "new-york-to-delhi"
   },
   {
     "from": "mumbai",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "london",
     "to": "mumbai",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "mumbai-to-london"
   },
   {
     "from": "london",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "sydney",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "london-to-sydney"
   },
   {
     "from": "london",
     "to": "dubai",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "dubai",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "london-to-dubai"
   },
   {
     "from": "london",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "singapore",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "london-to-singapore"
   },
   {
     "from": "london",
     "to": "tokyo",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "tokyo",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "london-to-tokyo"
   },
   {
     "from": "london",
     "to": "paris",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "paris",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "london-to-paris"
   },
   {
     "from": "london",
     "to": "berlin",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "london",
     "to": "toronto",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "toronto",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "london-to-toronto"
   },
   {
     "from": "london",
     "to": "dublin",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "new-york",
     "to": "paris",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "new-york",
     "to": "tokyo",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "tokyo",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "new-york-to-tokyo"
   },
   {
     "from": "new-york",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "sydney",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "new-york-to-sydney"
   },
   {
     "from": "new-york",
     "to": "dubai",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "new-york",
     "to": "toronto",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "new-york",
     "to": "san-francisco",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "new-york",
     "to": "chicago",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "chicago",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "los-angeles",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "los-angeles",
     "to": "tokyo",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "los-angeles",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "san-francisco",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "san-francisco",
     "to": "delhi",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "bengaluru",
     "to": "san-francisco",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "san-francisco",
     "to": "bengaluru",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "bengaluru-to-san-francisco"
   },
   {
     "from": "bengaluru",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "bengaluru",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "delhi",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "delhi",
     "to": "dubai",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "mumbai",
     "to": "dubai",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "mumbai",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "mumbai",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "delhi",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "delhi",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "sydney",
     "to": "delhi",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "delhi-to-sydney"
   },
   {
     "from": "mumbai",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "sydney",
     "to": "mumbai",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "mumbai-to-sydney"
   },
   {
     "from": "sydney",
     "to": "melbourne",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "sydney",
     "to": "auckland",
-    "category": "City"
+    "category": "City",
+    "tier": 1
   },
   {
     "from": "auckland",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "sydney-to-auckland"
   },
   {
     "from": "melbourne",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "melbourne-to-london"
   },
   {
     "from": "melbourne",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "melbourne-to-new-york"
   },
   {
     "from": "melbourne",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "melbourne-to-singapore"
   },
   {
     "from": "perth",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "perth-to-london"
   },
   {
     "from": "perth",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "perth-to-singapore"
   },
   {
     "from": "brisbane",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "brisbane-to-london"
   },
   {
     "from": "auckland",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "auckland-to-london"
   },
   {
     "from": "auckland",
     "to": "los-angeles",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "auckland-to-los-angeles"
   },
   {
     "from": "wellington",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "wellington-to-sydney"
   },
   {
     "from": "toronto",
     "to": "vancouver",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "toronto-to-vancouver"
   },
   {
     "from": "vancouver",
     "to": "toronto",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "vancouver-to-toronto"
   },
   {
     "from": "toronto",
     "to": "delhi",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "toronto-to-delhi"
   },
   {
     "from": "vancouver",
     "to": "delhi",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "vancouver-to-delhi"
   },
   {
     "from": "vancouver",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "vancouver-to-london"
   },
   {
     "from": "toronto",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "new-york-to-toronto"
   },
   {
     "from": "montreal",
     "to": "paris",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "montreal-to-paris"
   },
   {
     "from": "dubai",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "dubai-to-singapore"
   },
   {
     "from": "singapore",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "singapore-to-sydney"
   },
   {
     "from": "singapore",
     "to": "tokyo",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "singapore-to-tokyo"
   },
   {
     "from": "hong-kong",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "hong-kong-to-london"
   },
   {
     "from": "hong-kong",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "hong-kong-to-new-york"
   },
   {
     "from": "tokyo",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "tokyo-to-sydney"
   },
   {
     "from": "seoul",
     "to": "los-angeles",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "seoul-to-los-angeles"
   },
   {
     "from": "seoul",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "seoul-to-new-york"
   },
   {
     "from": "paris",
     "to": "berlin",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "paris-to-berlin"
   },
   {
     "from": "berlin",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "berlin-to-new-york"
   },
   {
     "from": "amsterdam",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "amsterdam-to-london"
   },
   {
     "from": "amsterdam",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "amsterdam-to-new-york"
   },
   {
     "from": "frankfurt",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "frankfurt-to-new-york"
   },
   {
     "from": "zurich",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "zurich-to-london"
   },
   {
     "from": "zurich",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "zurich-to-new-york"
   },
   {
     "from": "manila",
     "to": "los-angeles",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "manila-to-los-angeles"
   },
   {
     "from": "manila",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "manila-to-sydney"
   },
   {
     "from": "manila",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "manila-to-london"
   },
   {
     "from": "johannesburg",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "johannesburg-to-london"
   },
   {
     "from": "johannesburg",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "johannesburg-to-sydney"
   },
   {
     "from": "cairo",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "cairo-to-london"
   },
   {
     "from": "cairo",
     "to": "dubai",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "cairo-to-dubai"
   },
   {
     "from": "sao-paulo",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "sao-paulo-to-new-york"
   },
   {
     "from": "mexico-city",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "mexico-city-to-new-york"
   },
   {
     "from": "mexico-city",
     "to": "madrid",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "mexico-city-to-madrid"
   },
   {
     "from": "buenos-aires",
     "to": "madrid",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "buenos-aires-to-madrid"
   },
   {
     "from": "buenos-aires",
     "to": "miami",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "buenos-aires-to-miami"
   },
   {
     "from": "miami",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "miami-to-london"
   },
   {
     "from": "seattle",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "seattle-to-london"
   },
   {
     "from": "boston",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "boston-to-london"
   },
   {
     "from": "hyderabad",
     "to": "san-francisco",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "hyderabad-to-san-francisco"
   },
   {
     "from": "chennai",
     "to": "chicago",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "chennai-to-chicago"
   },
   {
     "from": "pune",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "pune-to-london"
   },
   {
     "from": "dallas",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "dallas-to-london"
   },
   {
     "from": "houston",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "houston-to-london"
   },
   {
     "from": "atlanta",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "atlanta-to-london"
   },
   {
     "from": "kathmandu",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "kathmandu-to-sydney"
   },
   {
     "from": "kathmandu",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "kathmandu-to-london"
   },
   {
     "from": "lahore",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "lahore-to-london"
   },
   {
     "from": "karachi",
     "to": "dubai",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "karachi-to-dubai"
   },
   {
     "from": "dhaka",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "dhaka-to-london"
   },
   {
     "from": "colombo",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "colombo-to-london"
   },
   {
     "from": "bangkok",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "bangkok-to-london"
   },
   {
     "from": "bangkok",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "bangkok-to-sydney"
   },
   {
     "from": "kuala-lumpur",
     "to": "melbourne",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "kuala-lumpur-to-melbourne"
   },
   {
     "from": "kuala-lumpur",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "kuala-lumpur-to-london"
   },
   {
     "from": "doha",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "doha-to-london"
   },
   {
     "from": "riyadh",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "riyadh-to-london"
   },
   {
     "from": "dublin",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "dublin-to-new-york"
   },
   {
     "from": "dublin",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "dublin-to-sydney"
   },
   {
     "from": "edinburgh",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "edinburgh-to-new-york"
   },
   {
     "from": "manchester",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "manchester-to-new-york"
   },
   {
     "from": "birmingham",
     "to": "delhi",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "birmingham-to-delhi"
   },
   {
     "from": "auckland",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "auckland-to-singapore"
   },
   {
     "from": "calgary",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "calgary-to-london"
   },
   {
     "from": "adelaide",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "adelaide-to-london"
   },
   {
     "from": "brisbane",
     "to": "auckland",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "brisbane-to-auckland"
   },
   {
     "from": "perth",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "perth-to-sydney"
   },
   {
     "from": "hobart",
     "to": "melbourne",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "hobart-to-melbourne"
   },
   {
     "from": "darwin",
     "to": "singapore",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "darwin-to-singapore"
   },
   {
     "from": "christchurch",
     "to": "melbourne",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "christchurch-to-melbourne"
   },
   {
     "from": "glasgow",
     "to": "toronto",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "glasgow-to-toronto"
   },
   {
     "from": "belfast",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "belfast-to-new-york"
   },
   {
     "from": "madrid",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "madrid-to-london"
   },
   {
     "from": "barcelona",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "barcelona-to-new-york"
   },
   {
     "from": "rome",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "rome-to-new-york"
   },
   {
     "from": "milan",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "milan-to-london"
   },
   {
     "from": "vienna",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "vienna-to-london"
   },
   {
     "from": "stockholm",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "stockholm-to-london"
   },
   {
     "from": "oslo",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "oslo-to-london"
   },
   {
     "from": "copenhagen",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "copenhagen-to-london"
   },
   {
     "from": "helsinki",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "helsinki-to-london"
   },
   {
     "from": "warsaw",
     "to": "chicago",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "warsaw-to-chicago"
   },
   {
     "from": "prague",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "prague-to-london"
   },
   {
     "from": "athens",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "athens-to-london"
   },
   {
     "from": "istanbul",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "istanbul-to-london"
   },
   {
     "from": "istanbul",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "istanbul-to-new-york"
   },
   {
     "from": "shanghai",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "shanghai-to-new-york"
   },
   {
     "from": "beijing",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "beijing-to-london"
   },
   {
     "from": "taipei",
     "to": "los-angeles",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "taipei-to-los-angeles"
   },
   {
     "from": "denver",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "denver-to-london"
   },
   {
     "from": "phoenix",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "phoenix-to-new-york"
   },
   {
     "from": "las-vegas",
     "to": "new-york",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "las-vegas-to-new-york"
   },
   {
     "from": "orlando",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "orlando-to-london"
   },
   {
     "from": "honolulu",
     "to": "los-angeles",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "honolulu-to-los-angeles"
   },
   {
     "from": "honolulu",
     "to": "tokyo",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "honolulu-to-tokyo"
   },
   {
     "from": "anchorage",
     "to": "seattle",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "anchorage-to-seattle"
   },
   {
     "from": "gold-coast",
     "to": "sydney",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "gold-coast-to-sydney"
   },
   {
     "from": "ottawa",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "ottawa-to-london"
   },
   {
     "from": "edmonton",
     "to": "toronto",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "edmonton-to-toronto"
   },
   {
     "from": "halifax",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "halifax-to-london"
   },
   {
     "from": "st-johns",
     "to": "london",
-    "category": "City"
+    "category": "City",
+    "tier": 2,
+    "canonicalPair": "st-johns-to-london"
   },
   {
     "from": "fiji",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-fiji"
   },
   {
     "from": "singapore",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-singapore"
   },
   {
     "from": "united-arab-emirates",
     "to": "india",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "india-to-united-arab-emirates"
   },
   {
     "from": "philippines",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-philippines"
   },
   {
     "from": "philippines",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-philippines"
   },
   {
     "from": "philippines",
     "to": "canada",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "canada-to-philippines"
   },
   {
     "from": "ireland",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-ireland"
   },
   {
     "from": "ireland",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "ireland-to-australia"
   },
   {
     "from": "south-africa",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-kingdom-to-south-africa"
   },
   {
     "from": "south-africa",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-south-africa"
   },
   {
     "from": "germany",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-germany"
   },
   {
     "from": "france",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-france"
   },
   {
     "from": "japan",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-japan"
   },
   {
     "from": "mexico",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-mexico"
   },
   {
     "from": "nepal",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "nepal-to-australia"
   },
   {
     "from": "nepal",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "nepal-to-united-states"
   },
   {
     "from": "bangladesh",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "bangladesh-to-united-kingdom"
   },
   {
     "from": "pakistan",
     "to": "united-kingdom",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-kingdom-to-pakistan"
   },
   {
     "from": "pakistan",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "pakistan-to-united-states"
   },
   {
     "from": "malaysia",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "malaysia-to-australia"
   },
   {
     "from": "thailand",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-thailand"
   },
   {
     "from": "vietnam",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "vietnam-to-united-states"
   },
   {
     "from": "vietnam",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "vietnam-to-australia"
   },
   {
     "from": "indonesia",
     "to": "australia",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "australia-to-indonesia"
   },
   {
     "from": "brazil",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "united-states-to-brazil"
   },
   {
     "from": "argentina",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "argentina-to-united-states"
   },
   {
     "from": "chile",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "chile-to-united-states"
   },
   {
     "from": "colombia",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "colombia-to-united-states"
   },
   {
     "from": "peru",
     "to": "united-states",
-    "category": "Country"
+    "category": "Country",
+    "tier": 2,
+    "canonicalPair": "peru-to-united-states"
   }
 ]

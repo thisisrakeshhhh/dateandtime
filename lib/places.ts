@@ -27,6 +27,8 @@ export interface PopularPair {
   from: string;
   to: string;
   category: "Country" | "City";
+  tier?: 1 | 2;
+  canonicalPair?: string;
 }
 
 // Transform raw country data into Place items

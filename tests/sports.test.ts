@@ -19,7 +19,7 @@ describe('Sports and Global Events Start Times', () => {
     // 15:30 PST = 23:30 UTC = 05:00 AM IST next morning
     expect(report?.targetCountryTimeFormatted).toBe('5:00 AM');
     expect(report?.majorAudiences).toHaveLength(6);
-    expect(report?.lastUpdated).toBe('2026-11-20');
+    expect(report?.lastUpdated).toBe(sb.lastUpdated);
   });
 
   it('handles tentative or unscheduled events with a clear message and no guesswork', () => {
@@ -39,6 +39,6 @@ describe('Sports and Global Events Start Times', () => {
     const report = generateSportsEventReport(unscheduledEvent, 'united-kingdom');
     expect(report?.isScheduled).toBe(false);
     expect(report?.tentativeMessage).toContain('tentative');
-    expect(report?.targetCountryTimeFormatted).toBe('Schedule Pending');
+    expect(report?.targetCountryTimeFormatted).toBe('Date not announced');
   });
 });

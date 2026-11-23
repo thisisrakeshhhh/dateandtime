@@ -10,7 +10,8 @@
     "deploy": "opennextjs-cloudflare build && wrangler deploy",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "audit": "npx tsx scripts/audit-content.ts"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.22",

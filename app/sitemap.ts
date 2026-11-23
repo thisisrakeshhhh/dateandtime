@@ -39,22 +39,16 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
     ];
   }
 
-  // 2. Corridors (Time Difference & Best Time to Call)
+  // 2. Corridors (Tier 1 Primary Direction Only)
   if (id === 'corridors') {
     const popularPairs = getPopularPairs();
-    const timeDiffs: MetadataRoute.Sitemap = popularPairs.map((pair) => ({
+    const tier1Pairs = popularPairs.filter((p) => p.tier === 1);
+    return tier1Pairs.map((pair) => ({
       url: `${baseUrl}/time-difference/${pair.from}-to-${pair.to}`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.9,
     }));
-    const callPlanners: MetadataRoute.Sitemap = popularPairs.map((pair) => ({
-      url: `${baseUrl}/best-time-to-call/${pair.to}-from-${pair.from}`,
-      lastModified: now,
-      changeFrequency: 'daily',
-      priority: 0.8,
-    }));
-    return [...timeDiffs, ...callPlanners];
   }
 
   // 3. Top 300 Cities (What Time Is It In)
@@ -104,9 +98,11 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
     ];
   }
 
-  // 7. Sports Events
+  // 7. Sports Events (Confirmed Schedules Only)
   if (id === 'sports') {
-    const events = getAllEvents();
+    const events = getAllEvents().filter(
+      (e) => e.isScheduled && e.scheduledStartIso && new Date(e.scheduledStartIso).getTime() > Date.now()
+    );
     const topCountries = ['united-states', 'united-kingdom', 'india', 'australia', 'canada', 'germany', 'france', 'japan'];
     const sportsPages: MetadataRoute.Sitemap = [];
 

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { AlertCircle, RefreshCw, Home, Clock } from 'lucide-react';
+import { AlertCircle, RefreshCw, Home } from 'lucide-react';
 
 export default function ErrorBoundary({
   error,

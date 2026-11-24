@@ -14,7 +14,7 @@ export default function NotFound() {
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">404</h1>
           <h2 className="text-xl font-bold text-foreground">Time Zone or Route Not Found</h2>
           <p className="text-sm text-muted max-w-sm mx-auto leading-relaxed">
-            The page or time corridor you requested doesn't exist or has moved. Explore our global time tools below.
+            The page or time corridor you requested does not exist or has moved. Explore our global time tools below.
           </p>
         </div>
 

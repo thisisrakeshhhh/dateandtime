@@ -55,4 +55,8 @@ describe('Canonical Host and Domain Configuration', () => {
       expect(converterCanonical.startsWith('https://dateandtime-sable.vercel.app')).toBe(true);
     }
   });
+
+  it('homepage self-referencing canonical points strictly to siteConfig.siteUrl', () => {
+    expect(siteConfig.siteUrl).toBe('https://dateandtime-sable.vercel.app');
+  });
 });

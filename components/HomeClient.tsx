@@ -8,7 +8,6 @@ import {
 } from "@/lib/places";
 import { calculateDistance } from "@/lib/distance";
 import WorldMapContainer from "@/components/Map";
-import MapSearchOverlay from "@/components/MapSearchOverlay";
 import PlaceDetailsCard from "@/components/PlaceDetailsCard";
 import CompareCard from "@/components/CompareCard";
 import LocationModal from "@/components/LocationModal";
@@ -94,6 +93,33 @@ export default function HomeClient({
     }
   }, [initialPlaceA, initialPlaceB]);
 
+  // Listen for search selections from the top navigation
+  useEffect(() => {
+    function handleSelectEvent(e: Event) {
+      const customEvent = e as CustomEvent<Place>;
+      if (customEvent.detail) {
+        handleSelectPlace(customEvent.detail);
+      }
+    }
+    window.addEventListener("timebridge-select-place", handleSelectEvent);
+    return () => window.removeEventListener("timebridge-select-place", handleSelectEvent);
+  }, [placeA, placeB, isComparing]);
+
+  // Handle URL query parameter ?select=slug
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const selectSlug = params.get("select");
+      if (selectSlug) {
+        const all = getAllPlaces();
+        const found = all.find((p) => p.slug === selectSlug);
+        if (found) {
+          handleSelectPlace(found);
+        }
+      }
+    }
+  }, []);
+
   // Update URL seamlessly when comparison changes
   useEffect(() => {
     if (placeA && placeB) {
@@ -154,22 +180,8 @@ export default function HomeClient({
 
   return (
     <div className="w-full flex flex-col">
-      {/* Compact Search Bar Header */}
-      <div className="relative w-full bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-black/[0.06] dark:border-white/[0.08] shadow-xs z-[1010] transition-colors">
-        <div className="w-full max-w-xl mx-auto px-3 sm:px-4 py-2">
-          <MapSearchOverlay
-            placeA={placeA}
-            placeB={placeB}
-            userPlace={userPlace}
-            onSelectPlace={handleSelectPlace}
-            onClear={handleClear}
-            isCompareMode={isComparing && !placeB}
-          />
-        </div>
-      </div>
-
-      {/* Hero Fullscreen Google-Maps-Style Section */}
-      <div className="relative isolate z-0 w-full h-[calc(100vh-56px-48px)] min-h-[520px] bg-neutral-100 dark:bg-[#141414] overflow-hidden">
+      {/* Hero Fullscreen Google-Maps-Style Section (Directly under sticky top nav) */}
+      <div className="relative isolate z-0 w-full h-[calc(100vh-56px)] max-md:h-[calc(100vh-108px)] min-h-[520px] bg-neutral-100 dark:bg-[#141414] overflow-hidden">
         {/* Fullscreen Interactive Leaflet Map */}
         <WorldMapContainer
           placeA={placeA}

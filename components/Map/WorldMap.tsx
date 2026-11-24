@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useRef, useMemo, useCallback, useState } from "react";
+import React, { useEffect, useRef, useCallback, useState } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Place, formatPlaceWithZone } from "@/lib/places";
 import { computeSolarTerminator } from "@/lib/solar";
 import { isCoordinateDaytime, getPlaceTimeInfo } from "@/lib/time";
 import { getVisibleMapPlaces, MapLabelItem } from "@/lib/mapLabels";
-import citiesData from "@/data/cities.json";
+import { megaCities } from "@/lib/megaCities";
 
 interface WorldMapProps {
   placeA: Place | null;
@@ -83,12 +83,8 @@ export default function WorldMap({
   const markersGroupRef = useRef<L.LayerGroup | null>(null);
   const flightPathLayerRef = useRef<L.Polyline | null>(null);
 
-  // Top populated cities for night light visualization
-  const prominentCities = useMemo(() => {
-    return citiesData
-      .filter((c) => c.population && c.population > 600000)
-      .slice(0, 160);
-  }, []);
+  // Prominent mega-cities for night light visualization
+  const prominentCities = megaCities;
 
   // Update visible label pills with Screen-Space Bounding Box Collision Prevention
   const updateLabels = useCallback(() => {
@@ -351,13 +347,19 @@ export default function WorldMap({
       }
     }
 
-    updateDayNight();
+    const initialTimer = setTimeout(() => {
+      updateDayNight();
+    }, 120);
+
     const interval = setInterval(() => {
       updateDayNight();
       updateLabels();
     }, 60000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
   }, [mapReady, prominentCities, onSelectPlace, updateLabels]);
 
   // 3. Render Markers for Place A & Place B, curved Great-Circle line, and fly-to

@@ -6,7 +6,7 @@ import { ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `Privacy Policy | ${siteConfig.name}`,
-  description: `Privacy Policy for ${siteConfig.name}. Information on cookie practices, Google AdSense compliance, data collection, and GDPR/CCPA consumer rights.`,
+  description: `Privacy Policy for ${siteConfig.name}. Information on cookie practices, localStorage use, third-party providers, contact form data, and data deletion rights.`,
   alternates: {
     canonical: `${siteConfig.siteUrl}/privacy-policy`,
   },
@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-8 py-4">
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-neutral-500">
-        <Link href="/" className="hover:text-emerald-600 transition-colors">
+        <Link href="/" className="hover:text-[#E85D4E] transition-colors">
           Home
         </Link>
         <span>/</span>
@@ -24,9 +24,9 @@ export default function PrivacyPolicyPage() {
       </nav>
 
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E85D4E]/10 border border-[#E85D4E]/20 text-[#E85D4E] text-xs font-semibold mb-3">
           <ShieldCheck className="w-3.5 h-3.5" />
-          <span>Transparency & Data Security</span>
+          <span>Transparency &amp; Data Security</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-neutral-950 dark:text-white tracking-tight">
           Privacy Policy
@@ -39,111 +39,151 @@ export default function PrivacyPolicyPage() {
       <div className="prose prose-neutral dark:prose-invert max-w-none text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed space-y-6">
         <section className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm space-y-3">
           <h2 className="text-base font-bold text-neutral-900 dark:text-white">
-            1. Overview & Information We Collect
+            1. Overview &amp; Information We Collect
           </h2>
           <p>
             At {siteConfig.name} (accessible from {siteConfig.siteUrl}), safeguarding the privacy
-            of our visitors is one of our utmost priorities. This Privacy Policy document outlines
-            the types of information collected and how it is utilized.
+            of our visitors is a core principle. This Privacy Policy outlines what information is
+            processed, how it is used, and the choices available to you.
           </p>
           <p>
-            {siteConfig.name} does not demand account creation, passwords, or personal identifying
-            data to utilize our world time zone tools, day/night maps, or distance calculators.
-            When you browse our website, standard web server access logs may capture non-personally
-            identifiable details including:
+            {siteConfig.name} is a privacy-first web utility. We do not require account registration,
+            passwords, or profile creation to use our world time zone tools, day/night solar maps,
+            distance calculators, or calling window planners.
+          </p>
+          <p>
+            When you visit our site, standard server access logs may capture technical diagnostic data:
           </p>
           <ul className="list-disc pl-5 space-y-1">
-            <li>Browser type, language, and operating system</li>
-            <li>Referring URLs and pages visited</li>
-            <li>Date and timestamp of request</li>
-            <li>Internet Protocol (IP) address (anonymized for analytics)</li>
+            <li>Browser type, version, language, and operating system</li>
+            <li>Referring URL, requested pages, and HTTP response codes</li>
+            <li>Date and time stamp of the request</li>
+            <li>IP address (used strictly for abuse prevention, rate limiting, and coarse diagnostics)</li>
           </ul>
         </section>
 
         <section className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm space-y-3">
           <h2 className="text-base font-bold text-neutral-900 dark:text-white">
-            2. Google AdSense & Third-Party Advertising
+            2. Cookies &amp; the Consent Banner
           </h2>
           <p>
-            We may partner with third-party advertising vendors, specifically Google LLC (Google AdSense),
-            to display advertisements when you visit our website.
+            We present a Cookie Consent banner upon your first visit. You can choose to accept all
+            cookies or restrict usage to essential functional cookies only.
+          </p>
+          <p>
+            <strong>Zero Pre-Consent Tracking:</strong> Our cookie banner does not load any third-party
+            advertising, tracking, or analytics scripts before you grant consent. Only strictly
+            necessary functional settings are maintained locally in your browser.
+          </p>
+        </section>
+
+        <section className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm space-y-3">
+          <h2 className="text-base font-bold text-neutral-900 dark:text-white">
+            3. LocalStorage Usage
+          </h2>
+          <p>
+            To deliver an optimal, responsive experience across sessions without tracking your identity,
+            we utilize browser <code>localStorage</code> exclusively for:
+          </p>
+          <ul className="list-disc pl-5 space-y-1.5">
+            <li>
+              <code>timebridge_user_place</code>: Stores your chosen or detected home city (e.g. for
+              calculating instant time differences relative to your location).
+            </li>
+            <li>
+              <code>timebridge-theme</code>: Stores your visual theme preference (light mode vs. dark mode).
+            </li>
+            <li>
+              <code>timebridge_cookie_consent</code>: Records your response to the Cookie Notice
+              (&quot;accepted&quot; or &quot;dismissed&quot;).
+            </li>
+            <li>
+              <code>timebridge_time_format</code>: Remembers your preferred clock format (12-hour AM/PM
+              vs. 24-hour military format).
+            </li>
+          </ul>
+          <p>
+            LocalStorage data never leaves your device and is not transmitted to our servers or any
+            external analytics provider. You can clear this data at any time via your browser settings.
+          </p>
+        </section>
+
+        <section className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm space-y-3">
+          <h2 className="text-base font-bold text-neutral-900 dark:text-white">
+            4. Third-Party Services
+          </h2>
+          <p>
+            To deliver global mapping, solar computations, and reliable communication, {siteConfig.name}
+            integrates the following vetted third-party infrastructure providers:
           </p>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>Google DoubleClick DART Cookies:</strong> Google, as a third-party vendor, uses
-              cookies to serve ads on our site based upon a user&apos;s visit to our site and other
-              sites across the Internet.
+              <strong>OpenStreetMap &amp; CartoDB (Map Tiles):</strong> Our interactive global projection
+              loads geographic base map raster tiles directly from OpenStreetMap and CartoDB tile servers.
+              Requests to load tiles transmit standard HTTP headers and IP addresses directly to these
+              infrastructure hosts under their respective terms.
             </li>
             <li>
-              <strong>Opt-Out of DART Cookies:</strong> Users may opt out of personalized advertising
-              by visiting the Google Ad and Content Network Privacy Policy at:{" "}
+              <strong>Weather Provider (Open-Meteo):</strong> When weather estimates are displayed for
+              selected global cities, anonymized latitude/longitude coordinates are queried against the
+              weather service. No personal or identifying user information is ever transmitted.
+            </li>
+            <li>
+              <strong>Resend (Contact Email Dispatch):</strong> Submissions sent through our contact form
+              are securely processed and dispatched to our administrative inbox via Resend Inc. API
+              infrastructure.
+            </li>
+            <li>
+              <strong>Google AdSense (When Enabled):</strong> Once advertising is enabled on the site,
+              third-party advertising partners including Google LLC (Google AdSense) may use cookies
+              and web beacons to serve personalized or contextual advertisements based on your prior
+              visits to this or other websites. You can opt out of personalized Google advertising at{" "}
               <a
                 href="https://policies.google.com/technologies/ads"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-emerald-600 underline"
+                className="text-[#E85D4E] underline"
               >
                 https://policies.google.com/technologies/ads
               </a>.
             </li>
-            <li>
-              You can also manage generic personalized advertising preferences via the Network
-              Advertising Initiative opt-out page at:{" "}
-              <a
-                href="https://www.aboutads.info/choices/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-emerald-600 underline"
-              >
-                https://www.aboutads.info/choices/
-              </a>.
-            </li>
           </ul>
         </section>
 
         <section className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm space-y-3">
           <h2 className="text-base font-bold text-neutral-900 dark:text-white">
-            3. Cookies & Local Storage
+            5. Contact Form Data Collection &amp; Deletion Rights
           </h2>
           <p>
-            {siteConfig.name} uses minimal client cookies and localStorage to remember user UI
-            preferences, such as:
-          </p>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>12-Hour vs. 24-Hour digital clock selection</li>
-            <li>Recently selected origin or destination place</li>
-            <li>Acknowledgment of our Cookie Consent notification banner</li>
-          </ul>
-          <p>
-            You can instruct your browser to refuse all cookies or to indicate when a cookie is
-            being sent. If you disable cookies, our core time calculations and day/night maps will
-            continue to function without hindrance.
-          </p>
-        </section>
-
-        <section className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm space-y-3">
-          <h2 className="text-base font-bold text-neutral-900 dark:text-white">
-            4. GDPR (General Data Protection Regulation) & CCPA Compliance
-          </h2>
-          <p>
-            If you are a resident of the European Economic Area (EEA), the United Kingdom, or
-            California (CCPA), you are entitled to statutory data protection rights, including the
-            right to access, rectify, or request deletion of personal information. Because we do not
-            maintain customer accounts or store identifiable customer profiles, we process zero
-            identifiable consumer databases. For questions, please reach out via our{" "}
-            <Link href="/contact" className="text-emerald-600 underline">
+            When you voluntarily submit an inquiry through our{" "}
+            <Link href="/contact" className="text-[#E85D4E] underline">
               contact form
             </Link>
+            , we collect:
+          </p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>Your full name (as provided)</li>
+            <li>Your email address (for sending a reply)</li>
+            <li>The subject line and message text of your inquiry</li>
+          </ul>
+          <p>
+            We use this information solely to respond to your question, address bug reports, or verify
+            suggested city timezone corrections. We do not sell, rent, or monetize contact form data, nor
+            do we add your email address to marketing mailing lists.
+          </p>
+          <p>
+            <strong>How to Request Data Deletion:</strong> In accordance with GDPR, CCPA, and global
+            data protection regulations, you have the right to request full erasure of any communication
+            history. To request permanent deletion of any message you have sent us, email{" "}
             {siteConfig.contactEmail ? (
-              <>
-                {" "}
-                or directly by email at:{" "}
-                <a href={`mailto:${siteConfig.contactEmail}`} className="font-mono text-emerald-600 underline">
-                  {siteConfig.contactEmail}
-                </a>
-              </>
-            ) : null}
-            .
+              <a href={`mailto:${siteConfig.contactEmail}`} className="font-mono text-[#E85D4E] underline">
+                {siteConfig.contactEmail}
+              </a>
+            ) : (
+              <span className="font-mono text-[#E85D4E]">our contact address via the contact form</span>
+            )}{" "}
+            with the subject line &quot;Data Deletion Request&quot; from the email address used in your
+            original message. We process all deletion requests within 30 calendar days.
           </p>
         </section>
       </div>

@@ -88,13 +88,29 @@ export default function AboutPage() {
         <section className="p-6 rounded-3xl bg-white dark:bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-sm space-y-3">
           <h2 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-teal-500" />
-            Editorial Integrity & Independence
+            Operator &amp; Contact Information
           </h2>
           <p>
-            {siteConfig.name} is an independent digital tool. We do not charge subscription fees or
-            require personal user registrations. Our service is sustained via ethical, non-intrusive
-            advertising partnerships compliant with Google AdSense quality guidelines and privacy
-            frameworks.
+            {siteConfig.name} is owned, developed, and maintained by <strong>{"{{OWNER_NAME}}"}</strong> as an
+            independent web utility dedicated to accurate world time calculation and astronomical visualization.
+            We do not represent a multinational corporation or create fictitious executive credentials.
+          </p>
+          <p>
+            All computations rely transparently on the public IANA Time Zone Database (tzdata), celestial
+            mechanics, and open geographic standards. For suggestions, corrections to municipal daylight
+            saving practices, or partnership inquiries, you can reach out directly via our{" "}
+            <Link href="/contact" className="text-[#E85D4E] hover:underline font-medium">
+              Contact Page
+            </Link>
+            {siteConfig.contactEmail ? (
+              <>
+                {" "}or by email at{" "}
+                <a href={`mailto:${siteConfig.contactEmail}`} className="font-mono text-[#E85D4E] hover:underline">
+                  {siteConfig.contactEmail}
+                </a>
+              </>
+            ) : null}
+            .
           </p>
         </section>
       </div>

@@ -31,19 +31,23 @@ function report(name, passed, detail = '') {
   }
 }
 
-async function fetchSafe(url, options = {}) {
-  try {
-    const res = await fetch(url, {
-      ...options,
-      headers: {
-        'User-Agent': 'TimeBridge-SmokeTest/1.0',
-        ...(options.headers || {}),
-      },
-    });
-    return res;
-  } catch (err) {
-    return null;
+async function fetchSafe(url, options = {}, retries = 2) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url, {
+        ...options,
+        headers: {
+          'User-Agent': 'TimeBridge-SmokeTest/1.0',
+          ...(options.headers || {}),
+        },
+      });
+      return res;
+    } catch (err) {
+      if (attempt === retries) return null;
+      await new Promise((r) => setTimeout(r, 250 * (attempt + 1)));
+    }
   }
+  return null;
 }
 
 function extractCanonical(html) {

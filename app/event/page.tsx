@@ -1,15 +1,27 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import EventClient from '@/components/EventClient';
+import { siteConfig } from '@/lib/config';
 
-export const metadata: Metadata = {
-  title: 'Share Event Time in Any Timezone | TimeBridge',
-  description: "Share a global meeting or event time with a live countdown and one-click calendar sync in every recipient's local timezone.",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+interface Props {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const params = searchParams ? await searchParams : {};
+  const isSharedLink = params && Object.keys(params).length > 0 && Boolean(params.title || params.start || params.e || params.t);
+
+  return {
+    title: 'Share Event Time in Any Timezone | TimeBridge',
+    description: "Share a global meeting or event time with a live countdown and one-click calendar sync in every recipient's local timezone.",
+    alternates: {
+      canonical: `${siteConfig.siteUrl}/event`,
+    },
+    robots: isSharedLink
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
+  };
+}
 
 export default function EventPage() {
   return (

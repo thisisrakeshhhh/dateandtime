@@ -162,7 +162,7 @@ export default function RootLayout({
               <p>
                 Data:{" "}
                 <a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer" className="hover:underline">IANA</a> ·{" "}
-                {(process.env.OPEN_METEO_API_KEY || process.env.OPEN_METEO_KEY) ? (
+                {(process.env.WEATHER_API_KEY || process.env.OPENMETEO_COMMERCIAL_KEY || process.env.OPEN_METEO_API_KEY) ? (
                   <>
                     <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Open-Meteo</a> ·{" "}
                   </>

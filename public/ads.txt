@@ -1,3 +1,1 @@
-# TimeBridge Google AdSense Verification File
-# Replace ca-pub-XXXXXXXXXXXXXXXX with your actual Google AdSense publisher ID in production
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+# Add the Google AdSense line here after approval

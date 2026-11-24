@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon';
 
+import { siteConfig } from '@/lib/config';
+
 export interface EventData {
   title: string;
   iso: string; // ISO string without zone or with zone, e.g. 2026-12-31T18:00
@@ -121,7 +123,7 @@ export function generateIcsContent(event: EventData): string {
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
-    `UID:timebridge-${Date.now()}-${Math.floor(Math.random() * 100000)}@timebridge.app`,
+    `UID:timebridge-${Date.now()}-${Math.floor(Math.random() * 100000)}@${siteConfig.domain || 'timebridge.com'}`,
     `DTSTAMP:${fmt(nowUtc)}`,
     `DTSTART:${fmt(range.startUtc)}`,
     `DTEND:${fmt(range.endUtc)}`,

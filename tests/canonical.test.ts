@@ -3,14 +3,14 @@ import { siteConfig, getSiteUrl, CONTACT_EMAIL } from '../lib/config';
 import { getPopularPairs } from '../lib/places';
 
 describe('Canonical Host and Domain Configuration', () => {
-  it('siteConfig.siteUrl is the live production domain and never timebridge.app', () => {
+  it('siteConfig.siteUrl is derived dynamically and never contains timebridge.app', () => {
     const siteUrl = siteConfig.siteUrl;
     expect(siteUrl).not.toContain('timebridge.app');
-    expect(siteUrl).toContain('dateandtime-sable.vercel.app');
+    expect(siteUrl.startsWith('http')).toBe(true);
     expect(getSiteUrl()).toBe(siteUrl);
   });
 
-  it('CONTACT_EMAIL comes from environment and never defaults to vercel.app or mickeygorveth', () => {
+  it('CONTACT_EMAIL comes from environment and never defaults to vercel.app or personal email', () => {
     expect(CONTACT_EMAIL).not.toContain('vercel.app');
     expect(CONTACT_EMAIL).not.toBe('mickeygorveth@gmail.com');
   });
@@ -45,18 +45,18 @@ describe('Canonical Host and Domain Configuration', () => {
     for (const city of sampleCities) {
       const cityCanonical = `${siteConfig.siteUrl}/what-time-is-it-in/${city}`;
       expect(cityCanonical).not.toContain('timebridge.app');
-      expect(cityCanonical.startsWith('https://dateandtime-sable.vercel.app')).toBe(true);
+      expect(cityCanonical.startsWith(siteConfig.siteUrl)).toBe(true);
     }
 
     const sampleConverters = ['est-to-ist', 'pst-to-ist', 'gmt-to-ist', 'bst-to-ist'];
     for (const slug of sampleConverters) {
       const converterCanonical = `${siteConfig.siteUrl}/converter/${slug}`;
       expect(converterCanonical).not.toContain('timebridge.app');
-      expect(converterCanonical.startsWith('https://dateandtime-sable.vercel.app')).toBe(true);
+      expect(converterCanonical.startsWith(siteConfig.siteUrl)).toBe(true);
     }
   });
 
   it('homepage self-referencing canonical points strictly to siteConfig.siteUrl', () => {
-    expect(siteConfig.siteUrl).toBe('https://dateandtime-sable.vercel.app');
+    expect(siteConfig.siteUrl).toBe(getSiteUrl());
   });
 });

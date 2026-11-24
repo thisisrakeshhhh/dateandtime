@@ -1,11 +1,13 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
 
+const baseUrl = (process.argv[2] || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/+$/, '');
+
 const pages = [
-  { name: 'Homepage', url: 'https://dateandtime-sable.vercel.app/' },
-  { name: 'Pair (NY to London)', url: 'https://dateandtime-sable.vercel.app/time-difference/new-york-to-london' },
-  { name: 'City (London)', url: 'https://dateandtime-sable.vercel.app/what-time-is-it-in/london' },
-  { name: 'Converter (EST to IST)', url: 'https://dateandtime-sable.vercel.app/converter/est-to-ist' },
+  { name: 'Homepage', url: `${baseUrl}/` },
+  { name: 'Pair (NY to London)', url: `${baseUrl}/time-difference/new-york-to-london` },
+  { name: 'City (London)', url: `${baseUrl}/what-time-is-it-in/london` },
+  { name: 'Converter (EST to IST)', url: `${baseUrl}/converter/est-to-ist` },
 ];
 
 console.log('Running mobile Lighthouse audits...\n');

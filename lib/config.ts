@@ -36,17 +36,31 @@ export interface SiteConfig {
 }
 
 export function getSiteUrl(): string {
-  // If user provided an explicit custom domain via environment variable
-  if (process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes("timebridge.app")) {
-    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/+$/, "");
+  // 1. Explicit domain provided via environment variable
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    const raw = process.env.NEXT_PUBLIC_SITE_URL.trim();
+    if (raw && !raw.includes("timebridge.app")) {
+      return (raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`).replace(/\/+$/, "");
+    }
   }
+  // 2. Vercel production project domain (set automatically by Vercel for production deployments)
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`.replace(/\/+$/, "");
+    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL.trim()}`.replace(/\/+$/, "");
   }
+  // 3. Vercel deployment URL
   if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`.replace(/\/+$/, "");
+    return `https://${process.env.VERCEL_URL.trim()}`.replace(/\/+$/, "");
   }
-  return "https://dateandtime-sable.vercel.app";
+  // 4. Safe fallback for local development and testing
+  return "https://localhost:3000";
+}
+
+export function getDomain(): string {
+  try {
+    return new URL(getSiteUrl()).host;
+  } catch {
+    return "localhost:3000";
+  }
 }
 
 export const CONTACT_EMAIL = (process.env.CONTACT_EMAIL || process.env.NEXT_PUBLIC_CONTACT_EMAIL || "").trim();
@@ -57,7 +71,7 @@ export const siteConfig: SiteConfig = {
   tagline: "Live World Time Difference, Interactive Day/Night Map & Best Time to Call",
   description:
     "Accurate time difference calculator, live solar terminator world map, daylight saving tracker, distance measurement, and optimal call window finder across world cities and countries.",
-  domain: "dateandtime-sable.vercel.app",
+  domain: getDomain(),
   siteUrl: getSiteUrl(),
   contactEmail: CONTACT_EMAIL,
   defaultFromSlug: "new-york",

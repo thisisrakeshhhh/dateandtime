@@ -2,17 +2,17 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import { Clock, Globe, ShieldCheck, Compass } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `About ${siteConfig.name} | World Time & Day/Night Solar Mapping`,
   description: `Learn about ${siteConfig.name}, our mission to provide accurate world time difference calculations, live solar terminator tracking, and international calling overlap windows.`,
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/about`,
-  },
-};
+  canonical: `${siteConfig.siteUrl}/about`,
+});
 
 export default function AboutPage() {
+  const ownerName = process.env.NEXT_PUBLIC_OWNER_NAME?.trim() || "an independent developer";
   return (
     <div className="max-w-4xl mx-auto space-y-8 py-4">
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-neutral-500">
@@ -91,7 +91,7 @@ export default function AboutPage() {
             Operator &amp; Contact Information
           </h2>
           <p>
-            {siteConfig.name} is owned, developed, and maintained by <strong>{"{{OWNER_NAME}}"}</strong> as an
+            {siteConfig.name} is owned, developed, and maintained by <strong>{ownerName}</strong> as an
             independent web utility dedicated to accurate world time calculation and astronomical visualization.
             We do not represent a multinational corporation or create fictitious executive credentials.
           </p>

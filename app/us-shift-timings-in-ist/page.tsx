@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import ShiftConverterClient from "@/components/ShiftConverterClient";
 import AdSlot from "@/components/AdSlot";
 import FaqBlock from "@/components/FaqBlock";
@@ -9,22 +10,12 @@ import { ChevronRight, AlertTriangle, ShieldCheck } from "lucide-react";
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "US Shift Timings in IST | Typical Hours, DST Changes & Survival Guide",
   description:
     "Comprehensive guide to US shift timings in India (IST): standard Eastern, Central, and Pacific working hours, how Daylight Saving Time (DST) alters your login schedule by 1 hour, and practical tips for night shift wellness.",
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/us-shift-timings-in-ist`,
-  },
-  openGraph: {
-    title: "US Shift Timings in IST: Typical Hours, DST Changes & Overlap Guide",
-    description:
-      "Everything you need to know about working US shifts from India. Compare Eastern & Pacific schedules, calculate office hours overlap, and master DST transitions.",
-    url: `${siteConfig.siteUrl}/us-shift-timings-in-ist`,
-    siteName: siteConfig.name,
-    type: "article",
-  },
-};
+  canonical: `${siteConfig.siteUrl}/us-shift-timings-in-ist`,
+});
 
 const FAQS = [
   {

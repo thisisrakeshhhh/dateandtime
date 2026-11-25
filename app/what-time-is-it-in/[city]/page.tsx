@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getPlaceBySlug, formatPlaceWithZone } from '@/lib/places';
 import { generateCityTimeReport } from '@/lib/cityTime';
 import { siteConfig } from '@/lib/config';
+import { buildPageMetadata } from '@/lib/seo';
 import top300Cities from '@/data/top300Cities.json';
 import CityTimeClient from '@/components/CityTimeClient';
 import { ChevronRight, Home } from 'lucide-react';
@@ -29,18 +30,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const report = generateCityTimeReport(place);
   const locationLabel = formatPlaceWithZone(place);
+  const canonical = `${siteConfig.siteUrl}/what-time-is-it-in/${place.slug}`;
+  const title = `What Time is it in ${locationLabel}? Live Clock & Time Difference`;
+  const description = `Current local time in ${locationLabel}. Exact sunrise, sunset, UTC offset (${report.utcOffsetStr}), daylight saving status, and time differences to London, New York and Tokyo.`;
 
-  return {
-    title: `What Time is it in ${locationLabel}? Live Clock & Time Difference`,
-    description: `Current local time in ${locationLabel}. Exact sunrise, sunset, UTC offset (${report.utcOffsetStr}), daylight saving status, and time differences to London, New York and Tokyo.`,
+  return buildPageMetadata({
+    title,
+    description,
+    canonical,
     robots: {
       index: report.isIndexable,
       follow: true,
     },
-    alternates: {
-      canonical: `${siteConfig.siteUrl}/what-time-is-it-in/${place.slug}`,
-    },
-  };
+  });
 }
 
 export default async function WhatTimeIsInCityPage({ params }: PageProps) {

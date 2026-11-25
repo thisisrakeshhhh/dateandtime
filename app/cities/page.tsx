@@ -2,18 +2,17 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getCities } from '@/lib/places';
 import { siteConfig } from '@/lib/config';
+import { buildPageMetadata } from '@/lib/seo';
 import CitiesDirectoryClient from '@/components/CitiesDirectoryClient';
 import { ChevronRight, Home, Globe } from 'lucide-react';
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'World Cities Live Clocks Directory | TimeBridge',
+export const metadata: Metadata = buildPageMetadata({
+  title: `World Cities Live Clocks Directory | ${siteConfig.name}`,
   description: 'Search and browse live local times, weather, UTC offsets, and sunset hours across hundreds of major international cities.',
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/cities`,
-  },
-};
+  canonical: `${siteConfig.siteUrl}/cities`,
+});
 
 export default function CitiesHubPage() {
   const cities = getCities();

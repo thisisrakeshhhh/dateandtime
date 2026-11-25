@@ -2,28 +2,19 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import ShiftConverterClient from "@/components/ShiftConverterClient";
 import AdSlot from "@/components/AdSlot";
 import { ChevronRight } from "lucide-react";
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: "Work Shift Time Zone Converter | Convert Shifts Across US, UK, Australia",
+export const metadata: Metadata = buildPageMetadata({
+  title: `Work Shift Time Zone Converter | ${siteConfig.name}`,
   description:
     "Convert work shifts to client time zones in US Eastern, Central, Pacific, UK, and Australia. Calculate exact 9 AM to 5 PM office hours overlap, track midnight crossings, and simulate summer/winter daylight saving changes.",
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/shift-converter`,
-  },
-  openGraph: {
-    title: "Work Shift Time Zone Converter | TimeBridge",
-    description:
-      "Accurately convert your work shift hours to US, UK, and Australian client time zones. Calculate minute-accurate office hour overlap and daylight saving impacts.",
-    url: `${siteConfig.siteUrl}/shift-converter`,
-    siteName: siteConfig.name,
-    type: "website",
-  },
-};
+  canonical: `${siteConfig.siteUrl}/shift-converter`,
+});
 
 export default function ShiftConverterPage() {
   const breadcrumbJsonLd = {

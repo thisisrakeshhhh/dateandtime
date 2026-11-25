@@ -56,6 +56,17 @@ function extractCanonical(html) {
   return match ? match[1] : null;
 }
 
+function extractOgUrl(html) {
+  const match = html.match(/<meta[^>]+property=["']og:url["'][^>]+content=["']([^"']+)["']/i) ||
+                html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+property=["']og:url["']/i);
+  return match ? match[1] : null;
+}
+
+function extractTitle(html) {
+  const match = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+  return match ? match[1].trim() : '';
+}
+
 function extractRobots(html) {
   const match = html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']+)["']/i) ||
                 html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']robots["']/i);
@@ -134,6 +145,47 @@ async function runSmokeTests() {
     const hasForeign = foreignHosts.some((fh) => canonical && canonical.includes(fh));
     const valid = startsWithBase && !hasForeign;
     report(`Canonical on ${path}`, valid, canonical || 'none');
+  }
+
+  // ---------------------------------------------------------------------------
+  // Check 3b: Social Tags (og:url === canonical) and No Duplicated Brand in Titles
+  // ---------------------------------------------------------------------------
+  console.log('\n--- 3b. Testing Social Tags (og:url === canonical) and Non-Duplicated Brand in Titles ---');
+  const socialCheckPages = [
+    '/',
+    '/about',
+    '/contact',
+    '/privacy-policy',
+    '/terms',
+    '/converter',
+    '/converter/est-to-ist',
+    '/time-difference/new-york-to-london',
+    '/what-time-is-it-in/london',
+    '/all-corridors',
+  ];
+
+  for (const path of socialCheckPages) {
+    const res = await fetchSafe(`${baseUrl}${path}`);
+    if (!res || res.status !== 200) {
+      report(`Social tags & Title on ${path}`, false, 'Page did not return 200');
+      continue;
+    }
+    const html = await res.text();
+    const canonical = extractCanonical(html);
+    const ogUrl = extractOgUrl(html);
+    const title = extractTitle(html);
+
+    // 1. og:url must match canonical
+    const ogUrlMatches = Boolean(
+      canonical && ogUrl &&
+      (ogUrl === canonical || ogUrl.replace(/^https?:\/\//, '') === canonical.replace(/^https?:\/\//, ''))
+    );
+    report(`og:url matches canonical on ${path}`, ogUrlMatches, `og:url: ${ogUrl || 'none'} | canonical: ${canonical || 'none'}`);
+
+    // 2. Title must not duplicate brand (e.g. "TimeBridge | TimeBridge" or "| TimeBridge | TimeBridge")
+    const brandOccurrences = (title.match(/TimeBridge/gi) || []).length;
+    const hasDuplicatedBrand = brandOccurrences > 1 || /\|\s*TimeBridge\s*\|\s*TimeBridge/i.test(title);
+    report(`No duplicated brand in title on ${path}`, !hasDuplicatedBrand, `title: "${title}"`);
   }
 
   // ---------------------------------------------------------------------------
@@ -259,24 +311,46 @@ async function runSmokeTests() {
   // ---------------------------------------------------------------------------
   // Check 8: No Placeholder or Leaked Strings in Page Bodies
   // ---------------------------------------------------------------------------
-  console.log('\n--- 8. Testing for Leaked Placeholder Strings ---');
-  const forbiddenStrings = ['Place A', 'Place B', 'lorem ipsum', 'undefined', 'NaN', '[object Object]'];
-  const tenSamplePaths = [
+  console.log('\n--- 8. Testing for Leaked Placeholder Strings & Content Cleanliness (20 Pages) ---');
+  const forbiddenStrings = [
+    '{{',
+    '}}',
+    'TODO',
+    'TBD',
+    'lorem',
+    'TimeBridgeintegrates',
+    'Place A',
+    'Place B',
+    'undefined',
+    'NaN',
+    '[object Object]',
+  ];
+  const twentySamplePaths = [
     '/',
     '/about',
+    '/contact',
+    '/privacy-policy',
+    '/terms',
     '/converter',
     '/converter/est-to-ist',
     '/time-difference/new-york-to-london',
     '/what-time-is-it-in/london',
     '/shift-converter',
     '/all-corridors',
+    '/cities',
+    '/countries',
+    '/sports',
+    '/sports/wimbledon-mens-final-time-in-united-states',
     '/daylight-saving-time/united-states',
-    '/privacy-policy',
+    '/jet-lag-calculator',
+    '/event',
+    '/us-shift-timings-in-ist',
+    '/uk-shift-timings-in-ist',
   ];
 
   let anyForbiddenFound = false;
 
-  for (const path of tenSamplePaths) {
+  for (const path of twentySamplePaths) {
     const res = await fetchSafe(`${baseUrl}${path}`);
     if (!res || res.status !== 200) {
       report(`Clean body on ${path}`, false, 'Page did not return 200');

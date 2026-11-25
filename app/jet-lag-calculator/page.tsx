@@ -2,21 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import JetLagClient from '@/components/JetLagClient';
 import { siteConfig } from '@/lib/config';
+import { buildPageMetadata } from '@/lib/seo';
 import { ChevronRight, Home, Plane } from 'lucide-react';
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'Jet Lag Calculator & Adaptation Schedule | TimeBridge',
+export const metadata: Metadata = buildPageMetadata({
+  title: `Jet Lag Calculator & Adaptation Schedule | ${siteConfig.name}`,
   description: 'Calculate time difference, flight duration, local arrival time, and scientific light and sleep shift plans to minimize jet lag fatigue across any global flight route.',
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/jet-lag-calculator`,
-  },
+  canonical: `${siteConfig.siteUrl}/jet-lag-calculator`,
   robots: {
     index: true,
     follow: true,
   },
-};
+});
 
 export default function JetLagPage() {
   const breadcrumbJsonLd = {

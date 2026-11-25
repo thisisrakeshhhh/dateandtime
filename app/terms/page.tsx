@@ -2,21 +2,20 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import { FileText } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `Terms of Service | ${siteConfig.name}`,
   description: `Terms and conditions for utilizing ${siteConfig.name}'s world time zone converters, astronomical day/night maps, and calculation utilities.`,
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/terms`,
-  },
-};
+  canonical: `${siteConfig.siteUrl}/terms`,
+});
 
 export default function TermsPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-8 py-4">
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-neutral-500">
-        <Link href="/" className="hover:text-emerald-600 transition-colors">
+        <Link href="/" className="hover:text-[#E85D4E] transition-colors">
           Home
         </Link>
         <span>/</span>
@@ -24,15 +23,15 @@ export default function TermsPage() {
       </nav>
 
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E85D4E]/10 border border-[#E85D4E]/20 text-[#E85D4E] text-xs font-semibold mb-3">
           <FileText className="w-3.5 h-3.5" />
-          <span>User Agreement & Disclaimers</span>
+          <span>User Agreement &amp; Disclaimers</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-neutral-950 dark:text-white tracking-tight">
           Terms of Service
         </h1>
         <p className="text-xs text-neutral-500 mt-1">
-          Effective Date: January 1, 2026 · Last Updated: November 2026
+          Effective Date: November 25, 2026 · Last Updated: November 25, 2026
         </p>
       </div>
 
@@ -93,8 +92,19 @@ export default function TermsPage() {
             5. Contact Information
           </h2>
           <p>
-            For any legal inquiries regarding these Terms of Service, please contact:{" "}
-            <span className="font-mono text-emerald-600">{siteConfig.contactEmail}</span>.
+            For any legal inquiries regarding these Terms of Service, please reach out via our{" "}
+            <Link href="/contact" className="text-[#E85D4E] hover:underline font-medium">
+              Contact Page
+            </Link>
+            {siteConfig.contactEmail ? (
+              <>
+                {" "}or by email at{" "}
+                <a href={`mailto:${siteConfig.contactEmail}`} className="font-mono text-[#E85D4E] hover:underline">
+                  {siteConfig.contactEmail}
+                </a>
+              </>
+            ) : null}
+            .
           </p>
         </section>
       </div>

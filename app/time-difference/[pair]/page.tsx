@@ -91,7 +91,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: pageUrl,
     },
     openGraph: {
-      title: article.metaTitle,
+      title: `${article.metaTitle} | ${siteConfig.name}`,
       description: article.metaDescription,
       url: pageUrl,
       siteName: siteConfig.name,
@@ -100,7 +100,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: article.metaTitle,
+      title: `${article.metaTitle} | ${siteConfig.name}`,
       description: article.metaDescription,
     },
   };

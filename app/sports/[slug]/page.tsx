@@ -10,6 +10,7 @@ import {
 } from '@/lib/sports';
 import { getCountryBySlug } from '@/lib/places';
 import { siteConfig } from '@/lib/config';
+import { buildPageMetadata } from '@/lib/seo';
 import SportsEventClient from '@/components/SportsEventClient';
 import { ChevronRight, Home } from 'lucide-react';
 
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     !isPast;
 
   const title = isPast
-    ? `This Event Has Finished: ${event.name} in ${country.name} | TimeBridge`
+    ? `This Event Has Finished: ${event.name} in ${country.name}`
     : `What Time is ${event.name} in ${country.name}? Broadcast Schedule`;
 
   const description = isPast
@@ -72,24 +73,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonical = `${siteConfig.siteUrl}/sports/${slug}`;
 
-  return {
+  return buildPageMetadata({
     title,
     description,
-    alternates: {
-      canonical,
-    },
+    canonical,
     robots: {
       index: isConfirmed,
       follow: true,
     },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      siteName: siteConfig.name,
-      type: 'article',
-    },
-  };
+  });
 }
 
 export default async function SportsEventPage({ params }: PageProps) {

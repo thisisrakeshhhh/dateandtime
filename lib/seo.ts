@@ -3,6 +3,8 @@ import { TimeDifferenceResult, BestTimeToCallResult } from "./time";
 import { DistanceResult } from "./distance";
 import { analyzePairSeasonalDst } from "./dstPair";
 import { DateTime } from "luxon";
+import type { Metadata } from "next";
+import { siteConfig } from "./config";
 
 export interface FaqItem {
   question: string;
@@ -291,5 +293,53 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
       name: item.name,
       item: item.url,
     })),
+  };
+}
+
+export interface PageMetadataOptions {
+  title: string;
+  description: string;
+  canonical: string;
+  robots?: Metadata['robots'];
+}
+
+/**
+ * Builds consistent SEO, canonical, and Open Graph metadata for pages.
+ * Ensures og:url matches canonical, og:title matches page title, and
+ * prevents brand duplication (e.g. avoids "| TimeBridge | TimeBridge").
+ */
+export function buildPageMetadata({
+  title,
+  description,
+  canonical,
+  robots,
+}: PageMetadataOptions): Metadata {
+  const brand = siteConfig.name;
+  const alreadyHasBrand = title.toLowerCase().includes(brand.toLowerCase());
+  const cleanBaseTitle = title.replace(new RegExp(`\\s*\\|\\s*${brand}$`, 'i'), '').trim();
+  const fullTitle = alreadyHasBrand ? title : `${cleanBaseTitle} | ${brand}`;
+
+  return {
+    title: {
+      absolute: fullTitle,
+    },
+    description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title: fullTitle,
+      description,
+      url: canonical,
+      siteName: brand,
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+    },
+    ...(robots ? { robots } : {}),
   };
 }

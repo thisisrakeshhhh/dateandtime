@@ -2,21 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllEvents } from '@/lib/sports';
 import { siteConfig } from '@/lib/config';
+import { buildPageMetadata } from '@/lib/seo';
 import { ChevronRight, Home, Calendar, ArrowRight } from 'lucide-react';
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'Global Sports & Championship Broadcast Times | TimeBridge',
+export const metadata: Metadata = buildPageMetadata({
+  title: `Global Sports & Championship Broadcast Times | ${siteConfig.name}`,
   description: 'Find official local broadcast start times for 20 premier recurring sports events, including Super Bowl, UEFA Champions League, FIFA World Cup, and Wimbledon.',
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/sports`,
-  },
+  canonical: `${siteConfig.siteUrl}/sports`,
   robots: {
     index: true,
     follow: true,
   },
-};
+});
 
 const POPULAR_COUNTRIES = [
   { name: 'United States', slug: 'united-states' },

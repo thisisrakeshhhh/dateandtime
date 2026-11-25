@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import ShiftConverterClient from "@/components/ShiftConverterClient";
 import AdSlot from "@/components/AdSlot";
 import FaqBlock from "@/components/FaqBlock";
@@ -9,22 +10,12 @@ import { ChevronRight, Briefcase } from "lucide-react";
 
 export const revalidate = 60;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "UK Shift Timings in IST | British Shift Hours, BST Shifts & Guide",
   description:
     "Complete reference for UK shift timings in India (IST): standard working hours, how British Summer Time (BST) shifts your work day by 1 hour, London office overlap, and handover best practices.",
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/uk-shift-timings-in-ist`,
-  },
-  openGraph: {
-    title: "UK Shift Timings in IST: Typical Hours, BST Changes & Overlap Guide",
-    description:
-      "Master your UK shift schedule from India. Calculate Greenwich Mean Time (GMT) vs British Summer Time (BST) overlap and optimize remote handovers.",
-    url: `${siteConfig.siteUrl}/uk-shift-timings-in-ist`,
-    siteName: siteConfig.name,
-    type: "article",
-  },
-};
+  canonical: `${siteConfig.siteUrl}/uk-shift-timings-in-ist`,
+});
 
 const FAQS = [
   {

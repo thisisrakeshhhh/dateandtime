@@ -58,6 +58,7 @@ Navigate to **Project Settings** → **Environment Variables** in Vercel. Ensure
 | Variable Name | Required? | Recommended Production Value | Description |
 |---|---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | **Required** | `https://yourdomain.com` | Primary canonical website URL (no trailing slash). Used for canonical tags, Open Graph, sitemaps, and JSON-LD schema. |
+| `NEXT_PUBLIC_OWNER_NAME` | Optional | `Your Name` | Operator/owner name displayed on the About page. Defaults to "an independent developer" if unset. |
 | `CONTACT_EMAIL` | **Required** | `you@yourdomain.com` | Destination inbox where contact form submissions will be delivered. |
 | `RESEND_API_KEY` | Optional | `re_xxxxxxxxxxxxxxxx` | Resend API key for sending email. Contact form returns 503 if missing. |
 | `RESEND_FROM_EMAIL` | Optional | `contact@yourdomain.com` | Verified sender email address configured in your Resend account. |

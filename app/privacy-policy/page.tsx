@@ -2,15 +2,14 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import { ShieldCheck } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `Privacy Policy | ${siteConfig.name}`,
   description: `Privacy Policy for ${siteConfig.name}. Information on cookie practices, localStorage use, third-party providers, contact form data, and data deletion rights.`,
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/privacy-policy`,
-  },
-};
+  canonical: `${siteConfig.siteUrl}/privacy-policy`,
+});
 
 export default function PrivacyPolicyPage() {
   return (
@@ -32,7 +31,7 @@ export default function PrivacyPolicyPage() {
           Privacy Policy
         </h1>
         <p className="text-xs text-neutral-500 mt-1">
-          Effective Date: January 1, 2026 · Last Updated: November 2026
+          Effective Date: November 25, 2026 · Last Updated: November 25, 2026
         </p>
       </div>
 
@@ -113,7 +112,7 @@ export default function PrivacyPolicyPage() {
             4. Third-Party Services
           </h2>
           <p>
-            To deliver global mapping, solar computations, and reliable communication, {siteConfig.name}
+            To deliver global mapping, solar computations, and reliable communication, {siteConfig.name}{" "}
             integrates the following vetted third-party infrastructure providers:
           </p>
           <ul className="list-disc pl-5 space-y-2">
@@ -124,9 +123,11 @@ export default function PrivacyPolicyPage() {
               infrastructure hosts under their respective terms.
             </li>
             <li>
-              <strong>Weather Provider (Open-Meteo):</strong> When weather estimates are displayed for
-              selected global cities, anonymized latitude/longitude coordinates are queried against the
-              weather service. No personal or identifying user information is ever transmitted.
+              <strong>Weather Provider:</strong> Weather data comes from a third-party provider (such as
+              Open-Meteo or OpenWeather) only when a weather API key is configured on the server. If no
+              weather API key is configured, seasonal estimates are shown and no weather request is made
+              to any third-party provider. When active, only anonymized city coordinates are transmitted;
+              no personal or identifying user information is ever shared.
             </li>
             <li>
               <strong>Resend (Contact Email Dispatch):</strong> Submissions sent through our contact form

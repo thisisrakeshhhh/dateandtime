@@ -5,6 +5,7 @@ import { getCountryBySlug, getCountries, formatPlaceWithZone } from '@/lib/place
 import { getDstSummaryForCountry } from '@/lib/dst';
 import { generateDSTReport } from '@/lib/dstReport';
 import { siteConfig } from '@/lib/config';
+import { buildPageMetadata } from '@/lib/seo';
 import { ChevronRight, Home, Clock, Calendar, ArrowRight, ShieldCheck, Sun, Moon } from 'lucide-react';
 
 export const revalidate = 60;
@@ -28,18 +29,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const countryLabel = formatPlaceWithZone(country);
+  const canonical = `${siteConfig.siteUrl}/daylight-saving-time/${country.slug}`;
+  const title = `Daylight Saving Time in ${countryLabel} - Next Clock Change Dates`;
+  const description = `Does ${countryLabel} have Daylight Saving Time? See the next clock change date, last transition, and seasonal time difference effects on major flight and business corridors.`;
 
-  return {
-    title: `Daylight Saving Time in ${countryLabel} - Next Clock Change Dates`,
-    description: `Does ${countryLabel} have Daylight Saving Time? See the next clock change date, last transition, and seasonal time difference effects on major flight and business corridors.`,
-    alternates: {
-      canonical: `${siteConfig.siteUrl}/daylight-saving-time/${country.slug}`,
-    },
+  return buildPageMetadata({
+    title,
+    description,
+    canonical,
     robots: {
       index: true,
       follow: true,
     },
-  };
+  });
 }
 
 export default async function DaylightSavingCountryPage({ params }: PageProps) {

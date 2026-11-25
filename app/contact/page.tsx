@@ -2,16 +2,15 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { siteConfig } from '@/lib/config';
+import { buildPageMetadata } from '@/lib/seo';
 import { MessageSquare, AlertCircle } from 'lucide-react';
 import ContactFormClient from '@/components/ContactFormClient';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `Contact Us | ${siteConfig.name}`,
   description: `Get in touch with the ${siteConfig.name} team. Submit inquiries regarding time zone corrections, data partnerships, or technical support.`,
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/contact`,
-  },
-};
+  canonical: `${siteConfig.siteUrl}/contact`,
+});
 
 export default function ContactPage() {
   const destinationEmail = (process.env.CONTACT_EMAIL || siteConfig.contactEmail || '').trim();
@@ -21,7 +20,7 @@ export default function ContactPage() {
   return (
     <div className="max-w-3xl mx-auto space-y-8 py-4">
       <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-neutral-500">
-        <Link href="/" className="hover:text-[#C93527] transition-colors">
+        <Link href="/" className="hover:text-[#E85D4E] transition-colors">
           Home
         </Link>
         <span>/</span>
@@ -29,7 +28,7 @@ export default function ContactPage() {
       </nav>
 
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C93527]/10 border border-[#C93527]/20 text-[#C93527] text-xs font-semibold mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E85D4E]/10 border border-[#E85D4E]/20 text-[#E85D4E] text-xs font-semibold mb-3">
           <MessageSquare className="w-3.5 h-3.5" />
           <span>Feedback & Support</span>
         </div>
@@ -49,9 +48,21 @@ export default function ContactPage() {
               Contact Mode
             </span>
             <p className="font-medium text-neutral-900 dark:text-white mt-0.5">
-              {isDeliveryConfigured ? 'Email Dispatch (Active)' : 'Direct Form (Offline)'}
+              {isDeliveryConfigured ? 'Email Dispatch (Active)' : 'Direct Form'}
             </p>
           </div>
+          {destinationEmail && (
+            <div>
+              <span className="text-neutral-400 uppercase font-semibold text-[10px] tracking-wider">
+                Direct Email
+              </span>
+              <p className="mt-0.5">
+                <a href={`mailto:${destinationEmail}`} className="font-mono text-[#E85D4E] hover:underline">
+                  {destinationEmail}
+                </a>
+              </p>
+            </div>
+          )}
           <div>
             <span className="text-neutral-400 uppercase font-semibold text-[10px] tracking-wider">
               Response Time

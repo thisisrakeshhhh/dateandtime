@@ -3,23 +3,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getAllAbbreviationPairs, getAllAbbreviations } from "@/lib/abbreviations";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import { Clock, ArrowRight, ShieldCheck, Globe, ChevronRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Time Zone Converter | Abbreviation Converter Directory",
+export const metadata: Metadata = buildPageMetadata({
+  title: `Time Zone Converter Directory | ${siteConfig.name}`,
   description: "Convert between world time zone abbreviations (EST, IST, PST, CST, GMT, BST, UTC, AEST). Minute-accurate IANA conversions with seasonal DST warnings.",
-  alternates: {
-    canonical: `${siteConfig.siteUrl}/converter`,
-  },
-  openGraph: {
-    title: "Time Zone Converter Directory | TimeBridge",
-    description: "Convert between world time zone abbreviations with seasonal daylight saving warnings and common times tables.",
-    url: `${siteConfig.siteUrl}/converter`,
-    siteName: siteConfig.name,
-    locale: "en_US",
-    type: "website",
-  },
-};
+  canonical: `${siteConfig.siteUrl}/converter`,
+});
 
 export const revalidate = 60;
 

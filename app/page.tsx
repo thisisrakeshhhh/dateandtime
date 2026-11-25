@@ -2,16 +2,15 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
+import { buildPageMetadata } from "@/lib/seo";
 import HomeClient from "@/components/HomeClient";
 import { Globe, Clock, Sun, PhoneCall, Compass, ArrowRight, ShieldCheck } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `${siteConfig.name} - ${siteConfig.tagline}`,
   description: siteConfig.description,
-  alternates: {
-    canonical: siteConfig.siteUrl,
-  },
-};
+  canonical: siteConfig.siteUrl,
+});
 
 export const revalidate = 60;
 
